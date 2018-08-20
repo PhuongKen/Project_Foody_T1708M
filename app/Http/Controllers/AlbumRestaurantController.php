@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\District;
 use Illuminate\Http\Request;
 
-class DistrictController extends Controller
+class AlbumRestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,10 +45,7 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
-        $district = District::where('provindID',$id)->get();
-        foreach ($district as $d){
-            echo "<option value='$d->id'>$d->name</option>";
-        }
+        //
     }
 
     /**
