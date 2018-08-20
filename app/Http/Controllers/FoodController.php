@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class FoodController extends Controller
 {
@@ -13,7 +15,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-
+        $food = Food::pagenate(5);
+        return view('admin.food.list')->with('foods',$food);
     }
 
     /**
@@ -23,7 +26,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+      return view('create');
     }
 
     /**
@@ -34,7 +37,14 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $food = new Food();
+        $food->restaurantID = Input::get('restaurantID');
+        $food->name = Input::get('name');
+        $food->avatar = Input::get('avatar');
+        $food->price = Input::get('price');
+        $food-> save();
+        return redirect('/food');
+
     }
 
     /**
@@ -45,7 +55,7 @@ class FoodController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +66,11 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = Food::find($id);
+        if ($food == null){
+            return view('404');
+        }
+        return view('edit')->with('foods',$food);
     }
 
     /**
@@ -68,7 +82,10 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $food = Food::find($id);
+        if ($food == null){
+            return view('404');
+        }
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateFoodsTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('restaurantID')->unsigned();
             $table->string('name');
-            $table->string('avartar');
+            $table->string('avatar');
             $table->integer('price');
             $table->integer('status')->default(1); // 0 hết, 1 còn, 2 không bán nữa.
             $table->timestamps();
