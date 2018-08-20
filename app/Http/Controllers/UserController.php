@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $list_obj = User::where('status', 1)->orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.user.list')->with('list_obj', $list_obj);
     }
 
     /**
