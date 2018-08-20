@@ -240,5 +240,10 @@ class RestaurantController extends Controller
      */
     public function destroy($id)
     {
+        $restaurant = Restaurant::find($id);
+        if($restaurant == null){
+            return response('Sản phẩm không tồn tại hoặc đã bị xóa','404');
+        }
+        $restaurant -> delete();
     }
 }
