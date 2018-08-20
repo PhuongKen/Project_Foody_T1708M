@@ -13,12 +13,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        $provind = Provind::all();
-        $district = District::all();
-        $ward = Ward::all();
-
-        return view('restaurant.create', compact('category', 'provind', 'district', 'ward'));
+<<<<<<< HEAD
+=======
+        //
     }
 
     /**
@@ -27,6 +24,34 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
+        $category = Category::all();
+        $provind = Provind::all();
+        $district = District::all();
+        $ward = Ward::all();
+<<<<<<< HEAD
+
+=======
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
+        return view('restaurant.create', compact('category', 'provind', 'district', 'ward'));
+    }
+
+    /**
+<<<<<<< HEAD
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+=======
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
     {
         $this->validate($request,
             [
@@ -99,6 +124,7 @@ class RestaurantController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -113,6 +139,11 @@ class RestaurantController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+=======
+     * Display the specified resource.
+     *
+     * @param  int $id
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -123,7 +154,11 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+<<<<<<< HEAD
      * @param  int  $id
+=======
+     * @param  int $id
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -134,8 +169,13 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+=======
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -146,7 +186,11 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+<<<<<<< HEAD
      * @param  int  $id
+=======
+     * @param  int $id
+>>>>>>> 849a770f8efef6128a5728d21400ca0c28571c26
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
