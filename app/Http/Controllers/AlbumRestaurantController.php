@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album_restaurant;
 use Illuminate\Http\Request;
 
 class AlbumRestaurantController extends Controller
@@ -79,6 +80,10 @@ class AlbumRestaurantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $album = Album_restaurant::where('restaurantID',$id);
+        if($album == null){
+            return 'Không có ảnh hoặc đã bị xóa';
+        }
+        $album -> delete();
     }
 }

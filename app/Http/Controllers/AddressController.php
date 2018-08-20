@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -79,6 +80,10 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $address = Address::where('id',$id);
+        if($address == null){
+            return 'Địa chỉ không tòn tại hoặc đã bị xóa';
+        }
+        $address -> delete();
     }
 }
