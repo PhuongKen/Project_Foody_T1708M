@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Album_restaurant;
 use App\Category;
 use App\District;
 use App\Provind;
 use App\Restaurant;
 use App\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class RestaurantController extends Controller
 {
