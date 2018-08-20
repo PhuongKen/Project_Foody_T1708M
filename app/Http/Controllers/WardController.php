@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ward;
 use Illuminate\Http\Request;
 
 class WardController extends Controller
@@ -45,7 +46,10 @@ class WardController extends Controller
      */
     public function show($id)
     {
-        //
+        $ward = Ward::where('districtID',$id)->get();
+        foreach ($ward as $w){
+            echo "<option value='$w->id'>$w->name</option>";
+        }
     }
 
     /**
