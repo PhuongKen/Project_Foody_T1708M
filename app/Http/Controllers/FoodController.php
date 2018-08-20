@@ -15,7 +15,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-
+        $food = Food::pagenate(5);
+        return view('admin.food.list')->with('foods',$food);
     }
 
     /**
