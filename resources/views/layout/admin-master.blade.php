@@ -29,10 +29,10 @@
     <link href="{{asset('css/restaurant.css')}}" rel="stylesheet">
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}" />
-    @section('css')
-    @show
+@section('css')
+@show
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

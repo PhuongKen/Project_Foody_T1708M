@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('food','FoodController');
+Route::resource('/admin/restaurant','RestaurantController');
 
