@@ -54,7 +54,7 @@ class FoodController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -65,7 +65,11 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = Food::find($id);
+        if ($food == null){
+            return view('404');
+        }
+        return view('edit')->with('foods',$food);
     }
 
     /**
@@ -77,7 +81,10 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $food = Food::find($id);
+        if ($food == null){
+            return view('404');
+        }
     }
 
     /**
