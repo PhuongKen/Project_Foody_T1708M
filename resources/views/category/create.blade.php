@@ -11,24 +11,16 @@
 <body>
  <div class="card">
    <div class="card-body">
-       <h1 class="card-title">Create food</h1>
-       <form action="/food" method="post" enctype="multipart/form-data">
+       <h1 class="card-title">Create Category</h1>
+       <form action="/admin/category" method="post" enctype="multipart/form-data">
            {{csrf_field()}}
            <div class="form-group w-50">
-               <label for="">Food Name</label>
+               <label for="">Name</label>
                <input type="text" name="name" class="form-control">
            </div>
            <div class="form-group w-50">
                <label for="">Avartar</label>
                <input type="text" name="avatar" class="form-control">
-           </div>
-           <div class="form-group w-25">
-               <label>Price</label>
-               <input type="number" name="price" class="form-control">
-           </div>
-           <div class="form-group w-25">
-               <label for="">RestaurantID</label>
-               <input type="text" name="restaurantID" class="form-control">
            </div>
            <div>
                <input type="submit" value="Submit" class="btn btn-primary" >
