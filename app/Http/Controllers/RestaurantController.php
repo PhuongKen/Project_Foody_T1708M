@@ -13,9 +13,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-=======
-        //
+        $restaurant = Restaurant::all();
+        $address = Address::all();
+        $provind = Provind::all();
+        return view('restaurant.index', compact('restaurant', 'address', 'provind'));
+
     }
 
     /**
@@ -25,33 +27,21 @@ class RestaurantController extends Controller
      */
     public function create()
     {
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
         $category = Category::all();
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-<<<<<<< HEAD
 
-=======
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
         return view('restaurant.create', compact('category', 'provind', 'district', 'ward'));
     }
 
     /**
-<<<<<<< HEAD
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-=======
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
     {
         $this->validate($request,
             [
@@ -77,8 +67,8 @@ class RestaurantController extends Controller
         $restaurant = new Restaurant();
         $restaurant->categoryID = Input::get('category');
         $restaurant->name = Input::get('name');
-        $getAvartar ='';
-        if($request->hasFile('avartar')){
+        $getAvartar = '';
+        if ($request->hasFile('avartar')) {
             $this->validate($request,
                 [
                     'avartar' => 'mimes:jpg,jpeg,png,gif|max:2048',
@@ -89,9 +79,9 @@ class RestaurantController extends Controller
                 ]
             );
             $avartar = $request->file('avartar');
-            $getAvartar = time().'_'.$avartar->getClientOriginalName();
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
             $distional_path = public_path('/images/restaurant');
-            $avartar->move($distional_path,$getAvartar);
+            $avartar->move($distional_path, $getAvartar);
         }
         $restaurant->avartar = $getAvartar;
         $address = new Address();
@@ -109,41 +99,24 @@ class RestaurantController extends Controller
         $restaurant->save();
         $image_array = $request->file('img');
         $image_len = count($image_array);
-        if($request->hasFile('img')){
-            for ($i = 0; $i < $image_len; $i++){
-                $new_image_name = time().'_'.$image_array[$i]->getClientOriginalName();
+        if ($request->hasFile('img')) {
+            for ($i = 0; $i < $image_len; $i++) {
+                $new_image_name = time() . '_' . $image_array[$i]->getClientOriginalName();
                 $destination_path = public_path('/images/restaurant');
                 $image_array[$i]->move($destination_path, $new_image_name);
                 $album_restaurant = new Album_restaurant();
-                $album_restaurant -> restaurantID = $restaurant -> id;
-                $album_restaurant -> image = $new_image_name;
-                $album_restaurant ->save();
+                $album_restaurant->restaurantID = $restaurant->id;
+                $album_restaurant->image = $new_image_name;
+                $album_restaurant->save();
             }
         }
         return redirect('/admin/restaurant');
     }
 
     /**
-<<<<<<< HEAD
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-=======
      * Display the specified resource.
      *
      * @param  int $id
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -154,11 +127,7 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-<<<<<<< HEAD
-     * @param  int  $id
-=======
      * @param  int $id
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -169,13 +138,8 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-<<<<<<< HEAD
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-=======
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -186,11 +150,7 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-<<<<<<< HEAD
-     * @param  int  $id
-=======
      * @param  int $id
->>>>>>> 413c56eb72cbed3a4b9688b34b046420c1ee4eb1
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
