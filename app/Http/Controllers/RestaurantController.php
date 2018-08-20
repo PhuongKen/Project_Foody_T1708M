@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Category;
+use App\Provind;
+use App\Restaurant;
+use App\Ward;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
