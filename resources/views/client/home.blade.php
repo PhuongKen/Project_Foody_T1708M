@@ -1,4 +1,8 @@
+<<<<<<< HEAD:resources/views/client/home.blade.php
 @extends('layout.master', ['page_title'=>'Home'])
+=======
+@extends('layout.master',['page_title'=>'home'])
+>>>>>>> 9ea8d0d488501947f08ca867bb4ecc4f4b029506:resources/views/home.blade.php
 @section('content')
 
     <div class="container">

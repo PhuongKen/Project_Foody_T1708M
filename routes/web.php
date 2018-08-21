@@ -22,4 +22,5 @@ Route::resource('/admin/address','AddressController');
 Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
 Route::resource('/foody/danhmuc','DanhmucController');
+Route::resource('/foody/trangchitiet','DetailController');
 Route::get('/home', 'HomeController@getHome');
