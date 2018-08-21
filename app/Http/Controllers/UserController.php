@@ -115,6 +115,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $obj = User::find($id);
+        if($obj == null){
+            return view('404');
+        }
+        $obj->delete();
     }
 }
