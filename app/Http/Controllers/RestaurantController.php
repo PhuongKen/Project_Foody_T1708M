@@ -24,7 +24,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::all();
         $address = Address::all();
         $provind = Provind::all();
-        return view('restaurant.index', compact('restaurant', 'address', 'provind'));
+        return view('admin.restaurant.index', compact('restaurant', 'address', 'provind'));
 
     }
 
@@ -40,7 +40,7 @@ class RestaurantController extends Controller
         $district = District::all();
         $ward = Ward::all();
 
-        return view('restaurant.create', compact('category', 'provind', 'district', 'ward'));
+        return view('admin.restaurant.create', compact('category', 'provind', 'district', 'ward'));
     }
 
     /**
@@ -130,7 +130,7 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
-        return view('restaurant.view',compact('restaurant'));
+        return view('admin.restaurant.view',compact('restaurant'));
     }
 
     /**
@@ -148,7 +148,7 @@ class RestaurantController extends Controller
         $ward = Ward::all();
         $address = Address::all();
         $album_restaurant = Album_restaurant::where('restaurantID',$id)->get();
-        return view('restaurant.edit', compact('restaurant','category','address','provind','district','ward','album_restaurant'));
+        return view('admin.restaurant.edit', compact('restaurant','category','address','provind','district','ward','album_restaurant'));
     }
 
     /**
