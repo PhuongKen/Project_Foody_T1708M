@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_layout_home.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'/>
     <script>
@@ -223,7 +223,25 @@
         </div>
     </div>
 </footer>
-
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(window).load(function() {
+            if ($('.wrapper-nav').length > 0) {
+                var _top = $('.wrapper-nav').offset().top - parseFloat($('.wrapper-nav').css('marginTop').replace(/auto/, 0));
+                $(window).scroll(function(evt) {
+                    var _y = $(this).scrollTop();
+                    if (_y > _top) {
+                        $('.wrapper-nav').addClass('fixed');
+                        $('.main-1').css("margin-top", "30px")
+                    } else {
+                        $('.wrapper-nav').removeClass('fixed');
+                        $('.main-1').css("margin-top", "0")
+                    }
+                })
+            }
+        });
+    });
+</script>
 <script src="{{asset('js/app.js')}}"></script>
 
 </body>
