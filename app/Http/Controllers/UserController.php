@@ -92,7 +92,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-
+        $list_obj = User::find($id);
+        $provind = Provind::all();
+        $district = District::all();
+        $ward = Ward::all();
+        if ($list_obj == null) {
+            return view('404');
+        }
+        return view('admin.user.edit',compact('list_obj','provind','district','ward'));
     }
 
     /**
@@ -104,7 +111,59 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:20',
+            'avartar' => 'required',
+            'phone' => 'required|size:11|numeric',
+        ],
+            [
+                'name.required' => 'Bạn chưa nhập tên',
+                'name.min'=>'Tên không ngắn quá 3 ký tự',
+                'email.required' => 'Bạn chưa nhập email',
+                'email.email'=>'Phải đúng định dạng email',
+                'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
+                'password.max'=>'Mật khẩu không dài quá 20 kí tự',
+                'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
+                'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.size'=>'Số điện thoại phải đúng 11 số',
+                'phone.numeric'=>'Số điện thoại phải là số'
+            ]
+        );
 
+        $list_obj = User::find($id);
+        $address = new Address();
+        $address -> provindID = Input::get('provind');
+        $address -> districtID = Input::get('district');
+        $address -> wardID = Input::get('ward');
+        $address -> save();
+        $list_obj -> addressID = $address-> id;
+        $list_obj -> name = Input::get('name');
+        $list_obj -> email = Input::get('email');
+        $list_obj -> password = Hash::make(Input::get('password'));
+        $getAvartar = '';
+        if ($request->hasFile('avartar')) {
+            $this->validate($request,
+                [
+                    'avartar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    'avartar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
+                    'avartar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
+                ]
+            );
+            $avartar = $request->file('avartar');
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
+            $distional_path = public_path('/images/user');
+            $avartar->move($distional_path, $getAvartar);
+        }
+        $list_obj->avatar = $getAvartar;
+        $list_obj -> phone = Input::get('phone');
+        $list_obj -> status = Input::get('status');
+        $list_obj -> save();
+        return redirect('/admin/user');
     }
 
     /**
