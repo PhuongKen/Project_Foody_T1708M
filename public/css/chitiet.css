@@ -68,7 +68,13 @@
     color: #333;
     font-family: arial;
     text-align: left;
+    text-decoration: none;
 }
+.navmenu:hover{
+    color: #dd3333;
+    background: #ddd;
+}
+
 .bd1{
     height: 48px;
     border: 1px solid #ddd;
@@ -81,7 +87,10 @@
     text-align: center;
     font-weight: bold;
 }
-
+.binhluan a{
+    text-decoration: none;
+    color: #005d80;
+}
 .hinhanhcongdong {
     font-weight: 700;
     font-size: 16px;
