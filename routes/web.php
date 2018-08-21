@@ -21,6 +21,5 @@ Route::resource('/admin/ward','WardController');
 Route::resource('/admin/address','AddressController');
 Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
-Route::get('/layout/master', 'HomeController@index');
 Route::resource('/foody/danhmuc','DanhmucController');
 Route::get('/home', 'HomeController@getHome');
