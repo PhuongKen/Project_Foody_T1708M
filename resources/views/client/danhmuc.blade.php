@@ -1,5 +1,6 @@
 @extends('layout.master',['page_title'=>'Danh mục sản phẩm'])
 @section('css')
+    <link rel="stylesheet" href="{{asset('css/danhmuc.css')}}">
 @endsection
 @section('content')
     <div class="container">
@@ -37,7 +38,7 @@
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <div class="rounded-circle mt-1 poinrate">
+                                            <div class="rounded-circle mt-1 poin">
                                                 <b>7.8</b></div>
                                         </div>
                                         <div class="col-md-10">
