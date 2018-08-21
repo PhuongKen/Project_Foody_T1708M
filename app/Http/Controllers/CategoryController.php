@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $list_obj = Category::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.category.list')->with('list_obj', $list_obj);
     }
 
     /**
