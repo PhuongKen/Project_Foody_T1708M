@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/style_layout_home.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'/>
-    <link rel="stylesheet" href="{{asset('css/danhmuc.css')}}">
+    <link rel="stylesheet" href="{{asset('css/chitiet.css')}}">
     @yield('css')
     <script>
         var $stickyHeight = 250;
