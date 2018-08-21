@@ -25,10 +25,3 @@ Route::resource('/admin/user', 'UserController');
 Route::resource('/foody/danhmuc','DanhmucController');
 Route::resource('/foody/trangchitiet','DetailController');
 Route::resource('/admin/category','CategoryController');
-
-Route::get('/home', 'HomeController@getHome');
-Route::get('/home', 'HomeController@getHome');
-
-//Route::get('/thu', function () {
-//    return view('admin.food.list');
-//});

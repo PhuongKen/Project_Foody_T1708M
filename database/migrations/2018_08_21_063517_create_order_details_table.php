@@ -22,6 +22,12 @@ class CreateOrderDetailsTable extends Migration
            // $table->foreign('orderID')->references('id')->on('orders');
             $table->integer('foodID')->unsigned();
            // $table->foreign('foodID')->references('id')->on('foods');
+         //   $table->foreign('orderID')->references('id')->on('orders');
+            $table->integer('foodID')->unsigned();
+         //   $table->foreign('foodID')->references('id')->on('foods');
+           // $table->foreign('orderID')->references('id')->on('orders');
+            $table->integer('foodID')->unsigned();
+           // $table->foreign('foodID')->references('id')->on('foods');
             $table->string('nameProduct');
             $table->string('image');
             $table->integer('price');

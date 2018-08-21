@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->integer('addressID')->unsigned();
          //   $table->foreign('addressID')->references('id')->on('addresses');
           //  $table->foreign('addressID')->references('id')->on('addresses');
+         //   $table->foreign('addressID')->references('id')->on('addresses');
+          //  $table->foreign('addressID')->references('id')->on('addresses');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
