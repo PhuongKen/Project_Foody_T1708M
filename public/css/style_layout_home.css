@@ -1,0 +1,66 @@
+header{
+    background: white;
+}
+.header{
+    background: white;
+}
+.nav-header{
+    background: white;
+}
+.navbar-light .nav-item .nav-link{
+    color: #1b1e21;
+}
+.fa-search:before{
+    border: 0.1rem solid #bdbdbd;
+    border-radius: 0.3rem;
+    padding: 0.6em;
+    text-decoration: none;
+    color: #333;
+}
+.login a{
+    text-decoration: none;
+    color: #333;
+}
+.img-logo{
+
+}
+.footer-info a{
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.footer-desciption p{
+    font-size: 14px;
+}
+.footer-font p{
+    font-size: 14px;
+}
+.img-food{
+    border: 2px solid #5a6268;
+}
+.footer{
+    width: 100%;
+    height: 500px;
+    border-color: #999999;
+    color: rgb(204,204,204)
+}
+.footer-img-map{
+
+}
+.wrapper-nav.fixed {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 7000;
+    box-shadow: 0 0 5px 2px #ccc;
+}
+
+/*.wrapper-nav.fixed .nav-main {*/
+/*width: 980px;*/
+/*margin: 0 auto;*/
+/*}*/
+.wrapper-nav{
+    background: white;
+    padding: 3px;
+}
