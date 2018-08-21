@@ -22,14 +22,7 @@
                <label for="">Avartar</label>
                <input type="text" name="avatar" class="form-control">
            </div>
-           <div class="form-group w-25">
-               <label>Price</label>
-               <input type="number" name="price" class="form-control">
-           </div>
-           <div class="form-group w-25">
-               <label for="">RestaurantID</label>
-               <input type="text" name="restaurantID" class="form-control">
-           </div>
+
            <div>
                <input type="submit" value="Submit" class="btn btn-primary" >
                <input type="reset" value="Reset" class="btn btn-dark">
