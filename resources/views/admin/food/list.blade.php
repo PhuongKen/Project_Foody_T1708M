@@ -1,14 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>List</title>
-</head>
-<body>
+@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản'])
+@section('css')
+    <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
+@endsection
+@section('content')
 <div class="card scoll">
     <div class="card-body">
         <div class="float-left">
@@ -23,12 +17,13 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">AddressID</th>
-                        <th scope="col">Tên</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Ảnh đại diện</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Restaurant</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Avatar</th>
+                        <th scope="col">Status</th>
                         {{--<th scope="col">Số điện thoại</th>--}}
                         {{--<th scope="col">Status</th>--}}
                         {{--<th scope="col">VerifyEmail</th>--}}
@@ -39,15 +34,16 @@
                     @foreach($foods as $item)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
-                            <td>{{$item->addressID}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->password}}</td>
+                            <td>{{$item->restaurantID}}</td>
+                            <td>{{$item->description}}</td>
+                            <td>{{$item->price}}</td>
                             <td>
                                 <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
                                     <img src="{{$item->avartar}}">
                                 </div>
                             </td>
+                            <td>{{$item->status}}</td>
                             {{--<td>{{$item->phone}}</td>--}}
                             {{--<td>{{$item->status}}</td>--}}
                             {{--<td>{{$item->verifyEmail}}</td>--}}
@@ -93,5 +89,4 @@
         }
     });
 </script>
-</body>
-</html>
+@endsection

@@ -16,11 +16,11 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('categoryID')->unsigned();
-            $table->foreign('categoryID')->references('id')->on('categories');
+           // $table->foreign('categoryID')->references('id')->on('categories');
             $table->string('name');
             $table->string('avartar');
             $table->integer('addressID')->unsigned();
-            $table->foreign('addressID')->references('id')->on('addresses');
+          //  $table->foreign('addressID')->references('id')->on('addresses');
             $table->integer('phone');
             $table->string('openTime');
             $table->string('closeTime');
