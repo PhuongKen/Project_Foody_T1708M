@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Food;
+use App\Restaurant;
+use Faker\Guesser\Name;
+use Hamcrest\Description;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -26,7 +29,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-      return view('create');
+        $restaurant = Restaurant::all();
+        return view('admin.food.create')->with('restaurant',$restaurant);
     }
 
     /**
@@ -42,8 +46,9 @@ class FoodController extends Controller
         $food->name = Input::get('name');
         $food->avatar = Input::get('avatar');
         $food->price = Input::get('price');
+        $food->status = Input::get('status');
         $food-> save();
-        return redirect('/food');
+        return redirect('/admin/food');
 
     }
 
@@ -96,6 +101,6 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
