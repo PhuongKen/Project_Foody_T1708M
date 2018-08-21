@@ -14,4 +14,8 @@ class HomeController
     public function index(){
         return view('layout.master');
     }
+
+    public function getHome(){
+        return view('home');
+    }
 }
