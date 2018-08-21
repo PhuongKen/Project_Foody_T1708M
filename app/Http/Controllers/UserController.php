@@ -38,7 +38,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
@@ -93,14 +92,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $list_obj = User::find($id);
-        $provind = Provind::all();
-        $district = District::all();
-        $ward = Ward::all();
-        if ($list_obj == null) {
-            return view('404');
-        }
-        return view('admin.user.edit',compact('list_obj','provind','district','ward'));
+
     }
 
     /**
@@ -112,38 +104,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'avartar' => 'required',
-            'phone' => 'required',
 
-        ],
-            [
-                'name.required' => 'Bạn chưa nhập tên',
-                'email.required' => 'Bạn chưa nhập email',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
-                'phone.required' => 'Bạn chưa nhập số điện thoại',
-            ]
-        );
-
-        $list_obj = User::find($id);
-        $address = new Address();
-        $address -> provindID = Input::get('provind');
-        $address -> districtID = Input::get('district');
-        $address -> wardID = Input::get('ward');
-        $address -> save();
-        $list_obj -> addressID = $address-> id;
-        $list_obj -> name = Input::get('name');
-        $list_obj -> email = Input::get('email');
-        $list_obj -> password = Hash::make(Input::get('password'));
-        $list_obj -> avartar = Input::get('avartar');
-        $list_obj -> phone = Input::get('phone');
-        $list_obj -> status = Input::get('status');
-        $list_obj -> save();
-        return redirect('/admin/user');
     }
 
     /**
