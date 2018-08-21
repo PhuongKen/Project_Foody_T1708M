@@ -12,16 +12,15 @@
 <div class="card">
     <div class="card-body">
         <h1 class="card-title">Edit Category</h1>
-        <form action="/food/{{$category->id}}" method="post" enctype="multipart/form-data">
+        <form action="/admin/category" method="post">
             {{csrf_field()}}
             <div class="form-group w-50">
                 <label for="">Name</label>
-                <input type="text" name="name" class="form-control" value="{{$category->name}}">
+                <input type="text" name="name" class="form-control">
             </div>
             <div class="form-group w-50">
-                <label for="">Avartar</label>
-                <input type="text" name="avatar" class="form-control" value="{{$category->avatar}}">
-                <img src="{{$category->avatar}}" alt="" style="width: 200px">
+                <label for="">Description</label>
+                <input type="text" name="avarta" class="form-control">
             </div>
 
             <div>
