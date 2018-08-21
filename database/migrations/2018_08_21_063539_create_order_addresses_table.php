@@ -16,11 +16,19 @@ class CreateOrderAddressesTable extends Migration
         Schema::create('order_addresses', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('orderID')->unsigned();
+<<<<<<< HEAD
          //   $table->foreign('orderID')->references('id')->on('orders');
             $table->integer('phone');
             $table->string('email');
             $table->integer('addressID')->unsigned();
          //   $table->foreign('addressID')->references('id')->on('addresses');
+=======
+          //  $table->foreign('orderID')->references('id')->on('orders');
+            $table->integer('phone');
+            $table->string('email');
+            $table->integer('addressID')->unsigned();
+          //  $table->foreign('addressID')->references('id')->on('addresses');
+>>>>>>> 3bc3e3b0d83cd620e9e8ee7acb3899769fee86ef
             $table->timestamps();
         });
     }

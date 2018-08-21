@@ -16,7 +16,11 @@ class CreateWardsTable extends Migration
         Schema::create('wards', function (Blueprint $table) {
             $table->increments('id')->usigned();
             $table->integer('districtID')->unsigned();
+<<<<<<< HEAD
           //  $table->foreign('districtID')->references('id')->on('districts');
+=======
+            //$table->foreign('districtID')->references('id')->on('districts');
+>>>>>>> 3bc3e3b0d83cd620e9e8ee7acb3899769fee86ef
             $table->string('name');
             $table->timestamps();
         });
