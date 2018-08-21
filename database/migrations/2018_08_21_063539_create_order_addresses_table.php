@@ -21,6 +21,11 @@ class CreateOrderAddressesTable extends Migration
             $table->string('email');
             $table->integer('addressID')->unsigned();
          //   $table->foreign('addressID')->references('id')->on('addresses');
+          //  $table->foreign('orderID')->references('id')->on('orders');
+            $table->integer('phone');
+            $table->string('email');
+            $table->integer('addressID')->unsigned();
+          //  $table->foreign('addressID')->references('id')->on('addresses');
             $table->timestamps();
         });
     }

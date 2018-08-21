@@ -15,8 +15,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $food = Food::pagenate(5);
-        return view('admin.food.list')->with('foods',$food);
+        $list_obj = Food::where('status', 1)->orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.food.list')->with('foods', $list_obj);
     }
 
     /**
