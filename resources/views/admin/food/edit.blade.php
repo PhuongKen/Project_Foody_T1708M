@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/food" method="post" enctype="multipart/form-data">
+    <form action="/admin/food/{{$foods->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
+        @method('PUT')
         <div class="row">
             <div class="col-md-10">
                 <h3>
@@ -15,7 +16,7 @@
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
-                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
+                    <li><a href="/admin/home"><i class="fas fa-home"></i></i>Home</a></li>
                     <li class="active">Restaurant</li>
                 </ol>
             </div>
@@ -54,8 +55,8 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status">
-                            <option value="0">Không bán</option>
                             <option value="1">Còn hàng</option>
+                            <option value="0">Không bán</option>
                             <option value="2">Hết hàng</option>
                         </select>
                     </div>
