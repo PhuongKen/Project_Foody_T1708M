@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add food</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Add category</h4></div>
                     <div>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
