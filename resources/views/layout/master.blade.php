@@ -51,7 +51,7 @@
                         <div id="main-menu">
                             <ul class="menu">
                                 <li class="dropdown">
-                                    <a href="/foody/home" title="Trang chủ">Trang chủ</a>
+                                    <a href="/foody/trang_chu" title="Trang chủ">Trang chủ</a>
                                 </li>
 
                                 <li class="dropdown">

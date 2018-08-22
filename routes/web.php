@@ -28,7 +28,7 @@ Route::resource('/admin/address','AddressController');
 Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
 Route::get('/foody/trang_chu','HomeController@getHome');
-Route::resource('/foody/danhmuc','DanhmucController');
+Route::get('/foody/danh_muc','CategoryClientController@getCategory');
 Route::resource('/foody/trangchitiet','DetailController');
 Route::resource('/foody/giohang','CartController');
 Route::resource('/admin/category','CategoryController');
