@@ -184,7 +184,7 @@
                                         <tr>
                                             <td colspan="3">
                                                 <div class="cart-button">
-                                                    <a class="btn btn-primary" href="product-cart.html"
+                                                    <a class="btn btn-primary" href="/foody/gio_hang"
                                                        title="View Cart">Xem đơn hàng</a>
                                                     <a class="btn btn-primary" href="product-checkout.html"
                                                        title="Checkout">Thanh toán</a>
