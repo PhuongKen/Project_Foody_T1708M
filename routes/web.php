@@ -29,7 +29,7 @@ Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
 Route::get('/foody/trang_chu','HomeController@getHome');
 Route::get('/foody/danh_muc','CategoryClientController@getCategory');
-Route::resource('/foody/trangchitiet','DetailController');
+Route::get('/foody/chi_tiet_mon_an','DetailController@getDetail');
 Route::resource('/foody/giohang','CartController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/order','OrderController');

@@ -61,28 +61,28 @@
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-1.png"
                                                      alt="Product Category Image">
-                                                <a href="product-grid-left-sidebar.html"
+                                                <a href="/foody/danh_muc"
                                                    title="Vegetables">Sang trọng</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-2.png"
                                                      alt="Product Category Image">
-                                                <a href="product-grid-left-sidebar.html" title="Fruits">Buffet</a>
+                                                <a href="/foody/danh_muc" title="Fruits">Buffet</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-3.png"
                                                      alt="Product Category Image">
-                                                <a href="product-grid-left-sidebar.html" title="Bread">Nhà hàng</a>
+                                                <a href="/foody/danh_muc" title="Bread">Nhà hàng</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-4.png"
                                                      alt="Product Category Image">
-                                                <a href="product-grid-left-sidebar.html" title="Juices">Ăn chay</a>
+                                                <a href="/foody/danh_muc" title="Juices">Ăn chay</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-5.png"
                                                      alt="Product Category Image">
-                                                <a href="product-grid-left-sidebar.html" title="Tea and coffee">Tiệc</a>
+                                                <a href="/foody/danh_muc" title="Tea and coffee">Tiệc</a>
                                             </li>
                                         </ul>
                                     </div>
