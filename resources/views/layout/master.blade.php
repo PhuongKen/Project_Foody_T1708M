@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/material-design-iconic-font.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/nivo-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/stylefoody1.css.css')}}">
+    <link rel="stylesheet" href="{{asset('css/stylefoody1.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jslider.css')}}">
 
