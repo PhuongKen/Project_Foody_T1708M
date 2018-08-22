@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -13,7 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comment = Comment::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.comment.list')->with('cmt',$comment);
     }
 
     /**
