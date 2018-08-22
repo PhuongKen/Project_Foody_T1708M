@@ -25,3 +25,5 @@ Route::resource('/admin/user', 'UserController');
 Route::resource('/foody/danhmuc','DanhmucController');
 Route::resource('/foody/trangchitiet','DetailController');
 Route::resource('/admin/category','CategoryController');
+Route::resource('/admin/order','OrderController');
+
