@@ -9,7 +9,7 @@
             <h2 class="card-title">Danh sách món ăn</h2>
         </div>
         <div class="float-right mr-4">
-            <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i> Tạo mới</a>
+            <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i>Tạo mới</a>
         </div>
         <div class="clearfix"></div>
         <div class="card-body">
@@ -48,7 +48,7 @@
                             {{--<td>{{$item->verifyEmail}}</td>--}}
                             {{--<td>{{$item->role}}</td>--}}
                             <td>
-                                <a href="/admin/user/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Sửa</a>
+                                <a href="/admin/food/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Edit</a>
                                 <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">Xoá</a>
                             </td>
                         </tr>
@@ -60,7 +60,7 @@
                 </div>
             @else
                 <div class="alert alert-primary" role="alert">
-                    Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user" class="btn-link" href="/admin/user/create">thêm sản phẩm</a> mới.
+                    Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user" class="btn-link" href="/admin/food/create">thêm sản phẩm</a> mới.
                 </div>
             @endif
         </div>
