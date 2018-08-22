@@ -66,7 +66,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order= Order::find($id);
+        return view('admin.order.edit')->with('order',$order);
     }
 
     /**
@@ -78,7 +79,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order=Order::find($id);
+        if ($order==null){
+            return view('404');
+        }
+        $order->userID = Input::get('userID');
+        $order->amount = Input::get('amount');
+        $order->totalPrice = Input::get('totalPrice');
+        $order->status = Input::get('status');
+        $order->save();
+        return redirect('/admin/order');
+
     }
 
     /**
