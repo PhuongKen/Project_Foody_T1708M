@@ -110,6 +110,10 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-
+       $food = Food::find($id);
+            if ($food == null){
+                return view('404');
+            }
+       $food -> delete();
     }
 }
