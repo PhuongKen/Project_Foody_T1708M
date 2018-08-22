@@ -1,6 +1,5 @@
 @extends('layout.master',['page_title'=>'Chi tiết món ăn'])
 @section('css')
-
 @endsection
 
 @section('content')
@@ -40,14 +39,14 @@
                                 </div>
 
                                 <div class="product-add-to-cart border-bottom">
+                                    <span class="control-label">QTY :</span>
                                     <div class="product-quantity">
-                                        <span class="control-label">QTY :</span>
                                         <div class="qty">
                                             <div class="input-group">
-                                                <input type="text" name="qty" value="1" data-min="1">
+                                                <input type="text" name="qty" id="qtyvalue" value="1" data-min="1">
                                                 <span class="adjust-qty">
-																<span class="adjust-btn plus">+</span>
-																<span class="adjust-btn minus">-</span>
+																<span class="adjust-btn plus btn-plus">+</span>
+																<span class="adjust-btn minus btn-minus">-</span>
 															</span>
                                             </div>
                                         </div>
@@ -360,4 +359,23 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        var count = 1;
+        // var qty = $('#qtyvalue').val();
+        var countTotal = $('#qtyvalue');
+
+        $('.btn-plus').click(function () {
+            count++;
+            countTotal.val(count);
+        });
+
+        $('.btn-minus').click(function () {
+            if (count > 1) {
+                count--;
+                countTotal.val(count);
+            }
+        });
+    </script>
 @endsection
