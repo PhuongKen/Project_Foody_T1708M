@@ -92,6 +92,14 @@ class FoodController extends Controller
         if ($food == null){
             return view('404');
         }
+        $food->restaurantID = Input::get('restaurantID');
+        $food->name = Input::get('name');
+        $food->avatar = Input::get('avatar');
+        $food->price = Input::get('price');
+        $food->status = Input::get('status');
+        $food-> save();
+        return redirect('/admin/food');
+
     }
 
     /**
