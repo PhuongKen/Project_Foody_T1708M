@@ -38,8 +38,8 @@
                                 <th scope="row">{{$item->phone}}</th>
                                 <th scope="row">{{$item->email}}</th>
                                 <th scope="row">{{$item->addressID}}</th>
-                                <th scope="row">{{$item->create_at}}</th>
-                                <th scope="row">{{$item->update_at}}</th>
+                                <th scope="row">{{$item->created_at}}</th>
+                                <th scope="row">{{$item->updated_at}}</th>
                                 {{--<td>{{$item->phone}}</td>--}}
                                 {{--<td>{{$item->status}}</td>--}}
                                 {{--<td>{{$item->verifyEmail}}</td>--}}

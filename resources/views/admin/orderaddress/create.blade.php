@@ -58,19 +58,6 @@
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Lưu">
                         <input type="reset" class="btn btn-success" value="Làm lại">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select name="status">
-                                <option value="0">Không bán</option>
-                                <option value="1">Còn hàng</option>
-                                <option value="2">Hết hàng</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Lưu">
-                            <input type="reset" class="btn btn-success" value="Làm lại">
-                        </div>
                     </div>
                 </div>
             </div>
