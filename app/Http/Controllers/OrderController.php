@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class OrderController extends Controller
 {
@@ -25,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.order.create');
     }
 
     /**
@@ -36,7 +37,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order=new Order();
+        $order->userID = Input::get('userID');
+        $order->amount = Input::get('amount');
+        $order->totalPrice = Input::get('totalPrice');
+        $order->status = Input::get('status');
+        $order->save();
+        return redirect('/admin/order');
+
     }
 
     /**
