@@ -23,7 +23,6 @@
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    @yield('css')
     <link rel="stylesheet" href="{{asset('css/material-design-iconic-font.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/nivo-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
@@ -36,6 +35,7 @@
     <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 </head>
 
 <body class="home home-4">
@@ -400,6 +400,7 @@
 
 <!-- Template CSS -->
 <script src="{{asset('js/main.js')}}"></script>
+
 @yield('script')
 </body>
 

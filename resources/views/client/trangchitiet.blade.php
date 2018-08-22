@@ -69,7 +69,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 nav-line">
                             <nav class="nav flex-column">
                                 <a class="nav-link navmenu" href="#">Trang chủ</a>
                                 <a class="nav-link navmenu" href="#">Ảnh</a>
@@ -79,7 +79,7 @@
                             </nav>
                         </div>
                         <div class="col-md-10">
-                            <div class="row border my-2 bd1 m-auto">
+                            <div class="row border my-2 bd1 m-auto menu-line">
                                 <div class="col-md-4 border-primary my-2">
                                     <ul class="nav nav-pills nav-fill">
                                         <li class="nav-item binhluan">
@@ -221,7 +221,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="fb-comments" data-href="http://127.0.0.1:8000/foody/trangchitiet" data-numposts="5"></div>
                             </div>
                         </div>
                     </div>
@@ -230,5 +230,10 @@
         </div>
     </div>
 
-
+@endsection
+@section('script')
+    <script>
+        var name = $('._30o4 ._5mdd span').text;
+        alert(name);
+    </script>
 @endsection

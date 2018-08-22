@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
-class OrderController extends Controller
+class AlbumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $list_obj = Order::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.order.list')->with('list_obj', $list_obj);
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.order.create');
+        //
     }
 
     /**
@@ -37,14 +34,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order=new Order();
-        $order->userID = Input::get('userID');
-        $order->amount = Input::get('amount');
-        $order->totalPrice = Input::get('totalPrice');
-        $order->status = Input::get('status');
-        $order->save();
-        return redirect('/admin/order');
-
+        //
     }
 
     /**
@@ -66,8 +56,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $order= Order::find($id);
-        return view('admin.order.edit')->with('order',$order);
+        //
     }
 
     /**
@@ -79,17 +68,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order=Order::find($id);
-        if ($order==null){
-            return view('404');
-        }
-        $order->userID = Input::get('userID');
-        $order->amount = Input::get('amount');
-        $order->totalPrice = Input::get('totalPrice');
-        $order->status = Input::get('status');
-        $order->save();
-        return redirect('/admin/order');
-
+        //
     }
 
     /**
@@ -100,10 +79,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-       $order = Order::find($id);
-       if ($order==null){
-           return view('404');
-       }
-       $order->delete();
+        //
     }
 }

@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 Route::resource('/admin/food','FoodController');
 Route::resource('/food','FoodController');
+Route::get('/error', function (){
+   return view('error.404');
+});
+Route::resource('/admin/food','FoodController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/restaurant','RestaurantController');
 Route::resource('/admin/district','DistrictController');
@@ -25,4 +29,11 @@ Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
 Route::resource('/foody/danhmuc','DanhmucController');
 Route::resource('/foody/trangchitiet','DetailController');
+Route::resource('/foody/giohang','CartController');
 Route::resource('/admin/category','CategoryController');
+Route::resource('/admin/order','OrderController');
+Route::resource('/admin/comment','CommentController');
+Route::resource('admin/album','AlbumController');
+Route::resource('admin/orderaddress','OrderAddessController');
+
+

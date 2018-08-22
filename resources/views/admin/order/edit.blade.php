@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/order" method="post" enctype="multipart/form-data">
+    <form action="/admin/order/{{$order->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
+        @method('put')
         <div class="row">
             <div class="col-md-10">
                 <h3>
@@ -33,19 +34,19 @@
                     </div>
                     <div class="form-group">
                         <h5>userID</h5>
-                        <input type="text" placeholder="Nhập tên userID" size="100" name="userID">
+                        <input type="text" placeholder="Nhập tên userID" size="100" name="userID" value="{{$order->userID}}">
                     </div>
                     <div class="form-group">
                         <h5>amount</h5>
-                        <input type="text" placeholder="Nhập amount" size="100" name="amount">
+                        <input type="text" placeholder="Nhập amount" size="100" name="amount" value="{{$order->amount}}">
                     </div>
                     <div class="form-group">
                         <h5>totalPrice</h5>
-                        <input type="text" placeholder="Nhập tên totalPrice" size="100" name="totalPrice">
+                        <input type="text" placeholder="Nhập tên totalPrice" size="100" name="totalPrice" value="{{$order->totalPrice}}">
                     </div>
                     <div class="form-group">
                         <h5>status</h5>
-                        <input type="text" placeholder="Nhập tên status" size="100" name="status">
+                        <input type="text" placeholder="Nhập tên status" size="100" name="status" value="{{$order->status}}">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Lưu">
