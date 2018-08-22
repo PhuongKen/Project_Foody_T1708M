@@ -71,11 +71,12 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
+        $restaurant = Restaurant::all();
         $food = Food::find($id);
         if ($food == null){
             return view('404');
         }
-        return view('edit')->with('foods',$food);
+        return view('admin.food.edit')->with('foods',$food)->with('restaurant',$restaurant);
     }
 
     /**
@@ -91,6 +92,14 @@ class FoodController extends Controller
         if ($food == null){
             return view('404');
         }
+        $food->restaurantID = Input::get('restaurantID');
+        $food->name = Input::get('name');
+        $food->avatar = Input::get('avatar');
+        $food->price = Input::get('price');
+        $food->status = Input::get('status');
+        $food-> save();
+        return redirect('/admin/food');
+
     }
 
     /**
@@ -101,6 +110,10 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-
+       $food = Food::find($id);
+            if ($food == null){
+                return view('404');
+            }
+       $food -> delete();
     }
 }

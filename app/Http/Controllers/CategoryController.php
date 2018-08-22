@@ -63,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category= Category::find($id);
+        return view('admin.category.edit')->with('category',$category);
     }
 
     /**
@@ -75,7 +76,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category= Category::find($id);
+        if ($category==null){
+            return view('404');
+        }
+        $category->name = Input::get('name');
+        $category->avartar = Input::get('avatar');
+        $category->save();
+        return redirect('/admin/category');
     }
 
     /**
@@ -86,6 +94,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category= Category::find($id);
+        if ($category==null){
+            return view('404');
+        }
+        $category->delete();
     }
 }

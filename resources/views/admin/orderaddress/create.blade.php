@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/order" method="post" enctype="multipart/form-data">
+    <form action="/admin/orderaddress" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -32,20 +32,28 @@
                         </button>
                     </div>
                     <div class="form-group">
-                        <h5>userID</h5>
-                        <input type="text" placeholder="Nhập tên userID" size="100" name="userID">
+                        <h5>orderID</h5>
+                        <select name="orderID">
+                            <option value="0">order 1</option>
+                            <option value="1">order 2</option>
+                            <option value="2">order 3</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <h5>amount</h5>
-                        <input type="text" placeholder="Nhập amount" size="100" name="amount">
+                        <h5>phone</h5>
+                        <input type="text" placeholder="Nhập phone" size="100" name="phone">
                     </div>
                     <div class="form-group">
-                        <h5>totalPrice</h5>
-                        <input type="text" placeholder="Nhập tên totalPrice" size="100" name="totalPrice">
+                        <h5>email</h5>
+                        <input type="text" placeholder="Nhập tên email" size="100" name="email">
                     </div>
                     <div class="form-group">
-                        <h5>status</h5>
-                        <input type="text" placeholder="Nhập tên status" size="100" name="status">
+                        <h5>addressID</h5>
+                        <select name="addressID">
+                            <option value="0">address 1</option>
+                            <option value="1">address 2</option>
+                            <option value="2">address 3</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Lưu">
