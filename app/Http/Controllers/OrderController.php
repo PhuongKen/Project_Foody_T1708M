@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $list_obj = Order::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.order.list')->with('list_obj', $list_obj);
     }
 
     /**
