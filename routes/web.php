@@ -26,4 +26,6 @@ Route::resource('/foody/danhmuc','DanhmucController');
 Route::resource('/foody/trangchitiet','DetailController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/order','OrderController');
+Route::resource('/admin/comment','CommentController');
+Route::resource('admin/album','AlbumController');
 

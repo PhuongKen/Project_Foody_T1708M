@@ -20,11 +20,6 @@ class CreateRestaurantsTable extends Migration
             $table->string('name');
             $table->string('avartar');
             $table->integer('addressID')->unsigned();
-       //     $table->foreign('addressID')->references('id')->on('addresses');
-           // $table->foreign('categoryID')->references('id')->on('categories');
-            $table->string('name');
-            $table->string('avartar');
-            $table->integer('addressID')->unsigned();
           //  $table->foreign('addressID')->references('id')->on('addresses');
             $table->integer('phone');
             $table->string('openTime');
