@@ -71,11 +71,12 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
+        $restaurant = Restaurant::all();
         $food = Food::find($id);
         if ($food == null){
             return view('404');
         }
-        return view('edit')->with('foods',$food);
+        return view('admin.food.edit')->with('foods',$food)->with('restaurant',$restaurant);
     }
 
     /**
