@@ -81,6 +81,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $order = Order::find($id);
+       if ($order==null){
+           return view('404');
+       }
+       $order->delete();
     }
 }
