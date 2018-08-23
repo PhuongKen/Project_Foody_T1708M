@@ -5418,7 +5418,7 @@ input {
 }
 
 [class~=product-price] {
-    font-size: .1875in;
+    font-size: .1775in;
 }
 
 [class~=product-tab] [class~=owl-carousel] [class~=owl-stage-outer]:after {
@@ -8422,7 +8422,7 @@ input {
 }
 
 [class~=home-4] [class~=container-edit] {
-    width: 11in;
+    width: 12in;
     border-top: 2px solid #d33;
     margin-bottom: 35px;
 }
