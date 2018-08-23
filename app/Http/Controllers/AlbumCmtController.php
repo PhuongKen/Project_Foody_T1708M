@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\AlbumComment;
 use Illuminate\Http\Request;
 
-class AlbumController extends Controller
+class AlbumCmtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $comment = AlbumComment::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.albumcomment.list')->with('cmt',$comment);
     }
 
     /**
@@ -23,7 +25,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
