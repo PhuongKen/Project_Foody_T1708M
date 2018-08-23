@@ -34,7 +34,7 @@ Route::resource('/foody/gio_hang','CartController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/order','OrderController');
 Route::resource('/admin/comment','CommentController');
-Route::resource('admin/album','AlbumController');
+Route::resource('admin/album','AlbumCmtController');
 Route::resource('admin/orderaddress','OrderAddessController');
 
 
