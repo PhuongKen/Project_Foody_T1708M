@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Route::resource('/admin/food','FoodController');
 Route::resource('/food','FoodController');
-Route::get('/error', function (){
+Route::get('/errors', function (){
    return view('error.404');
 });
 Route::resource('/admin/food','FoodController');

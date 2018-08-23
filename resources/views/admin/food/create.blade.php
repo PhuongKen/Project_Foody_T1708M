@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Thêm món ăn</h4></div>
                     <div>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -45,35 +45,69 @@
                         </button>
                     </div>
                 @endif
-                    <div class="form-group">
-                        <h5>orderID</h5>
-                        <select name="orderID">
-                            <option value="0">order 1</option>
-                            <option value="1">order 2</option>
-                            <option value="2">order 3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <h5>phone</h5>
-                        <input type="text" placeholder="Nhập phone" size="100" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <h5>email</h5>
-                        <input type="text" placeholder="Nhập tên email" size="100" name="email">
-                    </div>
-                    <div class="form-group">
-                        <h5>addressID</h5>
-                        <select name="addressID">
-                            <option value="0">address 1</option>
-                            <option value="1">address 2</option>
-                            <option value="2">address 3</option>
-                        </select>
-                    </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Lưu">
-                            <input type="reset" class="btn btn-success" value="Làm lại">
+                <div class="form-group">
+                    <h5>Tên nhà hàng</h5>
+                    @foreach($restaurant as $item)
+                    <select name="restaurantID">
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    </select>
+                        @endforeach
+                </div>
+                <div class="form-group">
+                    <h5>Tên món ăn</h5>
+                    <input type="text" placeholder="Nhập name" size="100" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện</label>
+                    <div class="kv-avatar">
+                        <div class="file-loading">
+                            <input id="product_image" type="file" name="avatar">
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <h5>Giá tiền</h5>
+                    <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
+                </div>
+                <div class="form-group">
+                    <h5>Trạng thái</h5>
+                    <select name="status" id="">
+                        <option value="1">Hoạt động</option>
+                        <option value="1">Không hoạt động</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Lưu">
+                    <input type="reset" class="btn btn-success" value="Làm lại">
+                </div>
+            </div>
+        </div>
     </form>
+@endsection
+@section('script')
+    <script src="{{asset('js/fileinput.min.js')}}"></script>
+    <script src="{{asset('js/dropzone.min.js')}}"></script>
+    <script>
+        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+            'onclick="alert(\'Call your custom code here.\')">' +
+            '<i class="fas fa-tag"></i>' +
+            '</button>';
+        $("#product_image").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="fas fa-folder-open"></i>',
+            removeIcon: '<i class="fas fa-times"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-1',
+            msgErrorClass: 'alert alert-block alert-danger',
+            // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
+            layoutTemplates: {main2: '{preview} ' + btnCust + ' {remove} {browse}'},
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    </script>
 @endsection
