@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AlbumComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class AlbumCmtController extends Controller
 {
@@ -25,7 +26,7 @@ class AlbumCmtController extends Controller
      */
     public function create()
     {
-
+return view('admin.albumcomment.create');
     }
 
     /**
@@ -36,7 +37,13 @@ class AlbumCmtController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new AlbumComment();
+        $comment->userID = Input::get('userID');
+        $comment->restaurantID = Input::get('restaurantID');
+        $comment->commentID = Input::get('commentID');
+        $comment->image = Input::get('image');
+        $comment->save();
+        return redirect('/admin/album');
     }
 
     /**
