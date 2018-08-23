@@ -103,6 +103,10 @@ return view('admin.albumcomment.create');
      */
     public function destroy($id)
     {
-        //
+        $comment = AlbumComment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        $comment -> delete();
     }
 }
