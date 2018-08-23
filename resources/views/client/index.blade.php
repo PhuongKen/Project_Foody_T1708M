@@ -9,13 +9,13 @@
             <div class="container">
                 <div class="tiva-slideshow-wrapper">
                     <div id="tiva-slideshow" class="nivoSlider">
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-1.jpg" alt="Slideshow Image">
                         </a>
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-2.jpg" alt="Slideshow Image">
                         </a>
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-3.jpg" alt="Slideshow Image">
                         </a>
                     </div>
