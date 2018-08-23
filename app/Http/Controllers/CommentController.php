@@ -108,6 +108,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        $comment -> delete();
     }
 }
