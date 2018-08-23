@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/orderdetail/{{$orderaddress->id}}" method="post" enctype="multipart/form-data">
+    <form action="/admin/detailorder/{{$orderaddress->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         @method('put')
         <div class="row">
@@ -30,6 +30,19 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button></div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h5>orderID</h5>

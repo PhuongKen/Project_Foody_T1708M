@@ -37,6 +37,24 @@ class OrderAddessController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'orderID' => 'required',
+            'phone' => 'required|numeric|min:9|max:12',
+            'email' => 'required|email',
+            'addressID'=> 'required',
+        ],
+            [
+                'orderID.required' => 'Bạn chưa nhập tên',
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
+                'phone.max'=>'Số điện thoại không dài quá 12 kí tự',
+                'email.required' => 'Bạn chưa nhập email',
+                'email.email'=>'Phải đúng định dạng email',
+                'totalPrice.required' => 'totalPrice lớn hơn không',
+                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
+                'addressID.required' => 'Bạn chưa nhập status'
+            ]
+        );
         $orderaddress = new Order_address();
         $orderaddress->orderID = Input::get('orderID');
         $orderaddress->phone = Input::get('phone');
@@ -80,6 +98,24 @@ class OrderAddessController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'orderID' => 'required',
+            'phone' => 'required|numeric|min:9|max:12',
+            'email' => 'required|email',
+            'addressID'=> 'required',
+        ],
+            [
+                'userID.required' => 'Bạn chưa nhập tên',
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
+                'phone.max'=>'Số điện thoại không dài quá 12 kí tự',
+                'email.required' => 'Bạn chưa nhập email',
+                'email.email'=>'Phải đúng định dạng email',
+                'totalPrice.required' => 'totalPrice lớn hơn không',
+                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
+                'addressID.required' => 'Bạn chưa nhập status'
+            ]
+        );
         $orderaddress = Order_address::find($id);
         if ($orderaddress == null) {
             return view('404');
