@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -39,19 +40,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:20',
             'avartar' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|numeric|min:9|max:12',
 
         ],
             [
                 'name.required' => 'Bạn chưa nhập tên',
+                'name.min'=>'Tên không ngắn quá 3 ký tự',
                 'email.required' => 'Bạn chưa nhập email',
+                'email.email'=>'Phải đúng định dạng email',
                 'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
+                'password.max'=>'Mật khẩu không dài quá 20 kí tự',
                 'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
+                'phone.max'=>'Số điện thoại không dài quá 12 kí tự'
             ]
         );
 
@@ -116,7 +124,8 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6|max:20',
             'avartar' => 'required',
-            'phone' => 'required|size:11|numeric',
+            'phone' => 'required|numeric|min:9|max:12',
+
         ],
             [
                 'name.required' => 'Bạn chưa nhập tên',
@@ -128,8 +137,9 @@ class UserController extends Controller
                 'password.max'=>'Mật khẩu không dài quá 20 kí tự',
                 'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
-                'phone.size'=>'Số điện thoại phải đúng 11 số',
-                'phone.numeric'=>'Số điện thoại phải là số'
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
+                'phone.max'=>'Số điện thoại không dài quá 12 kí tự'
             ]
         );
 
