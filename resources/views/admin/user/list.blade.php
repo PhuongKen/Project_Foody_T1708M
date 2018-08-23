@@ -37,8 +37,8 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
                                 <td>
-                                    <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
-                                        <img src="{{$item->avartar}}">
+                                    <div class="card" style="width: 90px;height: 70px;background-image: url('/images/user/{{$item->avartar}}'); background-size: cover">
+
                                     </div>
                                 </td>
                                 <td>{{$item->phone}}</td>
