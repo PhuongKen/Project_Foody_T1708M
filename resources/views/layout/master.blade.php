@@ -204,10 +204,14 @@
                                 <i class="fa fa-bars"></i>
                             </div>
                             <div class="dropdown-menu">
+                                @if(Auth::check())
                                 <div class="item">
                                     <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
-                                        khoản của tôi</a>
+                                        khoản của {{Auth::user()->name}}</a>
+                                    <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Đăng xuất
+                                        </a>
                                 </div>
+                                @else
                                 <div class="item">
                                     <a href="user-login.html" title="Log in to your customer account"><i
                                                 class="fa fa-sign-in-alt"></i>Đăng nhập</a>
@@ -216,7 +220,7 @@
                                     <a href="user-register.html" title="Register Account"><i class="fa fa-user"></i>Đăng
                                         ký</a>
                                 </div>
-
+                                @endif
                             </div>
                         </div>
                     </div>

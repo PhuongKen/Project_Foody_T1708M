@@ -74,4 +74,27 @@ class HomeController extends Controller
         });
         return redirect()->back()->with('thongbao', 'Đăng kí thành công,Kiểm tra mail để kích hoạt');
     }
+
+    public function getLogin()
+    {
+        if(Auth::check()){
+            return view('client.index');
+        }else{
+            return view('client.login');
+        }
+    }
+
+    public function postLogin(Request $req)
+    {
+        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
+            return view('client.index');
+        }else{
+            return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
+        }
+    }
+    public function getLogout(){
+        Auth::logout();
+        return view('client.index');
+    }
+
 }
