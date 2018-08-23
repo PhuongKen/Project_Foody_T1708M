@@ -37,7 +37,11 @@
                                 <th scope="row">{{$item->orderID}}</th>
                                 <th scope="row">{{$item->foodID}}</th>
                                 <th scope="row">{{$item->nameProduct}}</th>
-                                <th scope="row">{{$item->image}}</th>
+                                <td>
+                                    <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+
+                                    </div>
+                                </td>
                                 <th scope="row">{{$item->price}}</th>
                                 <th scope="row">{{$item->amount}}</th>
                                 {{--<td>{{$item->phone}}</td>--}}

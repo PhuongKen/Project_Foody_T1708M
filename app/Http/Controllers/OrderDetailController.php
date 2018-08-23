@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class OrderDetailController extends Controller
 {
@@ -24,7 +25,7 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.orderdetail.create');
     }
 
     /**
@@ -35,7 +36,16 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orderdetail = new Order_detail();
+        $orderdetail->orderID = Input::get('orderID');
+        $orderdetail->foodID = Input::get('foodID');
+        $orderdetail->nameProduct = Input::get('nameProduct');
+        $orderdetail->image = Input::get('image');
+        $orderdetail->price = Input::get('price');
+        $orderdetail->amount = Input::get('amount');
+
+        $orderdetail->save();
+        return redirect('/admin/orderdetail');
     }
 
     /**
