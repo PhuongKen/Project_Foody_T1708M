@@ -73,7 +73,7 @@
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
             if(user_confirm){
                 $.ajax({
-                    url: '/admin/orderdetail/' + cateId,
+                    url: '/admin/detailorder/' + cateId,
                     method:'DELETE',
                     data:{
                         '_token': "{{ csrf_token() }}"
