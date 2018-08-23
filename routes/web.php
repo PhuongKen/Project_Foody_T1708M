@@ -66,6 +66,18 @@ Route::get('send-to-mail/{id}/{token}', [
     'as'=>'send-to-mail',
     'uses'=>'HomeController@verifyEmail'
 ]);
+Route::get('dang-nhap-admin', [
+    'as'=>'dangnhap',
+    'uses'=>'AdminController@getLogin'
+]);
+Route::post('dang-nhap-admin', [
+    'as'=>'dangnhap',
+    'uses'=>'AdminController@postLogin'
+]);
+Route::get('dang-xuat-admin', [
+    'as'=>'dangxuat',
+    'uses'=>'AdminController@getLogout'
+]);
 
 
 
