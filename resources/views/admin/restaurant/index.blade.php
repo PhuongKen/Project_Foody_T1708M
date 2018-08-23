@@ -3,25 +3,21 @@
     <div class="row">
         <div class="col-md-10">
             <h3>
-                <label>Manage</label>
-                <small>Restaurant</small>
+                <label>Quản lý</label>
+                <small>Nhà hàng</small>
             </h3>
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
-                <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
-                <li class="active">Restaurant</li>
+                <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
+                <li class="active">Nhà hàng</li>
             </ol>
         </div>
     </div>
-    <div class="row" style="margin-top: 30px">
+    <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <div id="messages"></div>
+            <a href="/admin/restaurant/create" class="btn btn-primary">Tạo mới nhà hàng</a>
         </div>
-        <a href="/admin/restaurant/create" class="btn btn-primary">Add Restaurant</a>
-        <a href="" class="btn btn-success">View Restaurant</a>
-        <br/> <br/>
-        <!-- /.box -->
     </div>
     <!-- col-md-12 -->
 
