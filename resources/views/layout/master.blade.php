@@ -19,7 +19,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
-
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -103,8 +102,8 @@
                     <div class="col-lg-2 col-md-2 col-sm-12 header-center justify-content-center">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="home-4.html">
-                                <img class="img-responsive" src="/images/foody/logo.png" alt="Logo">
+                            <a href="/foody/trang_chu">
+                                <img class="img-responsive" src="/images/foody/anhfoody2.png" alt="Logo">
                             </a>
                         </div>
 
@@ -241,7 +240,7 @@
                             <div class="block text">
                                 <div class="block-content">
                                     <a href="index.html" class="logo-footer">
-                                        <img src="/images/foody/logo-2.png" alt="Logo">
+                                        <img src="/images/foody/anhfoody2.png" alt="Logo">
                                     </a>
 
                                     <div class="contact">
@@ -387,7 +386,7 @@
 </div>
 
 <!-- Vendor JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/jquery.countdown.js')}}"></script>
