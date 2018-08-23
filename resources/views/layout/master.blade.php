@@ -51,7 +51,7 @@
                         <div id="main-menu">
                             <ul class="menu">
                                 <li class="dropdown">
-                                    <a href="/foody/trang_chu" title="Trang chủ">Trang chủ</a>
+                                    <a href="/foody/trang-chu" title="Trang chủ">Trang chủ</a>
                                 </li>
 
                                 <li class="dropdown">
@@ -61,28 +61,28 @@
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-1.png"
                                                      alt="Product Category Image">
-                                                <a href="/foody/danh_muc"
+                                                <a href="/foody/danh-muc"
                                                    title="Vegetables">Sang trọng</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-2.png"
                                                      alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Fruits">Buffet</a>
+                                                <a href="/foody/danh-muc" title="Fruits">Buffet</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-3.png"
                                                      alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Bread">Nhà hàng</a>
+                                                <a href="/foody/danh-muc" title="Bread">Nhà hàng</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-4.png"
                                                      alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Juices">Ăn chay</a>
+                                                <a href="/foody/danh-muc" title="Juices">Ăn chay</a>
                                             </li>
                                             <li class="has-image">
                                                 <img src="/images/foody/product-category-5.png"
                                                      alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Tea and coffee">Tiệc</a>
+                                                <a href="/foody/danh-muc" title="Tea and coffee">Tiệc</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -103,7 +103,7 @@
                     <div class="col-lg-2 col-md-2 col-sm-12 header-center justify-content-center">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="/foody/trang_chu">
+                            <a href="/foody/trang-chu">
                                 <img class="img-responsive" src="/images/foody/anhfoody2.png" alt="Logo">
                             </a>
                         </div>
@@ -208,16 +208,18 @@
                                 <div class="item">
                                     <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                         khoản của {{Auth::user()->name}}</a>
+                                </div>
+                                <div class="item">
                                     <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Đăng xuất
                                         </a>
                                 </div>
                                 @else
                                 <div class="item">
-                                    <a href="user-login.html" title="Log in to your customer account"><i
+                                    <a href="/dang-nhap" title="Log in to your customer account"><i
                                                 class="fa fa-sign-in-alt"></i>Đăng nhập</a>
                                 </div>
                                 <div class="item">
-                                    <a href="user-register.html" title="Register Account"><i class="fa fa-user"></i>Đăng
+                                    <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
                                         ký</a>
                                 </div>
                                 @endif
