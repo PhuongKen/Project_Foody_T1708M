@@ -17,6 +17,7 @@ class CommentController extends Controller
     {
         $comment = Comment::orderBy('created_at', 'DESC')->paginate(3);
         return view('admin.comment.list')->with('cmt',$comment);
+
     }
 
     /**
@@ -26,8 +27,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-
-      return view('admin.comment.create');
+ feature#3.2.4.1/tao-edit-phan-comment
+        return view('admin.comment.create');
     }
 
     /**
@@ -39,13 +40,13 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $comment = new Comment();
-        $comment->UserID = Input::get('UserID');
-        $comment->RestaurantID = Input::get('RestaurantID');
-        $comment->Type = Input::get('Type');
-        $comment->Title = Input::get('Title');
-        $comment->Content = Input::get('Content');
+        $comment->userID = Input::get('userID');
+        $comment->restaurantID = Input::get('restaurantID');
+        $comment->commentType = Input::get('commentType');
+        $comment->title = Input::get('title');
+        $comment->content = Input::get('Content');
         $comment->save();
-        return redirect('/admin/comment');
+        return redirect('/admin/comment'):
     }
 
     /**
@@ -56,7 +57,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -67,7 +68,12 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        return view('admin.comment.edit')->with('cmt',$comment);
+
     }
 
     /**
@@ -79,7 +85,19 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        $comment = new Comment();
+        $comment->userID = Input::get('userID');
+        $comment->restaurantID = Input::get('restaurantID');
+        $comment->commentType = Input::get('commentType');
+        $comment->title = Input::get('title');
+        $comment->content = Input::get('content');
+        $comment->save();
+        return redirect('/admin/comment');
+
     }
 
     /**
