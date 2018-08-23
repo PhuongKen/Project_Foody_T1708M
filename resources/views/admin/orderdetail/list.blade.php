@@ -49,7 +49,7 @@
                                 {{--<td>{{$item->verifyEmail}}</td>--}}
                                 {{--<td>{{$item->role}}</td>--}}
                                 <td>
-                                    <a href="/admin/orderdetail/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
+                                    <a href="/admin/detailorder/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
                                     <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">delete</a>
                                 </td>
                             </tr>

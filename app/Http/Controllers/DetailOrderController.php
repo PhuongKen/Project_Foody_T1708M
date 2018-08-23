@@ -36,6 +36,22 @@ class DetailOrderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'orderID' => 'required',
+            'nameProduct' => 'required',
+            'image'=> 'required',
+            'price'=> 'required',
+            'amount'=> 'required',
+        ],
+            [
+                'orderID.required' => 'Bạn chưa nhập tên',
+                'nameProduct.required' => 'Bạn chưa nhập nameProduct',
+                'image.required' => 'Bạn chưa nhập image',
+                'price.required' => 'Bạn chưa nhập price',
+                'amount.required' => 'Bạn chưa nhập amount'
+
+            ]
+        );
         $orderdetail = new Order_detail();
         $orderdetail->orderID = Input::get('orderID');
         $orderdetail->foodID = Input::get('foodID');
@@ -80,6 +96,22 @@ class DetailOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'orderID' => 'required',
+            'nameProduct' => 'required',
+            'image'=> 'required',
+            'price'=> 'required',
+            'amount'=> 'required',
+        ],
+            [
+                'orderID.required' => 'Bạn chưa nhập tên',
+                'nameProduct.required' => 'Bạn chưa nhập nameProduct',
+                'image.required' => 'Bạn chưa nhập image',
+                'price.required' => 'Bạn chưa nhập price',
+                'amount.required' => 'Bạn chưa nhập amount'
+
+            ]
+        );
         $orderdetail = Order_detail::find($id);
         if ($orderdetail == null) {
             return view('404');

@@ -37,6 +37,22 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'userID' => 'required',
+            'amount' => 'required|numeric|min:0',
+            'totalPrice' => 'required|numeric|min:0',
+            'status'=> 'required|numeric|min:0',
+        ],
+            [
+                'userID.required' => 'Bạn chưa nhập tên',
+                'amount.required' => 'amount lớn hơn không',
+                'amount.required' => 'Bạn chưa nhập amount',
+                'totalPrice.required' => 'totalPrice lớn hơn không',
+                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
+                'status.required' => 'status lớn hơn không',
+                'status.required' => 'Bạn chưa nhập status'
+            ]
+        );
         $order=new Order();
         $order->userID = Input::get('userID');
         $order->amount = Input::get('amount');
@@ -79,6 +95,22 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'userID' => 'required',
+            'amount' => 'required|numeric|min:1',
+            'totalPrice' => 'required|numeric|min:1',
+            'status'=> 'required|numeric|min:1',
+        ],
+            [
+                'userID.required' => 'Bạn chưa nhập tên',
+                'amount.required' => 'amount lớn hơn không',
+                'amount.required' => 'Bạn chưa nhập amount',
+                'totalPrice.required' => 'totalPrice lớn hơn không',
+                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
+                'status.required' => 'status lớn hơn không',
+                'status.required' => 'Bạn chưa nhập status'
+            ]
+        );
         $order=Order::find($id);
         if ($order==null){
             return view('404');

@@ -37,6 +37,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'avatar' => 'required',
+        ],
+            [
+                'name.required' => 'Bạn chưa nhập tên',
+                'avatar.required' => 'Bạn chưa nhập avatar'
+            ]
+        );
         $category = new Category();
         $category->name = Input::get('name');
         $category->avartar = Input::get('avatar');
@@ -76,6 +85,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+        'name' => 'required',
+        'avartar' => 'required',
+
+    ],
+        [
+            'name.required' => 'Bạn chưa nhập tên',
+            'avartar.required' => 'Bạn chưa nhập avatar'
+        ]
+    );
         $category= Category::find($id);
         if ($category==null){
             return view('404');
