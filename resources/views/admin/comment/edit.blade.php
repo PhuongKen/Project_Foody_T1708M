@@ -4,27 +4,27 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/food/{{$foods->id}}" method="post" enctype="multipart/form-data">
+    <form action="/admin/comment/{{$cmt->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>food</small>
+                    <small>Comment</small>
                 </h3>
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
                     <li><a href="/admin/home"><i class="fas fa-home"></i></i>Home</a></li>
-                    <li class="active">Restaurant</li>
+                    <li class="active">Comment</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add food</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Edit Comment</h4></div>
                     <div>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,32 +33,31 @@
                         </button>
                     </div>
                     <div class="form-group">
-                        <h5>Tên món ăn</h5>
-                        <input type="text" placeholder="Nhập tên món ăn" size="100" name="name" value="{{$foods->name}}">
+                        <h5>User Id</h5>
+                        <select name="userID">
+                            <option value="0">Tên user1</option>
+                            <option value="1">Tên user2</option>
+                        </select>
+
                     </div>
                     <div class="form-group">
-                        <h5>Avatar</h5>
-                        <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar" value="{{$foods->avatar}}">
-                    </div>
-                    <div class="form-group">
-                        <label>RestaurantID</label>
-                        <select name="restaurantID" id="provind">
-                            @foreach($restaurant as $p)
-                                <option value="{{$p->id}}">{{$p->name}}</option>
-                            @endforeach
+                        <h5>RestaurantID</h5>
+                        <select name="restaurantID">
+                            <option value="0">restaurantID1</option>
+                            <option value="1">restaurantID2</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <h5>Giá món ăn</h5>
-                        <input type="text" placeholder="Giá món ăn" size="100" name="price" value="{{$foods->price}}">
+                        <label>Type</label>
+                        <input type="text" placeholder="Nhập type" size="100" name="commentType" value="{{$cmt->commentType}}">
                     </div>
                     <div class="form-group">
-                        <label>Status</label>
-                        <select name="status">
-                            <option value="1">Còn hàng</option>
-                            <option value="0">Không bán</option>
-                            <option value="2">Hết hàng</option>
-                        </select>
+                        <h5>Title</h5>
+                        <input type="text" placeholder="Nhập title" size="100" name="title" value="{{$cmt->title}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <input type="text" placeholder="Nội dung" size="100" name="content" value="{{$cmt->Content}}">
                     </div>
 
                     <div class="form-group">
