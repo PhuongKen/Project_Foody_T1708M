@@ -65,7 +65,10 @@ class OrderAddessController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orderaddress = Order_address::find($id);
+        return view('admin.orderaddress.edit')->with('orderaddress', $orderaddress);
+
+
     }
 
     /**
@@ -77,7 +80,16 @@ class OrderAddessController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $orderaddress = Order_address::find($id);
+        if ($orderaddress == null) {
+            return view('404');
+        }
+        $orderaddress->orderID = Input::get('orderID');
+        $orderaddress->phone = Input::get('phone');
+        $orderaddress->email = Input::get('email');
+        $orderaddress->addressID = Input::get('addressID');
+        $orderaddress->save();
+        return redirect('/admin/orderaddress ');
     }
 
     /**
@@ -88,6 +100,6 @@ class OrderAddessController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
