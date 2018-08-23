@@ -65,7 +65,11 @@ return view('admin.albumcomment.create');
      */
     public function edit($id)
     {
-        //
+        $comment = AlbumComment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        return view('admin.albumcomment.edit')->with('cmt',$comment);
     }
 
     /**
@@ -77,7 +81,18 @@ return view('admin.albumcomment.create');
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = AlbumComment::find($id);
+        if ($comment == null){
+            return view('404');
+        }
+        $comment = new AlbumComment();
+        $comment->userID = Input::get('userID');
+        $comment->restaurantID = Input::get('restaurantID');
+        $comment->commentID = Input::get('commentID');
+        $comment->image = Input::get('image');
+        $comment->save();
+        return redirect('/admin/album');
+
     }
 
     /**
