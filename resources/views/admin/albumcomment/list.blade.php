@@ -35,7 +35,11 @@
                             <td>{{$item->userID}}</td>
                             <td>{{$item->restaurantID}}</td>
                             <td>{{$item->commentID}}</td>
-                            <td>{{$item->image}}</td>
+                            <td>
+                                <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+
+                                </div>
+                            </td>
                             {{--<td>{{$item->phone}}</td>--}}
                             {{--<td>{{$item->status}}</td>--}}
                             {{--<td>{{$item->verifyEmail}}</td>--}}
