@@ -10,21 +10,21 @@
         <div class="row">
             <div class="col-md-10">
                 <h3>
-                    <label>Manage</label>
-                    <small>Restaurant</small>
+                    <label>Quản lý</label>
+                    <small>Nhà hàng</small>
                 </h3>
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
-                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
-                    <li class="active">Restaurant</li>
+                    <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
+                    <li class="active">Nhà hàng</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body"><h4 style="color: #333333">Add restaurant</h4></div>
+                    <div class="panel-body"><h4 style="color: #333333">Sửa nhà hàng</h4></div>
                     <div class="panel-body">
 
                         @if ($errors->any())
@@ -125,10 +125,10 @@
                             </form>
                         </div>
                         <div class="form-group">
-                            <label>Active</label>
+                            <label>Trạng thái</label>
                             <select name="status">
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
+                                <option value="1">Hoạt động</option>
+                                <option value="2">Không hoạt động</option>
                             </select>
                         </div>
                         <div class="form-group">
