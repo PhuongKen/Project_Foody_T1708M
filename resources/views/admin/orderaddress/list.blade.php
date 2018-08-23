@@ -33,7 +33,7 @@
                         <tbody>
                         @foreach($list_obj as $item)
                             <tr>
-                                <th scope="row">{{$item->ID}}</th>
+                                <th scope="row">{{$item->id}}</th>
                                 <th scope="row">{{$item->orderID}}</th>
                                 <th scope="row">{{$item->phone}}</th>
                                 <th scope="row">{{$item->email}}</th>
