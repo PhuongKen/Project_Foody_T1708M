@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order_detail;
 use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
@@ -13,8 +14,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $list_obj = Order_detail::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.orderdetail.list')->with('list_obj', $list_obj);    }
 
     /**
      * Show the form for creating a new resource.
