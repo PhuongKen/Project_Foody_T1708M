@@ -37,6 +37,18 @@ return view('admin.albumcomment.create');
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'userID' => 'required',
+            'restaurantID' => 'required',
+            'commentID' => 'required',
+            'image' => 'required',
+    ],
+            [
+                'userID.required' => 'Vui lòng nhập userID',
+                'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
+                'commentID.required' => 'Bạn chưa nhập nội dung',
+                'image.required' => 'Bạn chưa nhập link ảnh',
+        ]);
         $comment = new AlbumComment();
         $comment->userID = Input::get('userID');
         $comment->restaurantID = Input::get('restaurantID');
@@ -65,6 +77,7 @@ return view('admin.albumcomment.create');
      */
     public function edit($id)
     {
+
         $comment = AlbumComment::find($id);
         if ($comment == null){
             return view('404');
@@ -81,6 +94,18 @@ return view('admin.albumcomment.create');
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+                'userID' => 'required',
+            'restaurantID' => 'required',
+            'commentID' => 'required',
+            'image' => 'required',
+        ],
+            [
+                'userID.required' => 'Vui lòng nhập userID',
+                'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
+                'commentID.required' => 'Bạn chưa nhập nội dung',
+                'image.required' => 'Bạn chưa nhập link ảnh',
+            ]);
         $comment = AlbumComment::find($id);
         if ($comment == null){
             return view('404');

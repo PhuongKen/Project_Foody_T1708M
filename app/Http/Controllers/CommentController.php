@@ -39,6 +39,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'userID' => 'required',
+            'restaurantID' => 'required',
+            'commentType' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+        ],
+            [
+                'userID.required' => 'Vui lòng nhập userID',
+                'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
+                'commentType.required' => 'Vui lòng nhập commentType',
+                'title.required' => 'Vui lòng nhập title',
+                'content.required' => 'Bạn chưa nhập nội dung',
+            ]);
         $comment = new Comment();
         $comment->userID = Input::get('userID');
         $comment->restaurantID = Input::get('restaurantID');
@@ -85,6 +100,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'userID' => 'required',
+            'restaurantID' => 'required',
+            'commentType' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+        ],
+            [
+                'userID.required' => 'Vui lòng nhập userID',
+                'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
+                'commentType.required' => 'Vui lòng nhập commentType',
+                'title.required' => 'Vui lòng nhập title',
+                'content.required' => 'Bạn chưa nhập nội dung',
+            ]);
         $comment = Comment::find($id);
         if ($comment == null){
             return view('404');
