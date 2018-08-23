@@ -37,4 +37,9 @@ Route::resource('/admin/comment','CommentController');
 Route::resource('admin/album','AlbumCmtController');
 Route::resource('admin/orderaddress','OrderAddessController');
 
+Route::get('gui-mail','HomeController@sendMail');
+
+Route::resource('admin/orderdetail','OrderDetailController');
+
+
 
