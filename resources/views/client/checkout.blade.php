@@ -9,7 +9,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                       data-parent="#accordion" href="#collapseOne">
                                         Address
                                     </a>
                                 </h4>
@@ -30,26 +31,26 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                            <label>Tỉnh\Thành Phố</label>
-                                            <select name="provind" id="provind">
-                                                @foreach($provind as $p)
-                                                    <option value="{{$p->id}}">{{$p->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            &nbsp;&nbsp;
-                                            <label>Quận\Huyện\Thành Phố</label>
-                                            <select name="district" id="district">
-                                                @foreach($district as $d)
-                                                    <option value="{{$d->id}}">{{$d->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <label>Xã/Phường/Thị trấn</label>
-                                            <select name="ward" id="ward">
-                                                @foreach($ward as $w)
-                                                    <option value="{{$w->id}}">{{$w->name}}</option>
-                                                @endforeach
-                                            </select>
+                                                <label>Tỉnh\Thành Phố</label>
+                                                <select name="provind" id="provind">
+                                                    @foreach($provind as $p)
+                                                        <option value="{{$p->id}}">{{$p->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                &nbsp;&nbsp;
+                                                <label>Quận\Huyện\Thành Phố</label>
+                                                <select name="district" id="district">
+                                                    @foreach($district as $d)
+                                                        <option value="{{$d->id}}">{{$d->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <label>Xã/Phường/Thị trấn</label>
+                                                <select name="ward" id="ward">
+                                                    @foreach($ward as $w)
+                                                        <option value="{{$w->id}}">{{$w->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -87,7 +88,8 @@
                                 Giao hàng
                             </th>
                             <td>
-                                Giao hàng miễn phí<input type="hidden" value="free_shipping" class="shipping-method" name="shipping_method">
+                                Giao hàng miễn phí<input type="hidden" value="free_shipping" class="shipping-method"
+                                                         name="shipping_method">
                             </td>
                         </tr>
                         <tr class="total">
@@ -104,5 +106,30 @@
             </div>
         </div>
     </div>
-    </div>
+@endsection
+@section('script')
+    <script>
+        // Lấy id provind và set district theo id provind
+        var idProvind = $("#provind").val();
+        $.get("/admin/district/" + idProvind, function (data) {
+            $("#district").html(data);
+        });
+        $("#provind").change(function () {
+            var idProvind = $(this).val();
+            $.get("/admin/district/" + idProvind, function (data) {
+                $("#district").html(data);
+            });
+        });
+        // Lấy id distict và set district theo id ward
+        var idDistrict = $("#district").val();
+        $.get("/admin/ward/" + idDistrict, function (data) {
+            $("#ward").html(data);
+        });
+        $("#district").change(function () {
+            var idDistrict = $(this).val();
+            $.get("/admin/ward/" + idDistrict, function (data) {
+                $("#ward").html(data);
+            });
+        });
+    </script>
 @endsection
