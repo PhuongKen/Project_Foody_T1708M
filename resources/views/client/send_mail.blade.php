@@ -1,1 +1,1 @@
-Test mail
+<a href="{{route('send-to-mail',[$user->id, $user->remember_token])}}">Nhập vào đây để kích hoạt</a>

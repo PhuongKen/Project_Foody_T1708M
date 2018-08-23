@@ -97,4 +97,17 @@ class HomeController extends Controller
         return view('client.index');
     }
 
+    public function verifyEmail($id, $token)
+    {
+        $user = User::where([
+            ['id', '=', $id],
+            ['remember_token', '=', $token]
+        ])->first();
+        if ($user) {
+            $user->verifyEmail = 1;
+            $user->save();
+        }
+        return redirect()->route('dangki')->with(['thanhcong', 'Đã kích hoạt tài khoản']);
+    }
+
 }

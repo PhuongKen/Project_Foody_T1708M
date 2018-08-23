@@ -60,6 +60,10 @@ Route::get('dang-xuat', [
     'as'=>'dangxuat',
     'uses'=>'HomeController@getLogout'
 ]);
+Route::get('send-to-mail/{id}/{token}', [
+    'as'=>'send-to-mail',
+    'uses'=>'HomeController@verifyEmail'
+]);
 
 
 
