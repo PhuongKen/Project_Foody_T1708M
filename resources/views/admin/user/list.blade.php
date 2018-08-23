@@ -22,7 +22,6 @@
                             <th scope="col">AddressID</th>
                             <th scope="col">Tên</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Password</th>
                             <th scope="col">Ảnh đại diện</th>
                             <th scope="col">Số điện thoại</th>
                             <th scope="col">Status</th>
@@ -37,7 +36,6 @@
                                 <td>{{$item->addressID}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
-                                <td>{{$item->password}}</td>
                                 <td>
                                     <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
                                         <img src="{{$item->avartar}}">
