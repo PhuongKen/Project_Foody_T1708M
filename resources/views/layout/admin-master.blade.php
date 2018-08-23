@@ -168,12 +168,16 @@
                 </div>
                 <div class="user-info">
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Phuong Ken<span class="caret"></span></a>
+                        @if(Auth::check())
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
                             <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                             <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+                            <li><a href="{{route('dangxuat')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
+                            @else
+                            <li><a href="javascript:void(0)"><i class="md md-settings-power"></i>Đăng nhập</a></li>
+                                @endif
                         </ul>
                     </div>
 
