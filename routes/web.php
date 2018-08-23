@@ -31,6 +31,7 @@ Route::get('/foody/trang-chu','HomeController@getHome');
 Route::get('/foody/danh-muc','CategoryClientController@getCategory');
 Route::get('/foody/chi-tiet-mon-an','DetailController@getDetail');
 Route::resource('/foody/gio-hang','CartController');
+Route::resource('/foody/thanh-toan','CheckoutController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/order','OrderController');
 Route::resource('/admin/comment','CommentController');
@@ -64,6 +65,18 @@ Route::get('dang-xuat', [
 Route::get('send-to-mail/{id}/{token}', [
     'as'=>'send-to-mail',
     'uses'=>'HomeController@verifyEmail'
+]);
+Route::get('dang-nhap-admin', [
+    'as'=>'dangnhap',
+    'uses'=>'AdminController@getLogin'
+]);
+Route::post('dang-nhap-admin', [
+    'as'=>'dangnhap',
+    'uses'=>'AdminController@postLogin'
+]);
+Route::get('dang-xuat-admin', [
+    'as'=>'dangxuat',
+    'uses'=>'AdminController@getLogout'
 ]);
 
 
