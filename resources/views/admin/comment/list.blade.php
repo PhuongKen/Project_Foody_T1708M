@@ -35,7 +35,7 @@
                             <th scope="row">{{$item->id}}</th>
                             <td>{{$item->userID}}</td>
                             <td>{{$item->restaurantID}}</td>
-                            <td>{{$item->type}}</td>
+                            <td>{{$item->commentType}}</td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->content}}</td>
                             {{--<td>{{$item->phone}}</td>--}}

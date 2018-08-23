@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/food" method="post" enctype="multipart/form-data">
+    <form action="/admin/orderaddress" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -23,43 +23,41 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add food</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4></div>
                     <div>
-                                </ul>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    <span class="sr-only">Close</span>
-                                </button>
-                            </div>
-                        <div class="form-group">
-                            <h5>Tên món ăn</h5>
-                            <input type="text" placeholder="Nhập tên món ăn" size="100" name="name">
-                        </div>
-                    <div class="form-group">
-                        <h5>Avatar</h5>
-                        <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar">
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
                     </div>
-
-
-
                     <div class="form-group">
-                        <label>RestaurantID</label>
-                        <select name="restaurantID" id="provind">
-                            @foreach($restaurant as $p)
-                                <option value="{{$p->id}}">{{$p->name}}</option>
-                            @endforeach
+                        <h5>orderID</h5>
+                        <select name="orderID">
+                            <option value="0">order 1</option>
+                            <option value="1">order 2</option>
+                            <option value="2">order 3</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <h5>Giá món ăn</h5>
-                        <input type="text" placeholder="Giá món ăn" size="100" name="price">
+                        <h5>phone</h5>
+                        <input type="text" placeholder="Nhập phone" size="100" name="phone">
                     </div>
-                        <div class="form-group">
-                            <form action="/admin/album_food" method="post" enctype="multipart/form-data">
-                                {{csrf_field()}}
-
-                            </form>
-                        </div>
+                    <div class="form-group">
+                        <h5>email</h5>
+                        <input type="text" placeholder="Nhập tên email" size="100" name="email">
+                    </div>
+                    <div class="form-group">
+                        <h5>addressID</h5>
+                        <select name="addressID">
+                            <option value="0">address 1</option>
+                            <option value="1">address 2</option>
+                            <option value="2">address 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Lưu">
+                        <input type="reset" class="btn btn-success" value="Làm lại">
                         <div class="form-group">
                             <label>Status</label>
                             <select name="status">
@@ -76,6 +74,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div> <!-- End row -->
     </form>
 @endsection

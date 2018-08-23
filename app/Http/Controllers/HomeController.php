@@ -12,6 +12,6 @@ namespace App\Http\Controllers;
 class HomeController
 {
     public function getHome(){
-        return view('client.home');
+        return view('client.index');
     }
 }

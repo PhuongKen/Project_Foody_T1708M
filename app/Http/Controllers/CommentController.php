@@ -28,13 +28,12 @@ class CommentController extends Controller
     public function create()
     {
         return view('admin.comment.create');
-
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +46,6 @@ class CommentController extends Controller
         $comment->content = Input::get('Content');
         $comment->save();
         return redirect('/admin/comment');
-
     }
 
     /**
