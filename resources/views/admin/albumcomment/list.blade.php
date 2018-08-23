@@ -6,7 +6,7 @@
 <div class="card scoll">
     <div class="card-body">
         <div class="float-left">
-            <h2 class="card-title">Comment</h2>
+            <h2 class="card-title">AlbumComment</h2>
         </div>
         <div class="float-right mr-4">
             <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i>Tạo mới</a>
@@ -20,9 +20,8 @@
                         <th scope="col">Id</th>
                         <th scope="col">UserId</th>
                         <th scope="col">RestaurantID</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Content</th>
+                        <th scope="col">CommentID</th>
+                        <th scope="col">Image</th>
                         {{--<th scope="col">Số điện thoại</th>--}}
                         {{--<th scope="col">Status</th>--}}
                         {{--<th scope="col">VerifyEmail</th>--}}
@@ -35,15 +34,18 @@
                             <th scope="row">{{$item->id}}</th>
                             <td>{{$item->userID}}</td>
                             <td>{{$item->restaurantID}}</td>
-                            <td>{{$item->commentType}}</td>
-                            <td>{{$item->title}}</td>
-                            <td>{{$item->content}}</td>
+                            <td>{{$item->commentID}}</td>
+                            <td>
+                                <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+
+                                </div>
+                            </td>
                             {{--<td>{{$item->phone}}</td>--}}
                             {{--<td>{{$item->status}}</td>--}}
                             {{--<td>{{$item->verifyEmail}}</td>--}}
                             {{--<td>{{$item->role}}</td>--}}
                             <td>
-                                <a href="/admin/comment/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Edit</a>
+                                <a href="/admin/album/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Edit</a>
                                 <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">Delete</a>
                             </td>
                         </tr>
@@ -67,7 +69,7 @@
         var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
         if(user_confirm){
             $.ajax({
-                url: '/admin/comment/' + cateId,
+                url: '/admin/album/' + cateId,
                 method:'DELETE',
                 data:{
                     '_token': "{{ csrf_token() }}"

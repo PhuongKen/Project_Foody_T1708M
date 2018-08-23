@@ -17,13 +17,13 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">id</th>
                             <th scope="col">orderID</th>
-                            <th scope="col">phone</th>
-                            <th scope="col">email</th>
-                            <th scope="col">addressID</th>
-                            <th scope="col">create_at</th>
-                            <th scope="col">update_at</th>
+                            <th scope="col">foodID</th>
+                            <th scope="col">nameProduct</th>
+                            <th scope="col">image</th>
+                            <th scope="col">price</th>
+                            <th scope="col">amount</th>
                             {{--<th scope="col">Số điện thoại</th>--}}
                             {{--<th scope="col">Status</th>--}}
                             {{--<th scope="col">VerifyEmail</th>--}}
@@ -35,17 +35,21 @@
                             <tr>
                                 <th scope="row">{{$item->id}}</th>
                                 <th scope="row">{{$item->orderID}}</th>
-                                <th scope="row">{{$item->phone}}</th>
-                                <th scope="row">{{$item->email}}</th>
-                                <th scope="row">{{$item->addressID}}</th>
-                                <th scope="row">{{$item->created_at}}</th>
-                                <th scope="row">{{$item->updated_at}}</th>
+                                <th scope="row">{{$item->foodID}}</th>
+                                <th scope="row">{{$item->nameProduct}}</th>
+                                <td>
+                                    <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+
+                                    </div>
+                                </td>
+                                <th scope="row">{{$item->price}}</th>
+                                <th scope="row">{{$item->amount}}</th>
                                 {{--<td>{{$item->phone}}</td>--}}
                                 {{--<td>{{$item->status}}</td>--}}
                                 {{--<td>{{$item->verifyEmail}}</td>--}}
                                 {{--<td>{{$item->role}}</td>--}}
                                 <td>
-                                    <a href="/admin/orderaddress/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
+                                    <a href="/admin/orderdetail/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
                                     <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">delete</a>
                                 </td>
                             </tr>
@@ -69,7 +73,7 @@
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
             if(user_confirm){
                 $.ajax({
-                    url: '/admin/orderaddress/' + cateId,
+                    url: '/admin/detailorder/' + cateId,
                     method:'DELETE',
                     data:{
                         '_token': "{{ csrf_token() }}"

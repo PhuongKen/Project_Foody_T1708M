@@ -100,6 +100,10 @@ class OrderAddessController extends Controller
      */
     public function destroy($id)
     {
-
+        $orderaddress=Order_address::find($id);
+        if ($orderaddress == null){
+            return view('404');
+        }
+        $orderaddress->delete();
     }
 }

@@ -4,48 +4,32 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/comment/{{$cmt->id}}" method="post" enctype="multipart/form-data">
+    <form action="/admin/album/{{$cmt->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
-        @method('PUT')
+        @method('put')
         <div class="row">
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>Comment</small>
+                    <small>AlbumComment</small>
                 </h3>
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
-                    <li><a href="/admin/home"><i class="fas fa-home"></i></i>Home</a></li>
-                    <li class="active">Comment</li>
+                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
+                    <li class="active">AlbumComment</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Edit Comment</h4></div>
-                    <div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">AlbumComment</h4>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button>
-                    </div>
-                    <div class="form-group">
-                        <h5>User Id</h5>
-                        <select name="userID">
-                            <option value="0">Tên user1</option>
-                            <option value="1">Tên user2</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <h5>RestaurantID</h5>
-                        <select name="restaurantID">
-                            <option value="0">restaurantID1</option>
-                            <option value="1">restaurantID2</option>
-                        </select>
                     </div>
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible" role="alert">
@@ -60,21 +44,38 @@
                             </button>
                         </div>
                     @endif
-                    <div class="form-group">
-                        <label>Type</label>
-                        <input type="text" placeholder="Nhập type" size="100" name="commentType" value="{{$cmt->commentType}}">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>UserID</h5>
+                            <select name="userID">
+                                <option value="0">User 1</option>
+                                <option value="1">User 2</option>
+                                <option value="2">User 3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>RestaurantID</h5>
+                            <select name="restaurantID">
+                                <option value="0">RestaurantID 1</option>
+                                <option value="1">RestaurantID 2</option>
+                                <option value="2">RestaurantID 3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 ">
+                            <h5>CommentID</h5>
+                            <select name="commentID">
+                                <option value="0">CommentID 1</option>
+                                <option value="1">CommentID 2</option>
+                                <option value="2">CommentID 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group d-block mt-2">
+                        <h5>Image</h5>
+                        <input type="text" placeholder="Nhập link ảnh" size="100" name="image" value="{{$cmt->image}}">
                     </div>
                     <div class="form-group">
-                        <h5>Title</h5>
-                        <input type="text" placeholder="Nhập title" size="100" name="title" value="{{$cmt->title}}">
-                    </div>
-                    <div class="form-group">
-                        <label>Content</label>
-                        <input type="text" placeholder="Nội dung" size="100" name="content" value="{{$cmt->Content}}">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Save">
+                        <input type="submit" class="btn btn-primary" value="Lưu">
                         <input type="reset" class="btn btn-success" value="Làm lại">
                     </div>
                 </div>
@@ -131,3 +132,5 @@
         });
     </script>
 @endsection
+Kết thúc cuộc trò chuyện
+Nhập tin nhắn...

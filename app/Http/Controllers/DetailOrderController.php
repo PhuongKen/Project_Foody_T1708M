@@ -6,7 +6,7 @@ use App\Order_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class OrderDetailController extends Controller
+class DetailOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -102,6 +102,10 @@ class OrderDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orderdetail = Order_detail::find($id);
+        if ($orderdetail==null){
+            return view('404');
+        }
+        $orderdetail->delete();
     }
 }

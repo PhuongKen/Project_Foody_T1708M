@@ -41,6 +41,21 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'restaurantID' => 'required',
+            'name' => 'required',
+            'avatar' => 'required',
+            'price' => 'required|numeric|min:0',
+            'status' => 'required',
+            ],
+            [
+                'restaurantID.required' => 'Vui lòng nhập tên cửa hàng',
+                'name.required' => 'Bạn chưa nhập tên',
+                'avatar.required' => 'Vui lòng nhập link ảnh',
+                'price.required' => 'Bạn chưa nhập số tiền',
+                'price.numeric' => 'Bạn phải nhập giá trị là số',
+                'price.min' => 'Bạn phải nhập giá trị lớn hơn 1',
+        ]);
         $food = new Food();
         $food->restaurantID = Input::get('restaurantID');
         $food->name = Input::get('name');
@@ -88,6 +103,21 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'restaurantID' => 'required',
+            'name' => 'required',
+            'avatar' => 'required',
+            'price' => 'required|numeric|min:0',
+            'status' => 'required',
+        ],
+            [
+                'restaurantID.required' => 'Vui lòng nhập tên cửa hàng',
+                'name.required' => 'Bạn chưa nhập tên',
+                'avatar.required' => 'Vui lòng nhập link ảnh',
+                'price.required' => 'Bạn chưa nhập số tiền',
+                'price.numeric' => 'Bạn phải nhập giá trị là số',
+                'price.min' => 'Bạn phải nhập giá trị lớn hơn 1',
+            ]);
         $food = Food::find($id);
         if ($food == null){
             return view('404');

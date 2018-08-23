@@ -31,26 +31,25 @@
                             <a href="product-detail-left-sidebar.html" class="product-name">Organic Strawberry Fruits</a>
                         </td>
                         <td class="text-center">
-                            $265
+                            265 đ
                         </td>
                         <td>
                             <div class="product-quantity">
                                 <div class="qty">
                                     <div class="input-group">
-                                        <input type="text" name="qty" value="1" data-min="1">
+                                        <input type="text" name="qty" id="qtyvalue" value="1" data-min="1">
                                         <span class="adjust-qty">
-															<span class="adjust-btn plus">+</span>
-															<span class="adjust-btn minus">-</span>
+															<span class="adjust-btn plus btn-plus">+</span>
+															<span class="adjust-btn minus btn-minus">-</span>
 														</span>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center">
-                            $265
+                        <td class="text-center ">
+                            265 đ
                         </td>
                     </tr>
-
                     <tr>
                         <td class="product-remove">
                             <a title="Remove this item" class="remove" href="#">
@@ -113,4 +112,23 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        var count = 1;
+        // var qty = $('#qtyvalue').val();
+        var countTotal = $('#qtyvalue');
+
+        $('.btn-plus').click(function () {
+            count++;
+            countTotal.val(count);
+        });
+
+        $('.btn-minus').click(function () {
+            if (count > 1) {
+                count--;
+                countTotal.val(count);
+            }
+        });
+    </script>
 @endsection

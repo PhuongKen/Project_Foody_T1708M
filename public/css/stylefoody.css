@@ -3414,10 +3414,9 @@ input {
     border-bottom-width: .75pt;
 }
 
-[class~=product-rating] [class~=star][class~=on]:after {
+.product-rating .on{
     color: #f7bc3d;
 }
-
 .block-cart .cart-title span {
     border-right-width: .020833333in;
 }
@@ -5419,7 +5418,7 @@ input {
 }
 
 [class~=product-price] {
-    font-size: .1875in;
+    font-size: .1775in;
 }
 
 [class~=product-tab] [class~=owl-carousel] [class~=owl-stage-outer]:after {
@@ -5628,10 +5627,6 @@ input {
 
 [class~=testimonial] [class~=item] [class~=image] img {
     border-bottom-width: .3125pc;
-}
-
-[class~=product-rating] [class~=star]:after {
-    content: "";
 }
 
 [class~=products-block][class~=layout-5] [class~=product-item] [class~=product-image], [class~=category-double] [class~=block-content] {

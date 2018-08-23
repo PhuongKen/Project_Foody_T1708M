@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\AlbumComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class CommentController extends Controller
+class AlbumCmtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comment = Comment::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.comment.list')->with('cmt',$comment);
-
+        $comment = AlbumComment::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.albumcomment.list')->with('cmt',$comment);
     }
 
     /**
@@ -27,41 +26,36 @@ class CommentController extends Controller
      */
     public function create()
     {
-
-        return view('admin.comment.create');
+return view('admin.albumcomment.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'userID' => 'required',
             'restaurantID' => 'required',
-            'commentType' => 'required',
-            'title' => 'required',
-            'content' => 'required',
-        ],
+            'commentID' => 'required',
+            'image' => 'required',
+    ],
             [
                 'userID.required' => 'Vui lòng nhập userID',
                 'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
-                'commentType.required' => 'Vui lòng nhập commentType',
-                'title.required' => 'Vui lòng nhập title',
-                'content.required' => 'Bạn chưa nhập nội dung',
-            ]);
-        $comment = new Comment();
+                'commentID.required' => 'Bạn chưa nhập nội dung',
+                'image.required' => 'Bạn chưa nhập link ảnh',
+        ]);
+        $comment = new AlbumComment();
         $comment->userID = Input::get('userID');
         $comment->restaurantID = Input::get('restaurantID');
-        $comment->commentType = Input::get('commentType');
-        $comment->title = Input::get('title');
-        $comment->content = Input::get('Content');
+        $comment->commentID = Input::get('commentID');
+        $comment->image = Input::get('image');
         $comment->save();
-        return redirect('/admin/comment');
+        return redirect('/admin/album');
     }
 
     /**
@@ -72,7 +66,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -83,12 +77,12 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        $comment = Comment::find($id);
+
+        $comment = AlbumComment::find($id);
         if ($comment == null){
             return view('404');
         }
-        return view('admin.comment.edit')->with('cmt',$comment);
-
+        return view('admin.albumcomment.edit')->with('cmt',$comment);
     }
 
     /**
@@ -101,31 +95,28 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'userID' => 'required',
+                'userID' => 'required',
             'restaurantID' => 'required',
-            'commentType' => 'required',
-            'title' => 'required',
-            'content' => 'required',
+            'commentID' => 'required',
+            'image' => 'required',
         ],
             [
                 'userID.required' => 'Vui lòng nhập userID',
                 'restaurantID.required' => 'Vui lòng nhập tên nhà hàng',
-                'commentType.required' => 'Vui lòng nhập commentType',
-                'title.required' => 'Vui lòng nhập title',
-                'content.required' => 'Bạn chưa nhập nội dung',
+                'commentID.required' => 'Bạn chưa nhập nội dung',
+                'image.required' => 'Bạn chưa nhập link ảnh',
             ]);
-        $comment = Comment::find($id);
+        $comment = AlbumComment::find($id);
         if ($comment == null){
             return view('404');
         }
-        $comment = new Comment();
+        $comment = new AlbumComment();
         $comment->userID = Input::get('userID');
         $comment->restaurantID = Input::get('restaurantID');
-        $comment->commentType = Input::get('commentType');
-        $comment->title = Input::get('title');
-        $comment->content = Input::get('content');
+        $comment->commentID = Input::get('commentID');
+        $comment->image = Input::get('image');
         $comment->save();
-        return redirect('/admin/comment');
+        return redirect('/admin/album');
 
     }
 
@@ -137,7 +128,7 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::find($id);
+        $comment = AlbumComment::find($id);
         if ($comment == null){
             return view('404');
         }
