@@ -8422,7 +8422,7 @@ input {
 }
 
 [class~=home-4] [class~=container-edit] {
-    width: 12in;
+    width: 11in;
     border-top: 2px solid #d33;
     margin-bottom: 35px;
 }
