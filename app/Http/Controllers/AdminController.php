@@ -33,7 +33,7 @@ class AdminController extends Controller
     public function postLogin(Request $req)
     {
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1,'role'=>1])) {
-            return redirect('/admin/user');
+            return redirect()->route('admin');
         }else{
             return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
         }
