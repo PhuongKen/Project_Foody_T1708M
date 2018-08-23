@@ -67,7 +67,8 @@ class OrderDetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orderdetail = Order_detail::find($id);
+        return view('admin.orderdetail.edit')->with('orderaddress', $orderdetail);
     }
 
     /**
@@ -79,7 +80,18 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $orderdetail = Order_detail::find($id);
+        if ($orderdetail == null) {
+            return view('404');
+        }
+        $orderdetail->orderID = Input::get('orderID');
+        $orderdetail->foodID = Input::get('foodID');
+        $orderdetail->nameProduct = Input::get('nameProduct');
+        $orderdetail->image = Input::get('image');
+        $orderdetail->price = Input::get('price');
+        $orderdetail->amount = Input::get('amount');
+        $orderdetail->save();
+        return redirect('/admin/orderdetail ');
     }
 
     /**
