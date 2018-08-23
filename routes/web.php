@@ -48,6 +48,22 @@ Route::post('dang-ki', [
     'as'=>'dangki',
     'uses'=>'HomeController@postRegister'
 ]);
+Route::get('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'HomeController@getLogin'
+]);
+Route::post('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'HomeController@postLogin'
+]);
+Route::get('dang-xuat', [
+    'as'=>'dangxuat',
+    'uses'=>'HomeController@getLogout'
+]);
+Route::get('send-to-mail/{id}/{token}', [
+    'as'=>'send-to-mail',
+    'uses'=>'HomeController@verifyEmail'
+]);
 
 
 
