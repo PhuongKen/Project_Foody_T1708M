@@ -147,12 +147,16 @@
                             <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="http://thuthuat123.com/uploads/2018/01/27/anh-dai-dien-dep-nhat-39_093007.jpg" alt="user-img" class="img-circle"> </a>
+                            @if(Auth::check())
+                            <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="/images/user/{{Auth::user()->avartar}}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                                 <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+                                <li><a href="{{route('dangxuat')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
+                                @else
+                                <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
+                                    @endif
                             </ul>
                         </li>
                     </ul>
@@ -170,7 +174,7 @@
         <div class="sidebar-inner slimscrollleft">
             <div class="user-details">
                 <div class="pull-left">
-                    <img src="http://thuthuat123.com/uploads/2018/01/27/anh-dai-dien-dep-nhat-39_093007.jpg" alt="" class="thumb-md img-circle">
+                    <img src="#" alt="" class="thumb-md img-circle">
                 </div>
                 <div class="user-info">
                     <div class="dropdown">
@@ -182,7 +186,7 @@
                             <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                             <li><a href="{{route('dangxuat')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
                             @else
-                            <li><a href="javascript:void(0)"><i class="md md-settings-power"></i>Đăng nhập</a></li>
+                            <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
                                 @endif
                         </ul>
                     </div>
