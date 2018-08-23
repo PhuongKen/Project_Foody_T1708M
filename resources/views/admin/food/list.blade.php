@@ -9,7 +9,7 @@
             <h2 class="card-title">Danh sách món ăn</h2>
         </div>
         <div class="float-right mr-4">
-            <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i>Tạo mới</a>
+            <a href="/admin/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i>Tạo mới</a>
         </div>
         <div class="clearfix"></div>
         <div class="card-body">
@@ -39,7 +39,7 @@
                             <td>{{$item->description}}</td>
                             <td>{{$item->price}}</td>
                             <td>
-                                <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->avatar}}'); background-size: cover">
+                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/food/{{$item->avatar}}'); background-size: cover">
                                 </div>
                             </td>
                             <td>{{$item->status}}</td>

@@ -55,11 +55,28 @@ class FoodController extends Controller
                 'price.required' => 'Bạn chưa nhập số tiền',
                 'price.numeric' => 'Bạn phải nhập giá trị là số',
                 'price.min' => 'Bạn phải nhập giá trị lớn hơn 1',
+                'status.required' => 'Vui lòng nhập trạng thái của bạn',
         ]);
         $food = new Food();
         $food->restaurantID = Input::get('restaurantID');
         $food->name = Input::get('name');
-        $food->avatar = Input::get('avatar');
+        $getAvartar = '';
+        if ($request->hasFile('avatar')) {
+            $this->validate($request,
+                [
+                    'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    'avatar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
+                    'avatar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
+                ]
+            );
+            $avartar = $request->file('avatar');
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
+            $distional_path = public_path('/images/food');
+            $avartar->move($distional_path, $getAvartar);
+        }
+        $food->avatar = $getAvartar;
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
@@ -89,7 +106,7 @@ class FoodController extends Controller
         $restaurant = Restaurant::all();
         $food = Food::find($id);
         if ($food == null){
-            return view('404');
+            return redirect('/errors');
         }
         return view('admin.food.edit')->with('foods',$food)->with('restaurant',$restaurant);
     }
@@ -117,10 +134,11 @@ class FoodController extends Controller
                 'price.required' => 'Bạn chưa nhập số tiền',
                 'price.numeric' => 'Bạn phải nhập giá trị là số',
                 'price.min' => 'Bạn phải nhập giá trị lớn hơn 1',
+                'status.required' => 'Vui lòng nhập trạng thái của bạn',
             ]);
         $food = Food::find($id);
         if ($food == null){
-            return view('404');
+            return view('error.404');
         }
         $food->restaurantID = Input::get('restaurantID');
         $food->name = Input::get('name');
@@ -142,7 +160,7 @@ class FoodController extends Controller
     {
        $food = Food::find($id);
             if ($food == null){
-                return view('404');
+                return redirect('/errors');
             }
        $food -> delete();
     }

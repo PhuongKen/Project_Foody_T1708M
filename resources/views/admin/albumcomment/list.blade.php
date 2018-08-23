@@ -29,14 +29,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($cmt as $item)
+                    @foreach($foods as $item)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>{{$item->userID}}</td>
                             <td>{{$item->restaurantID}}</td>
                             <td>{{$item->commentID}}</td>
                             <td>
-                                <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/food/{{$item->avatar}}'); background-size: cover">
 
                                 </div>
                             </td>
