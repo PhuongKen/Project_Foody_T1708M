@@ -6,7 +6,7 @@
 <div class="card scoll">
     <div class="card-body">
         <div class="float-left">
-            <h2 class="card-title">Comment</h2>
+            <h2 class="card-title">AlbumComment</h2>
         </div>
         <div class="float-right mr-4">
             <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i>Tạo mới</a>
