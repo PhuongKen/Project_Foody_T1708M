@@ -36,5 +36,7 @@ Route::resource('/admin/order','OrderController');
 Route::resource('/admin/comment','CommentController');
 Route::resource('admin/album','AlbumController');
 Route::resource('admin/orderaddress','OrderAddessController');
+Route::resource('admin/orderdetail','OrderDetailController');
+
 
 
