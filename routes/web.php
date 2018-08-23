@@ -78,6 +78,10 @@ Route::get('dang-xuat-admin', [
     'as'=>'dangxuat',
     'uses'=>'AdminController@getLogout'
 ]);
+Route::get('admin', [
+    'as'=>'admin',
+    'uses'=>'AdminController@getHome'
+]);
 
 
 
