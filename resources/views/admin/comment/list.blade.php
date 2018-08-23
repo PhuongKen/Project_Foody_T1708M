@@ -43,7 +43,7 @@
                             {{--<td>{{$item->verifyEmail}}</td>--}}
                             {{--<td>{{$item->role}}</td>--}}
                             <td>
-                                <a href="/admin/food/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Edit</a>
+                                <a href="/admin/comment/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">Edit</a>
                                 <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">Delete</a>
                             </td>
                         </tr>
