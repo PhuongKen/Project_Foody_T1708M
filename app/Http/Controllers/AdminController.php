@@ -17,6 +17,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function getHome(){
+        return view('admin.home');
+    }
+
     public function getLogin()
     {
         if(Auth::check()){
@@ -39,4 +43,5 @@ class AdminController extends Controller
         Auth::logout();
         return redirect()->route('admin');
     }
+
 }
