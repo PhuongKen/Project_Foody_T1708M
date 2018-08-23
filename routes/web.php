@@ -36,7 +36,18 @@ Route::resource('/admin/order','OrderController');
 Route::resource('/admin/comment','CommentController');
 Route::resource('admin/album','AlbumCmtController');
 Route::resource('admin/orderaddress','OrderAddessController');
+
+Route::get('gui-mail','HomeController@sendMail');
+
 Route::resource('admin/orderdetail','OrderDetailController');
+Route::get('dang-ki', [
+    'as'=>'dangki',
+    'uses'=>'HomeController@getRegister'
+]);
+Route::post('dang-ki', [
+    'as'=>'dangki',
+    'uses'=>'HomeController@postRegister'
+]);
 
 
 

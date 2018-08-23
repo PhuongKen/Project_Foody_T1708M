@@ -7,11 +7,71 @@
  */
 
 namespace App\Http\Controllers;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
-
-class HomeController
+class HomeController extends Controller
 {
     public function getHome(){
         return view('client.index');
+    }
+
+    public function sendMail()
+    {
+        $data = array();
+        Mail::send('client.send_mail', $data, function ($message) {
+            $message->from('quangkhaivnt@gmail.com', 'quang khải');
+            $message->to('quangkhaivnt@gmail.com', 'rush');
+            $message->subject('Test Mail');
+        });
+        echo 'đã gửi';
+    }
+
+    public function getRegister()
+    {
+        return view('client.register');
+    }
+
+    public function postRegister(Request $req)
+    {
+        $this->validate($req,
+            [
+                'email'=>'required|email',
+                'name'=>'required',
+                'password'=>'required|min:6|max:20',
+                'comfirm_password'=>'required|same:password'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Email phải đúng định dạng',
+                'name.required'=>'Vui lòng nhập tên',
+                'password.required'=>'Mật khẩu không được bỏ trống',
+                'password.min'=>'Password không được nhỏ quá 6 kí tự',
+                'password.max'=>'Password không lớn quá 20 kí tự',
+                'comfirm_password.required'=>'Re password không được bỏ trống',
+                'comfirm_password.same'=>'Password không giống nhau'
+            ]
+        );
+        $user = new User();
+//         $user->name = Input::get('name');
+//         $user->email = Input::get('email');
+//         $user->password = Hash::make(Input::get('password'));
+//         $user->phone = Input::get('phone');
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+//        $user->phone = $req->phone;
+        $user->remember_token = csrf_token();
+        $user->save();
+        Mail::send('client.send_mail', ['user' => $user], function ($message) use ($user) {
+            $message->from('quangkhaivnt@gmail.com', 'quang khải');
+            $message->to($user->email, $user->name);
+            $message->subject('Xác nhận mật khẩu');
+        });
+        return redirect()->back()->with('thongbao', 'Đăng kí thành công,Kiểm tra mail để kích hoạt');
     }
 }
