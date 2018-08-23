@@ -27,14 +27,45 @@ Route::resource('/admin/ward','WardController');
 Route::resource('/admin/address','AddressController');
 Route::resource('/admin/album_restaurant','AlbumRestaurantController');
 Route::resource('/admin/user', 'UserController');
-Route::get('/foody/trang_chu','HomeController@getHome');
-Route::get('/foody/danh_muc','CategoryClientController@getCategory');
-Route::get('/foody/chi_tiet_mon_an','DetailController@getDetail');
-Route::resource('/foody/gio_hang','CartController');
+Route::get('/foody/trang-chu','HomeController@getHome');
+Route::get('/foody/danh-muc','CategoryClientController@getCategory');
+Route::get('/foody/chi-tiet-mon-an','DetailController@getDetail');
+Route::resource('/foody/gio-hang','CartController');
+Route::resource('/foody/thanh-toan','CheckoutController');
 Route::resource('/admin/category','CategoryController');
 Route::resource('/admin/order','OrderController');
 Route::resource('/admin/comment','CommentController');
-Route::resource('admin/album','AlbumController');
+Route::resource('admin/album','AlbumCmtController');
 Route::resource('admin/orderaddress','OrderAddessController');
+Route::resource('admin/detailorder','DetailOrderController');
+
+Route::get('gui-mail','HomeController@sendMail');
+
+Route::resource('admin/orderdetail','OrderDetailController');
+Route::get('dang-ki', [
+    'as'=>'dangki',
+    'uses'=>'HomeController@getRegister'
+]);
+Route::post('dang-ki', [
+    'as'=>'dangki',
+    'uses'=>'HomeController@postRegister'
+]);
+Route::get('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'HomeController@getLogin'
+]);
+Route::post('dang-nhap', [
+    'as'=>'dangnhap',
+    'uses'=>'HomeController@postLogin'
+]);
+Route::get('dang-xuat', [
+    'as'=>'dangxuat',
+    'uses'=>'HomeController@getLogout'
+]);
+Route::get('send-to-mail/{id}/{token}', [
+    'as'=>'send-to-mail',
+    'uses'=>'HomeController@verifyEmail'
+]);
+
 
 

@@ -9,13 +9,13 @@
             <div class="container">
                 <div class="tiva-slideshow-wrapper">
                     <div id="tiva-slideshow" class="nivoSlider">
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-1.jpg" alt="Slideshow Image">
                         </a>
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-2.jpg" alt="Slideshow Image">
                         </a>
-                        <a href="/foody/chi_tiet_mon_an">
+                        <a href="/foody/chi-tiet-mon-an">
                             <img class="img-responsive" src="/images/foody/home4-slideshow-3.jpg" alt="Slideshow Image">
                         </a>
                     </div>
@@ -95,11 +95,11 @@
                                         </div>
 
                                         <div class="product-rating">
-                                            <div class="star on"></div>
-                                            <div class="star on"></div>
-                                            <div class="star on "></div>
-                                            <div class="star on"></div>
-                                            <div class="star"></div>
+                                            <div class="glyphicon glyphicon-star on"></div>
+                                            <div class="glyphicon glyphicon-star on"></div>
+                                            <div class="glyphicon glyphicon-star on "></div>
+                                            <div class="glyphicon glyphicon-star on"></div>
+                                            <div class="glyphicon glyphicon-star"></div>
                                         </div>
 
                                         <div class="product-price">
@@ -110,14 +110,6 @@
                                         <div class="product-buttons">
                                             <a class="add-to-cart" href="#">
                                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                            </a>
-
-                                            <a class="add-wishlist" href="#">
-                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                            </a>
-
-                                            <a class="quickview" href="#">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                         </div>
                                     </div>

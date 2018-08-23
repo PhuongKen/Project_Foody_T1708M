@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Provind;
+use App\District;
+use App\Ward;
 
 class UserController extends Controller
 {
@@ -25,10 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $provind = Provind::all();
-        $district = District::all();
-        $ward = Ward::all();
-        return view('admin.user.form', compact('provind', 'district', 'ward'));
+
     }
 
     /**
@@ -39,46 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required|min:3',
-            'email' => 'required|email',
-            'password' => 'required|min:6|max:20',
-            'avartar' => 'required',
-            'phone' => 'required|numeric|min:9|max:12',
 
-        ],
-            [
-                'name.required' => 'Bạn chưa nhập tên',
-                'name.min'=>'Tên không ngắn quá 3 ký tự',
-                'email.required' => 'Bạn chưa nhập email',
-                'email.email'=>'Phải đúng định dạng email',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
-                'password.max'=>'Mật khẩu không dài quá 20 kí tự',
-                'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
-                'phone.required' => 'Bạn chưa nhập số điện thoại',
-                'phone.numeric'=>'Số điện thoại phải là số',
-                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
-                'phone.max'=>'Số điện thoại không dài quá 12 kí tự'
-            ]
-        );
-
-
-        $user = new User();
-        $address = new Address();
-        $address -> provindID = Input::get('provind');
-        $address -> districtID = Input::get('district');
-        $address -> wardID = Input::get('ward');
-        $address -> save();
-        $user -> addressID = $address-> id;
-        $user -> name = Input::get('name');
-        $user -> email = Input::get('email');
-        $user -> password = Hash::make(Input::get('password'));
-        $user -> avartar = Input::get('avartar');
-        $user -> phone = Input::get('phone');
-        $user -> status = Input::get('status');
-        $user -> save();
-        return redirect('/admin/user');
     }
 
     /**

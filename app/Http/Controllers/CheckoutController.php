@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\District;
+use App\Provind;
+use App\Ward;
 use Illuminate\Http\Request;
 
-class AlbumController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,10 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $provind = Provind::all();
+        $district = District::all();
+        $ward = Ward::all();
+        return view('client.checkout',compact('provind','district','ward'));
     }
 
     /**
@@ -23,7 +29,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
