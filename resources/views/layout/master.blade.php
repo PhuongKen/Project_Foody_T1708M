@@ -58,32 +58,14 @@
                                     <a href="product-grid-left-sidebar.html" title="Product">Danh mục</a>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-1.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc"
-                                                   title="Vegetables">Sang trọng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-2.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Fruits">Buffet</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-3.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Bread">Nhà hàng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-4.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Juices">Ăn chay</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-5.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Tea and coffee">Tiệc</a>
-                                            </li>
+                                            @foreach($categories as $c)
+                                                <li class="has-image">
+                                                    <img src="/images/foody/product-category-1.png"
+                                                         alt="Product Category Image">
+                                                    <a href="/foody/danh-sach-nha-hang/{{'?categoryID='.$c->id}}"
+                                                       title="Vegetables">{{$c->name}}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </li>
@@ -205,23 +187,24 @@
                             </div>
                             <div class="dropdown-menu">
                                 @if(Auth::check())
-                                <div class="item">
-                                    <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
-                                        khoản của {{Auth::user()->name}}</a>
-                                </div>
-                                <div class="item">
-                                    <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Đăng xuất
+                                    <div class="item">
+                                        <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
+                                            khoản của {{Auth::user()->name}}</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
+                                                    class="fa fa-cog"></i>Đăng xuất
                                         </a>
-                                </div>
+                                    </div>
                                 @else
-                                <div class="item">
-                                    <a href="/dang-nhap" title="Log in to your customer account"><i
-                                                class="fa fa-sign-in-alt"></i>Đăng nhập</a>
-                                </div>
-                                <div class="item">
-                                    <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
-                                        ký</a>
-                                </div>
+                                    <div class="item">
+                                        <a href="/dang-nhap" title="Log in to your customer account"><i
+                                                    class="fa fa-sign-in-alt"></i>Đăng nhập</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
+                                            ký</a>
+                                    </div>
                                 @endif
                             </div>
                         </div>
