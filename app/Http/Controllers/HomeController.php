@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\Category;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function getHome(){
-        return view('client.index');
+        $categories = Category::all();
+        return view('client.index',compact('categories'));
     }
 
     public function sendMail()
