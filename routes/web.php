@@ -25,7 +25,7 @@ Route::get('/foody/danh-sach-nha-hang', 'Client\FoodController@index');
 Route::get('/foody/chi-tiet-mon-an', 'DetailController@getDetail');
 Route::resource('/foody/gio-hang', 'CartController');
 Route::resource('/foody/thanh-toan', 'CheckoutController');
-Route::get('/foody/chi-tiet-nha-hang','Client\RestaurantController@index');
+Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
 //Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function (){
 Route::resource('/admin/category', 'CategoryController');
 Route::resource('/admin/order', 'OrderController');
@@ -80,13 +80,16 @@ Route::post('dang-nhap-admin', [
 Route::get('dang-xuat-admin', [
     'as' => 'dangxuat',
     'uses' => 'AdminController@getLogout',
-    'as'=>'dangxuatadmin',
-    'uses'=>'AdminController@getLogout'
+    'as' => 'dangxuatadmin',
+    'uses' => 'AdminController@getLogout'
 ]);
 Route::get('admin', [
     'as' => 'admin',
     'uses' => 'AdminController@getHome'
 ]);
-
+Route::get('/foody/them-vao-gio-hang/{id}', [
+    'as' => 'themvaogiohang',
+    'uses' => 'Client\CardController@index'
+]);
 
 

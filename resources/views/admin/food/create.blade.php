@@ -47,11 +47,13 @@
                 @endif
                 <div class="form-group">
                     <h5>Tên nhà hàng</h5>
-                    @foreach($restaurant as $item)
+
                     <select name="restaurantID">
-                        <option value="{{$item->id}}">{{$item->name}}</option>
-                    </select>
+                        @foreach($restaurant as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <h5>Tên món ăn</h5>
