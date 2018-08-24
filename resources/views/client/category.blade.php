@@ -62,7 +62,7 @@
                                         <div class="col-md-3 col-sm-4 col-xs-12">
                                             <div class="product-item">
                                                 <div class="product-image">
-                                                    <a href="/foody/">
+                                                    <a href="/foody/chi-tiet-nha-hang/{{'?id='.$list->id}}">
                                                         <img class="img-responsive" src="/images/restaurant/{{$list->avartar}}"
                                                              alt="Product Image">
                                                     </a>
