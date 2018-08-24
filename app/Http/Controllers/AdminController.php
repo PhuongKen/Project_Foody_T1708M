@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function getLogin()
     {
         if(Auth::check()){
-            return redirect('/admin/user');
+            return redirect('/admin');
         }else{
             return view('admin.login.login');
         }
@@ -32,8 +32,8 @@ class AdminController extends Controller
 
     public function postLogin(Request $req)
     {
-        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1,'role'=>1])) {
-            return redirect()->route('admin');
+        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
+            return redirect('/admin');
         }else{
             return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
         }
@@ -41,7 +41,7 @@ class AdminController extends Controller
 
     public function getLogout(){
         Auth::logout();
-        return redirect()->route('admin');
+        return redirect('/dang-nhap-admin');
     }
 
 }
