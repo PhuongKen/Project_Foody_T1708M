@@ -19,13 +19,13 @@ class AdminLoginMiddleware
 //        if(Auth::check()){
 //            $user = Auth::user();
 //            if($user->role == 1)
-//                return $next($request);
-////            elseif ($user->role == 0)
-////                return redirect('/foody/trang-chu');
+                return $next($request);
+//////            elseif ($user->role == 0)
+//////                return redirect('/foody/trang-chu');
 //            else
-//                return redirect()->route('dangnhapadmin');
+//                return redirect('/dang-nhap-admin');
 //        }else{
-//            return redirect()->route('dangnhapadmin');
+//            return redirect('/dang-nhap-admin');
 //        }
 
     }
