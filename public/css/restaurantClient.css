@@ -1,0 +1,140 @@
+.lead {
+    text-align: left;
+}
+
+.lead b {
+    font-weight: 700;
+    font-size: 20px;
+    text-shadow: 0 1px 1px #fff;
+    line-height: 1.2em;
+    white-space: nowrap;
+}
+
+.lead2 {
+    color: #888;
+    font-size: 12px;
+    text-align: left;
+}
+
+.lead2 span i{
+    padding-right: 5px;
+}
+
+.rateting {
+    font-size: 18px;
+    font-family: arial;
+    overflow: hidden;
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    background-color: #03ae03
+}
+
+.diem-danh-gia {
+    color: #03ae03;
+    font-size: 20px;
+    font-family: arial;
+    line-height: 1.4em;
+    font-weight: bold;
+}
+
+.phucloi {
+    color: #333;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: arial;
+    line-height: 1.4em;
+}
+
+.thoigian {
+    color: #03ae03;
+    text-align: left;
+    font-family: arial;
+    line-height: 1.4em;
+    color: #333;
+    font-size: 14px;
+}
+
+.thoigian span {
+    margin-right: 5px;
+}
+
+.navmenu {
+    line-height: 1.4em;
+    font-size: 14px;
+    color: #333;
+    font-family: arial;
+    text-align: left;
+}
+.bd1{
+    height: 48px;
+    border: 1px solid #ddd;
+    background-color: white;
+}
+
+.binhluan {
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.hinhanhcongdong {
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4em;
+}
+
+.main-content {
+    background: white;
+}
+
+.nhanxet {
+    margin-top: 20px;
+}
+
+.nhanxet2 {
+    background-color: white
+}
+
+.tennguoinhanxet {
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 14px;
+}
+
+.tennguoinhanxet2 {
+    font-family: arial;
+    line-height: 1.4em;
+    color: #666;
+    font-size: 11px;
+}
+
+.tensanphamnx {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    word-wrap: break-word;
+    color: #333;
+}
+
+.mieuta {
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.2em;
+    color: #333;
+    font-family: arial;
+}
+
+.giaca {
+    color: #333;
+    font-family: arial;
+    font-size: 12px;
+    line-height: 1.4em;
+}
