@@ -77,7 +77,7 @@ Route::post('dang-nhap-admin', [
     'uses'=>'AdminController@postLogin'
 ]);
 Route::get('dang-xuat-admin', [
-    'as'=>'dangxuat',
+    'as'=>'dangxuatadmin',
     'uses'=>'AdminController@getLogout'
 ]);
 Route::get('admin', [

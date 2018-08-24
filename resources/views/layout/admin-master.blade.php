@@ -153,7 +153,7 @@
                                 <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                                 <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                                <li><a href="{{route('dangxuat')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
+                                <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
                                 @else
                                 <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
                                     @endif
@@ -184,7 +184,7 @@
                             <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
                             <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                             <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                            <li><a href="{{route('dangxuat')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
+                            <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
                             @else
                             <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
                                 @endif
