@@ -35,7 +35,8 @@ class HomeController extends Controller
 
     public function getRegister()
     {
-        return view('client.register');
+        $categories = Category::all();
+        return view('client.register',compact('categories'));
     }
 
     public function postRegister(Request $req)
@@ -79,17 +80,19 @@ class HomeController extends Controller
 
     public function getLogin()
     {
+        $categories = Category::all();
         if(Auth::check()){
-            return view('client.index');
+            return view('client.index',compact('categories'));
         }else{
-            return view('client.login');
+            return view('client.login',compact('categories'));
         }
     }
 
     public function postLogin(Request $req)
     {
+        $categories = Category::all();
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
-            return view('client.index');
+            return view('client.index',compact('categories'));
         }else{
             return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
         }
