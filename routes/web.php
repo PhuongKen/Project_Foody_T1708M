@@ -14,8 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/admin/food','FoodController');
-Route::resource('/food','FoodController');
 Route::get('/errors', function (){
    return view('error.404');
 });
