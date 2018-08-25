@@ -88,5 +88,13 @@ Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
     'uses' => 'Client\CardController@index'
 ]);
+Route::get('edit-user/{id}', [
+    'as'=>'edituser',
+    'uses'=>'Client\UpdateUserController@getEdit'
+]);
+Route::post('edit-user/{id}', [
+    'as'=>'edituser',
+    'uses'=>'Client\UpdateUserController@postEdit'
+]);
 
 
