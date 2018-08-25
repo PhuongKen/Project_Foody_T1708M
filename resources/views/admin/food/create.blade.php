@@ -47,7 +47,6 @@
                 {{--@endif--}}
                 <div class="form-group">
                     <h5>Tên nhà hàng</h5>
-
                     <select name="restaurantID">
                         @foreach($restaurant as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
@@ -74,7 +73,6 @@
                         <option value="1">Không hoạt động</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Lưu">
                     <input type="reset" class="btn btn-success" value="Làm lại">
