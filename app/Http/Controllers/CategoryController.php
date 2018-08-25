@@ -113,10 +113,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category= Category::find($id);
+        $category=Category::find($id);
         if ($category==null){
             return view('404');
         }
         $category->delete();
+
     }
 }

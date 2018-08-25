@@ -19,30 +19,6 @@ Route::resource('/food','FoodController');
 Route::get('/errors', function (){
    return view('error.404');
 });
-
-Route::get('/foody/trang-chu', 'HomeController@getHome');
-Route::get('/foody/danh-sach-nha-hang', 'Client\FoodController@index');
-Route::get('/foody/chi-tiet-mon-an', 'DetailController@getDetail');
-Route::resource('/foody/gio-hang', 'CartController');
-Route::resource('/foody/thanh-toan', 'CheckoutController');
-Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
-//Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function (){
-Route::resource('/admin/category', 'CategoryController');
-Route::resource('/admin/order', 'OrderController');
-Route::resource('/admin/comment', 'CommentController');
-Route::resource('admin/album', 'AlbumCmtController');
-Route::resource('admin/orderaddress', 'OrderAddessController');
-Route::resource('admin/detailorder', 'DetailOrderController');
-Route::resource('/admin/food', 'FoodController');
-Route::resource('/admin/category', 'CategoryController');
-Route::resource('/admin/restaurant', 'RestaurantController');
-Route::resource('/admin/district', 'DistrictController');
-Route::resource('/admin/ward', 'WardController');
-Route::resource('/admin/address', 'AddressController');
-Route::resource('/admin/album_restaurant', 'AlbumRestaurantController');
-Route::resource('/admin/user', 'UserController');
-Route::resource('admin/orderdetail', 'OrderDetailController');
-//});
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('/foody/trang-chu','HomeController@getHome');
 Route::get('/foody/danh-muc','CategoryClientController@getCategory');
@@ -101,12 +77,8 @@ Route::post('dang-nhap-admin', [
     'uses'=>'AdminController@postLogin'
 ]);
 Route::get('dang-xuat-admin', [
-    'as' => 'dangxuat',
-    'uses' => 'AdminController@getLogout',
     'as' => 'dangxuatadmin',
     'uses' => 'AdminController@getLogout',
-    'as'=>'dangxuatadmin',
-    'uses'=>'AdminController@getLogout'
 ]);
 Route::get('admin', [
     'as'=>'admin',
