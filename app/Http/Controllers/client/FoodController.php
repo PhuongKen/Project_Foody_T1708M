@@ -32,8 +32,10 @@ class FoodController
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID',$selected_categoryId)
+            ->orderBy('created_at', 'DESC')
             ->get()->toArray();
-//        print_r($address);
+//        print_r(array_keys($address));
+
         return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address'));
     }
 }

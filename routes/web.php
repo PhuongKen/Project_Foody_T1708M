@@ -19,7 +19,9 @@ Route::get('/errors', function (){
 });
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('/foody/trang-chu','HomeController@getHome');
-Route::get('/foody/danh-muc','CategoryClientController@getCategory');
+Route::get('/foody/danh-sach-nha-hang','Client\FoodController@index');
+Route::get('/foody/chi-tiet-nha-hang','Client\RestaurantController@index');
+Route::get('/foody/chi-tiet-nha-hang','Client\RestaurantController@index');
 Route::get('/foody/chi-tiet-mon-an','DetailController@getDetail');
 Route::resource('/foody/gio-hang','CartController');
 Route::resource('/foody/thanh-toan','CheckoutController');
