@@ -22,9 +22,10 @@ class RestaurantController
             $food = Food::where('status',1);
             $selected_restaurantId = $request->get('id');
             $restaurant = Restaurant::find($selected_restaurantId);
-            $food = $food->where('restaurantID', $selected_restaurantId);
-            $list_food = $food->orderBy('created_at','DESC')->paginate(18);
-//            $list_food = $food->orderBy('created_at', 'DESC')->paginate(50);
+            $food = $food->where('restaurantID', $selected_restaurantId)->get();
+            $list_food = $food->take(count($food));
+            $chunk_list = $list_food->chunk(3);
+//            dd($chunk_list);
             $address = DB::table('restaurants')
                 ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
                 ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
@@ -33,6 +34,6 @@ class RestaurantController
                 ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
                 ->where('restaurants.id',$selected_restaurantId)
                 ->get()->toArray();
-            return view('client.restaurant',compact('categories','list_food','address','restaurant'));
+            return view('client.restaurant',compact('categories','chunk_list','address','restaurant'));
         }
 }
