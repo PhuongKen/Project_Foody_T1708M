@@ -43,9 +43,9 @@
     <div class="register-page">
         <div class="register-form form">
             <div class="block-title">
-                <h2 class="title"><span>Đăng kí tài khoản</span></h2>
+                <h2 class="title"><span>Thông tin tài khoản</span></h2>
             </div>
-            <form action="{{route('dangki')}}" method="post">
+            <form action="/edit-user/{{$list_obj->id}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <label>Tỉnh\Thành Phố</label>
@@ -73,23 +73,30 @@
                 </div>
                 <div class="form-group">
                     <label>Tên</label>
-                    <input type="text" value="" name="name">
+                    <input type="text" value="{{$list_obj->name}}" name="name">
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" value="" name="email">
-                </div>
-
                 <div class="form-group">
                     <label>Mật khẩu</label>
-                    <input type="password" value="" name="password">
+                    <input type="password" value="{{$list_obj->password}}" name="password">
                 </div>
                 <div class="form-group">
                     <label>Nhập lại mật khẩu</label>
                     <input type="password" value="" name="comfirm_password">
                 </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện:</label>
+                    <div class="kv-avatar">
+                        <div class="file-loading">
+                            <input name="avartar" value="/images/uer/{{$list_obj->avartar}}" type="file">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại:</label>&nbsp<input type="text" name="phone"
+                                                             placeholder="Nhập số điện thoại" value="{{$list_obj->phone}}">
+                </div>
                 <div class="form-group text-center">
-                    <input type="submit" class="btn btn-primary" value="Đăng kí">
+                    <input type="submit" class="btn btn-primary" value="Thay dổi">
                 </div>
             </form>
         </div>
