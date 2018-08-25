@@ -103,10 +103,6 @@ Route::post('dang-nhap-admin', [
 Route::get('dang-xuat-admin', [
     'as' => 'dangxuat',
     'uses' => 'AdminController@getLogout',
-    'as' => 'dangxuatadmin',
-    'uses' => 'AdminController@getLogout',
-    'as'=>'dangxuatadmin',
-    'uses'=>'AdminController@getLogout'
 ]);
 Route::get('admin', [
     'as'=>'admin',
