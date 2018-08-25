@@ -84,8 +84,8 @@ Route::post('dang-nhap', [
     'as'=>'dangnhap',
     'uses'=>'HomeController@postLogin'
 ]);
-Route::get('dang-xuat', [
-    'as'=>'dangxuat',
+Route::get('dang-xuat-admin', [
+    'as'=>'dangxuatadmin',
     'uses'=>'HomeController@getLogout'
 ]);
 Route::get('send-to-mail/{id}/{token}', [
