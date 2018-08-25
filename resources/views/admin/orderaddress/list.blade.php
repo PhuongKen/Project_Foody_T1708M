@@ -1,68 +1,76 @@
-@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản'])
-@section('css')
-    <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
-@endsection
+@extends('layout.admin-master',['page_title'=>'Manager restaurant'])
 @section('content')
-    <div class="card scoll">
-        <div class="card-body">
-            <div class="float-left">
-                <h2 class="card-title">Danh sách món ăn</h2>
-            </div>
-            <div class="float-right mr-4">
-                <a href="/food/create" title="Tạo mới sản phẩm"><i class="fas fa-plus-square"></i> Tạo mới</a>
-            </div>
-            <div class="clearfix"></div>
-            <div class="card-body">
-                @if($list_obj->count() > 0)
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">orderID</th>
-                            <th scope="col">phone</th>
-                            <th scope="col">email</th>
-                            <th scope="col">addressID</th>
-                            <th scope="col">create_at</th>
-                            <th scope="col">update_at</th>
-                            {{--<th scope="col">Số điện thoại</th>--}}
-                            {{--<th scope="col">Status</th>--}}
-                            {{--<th scope="col">VerifyEmail</th>--}}
-                            {{--<th scope="col">role</th>--}}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($list_obj as $item)
-                            <tr>
-                                <th scope="row">{{$item->ID}}</th>
-                                <th scope="row">{{$item->orderID}}</th>
-                                <th scope="row">{{$item->phone}}</th>
-                                <th scope="row">{{$item->email}}</th>
-                                <th scope="row">{{$item->addressID}}</th>
-                                <th scope="row">{{$item->created_at}}</th>
-                                <th scope="row">{{$item->updated_at}}</th>
-                                {{--<td>{{$item->phone}}</td>--}}
-                                {{--<td>{{$item->status}}</td>--}}
-                                {{--<td>{{$item->verifyEmail}}</td>--}}
-                                {{--<td>{{$item->role}}</td>--}}
-                                <td>
-                                    <a href="/admin/orderaddress/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
-                                    <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">delete</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <div class="row float-right mr-3">
-                        {{$list_obj->links()}}
-                    </div>
-                @else
-                    <div class="alert alert-primary" role="alert">
-                        Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user" class="btn-link" href="/admin/user/create">thêm sản phẩm</a> mới.
-                    </div>
-                @endif
-            </div>
+    <div class="row">
+        <div class="col-md-10">
+            <h3>
+                <label>Manage</label>
+                <small>Restaurant</small>
+            </h3>
+        </div>
+        <div class="col-2">
+            <ol class="breadcrumb">
+                <li><a href="/admin/home"><i class="fas fa-home"></i></i>home page</a></li>
+                <li class="active">Restaurant</li>
+            </ol>
         </div>
     </div>
+    <div class="row form-group" style="margin-top: 30px">
+        <div class="col-md-12 col-xs-12">
+            <a href="/admin/orderaddress/create" class="btn btn-primary">Create new restaurant</a>
+        </div>
+    </div>
+    <!-- col-md-12 -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Datatable</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">orderID</th>
+                                    <th scope="col">phone</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">addressID</th>
+                                    <th scope="col">create_at</th>
+                                    <th scope="col">update_at</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                @foreach($list_obj as $item)
+                                    <tr>
+                                        <th scope="row">{{$item->id}}</th>
+                                        <th scope="row">{{$item->orderID}}</th>
+                                        <th scope="row">{{$item->phone}}</th>
+                                        <th scope="row">{{$item->email}}</th>
+                                        <th scope="row">{{$item->addressID}}</th>
+                                        <th scope="row">{{$item->created_at}}</th>
+                                        <th scope="row">{{$item->updated_at}}</th>
+                                        <td>
+                                            <a href="/admin/orderaddress/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
+                                            <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="row float-right mr-3">
+                                {{$list_obj->links()}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- End Row -->
     <script>
         $('.btn-delete').click(function () {
             var cateId = $(this).attr('href');
@@ -85,4 +93,8 @@
             }
         });
     </script>
+    <!-- /.row -->
+@endsection
+@section('script')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection

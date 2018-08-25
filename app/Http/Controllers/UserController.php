@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Provind;
+use App\District;
+use App\Ward;
 
 class UserController extends Controller
 {
@@ -25,10 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $provind = Provind::all();
-        $district = District::all();
-        $ward = Ward::all();
-        return view('admin.user.form', compact('provind', 'district', 'ward'));
+
     }
 
     /**
@@ -39,39 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'avartar' => 'required',
-            'phone' => 'required',
 
-        ],
-            [
-                'name.required' => 'Bạn chưa nhập tên',
-                'email.required' => 'Bạn chưa nhập email',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
-                'phone.required' => 'Bạn chưa nhập số điện thoại',
-            ]
-        );
-
-
-        $user = new User();
-        $address = new Address();
-        $address -> provindID = Input::get('provind');
-        $address -> districtID = Input::get('district');
-        $address -> wardID = Input::get('ward');
-        $address -> save();
-        $user -> addressID = $address-> id;
-        $user -> name = Input::get('name');
-        $user -> email = Input::get('email');
-        $user -> password = Hash::make(Input::get('password'));
-        $user -> avartar = Input::get('avartar');
-        $user -> phone = Input::get('phone');
-        $user -> status = Input::get('status');
-        $user -> save();
-        return redirect('/admin/user');
     }
 
     /**
@@ -117,7 +85,8 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6|max:20',
             'avartar' => 'required',
-            'phone' => 'required|size:11|numeric',
+            'phone' => 'required|numeric|min:9|max:12',
+
         ],
             [
                 'name.required' => 'Bạn chưa nhập tên',
@@ -129,8 +98,9 @@ class UserController extends Controller
                 'password.max'=>'Mật khẩu không dài quá 20 kí tự',
                 'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
-                'phone.size'=>'Số điện thoại phải đúng 11 số',
-                'phone.numeric'=>'Số điện thoại phải là số'
+                'phone.numeric'=>'Số điện thoại phải là số',
+                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
+                'phone.max'=>'Số điện thoại không dài quá 12 kí tự'
             ]
         );
 

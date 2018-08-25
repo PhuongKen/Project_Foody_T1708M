@@ -358,3 +358,35 @@
 .product-detail{
     margin-top: 20px;
 }
+.food-address {
+    clear: both;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.food-address1 {
+    font-size: 12px;
+    color: #888;
+    white-space: nowrap;
+    font-family: arial;
+    line-height: 1.4em;
+}
+
+.food-address2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.food-address4 {
+    text-transform: capitalize;
+    color: #000;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+}
+.product-item1{
+    background: url('/images/foody/backgroundFoody.jpg');
+    background-size: cover;
+}

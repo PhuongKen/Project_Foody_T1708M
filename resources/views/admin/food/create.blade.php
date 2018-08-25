@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/orderaddress" method="post" enctype="multipart/form-data">
+    <form action="/admin/food" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Thêm món ăn</h4></div>
                     <div>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -31,51 +31,54 @@
                             <span class="sr-only">Close</span>
                         </button>
                     </div>
-                    <div class="form-group">
-                        <h5>orderID</h5>
-                        <select name="orderID">
-                            <option value="0">order 1</option>
-                            <option value="1">order 2</option>
-                            <option value="2">order 3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <h5>phone</h5>
-                        <input type="text" placeholder="Nhập phone" size="100" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <h5>email</h5>
-                        <input type="text" placeholder="Nhập tên email" size="100" name="email">
-                    </div>
-                    <div class="form-group">
-                        <h5>addressID</h5>
-                        <select name="addressID">
-                            <option value="0">address 1</option>
-                            <option value="1">address 2</option>
-                            <option value="2">address 3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Lưu">
-                        <input type="reset" class="btn btn-success" value="Làm lại">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select name="status">
-                                <option value="0">Không bán</option>
-                                <option value="1">Còn hàng</option>
-                                <option value="2">Hết hàng</option>
-                            </select>
-                        </div>
+                </div>
+                {{--@if ($errors->any())--}}
+                    {{--<div class="alert alert-danger alert-dismissible" role="alert">--}}
+                        {{--<ul>--}}
+                            {{--@foreach($errors->all() as $error)--}}
+                                {{--<li>{{$error}}</li>--}}
+                            {{--@endforeach--}}
+                        {{--</ul>--}}
+                        {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+                            {{--<span aria-hidden="true">&times;</span>--}}
+                            {{--<span class="sr-only">Close</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--@endif--}}
+                <div class="form-group">
+                    <h5>Tên nhà hàng</h5>
+                    <select name="restaurantID">
+                        @foreach($restaurant as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
+                    </select>
 
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Lưu">
-                            <input type="reset" class="btn btn-success" value="Làm lại">
-                        </div>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Tên món ăn</h5>
+                    <input type="text" placeholder="Nhập name" size="100" name="name">
+                </div>
+                <div class="form-group d-block mt-2">
+                    <h5>Image</h5>
+                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar" value="{{$item->image}}">
+                </div>
+                <div class="form-group">
+                    <h5>Giá tiền</h5>
+                    <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
+                </div>
+                <div class="form-group">
+                    <h5>Trạng thái</h5>
+                    <select name="status" id="">
+                        <option value="1">Hoạt động</option>
+                        <option value="1">Không hoạt động</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Lưu">
+                    <input type="reset" class="btn btn-success" value="Làm lại">
                 </div>
             </div>
         </div>
-        </div> <!-- End row -->
     </form>
 @endsection
 @section('script')
@@ -101,28 +104,6 @@
             // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
             layoutTemplates: {main2: '{preview} ' + btnCust + ' {remove} {browse}'},
             allowedFileExtensions: ["jpg", "png", "gif"]
-        });
-        // Lấy id provind và set district theo id provind
-        var idProvind = $("#provind").val();
-        $.get("/admin/district/" + idProvind, function (data) {
-            $("#district").html(data);
-        });
-        $("#provind").change(function () {
-            var idProvind = $(this).val();
-            $.get("/admin/district/" + idProvind, function (data) {
-                $("#district").html(data);
-            });
-        });
-        // Lấy id distict và set district theo id ward
-        var idDistrict = $("#district").val();
-        $.get("/admin/ward/" + idDistrict, function (data) {
-            $("#ward").html(data);
-        });
-        $("#district").change(function () {
-            var idDistrict = $(this).val();
-            $.get("/admin/ward/" + idDistrict, function (data) {
-                $("#ward").html(data);
-            });
         });
     </script>
 @endsection

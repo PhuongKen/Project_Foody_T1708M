@@ -7,7 +7,7 @@
         <div class="col-md-10">
             <h3>
                 <label>Manage</label>
-                <small>Restaurant</small>
+                <small>User</small>
             </h3>
         </div>
         <div class="col-2">
@@ -108,6 +108,7 @@
                             </table>
 
                         </div>
+
                     </div>
                 </div>
             </div>

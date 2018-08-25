@@ -53,22 +53,26 @@ class RestaurantController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'required',
-                'avartar' => 'required',
-                'phone' => 'required',
+                'name' => 'required|min:15',
+                'avartar' => 'required|mimes:jpg,jpeg,png,gif|max:2048',
+                'phone' => 'required|numeric',
                 'openTime' => 'required',
                 'closeTime' => 'required',
-                'shortDescription' => 'required',
-                'description' => 'required',
+                'shortDescription' => 'required|min:70',
+                'description' => 'required|min:250',
             ],
             [
                 'name.required' => 'Bạn chưa nhập tên nhà hàng',
+                'name.min' => 'Tên nhà hàng phải lớn hơn 15 ký tự',
                 'avartar.required' => 'Bạn chưa thêm ảnh',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.numeric' => 'Số điện thoại không chứa ký tự chũ cái và ký tự đặc biệt',
                 'openTime.required' => 'Bạn chưa nhập giờ mở cửa',
                 'closeTime.required' => 'Bạn chưa nhập giờ đóng cửa',
                 'shortDescription.required' => 'Bạn chưa nhập mô tả ngắn',
+                'shortDescription.min'=>'Mô tả ngắn phải lớn hơn 70 ký tự',
                 'description.required' => 'Bạn chưa nhập mô tả chi tiết',
+                'description.min'=>'Mô tả chi tiết phải lớn hơn 250 ký tự',
             ]
 
         );

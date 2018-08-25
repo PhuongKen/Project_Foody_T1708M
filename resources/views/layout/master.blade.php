@@ -19,8 +19,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
-
     <!-- Vendor CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/material-design-iconic-font.min.css')}}">
@@ -51,39 +51,21 @@
                         <div id="main-menu">
                             <ul class="menu">
                                 <li class="dropdown">
-                                    <a href="/foody/trang_chu" title="Trang chủ">Trang chủ</a>
+                                    <a href="/foody/trang-chu" title="Trang chủ">Trang chủ</a>
                                 </li>
 
                                 <li class="dropdown">
                                     <a href="product-grid-left-sidebar.html" title="Product">Danh mục</a>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-1.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh_muc"
-                                                   title="Vegetables">Sang trọng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-2.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Fruits">Buffet</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-3.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Bread">Nhà hàng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-4.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Juices">Ăn chay</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-5.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh_muc" title="Tea and coffee">Tiệc</a>
-                                            </li>
+                                            @foreach($categories as $c)
+                                                <li class="has-image">
+                                                    <img src="/images/foody/product-category-1.png"
+                                                         alt="Product Category Image">
+                                                    <a href="/foody/danh-sach-nha-hang/{{'?categoryID='.$c->id}}"
+                                                       title="Vegetables">{{$c->name}}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </li>
@@ -103,8 +85,8 @@
                     <div class="col-lg-2 col-md-2 col-sm-12 header-center justify-content-center">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="home-4.html">
-                                <img class="img-responsive" src="/images/foody/logo.png" alt="Logo">
+                            <a href="/foody/trang-chu">
+                                <img class="img-responsive" src="/images/foody/anhfoody2.png" alt="Logo">
                             </a>
                         </div>
 
@@ -184,9 +166,9 @@
                                         <tr>
                                             <td colspan="3">
                                                 <div class="cart-button">
-                                                    <a class="btn btn-primary" href="/foody/gio_hang"
+                                                    <a class="btn btn-primary" href="/foody/gio-hang"
                                                        title="View Cart">Xem đơn hàng</a>
-                                                    <a class="btn btn-primary" href="product-checkout.html"
+                                                    <a class="btn btn-primary" href="/foody/thanh-toan"
                                                        title="Checkout">Thanh toán</a>
                                                 </div>
                                             </td>
@@ -204,19 +186,26 @@
                                 <i class="fa fa-bars"></i>
                             </div>
                             <div class="dropdown-menu">
-                                <div class="item">
-                                    <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
-                                        khoản của tôi</a>
-                                </div>
-                                <div class="item">
-                                    <a href="user-login.html" title="Log in to your customer account"><i
-                                                class="fa fa-sign-in-alt"></i>Đăng nhập</a>
-                                </div>
-                                <div class="item">
-                                    <a href="user-register.html" title="Register Account"><i class="fa fa-user"></i>Đăng
-                                        ký</a>
-                                </div>
-
+                                @if(Auth::check())
+                                    <div class="item">
+                                        <a href="/edit-user/{{Auth::user()->id}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
+                                            khoản của {{Auth::user()->name}}</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
+                                                    class="fa fa-cog"></i>Đăng xuất
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="item">
+                                        <a href="/dang-nhap" title="Log in to your customer account"><i
+                                                    class="fa fa-sign-in-alt"></i>Đăng nhập</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
+                                            ký</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -241,7 +230,7 @@
                             <div class="block text">
                                 <div class="block-content">
                                     <a href="index.html" class="logo-footer">
-                                        <img src="/images/foody/logo-2.png" alt="Logo">
+                                        <img src="/images/foody/anhfoody2.png" alt="Logo">
                                     </a>
 
                                     <div class="contact">
@@ -387,7 +376,7 @@
 </div>
 
 <!-- Vendor JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/jquery.countdown.js')}}"></script>

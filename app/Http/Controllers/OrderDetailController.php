@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Order_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class OrderDetailController extends Controller
 {
@@ -13,8 +15,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $list_obj = Order_detail::orderBy('created_at', 'DESC')->paginate(3);
+        return view('admin.orderdetail.list')->with('list_obj', $list_obj);    }
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +25,7 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.orderdetail.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orderdetail = new Order_detail();
+        $orderdetail->orderID = Input::get('orderID');
+        $orderdetail->foodID = Input::get('foodID');
+        $orderdetail->nameProduct = Input::get('nameProduct');
+        $orderdetail->image = Input::get('image');
+        $orderdetail->price = Input::get('price');
+        $orderdetail->amount = Input::get('amount');
+
+        $orderdetail->save();
+        return redirect('/admin/orderdetail');
     }
 
     /**
@@ -56,7 +67,8 @@ class OrderDetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orderdetail = Order_detail::find($id);
+        return view('admin.orderdetail.edit')->with('orderaddress', $orderdetail);
     }
 
     /**
@@ -68,7 +80,18 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $orderdetail = Order_detail::find($id);
+        if ($orderdetail == null) {
+            return view('404');
+        }
+        $orderdetail->orderID = Input::get('orderID');
+        $orderdetail->foodID = Input::get('foodID');
+        $orderdetail->nameProduct = Input::get('nameProduct');
+        $orderdetail->image = Input::get('image');
+        $orderdetail->price = Input::get('price');
+        $orderdetail->amount = Input::get('amount');
+        $orderdetail->save();
+        return redirect('/admin/orderdetail ');
     }
 
     /**

@@ -29,14 +29,23 @@
                             <span class="sr-only">Content</span>
                         </button>
                     </div>
-                    <div>
-
-
-                            </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    @endif
                      <div class="row">
                          <div class="col-md-4">
                             <h5>UserID</h5>
-                            <select name="UserID">
+                            <select name="userID">
                                 <option value="0">User 1</option>
                                 <option value="1">User 2</option>
                                 <option value="2">User 3</option>
@@ -44,7 +53,7 @@
                         </div>
                          <div class="col-md-4">
                              <h5>RestaurantID</h5>
-                             <select name="RestaurantID">
+                             <select name="restaurantID">
                                  <option value="0">User 1</option>
                                  <option value="1">User 2</option>
                                  <option value="2">User 3</option>
@@ -52,7 +61,7 @@
                          </div>
                          <div class="col-md-4">
                              <h5>Type</h5>
-                             <select name="Type">
+                             <select name="commentType">
                                  <option value="0">Cha</option>
                                  <option value="1">Con</option>
                              </select>
@@ -61,7 +70,7 @@
                      </div>
                     <div class=" d-block">
                         <h5>Title</h5>
-                        <input type="text" placeholder="Nhập tiêu đề" size="100" name="Title">
+                        <input type="text" placeholder="Nhập tiêu đề" size="100" name="title">
                     </div>
                     <div class="form-group">
                         <h5>Content</h5>

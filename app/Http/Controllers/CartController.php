@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -13,7 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('client.card');
+        $categories = Category::all();
+        return view('client.card',compact('categories'));
     }
 
     /**

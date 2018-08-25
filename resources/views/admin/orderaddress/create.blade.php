@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4></div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Add orderaddress</h4></div>
                     <div>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -31,6 +31,19 @@
                             <span class="sr-only">Close</span>
                         </button>
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <h5>orderID</h5>
                         <select name="orderID">
