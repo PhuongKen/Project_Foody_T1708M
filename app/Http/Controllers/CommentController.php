@@ -45,7 +45,7 @@ class CommentController extends Controller
             'restaurantID' => 'required',
             'commentType' => 'required',
             'title' => 'required',
-            'content' => 'required',
+            'Content' => 'required',
         ],
             [
                 'userID.required' => 'Vui lòng nhập userID',

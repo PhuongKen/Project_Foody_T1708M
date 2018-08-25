@@ -113,7 +113,7 @@ class HomeController extends Controller
             $user->verifyEmail = 1;
             $user->save();
         }
-        return redirect()->route('dangki')->with(['thanhcong', 'Đã kích hoạt tài khoản']);
+        return redirect()->route('dangnhap')->with(['thanhcong', 'Đã kích hoạt tài khoản']);
     }
 
 }

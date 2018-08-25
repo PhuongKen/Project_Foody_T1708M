@@ -61,27 +61,26 @@ class FoodController extends Controller
         $food->restaurantID = Input::get('restaurantID');
         $food->name = Input::get('name');
         $getAvartar = '';
-//        if ($request->hasFile('avatar')) {
-//            $this->validate($request,
-//                [
-//                    'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
-//                ],
-//                [
-//                    'avatar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
-//                    'avatar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
-//                ]
-//            );
-//            $avartar = $request->file('avatar');
-//            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
-//            $distional_path = public_path('/images/food');
-//            $avartar->move($distional_path, $getAvartar);
-//        }
-        $food->avatar = Input::get('image');
+        if ($request->hasFile('avatar')) {
+            $this->validate($request,
+                [
+                   'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    'avatar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
+                    'avatar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
+                ]
+            );
+            $avartar = $request->file('avatar');
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
+            $distional_path = public_path('/images/food');
+            $avartar->move($distional_path, $getAvartar);
+        }
+        $food->avartar = Input::get('avatar');
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
         return redirect('/admin/food');
-
     }
 
     /**
