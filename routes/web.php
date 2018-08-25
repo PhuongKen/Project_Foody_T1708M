@@ -85,7 +85,7 @@ Route::post('dang-nhap', [
     'uses'=>'HomeController@postLogin'
 ]);
 Route::get('dang-xuat-admin', [
-    'as'=>'dangxuatadmin',
+    'as'=>'dangxuat',
     'uses'=>'HomeController@getLogout'
 ]);
 Route::get('send-to-mail/{id}/{token}', [
@@ -101,7 +101,7 @@ Route::post('dang-nhap-admin', [
     'uses'=>'AdminController@postLogin'
 ]);
 Route::get('dang-xuat-admin', [
-    'as' => 'dangxuat',
+    'as' => 'dangxuatadmin',
     'uses' => 'AdminController@getLogout',
 ]);
 Route::get('admin', [
