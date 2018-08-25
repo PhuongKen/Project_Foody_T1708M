@@ -86,95 +86,25 @@
 
     </div> <!-- End Row -->
     <script>
-
         $('.btn-delete').click(function () {
-            var thisButton = $(this);
-            swal({
-                text: "Bạn có chắc muốn xoá nhà hàng này không?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Huỷ bỏ',
-                buttonsStyling: false
-            }).then(function() {
-                var restaurantID = thisButton.attr('href');
-                var addressID = thisButton.attr('data-address');
+            var cateId = $(this).attr('href');
+            var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
+            if(user_confirm){
                 $.ajax({
-                    url: '/admin/album_restaurant/' + restaurantID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
+                    url: '/admin/category/' + cateId,
+                    method:'DELETE',
+                    data:{
+                        '_token': "{{ csrf_token() }}"
                     },
-                    success: function (response) {
-                        swal({
-                            text: 'ảnh đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
+                    success:function (response) {
+                        alert('Xoá thành công');
+                        window.location.reload();
                     },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
+                    error:function () {
+                        alert('Có lỗi xảy ra, vui lòng thử lại.');
                     }
                 });
-                $.ajax({
-                    url: '/admin/restaurant/' + restaurantID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Nhà hàng đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-                $.ajax({
-                    url: '/admin/address/' + addressID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Địa chỉ đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2*1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-            });
-            return false;
+            }
         });
     </script>
     <!-- /.row -->
