@@ -98,8 +98,9 @@ class HomeController extends Controller
         }
     }
     public function getLogout(){
+        $categories = Category::all();
         Auth::logout();
-        return view('client.index');
+        return view('client.index',compact('categories'));
     }
 
     public function verifyEmail($id, $token)
