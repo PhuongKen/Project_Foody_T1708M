@@ -18,7 +18,7 @@ $('.btn-card').click(function () {
                 new_content += '<tr>';
                 new_content += '<td class="product-image">';
                 new_content += '<a href="product-detail-left-sidebar.html">';
-                new_content += '<img src="/images/foody/' + new_items[i].food.avatar + '" alt="Product">';
+                new_content += '<img src="/images/food/' + new_items[i].food.avatar + '" alt="Product">';
                 new_content += '</a>';
                 new_content += '</td>';
                 new_content += '<td>';
@@ -41,6 +41,18 @@ $('.btn-card').click(function () {
                 new_content += '</td>';
                 new_content += '</tr>';
             }
+            new_content += '<tr class="total">';
+            new_content += '<td>Tổng giá:</td>';
+            new_content += '<td colspan="2" id="header-cart-total">{{\\App\\Cart::getCart()->getTotalMoneyString()}}</td>';
+            new_content += '</tr>';
+            new_content += '<tr>';
+            new_content += '<td colspan="3">';
+            new_content += '<div class="cart-button">';
+            new_content += '<a class="btn btn-primary" href="/foody/xem-gio-hang" title="View Cart">Xem đơn hàng</a>';
+            new_content += '<a class="btn btn-primary" href="/foody/thanh-toan" title="Checkout">Thanh toán</a>';
+            new_content += '</div>';
+            new_content += '</td>';
+            new_content += '</tr>';
             if (new_count == undefined) {
                 $('#cart-count').text(1);
             } else {

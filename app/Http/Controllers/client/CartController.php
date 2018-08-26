@@ -127,7 +127,7 @@ class CartController extends Controller
         return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
 
-    public function destroyCart($id)
+    public function destroyCart()
     {
         if (Session::has('cart')) {
             $cart = Session::get('cart');
