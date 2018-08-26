@@ -36,7 +36,8 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="effect">
                                 <a href="#">
-                                    <img class="img-responsive" src="/images/restaurant/{{$restaurant->avartar}}" alt="Intro Image">
+                                    <img class="img-responsive" src="/images/restaurant/{{$restaurant->avartar}}"
+                                         alt="Intro Image">
                                 </a>
                             </div>
                         </div>
@@ -101,9 +102,12 @@
                                                 </div>
 
                                                 <div class="product-buttons">
-                                                    <a class="add-to-cart" href="/" style="line-height: 100px">
-                                                        <span>Đặt món</span>
-                                                    </a>
+                                                    <button class="btn-card" id="add-cart-{{$item->id}}">
+                                                        Đặt món
+                                                    </button>
+                                                    {{--<a href="/foody/them-gio-hang?id={{$item->id}}&quantity=1">--}}
+                                                        {{--Thêm vào giỏ hàng--}}
+                                                    {{--</a>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -116,6 +120,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

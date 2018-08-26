@@ -19,6 +19,7 @@ class CreateFoodsTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->integer('price');
+            $table->integer('discount');
             $table->integer('status')->default(1); // 0 hết, 1 còn, 2 không bán nữa.
             $table->timestamps();
         });
