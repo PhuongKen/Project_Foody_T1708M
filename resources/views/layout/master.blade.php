@@ -18,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
+    {{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
+    {{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
@@ -108,13 +108,13 @@
 
                         <!-- Cart -->
                         <div class="block-cart dropdown">
-                            <div class="cart-title">
+                            <div class="cart-title ">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <span class="cart-count" id="cart-count">{{\App\Cart::getTotalItem()}}</span>
                             </div>
 
                             <div class="dropdown-content">
-                                <div class="cart-content">
+                                <div class="cart-content" style="overflow: scroll; height: 400px; width: 415px">
                                     <table>
                                         <tbody id="header-cart-wrapitem">
                                         @if(count(\App\Cart::getCart()->items)>0)
@@ -136,7 +136,8 @@
                                                         </div>
                                                     </td>
                                                     <td class="action">
-                                                        <a class="remove" href="#">
+                                                        <a class="remove"
+                                                           href="{{route('xoa1sanpham',$item->food->id)}}">
                                                             <i class="fa fa-trash-alt" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
@@ -167,16 +168,16 @@
                             </div>
                         </div>
 
-
                         <!-- My Account -->
                         <div class="my-account dropdown toggle-icon">
                             <div class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bars"></i>
                             </div>
-                            <div class="dropdown-menu ">
+                            <div class="dropdown-menu">
                                 @if(Auth::check())
                                     <div class="item">
-                                        <a href="/edit-user/{{Auth::user()->id}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
+                                        <a href="/edit-user/{{Auth::user()->id}}"
+                                           title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                             khoản của {{Auth::user()->name}}</a>
                                     </div>
                                     <div class="item">
@@ -377,27 +378,13 @@
 <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- Template CSS -->
-{{--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/cart.js')}}"></script>
 @yield('script')
-<script type="text/javascript">
-    // ẩn thanh phân trang của laravel
-    $('ul.pagination').hide();
-
-    $(function() {
-        $('.infinite-scroll').jscroll({
-            autoTrigger: true,
-            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
-            padding: 0,
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-            callback: function() {
-                // xóa thanh phân trang ra khỏi html mỗi khi load xong nội dung
-                $('ul.pagination').remove();
-            }
-        });
-    });
+<script>
+    @if(count(\App\Cart::getCart()->items)==0)
+    $('.cart-content').height('auto');
+    @endif
 </script>
 </body>
 
