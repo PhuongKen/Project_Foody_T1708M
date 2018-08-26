@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,8 +16,6 @@ Route::resource('/admin/food', 'FoodController');
 Route::resource('/food', 'FoodController');
 Route::get('/errors', function () {
     return view('error.404');
-Route::get('/errors', function (){
-   return view('error.404');
 });
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('/foody/trang-chu', 'HomeController@getHome');
@@ -44,7 +40,6 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('admin/orderdetail', 'OrderDetailController');
 });
 Route::get('gui-mail', 'HomeController@sendMail');
-
 Route::get('dang-ki', [
     'as' => 'dangki',
     'uses' => 'HomeController@getRegister'
@@ -96,13 +91,13 @@ Route::get('/foody/xoa-san-pham/{id}', [
     'as' => 'xoa1sanpham',
     'uses' => 'Client\CartController@destroyCart'
 ]);
-Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
+Route::put('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');
 Route::get('edit-user/{id}', [
-    'as'=>'edituser',
-    'uses'=>'Client\UpdateUserController@getEdit'
+    'as' => 'edituser',
+    'uses' => 'Client\UpdateUserController@getEdit'
 ]);
 Route::post('edit-user/{id}', [
-    'as'=>'edituser',
-    'uses'=>'Client\UpdateUserController@postEdit'
+    'as' => 'edituser',
+    'uses' => 'Client\UpdateUserController@postEdit'
 ]);

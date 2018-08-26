@@ -21,10 +21,10 @@ use App\Order_address;
 use App\Order_detail;
 use App\Provind;
 use App\Ward;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -71,7 +71,7 @@ class CartController extends Controller
         if (Session::has('cart')) {
             $cart = Session::get('cart');
         }
-        return view('client.cart',compact('cart','categories'));
+        return view('client.cart', compact('cart', 'categories'));
     }
 
     public function addToCartApi()
@@ -103,27 +103,30 @@ class CartController extends Controller
         return response()->json(['msg' => 'Thêm vào giỏ hàng thành công', 'cartItem' => $cart], 200);
     }
 
-    public function updateCart()
+    public function showCheckout()
     {
         $cart = new Cart();
-
-        $food = Input::get('foods');
-
-        if (is_array($food)) {
-            foreach (array_keys($food) as $key) {
+        $foods = Input::get('foods');
+        if (is_array($foods)) {
+            foreach (array_keys($foods) as $key) {
                 $food = Food::find($key);
                 if ($food == null || $food->status != 1) {
                     return view('error.404');
                 }
                 $item = new CartItem();
                 $item->food = $food;
-                $item->quantity = $food[$key];
+                $item->quantity = $foods[$key];
                 $cart->items[$key] = $item;
             }
         }
         Session::put('cart', $cart);
-        return redirect('/xem-gio-hang');
+        $categories = Category::all();
+        $provind = Provind::all();
+        $district = District::all();
+        $ward = Ward::all();
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
+
     public function destroyCart($id)
     {
         if (Session::has('cart')) {
@@ -141,7 +144,8 @@ class CartController extends Controller
                 DB::beginTransaction();
                 $cart = Session::get('cart');
                 $order = new Order();
-                $order->userID = Auth::id();
+                $user = Auth::user();
+                $order->userID = $user->id;
                 $order->amount = 0;
                 $order->totalPrice = 0;
                 $order->save();
@@ -181,26 +185,25 @@ class CartController extends Controller
                     array_push($order_details, $order_detail);
                 }
                 $order->save();
+                Mail::send('client.send_cart', ['user' => $user], function ($message) use ($user) {
+                    $message->from('quangkhaivnt@gmail.com', 'quang khải');
+                    $message->to($user->email, $user->name);
+                    $message->subject('Thông tin đơn hàng');
+                });
                 DB::commit();
                 // clear session cart.
                 Session::remove('cart');
                 // send mail or sms.
-                return view('client.order-success')->with('order', $order)->with('order_details', $order_details)->with('categories',$categories);
+                return view('client.order-success')->with('order', $order)->with('order_details', $order_details)->with('categories', $categories);
             } catch (\Exception $exception) {
                 DB::rollBack();
                 return 'Có lỗi xảy ra.' . $exception->getMessage();
             }
 
         } else {
-            return redirect('/foody/danh-sach-nha-hang')->with('message', 'Hiện tại chưa có sản phẩm nào trong giỏ hàng.')->with('categories',$categories);
+            return redirect('/foody/danh-sach-nha-hang')->with('message', 'Hiện tại chưa có sản phẩm nào trong giỏ hàng.')->with('categories', $categories);
         }
     }
 
-    public function showCheckout(){
-        $categories = Category::all();
-        $provind = Provind::all();
-        $district = District::all();
-        $ward = Ward::all();
-        return view('client.checkout',compact('categories','provind','district','ward'));
-    }
+
 }
