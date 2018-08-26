@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +12,31 @@
     <title>Moltran - Responsive Admin Dashboard Template</title>
 
     <!-- Base Css Files -->
-    {{--<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />--}}
+{{--<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />--}}
 
 <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Font Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- animate css -->
 
-    <link href="{{asset('css/animate.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/animate.css')}}" rel="stylesheet"/>
     <!-- Waves-effect -->
     <link href="{{asset('css/waves-effect.css')}}" rel="stylesheet">
 
     <!-- Custom Files -->
 
-    <link href="{{asset('css/helper.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/helper.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/restaurant.css')}}" rel="stylesheet">
-    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}" />
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}"/>
 @section('css')
 @show
 
@@ -50,7 +51,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
-
 
 
 <body class="fixed-left">
@@ -85,7 +85,8 @@
 
                     <ul class="nav navbar-nav navbar-right pull-right">
                         <li class="dropdown hidden-xs">
-                            <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                            <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
+                               data-toggle="dropdown" aria-expanded="true">
                                 <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">3</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-lg">
@@ -129,7 +130,8 @@
                                                 <div class="media-heading">Updates</div>
                                                 <p class="m-0">
                                                     <small>There are
-                                                        <span class="text-primary">2</span> new updates available</small>
+                                                        <span class="text-primary">2</span> new updates available
+                                                    </small>
                                                 </p>
                                             </div>
                                         </div>
@@ -142,23 +144,28 @@
                             </ul>
                         </li>
                         <li class="hidden-xs">
-                            <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
+                            <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i
+                                        class="md md-crop-free"></i></a>
                         </li>
                         <li class="hidden-xs">
                             <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                         </li>
                         <li class="dropdown">
                             @if(Auth::check())
-                            <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="/images/user/{{Auth::user()->avartar}}" alt="user-img" class="img-circle"> </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                                <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
-                                @else
-                                <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
+                                <a href="" class="dropdown-toggle profile" data-toggle="dropdown"
+                                   aria-expanded="true"><img src="/images/user/{{Auth::user()->avartar}}" alt="user-img"
+                                                             class="img-circle"> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
+                                    <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
+                                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                                    <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
+                                            xuất</a></li>
+                                    @else
+                                        <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a>
+                                        </li>
                                     @endif
-                            </ul>
+                                </ul>
                         </li>
                     </ul>
                 </div>
@@ -180,16 +187,21 @@
                 <div class="user-info">
                     <div class="dropdown">
                         @if(Auth::check())
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                            <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng xuất</a></li>
-                            @else
-                            <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a></li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile
+                                        <div class="ripple-wrapper"></div>
+                                    </a></li>
+                                <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
+                                <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                                <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
+                                        xuất</a></li>
+                                @else
+                                    <li><a href="/dang-nhap-admin"><i class="md md-settings-power"></i>Đăng nhập</a>
+                                    </li>
                                 @endif
-                        </ul>
+                            </ul>
                     </div>
 
                     <p class="text-muted m-0">Administrator</p>
@@ -200,7 +212,8 @@
                 <ul>
                     <!--- Dashboard -->
                     <li>
-                        <a href="/admin/home" class="waves-effect"><i class="fas fa-chart-pie"></i></i><span> Chart </span></a>
+                        <a href="/admin/home" class="waves-effect"><i class="fas fa-chart-pie"></i></i>
+                            <span> Chart </span></a>
                     </li>
                     <!--- user -->
                     <li>
@@ -208,22 +221,27 @@
                     </li>
                     <!--- Category -->
                     <li>
-                        <a href="/admin/category" class="waves-effect"><i class="fas fa-sitemap"></i><span> Category </span></a>
+                        <a href="/admin/category" class="waves-effect"><i
+                                    class="fas fa-sitemap"></i><span> Category </span></a>
                     </li>
                     <!--- Restaurant -->
                     <li>
-                        <a href="/admin/restaurant" class="waves-effect"><i class="fas fa-hotel"></i><span> Restaurant </span></a>
+                        <a href="/admin/restaurant" class="waves-effect"><i
+                                    class="fas fa-hotel"></i><span> Restaurant </span></a>
                     </li>
                     <!--- dish -->
                     <li>
-                        <a href="/admin/dish" class="waves-effect"><i class="fas fa-utensils"></i><span> Dish </span></a>
+                        <a href="/admin/dish" class="waves-effect"><i
+                                    class="fas fa-utensils"></i><span> Dish </span></a>
                     </li>
                     <!--- order -->
                     <li>
-                        <a href="/admin/order" class="waves-effect"><i class="fas fa-shopping-basket"></i><span> Order </span></a>
+                        <a href="/admin/order" class="waves-effect"><i
+                                    class="fas fa-shopping-basket"></i><span> Order </span></a>
                     </li>
                     <li>
-                        <a href="/admin/image" class="waves-effect"><i class="fas fa-images"></i><span> Image </span></a>
+                        <a href="/admin/image" class="waves-effect"><i
+                                    class="fas fa-images"></i><span> Image </span></a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -232,7 +250,6 @@
         </div>
     </div>
     <!-- Left Sidebar End -->
-
 
 
     <!-- ============================================================== -->
@@ -370,10 +387,7 @@
 
 </div>
 <!-- END wrapper -->
-<script>
-    var resizefunc = [];
-</script>
-
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- jQuery  -->
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -385,8 +399,6 @@
 <script src="{{asset('js/fastclick.js')}}"></script>
 <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
 <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-
-
 <!-- CUSTOM JS -->
 <script src="{{asset('js/jquery.app.js')}}"></script>
 
