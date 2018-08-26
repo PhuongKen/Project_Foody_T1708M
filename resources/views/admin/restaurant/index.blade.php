@@ -25,7 +25,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Datatable</h3>
+                    <h3 class="panel-title">Danh sách nhà hàng</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -33,43 +33,43 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Restaurant Name</th>
-                                    <th>Description</th>
-                                    <th>Address</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Ảnh</th>
+                                    <th>Tên nhà hàng</th>
+                                    <th>Mô tả</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($restaurant as $r)
+                                @foreach($restaurant as $key => $value)
                                     <tr>
                                         <td>
                                             <div class="card"
-                                                 style="width: 60px;height: 50px;background-image: url('/images/restaurant/{{$r->avartar}}'); background-size: cover">
+                                                 style="width: 60px;height: 50px;background-image: url('/images/restaurant/{{$value->avartar}}'); background-size: cover">
                                             </div>
                                         </td>
-                                        <td>{{$r->name}}</td>
-                                        <td>{{$r->shortDescription}}</td>
-                                        <td class="address" data-diachi="{{$r->addressID}}">
-                                            {{$r->addressID}}
+                                        <td>{{$value->name}}</td>
+                                        <td>{{$value->shortDescription}}</td>
+                                        <td class="address" data-diachi="{{$value->addressID}}">
+                                            {{$address[$key]->wardName}},{{$address[$key]->districtName}},{{$address[$key]->provindName}}
                                         </td>
                                         <td>
-                                            @if($r->status == 1)
+                                            @if($value->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Hoạt động</h6>
                                             @endif
-                                            @if($r->status == 0)
+                                            @if($value->status == 0)
                                                 <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đã xóa</h6>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/admin/restaurant/{{$r->id}}"
-                                               class="btn btn-outline-success" style="border: 1px solid #d33;">Xem</a>
-                                            <a href="/admin/restaurant/{{$r->id}}/edit" class="btn btn-outline-primary">Sửa</a>
-                                            <a href="{{$r->id}}" data-address="{{$r->addressID}}"
+                                            <a href="/admin/restaurant/{{$value->id}}"
+                                               class="btn btn-outline-success">Xem</a>
+                                            <a href="/admin/restaurant/{{$value->id}}/edit" class="btn btn-outline-primary">Sửa</a>
+                                            <a href="{{$value->id}}" data-address="{{$value->addressID}}"
                                                class="btn btn-outline-danger btn-delete">Xoá</a>
                                         </td>
                                     </tr>
@@ -87,28 +87,94 @@
     </div> <!-- End Row -->
     <script>
         $('.btn-delete').click(function () {
-            var cateId = $(this).attr('href');
-            var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
-            if(user_confirm){
+            var thisButton = $(this);
+            swal({
+                type: 'warning',
+                title: 'Bạn có chắc muốn xoá nhà hàng này không?',
+                text: "Bạn sẽ không thể khôi phục được dữ liệu",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonClass: 'Đồng ý',
+                cancelButtonClass: 'Huỷ bỏ',
+            }).then((result)=> {
+                var restaurantID = thisButton.attr('href');
+                var addressID = thisButton.attr('data-address');
                 $.ajax({
-                    url: '/admin/category/' + cateId,
-                    method:'DELETE',
-                    data:{
-                        '_token': "{{ csrf_token() }}"
+                    url: '/admin/album_restaurant/' + restaurantID,
+                    method: 'DELETE',
+                    data: {
+                        '_token': "{{ csrf_token()}}"
                     },
-                    success:function (response) {
-                        alert('Xoá thành công');
-                        window.location.reload();
+                    success: function (response) {
+                        swal({
+                            text: 'ảnh đã bị xoá.',
+                            type: 'success',
+                            confirmButtonClass: "btn btn-success",
+                            buttonsStyling: false
+                        })
                     },
-                    error:function () {
-                        alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    error: function () {
+                        swal({
+                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                            type: 'warning',
+                            confirmButtonClass: "btn btn-danger",
+                            buttonsStyling: false
+                        })
                     }
                 });
-            }
+                $.ajax({
+                    url: '/admin/restaurant/' + restaurantID,
+                    method: 'DELETE',
+                    data: {
+                        '_token': "{{ csrf_token()}}"
+                    },
+                    success: function (response) {
+                        swal({
+                            text: 'Nhà hàng đã bị xoá.',
+                            type: 'success',
+                            confirmButtonClass: "btn btn-success",
+                            buttonsStyling: false
+                        })
+                    },
+                    error: function () {
+                        swal({
+                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                            type: 'warning',
+                            confirmButtonClass: "btn btn-danger",
+                            buttonsStyling: false
+                        })
+                    }
+                });
+                $.ajax({
+                    url: '/admin/address/' + addressID,
+                    method: 'DELETE',
+                    data: {
+                        '_token': "{{ csrf_token()}}"
+                    },
+                    success: function (response) {
+                        swal({
+                            text: 'Địa chỉ đã bị xoá.',
+                            type: 'success',
+                            confirmButtonClass: "btn btn-success",
+                            buttonsStyling: false
+                        })
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2*1000);
+                    },
+                    error: function () {
+                        swal({
+                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                            type: 'warning',
+                            confirmButtonClass: "btn btn-danger",
+                            buttonsStyling: false
+                        })
+                    }
+                });
+            });
+            return false;
         });
     </script>
     <!-- /.row -->
-@endsection
-@section('script')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection

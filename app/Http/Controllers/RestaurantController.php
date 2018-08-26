@@ -10,6 +10,7 @@ use App\Provind;
 use App\Restaurant;
 use App\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class RestaurantController extends Controller
@@ -19,12 +20,18 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $restaurant = Restaurant::all();
-        $address = Address::all();
-        $provind = Provind::all();
-        return view('admin.restaurant.index', compact('restaurant', 'address', 'provind'));
+        $restaurant = DB::table('restaurants')->orderBy('created_at','desc')->get();
+        $address = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->orderBy('created_at','DESC')
+            ->get()->toArray();
+        return view('admin.restaurant.index', compact('restaurant', 'address'));
 
     }
 
