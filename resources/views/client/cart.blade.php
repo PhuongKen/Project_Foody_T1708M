@@ -1,7 +1,7 @@
 @extends('layout.master',['page_title'=>'Giỏ hàng'])
 @section('content')
     <div class="container container-edit">
-        <form action="/sua-gio-hang" method="post" name="update-cart-form">
+        <form action="/foody/nhap-thong-tin-don-hang" method="post" name="update-cart-form">
             {{csrf_field()}}
             @method('PUT')
             <div class="page-cart" style="margin-top: 30px">
@@ -45,7 +45,7 @@
                                             <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                                         </button>
                                         <input class="size8 m-text18 t-center num-product"
-                                               type="text" name="products[{{$item->food->id}}]"
+                                               type="text"  name="foods[{{$item->food->id}}]"
                                                value="{{$item->quantity}}">
 
                                         <button class="btn-num-product-up  flex-c-m size7">
@@ -70,10 +70,11 @@
                 </div>
 
                 <div class="checkout-btn">
-                    <a href="/foody/nhap-thong-tin-don-hang" class="btn btn-primary pull-right" title="Proceed to checkout">
-                        <span>Nhập thông tin</span>
-                        <i class="fa fa-angle-right ml-xs"></i>
-                    </a>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Nhập thông tin đơn hàng" class="btn pull-right">
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
