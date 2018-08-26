@@ -18,6 +18,8 @@ Route::resource('/admin/food', 'FoodController');
 Route::resource('/food', 'FoodController');
 Route::get('/errors', function () {
     return view('error.404');
+Route::get('/errors', function (){
+   return view('error.404');
 });
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('/foody/trang-chu', 'HomeController@getHome');
@@ -96,3 +98,11 @@ Route::get('/foody/xoa-san-pham/{id}', [
 ]);
 Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');
+Route::get('edit-user/{id}', [
+    'as'=>'edituser',
+    'uses'=>'Client\UpdateUserController@getEdit'
+]);
+Route::post('edit-user/{id}', [
+    'as'=>'edituser',
+    'uses'=>'Client\UpdateUserController@postEdit'
+]);

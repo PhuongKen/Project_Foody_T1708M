@@ -39,7 +39,7 @@ class OrderAddessController extends Controller
     {
         $this->validate($request,[
             'orderID' => 'required',
-            'phone' => 'required|numeric|min:9|max:12',
+            'phone' => 'required|numeric|min:9',
             'email' => 'required|email',
             'addressID'=> 'required',
         ],
@@ -47,7 +47,7 @@ class OrderAddessController extends Controller
                 'orderID.required' => 'Bạn chưa nhập tên',
                 'phone.numeric'=>'Số điện thoại phải là số',
                 'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
-                'phone.max'=>'Số điện thoại không dài quá 12 kí tự',
+//                'phone.max'=>'Số điện thoại không dài quá 11 kí tự',
                 'email.required' => 'Bạn chưa nhập email',
                 'email.email'=>'Phải đúng định dạng email',
                 'totalPrice.required' => 'totalPrice lớn hơn không',
@@ -100,7 +100,7 @@ class OrderAddessController extends Controller
     {
         $this->validate($request,[
             'orderID' => 'required',
-            'phone' => 'required|numeric|min:9|max:12',
+            'phone' => 'required|numeric|min:9',
             'email' => 'required|email',
             'addressID'=> 'required',
         ],
@@ -108,7 +108,7 @@ class OrderAddessController extends Controller
                 'userID.required' => 'Bạn chưa nhập tên',
                 'phone.numeric'=>'Số điện thoại phải là số',
                 'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
-                'phone.max'=>'Số điện thoại không dài quá 12 kí tự',
+//                'phone.max'=>'Số điện thoại không dài quá 11 kí tự',
                 'email.required' => 'Bạn chưa nhập email',
                 'email.email'=>'Phải đúng định dạng email',
                 'totalPrice.required' => 'totalPrice lớn hơn không',

@@ -176,7 +176,7 @@
                             <div class="dropdown-menu ">
                                 @if(Auth::check())
                                     <div class="item">
-                                        <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
+                                        <a href="/edit-user/{{Auth::user()->id}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                             khoản của {{Auth::user()->name}}</a>
                                     </div>
                                     <div class="item">
