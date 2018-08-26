@@ -4,29 +4,29 @@
         <div class="page-checkout" style="margin-top: 30px">
             <div class="row">
                 <div class="checkout-left col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                    <p>Returning customer? <a class="login" href="user-login.html">Click here to login</a>.</p>
                     <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="accordion-toggle collapsed" data-toggle="collapse"
                                        data-parent="#accordion" href="#collapseOne">
-                                        Address
+                                        Địa chỉ
                                     </a>
                                 </h4>
                             </div>
                             <div>
                                 <div class="panel-body">
-                                    <form action="index.html" id="formaddress" method="post" class="form-horizontal">
-
+                                    <form action="/foody/gui-don-hang" id="formaddress" method="post"
+                                          name="update-cart-form" class="form-horizontal">
+                                        @csrf();
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <label>Tên</label>
-                                                <input type="text" value="" class="form-control">
+                                                <input type="text" name="name" class="form-control">
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Số điện thoại</label>
-                                                <input type="text" value="" class="form-control">
+                                                <input type="text" name="phone" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -55,13 +55,19 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>Địa chỉ chi tiết: </label>
-                                                <input type="text" value="" class="form-control">
+                                                <label>Địa chỉ chi tiết: (*) </label>
+                                                <input type="text" name="address" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <input type="submit" value="Save" class="btn pull-right">
+                                                <label>Ghi chú: (*) </label>
+                                                <input type="text" name="note" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="Gửi đơn hàng" class="btn pull-right">
                                             </div>
                                         </div>
                                     </form>
@@ -75,29 +81,13 @@
                     <h4 class="title">Đơn hàng</h4>
                     <table class="table cart-total">
                         <tbody>
-                        <tr class="cart-subtotal">
-                            <th>
-                                <strong>Tổng đơn hàng</strong>
-                            </th>
-                            <td>
-                                <strong><span class="amount">$431</span></strong>
-                            </td>
-                        </tr>
-                        <tr class="shipping">
-                            <th>
-                                Giao hàng
-                            </th>
-                            <td>
-                                Giao hàng miễn phí<input type="hidden" value="free_shipping" class="shipping-method"
-                                                         name="shipping_method">
-                            </td>
-                        </tr>
                         <tr class="total">
                             <th>
                                 <strong>Tổng tiền</strong>
                             </th>
                             <td>
-                                <strong><span class="amount">$431</span></strong>
+                                <strong><span
+                                            class="amount">{{\App\Cart::getCart()->getTotalMoneyString()}}</span></strong>
                             </td>
                         </tr>
                         </tbody>
@@ -111,9 +101,11 @@
     <script>
         // Lấy id provind và set district theo id provind
         var idProvind = $("#provind").val();
+
         $.get("/admin/district/" + idProvind, function (data) {
             $("#district").html(data);
         });
+
         $("#provind").change(function () {
             var idProvind = $(this).val();
             $.get("/admin/district/" + idProvind, function (data) {
@@ -125,6 +117,7 @@
         $.get("/admin/ward/" + idDistrict, function (data) {
             $("#ward").html(data);
         });
+
         $("#district").change(function () {
             var idDistrict = $(this).val();
             $.get("/admin/ward/" + idDistrict, function (data) {

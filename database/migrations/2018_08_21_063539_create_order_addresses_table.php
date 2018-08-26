@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOrderAddressesTable extends Migration
 {
@@ -16,12 +16,13 @@ class CreateOrderAddressesTable extends Migration
         Schema::create('order_addresses', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('orderID')->unsigned();
-         //   $table->foreign('orderID')->references('id')->on('orders');;
-          //  $table->foreign('orderID')->references('id')->on('orders');
+            $table->foreign('orderID')->references('id')->on('orders');;
+            $table->string('name');
             $table->integer('phone');
-            $table->string('email');
             $table->integer('addressID')->unsigned();
-          //  $table->foreign('addressID')->references('id')->on('addresses');
+            $table->foreign('addressID')->references('id')->on('addresses');
+            $table->string('address');
+            $table->string('note');
             $table->timestamps();
         });
     }

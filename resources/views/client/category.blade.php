@@ -89,11 +89,6 @@
                                                     <div class="star on"></div>
                                                     <div class="star"></div>
                                                 </div>
-                                                <div class="product-buttons">
-                                                    <a class="add-to-cart" href="#">
-                                                        <span>Đặt hàng</span>
-                                                    </a>
-                                                </div>
                                             </div>
                                         </div>
                                     @endforeach

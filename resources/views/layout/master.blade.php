@@ -4,6 +4,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>{{$page_title}}</title>
 
     <meta name="keywords" content="Organic, Fresh Food, Farm Store">
@@ -29,12 +30,13 @@
     <link rel="stylesheet" href="{{asset('css/stylefoody1.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jslider.css')}}">
-
+    <link rel="stylesheet" href="{{asset('css/util.css')}}">
     {{--<!-- Template CSS -->--}}
     <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
     <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -108,65 +110,51 @@
                         <div class="block-cart dropdown">
                             <div class="cart-title">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <span class="cart-count">2</span>
+                                <span class="cart-count" id="cart-count">{{\App\Cart::getTotalItem()}}</span>
                             </div>
 
                             <div class="dropdown-content">
                                 <div class="cart-content">
                                     <table>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
-                                                    <img src="/images/foody/7.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail-left-sidebar.html">Organic Strawberry
-                                                        Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x <span class="product-price">20000đ</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-alt" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
-                                                    <img src="/images/foody/6.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail-left-sidebar.html">Organic Strawberry</a>
-                                                </div>
-                                                <div>
-                                                    1 x <span class="product-price">40000đ</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-alt" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
+                                        <tbody id="header-cart-wrapitem">
+                                        @if(count(\App\Cart::getCart()->items)>0)
+                                            @foreach(\App\Cart::getCart()->items as $item)
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <a href="product-detail-left-sidebar.html">
+                                                            <img src="/images/food/{{$item->food->avatar}}"
+                                                                 alt="Product">
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="product-name">
+                                                            <a href="product-detail-left-sidebar.html">{{$item->food->name}}</a>
+                                                        </div>
+                                                        <div>
+                                                            {{$item->quantity}} x <span
+                                                                    class="product-price">{{$item->food->discountPriceString}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="action">
+                                                        <a class="remove" href="#">
+                                                            <i class="fa fa-trash-alt" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            Hiện tại không có sản phẩm nào trong giỏ hàng
+                                        @endif
                                         <tr class="total">
                                             <td>Tổng giá:</td>
-                                            <td colspan="2">80000đ</td>
+                                            <td colspan="2"
+                                                id="header-cart-total">{{\App\Cart::getCart()->getTotalMoneyString()}}</td>
                                         </tr>
 
                                         <tr>
                                             <td colspan="3">
                                                 <div class="cart-button">
-                                                    <a class="btn btn-primary" href="/foody/gio-hang"
+                                                    <a class="btn btn-primary" href="/foody/xem-gio-hang"
                                                        title="View Cart">Xem đơn hàng</a>
                                                     <a class="btn btn-primary" href="/foody/thanh-toan"
                                                        title="Checkout">Thanh toán</a>
@@ -185,7 +173,7 @@
                             <div class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bars"></i>
                             </div>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu ">
                                 @if(Auth::check())
                                     <div class="item">
                                         <a href="/edit-user/{{Auth::user()->id}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
@@ -387,11 +375,30 @@
 <script src="{{asset('js/draggable-0.1.js')}}"></script>
 <script src="{{asset('js/jquery.slider.js')}}"></script>
 <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- Template CSS -->
+{{--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
 <script src="{{asset('js/main.js')}}"></script>
-
+<script src="{{asset('js/cart.js')}}"></script>
 @yield('script')
+<script type="text/javascript">
+    // ẩn thanh phân trang của laravel
+    $('ul.pagination').hide();
+
+    $(function() {
+        $('.infinite-scroll').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
+            callback: function() {
+                // xóa thanh phân trang ra khỏi html mỗi khi load xong nội dung
+                $('ul.pagination').remove();
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

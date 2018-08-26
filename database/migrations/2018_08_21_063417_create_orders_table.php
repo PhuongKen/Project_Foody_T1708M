@@ -16,10 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('userID')->unsigned();
-         //   $table->foreign('userID')->references('id')->on('users');
-          //  $table->foreign('userID')->references('id')->on('users');
-         //   $table->foreign('userID')->references('id')->on('users');
-          //  $table->foreign('userID')->references('id')->on('users');
+            $table->foreign('userID')->references('id')->on('users');
             $table->integer('amount');
             $table->bigInteger('totalPrice');
             $table->integer('status')->default(1); // 0 delete, 1 Process, 2 Done, 3 Block.
