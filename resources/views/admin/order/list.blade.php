@@ -16,7 +16,7 @@
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/order/create" class="btn btn-primary">Create new restaurant</a>
+            <a href="/admin/detailorder" class="btn btn-primary">Orderdetail</a>
         </div>
     </div>
     <!-- col-md-12 -->

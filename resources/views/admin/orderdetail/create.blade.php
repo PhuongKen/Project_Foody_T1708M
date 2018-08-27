@@ -64,10 +64,14 @@
                             <h5>nameProduct</h5>
                             <input type="text" placeholder="Nhập nameProduct" size="100" name="nameProduct">
                         </div>
-                        <div class="form-group">
-                            <h5>image</h5>
-                            <input type="text" placeholder="Nhập image" size="100" name="image">
+                    <div class="form-group">
+                        <label>image:</label>
+                        <div class="kv-avatar">
+                            <div class="file-loading">
+                                <input id="product_image" type="file" name="image">
+                            </div>
                         </div>
+                    </div>
                         <div class="form-group">
                             <h5>price</h5>
                             <input type="text" placeholder="Nhập price" size="100" name="price">
