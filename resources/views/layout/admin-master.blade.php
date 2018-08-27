@@ -392,6 +392,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#datatable').dataTable();
+        $('.wysihtml5').wysihtml5();
     } );
 </script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -415,7 +416,6 @@
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wysihtml5-0.3.0.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap-wysihtml5.js')}}"></script>
-
 
 @yield('script')
 </body>
