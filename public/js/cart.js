@@ -49,7 +49,7 @@ $('.btn-card').click(function () {
             new_content += '<td colspan="3">';
             new_content += '<div class="cart-button">';
             new_content += '<a class="btn btn-primary" href="/foody/xem-gio-hang" title="View Cart">Xem đơn hàng</a>';
-            new_content += '<a class="btn btn-primary" href="/foody/thanh-toan" title="Checkout">Thanh toán</a>';
+            new_content += '<a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang" title="Checkout">Gửi đơn hàng</a>';
             new_content += '</div>';
             new_content += '</td>';
             new_content += '</tr>';
@@ -58,7 +58,6 @@ $('.btn-card').click(function () {
             } else {
                 $('#cart-count').text(new_count);
             }
-
             $('#header-cart-wrapitem').html(new_content);
             $('#header-cart-total').text(new_total_money);
             swal('Thao tác thành công!', 'Món đã được thêm vào giỏ hàng!', 'success');

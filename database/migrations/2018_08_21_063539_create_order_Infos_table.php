@@ -23,6 +23,8 @@ class CreateOrderAddressesTable extends Migration
             $table->foreign('addressID')->references('id')->on('addresses');
             $table->string('address');
             $table->string('note');
+            $table->time('time');
+            $table->date('date');
             $table->timestamps();
         });
     }
