@@ -1,4 +1,7 @@
 @extends('layout.master',['page_title'=>'Thanh toán đơn hàng'])
+@section('css')
+    <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+@endsection
 @section('content')
     <div class="container container-edit">
         <div class="page-checkout" style="margin-top: 30px">
@@ -67,6 +70,14 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>Thời gian ăn:</label>
+                                                    <input type="time" id="time" min="9:00" max="21:00" name="time">
+                                                    <input type="date" id="time" min="27/8/2018" max="12/9/2018"
+                                                           name="time">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <div class="col-md-12">
                                                     <input type="submit" value="Gửi đơn hàng" class="btn pull-right">
                                                 </div>
@@ -130,5 +141,6 @@
                 $("#ward").html(data);
             });
         });
+
     </script>
 @endsection
