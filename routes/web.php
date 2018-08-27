@@ -101,3 +101,4 @@ Route::post('edit-user/{id}', [
     'as' => 'edituser',
     'uses' => 'Client\UpdateUserController@postEdit'
 ]);
+Route::get('/foody/ve-chung-toi','Client\AboutusController@index');
