@@ -22,13 +22,15 @@
                         @foreach($cart->items as $item)
                             <tr>
                                 <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="{{route('xoa1sanpham',$item->food->id)}}">
+                                    <a title="Remove this item" class="remove"
+                                       href="{{route('xoa1sanpham',$item->food->id)}}">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </td>
                                 <td>
                                     <a href="product-detail-left-sidebar.html">
-                                        <img width="80" alt="{{$item->food->name}}" class="img-responsive"
+                                        <img width="80" alt="{{$item->food->name}}"
+                                             style="display: block;width: 100%;height: auto"
                                              src="/images/food/{{$item->food->avatar}}">
                                     </a>
                                 </td>
@@ -45,7 +47,7 @@
                                             <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                                         </button>
                                         <input class="size8 m-text18 t-center num-product"
-                                               type="text"  name="foods[{{$item->food->id}}]"
+                                               type="text" name="foods[{{$item->food->id}}]"
                                                value="{{$item->quantity}}">
 
                                         <button class="btn-num-product-up  flex-c-m size7">
