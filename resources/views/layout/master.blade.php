@@ -73,7 +73,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="page-about-us.html">Về chúng tôi</a>
+                                    <a href="/foody/ve-chung-toi">Về chúng tôi</a>
                                 </li>
 
                                 <li>

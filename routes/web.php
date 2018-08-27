@@ -82,7 +82,7 @@ Route::get('admin', [
 ]);
 Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
-    'uses' => 'Client\CardController@getAddtoCart'
+    'uses' => 'Client\CartController@getAddtoCart'
 ]);
 Route::post('/them-vao-gio-hang-api', 'Client\CartController@addToCartApi');
 Route::get('/foody/them-gio-hang', 'Client\CartController@addToCart');
@@ -101,3 +101,4 @@ Route::post('edit-user/{id}', [
     'as' => 'edituser',
     'uses' => 'Client\UpdateUserController@postEdit'
 ]);
+Route::get('/foody/ve-chung-toi','Client\AboutusController@index');
