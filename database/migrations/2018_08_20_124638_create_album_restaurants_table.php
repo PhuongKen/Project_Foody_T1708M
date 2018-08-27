@@ -14,7 +14,10 @@ class CreateAlbumRestaurantsTable extends Migration
     public function up()
     {
         Schema::create('album_restaurants', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
+            $table->integer('restaurantID')->unsigned();
+            $table->foreign('restaurantID')->references('id')->on('restaurants');
+            $table->string('image');
             $table->timestamps();
         });
     }
