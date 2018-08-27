@@ -18,9 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Google Fonts -->
-    {{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
-    {{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
-    <!-- Vendor CSS -->
+{{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
+{{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
+<!-- Vendor CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="dropdown-content">
-                                <div class="cart-content" style="overflow: scroll; height: 400px; width: 415px">
+                                <div class="cart-content" style="overflow: scroll; height: 400px; width: 430px">
                                     <table>
                                         <tbody id="header-cart-wrapitem">
                                         @if(count(\App\Cart::getCart()->items)>0)
@@ -143,25 +143,25 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        @else
-                                            Hiện tại không có sản phẩm nào trong giỏ hàng
-                                        @endif
-                                        <tr class="total">
-                                            <td>Tổng giá:</td>
-                                            <td colspan="2"
-                                                id="header-cart-total">{{\App\Cart::getCart()->getTotalMoneyString()}}</td>
-                                        </tr>
+                                            <tr class="total">
+                                                <td>Tổng giá:</td>
+                                                <td colspan="2"
+                                                    id="header-cart-total">{{\App\Cart::getCart()->getTotalMoneyString()}}</td>
+                                            </tr>
 
-                                        <tr>
-                                            <td colspan="3">
-                                                <div class="cart-button">
-                                                    <a class="btn btn-primary" href="/foody/xem-gio-hang"
-                                                       title="View Cart">Xem đơn hàng</a>
-                                                    <a class="btn btn-primary" href="/foody/thanh-toan"
-                                                       title="Checkout">Thanh toán</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="cart-button">
+                                                        <a class="btn btn-primary" href="/foody/xem-gio-hang"
+                                                           title="View Cart">Xem đơn hàng</a>
+                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang"
+                                                           title="Checkout">Gửi đơn hàng</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @else
+                                            <b class="else">Hiện tại không có sản phẩm nào trong giỏ hàng</b>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -384,6 +384,7 @@
 <script>
     @if(count(\App\Cart::getCart()->items)==0)
     $('.cart-content').height('auto');
+    $('.else').display('none');
     @endif
 </script>
 </body>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Order_address;
+use App\Order_info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -15,7 +15,7 @@ class OrderAddessController extends Controller
      */
     public function index()
     {
-        $list_obj = Order_address::orderBy('created_at', 'DESC')->paginate(3);
+        $list_obj = Order_info::orderBy('created_at', 'DESC')->paginate(3);
         return view('admin.orderaddress.list')->with('list_obj', $list_obj);
     }
 
@@ -55,7 +55,7 @@ class OrderAddessController extends Controller
                 'addressID.required' => 'Bạn chưa nhập status'
             ]
         );
-        $orderaddress = new Order_address();
+        $orderaddress = new Order_info();
         $orderaddress->orderID = Input::get('orderID');
         $orderaddress->phone = Input::get('phone');
         $orderaddress->email = Input::get('email');
@@ -83,7 +83,7 @@ class OrderAddessController extends Controller
      */
     public function edit($id)
     {
-        $orderaddress = Order_address::find($id);
+        $orderaddress = Order_info::find($id);
         return view('admin.orderaddress.edit')->with('orderaddress', $orderaddress);
 
 
@@ -116,7 +116,7 @@ class OrderAddessController extends Controller
                 'addressID.required' => 'Bạn chưa nhập status'
             ]
         );
-        $orderaddress = Order_address::find($id);
+        $orderaddress = Order_info::find($id);
         if ($orderaddress == null) {
             return view('404');
         }
@@ -136,7 +136,7 @@ class OrderAddessController extends Controller
      */
     public function destroy($id)
     {
-        $orderaddress=Order_address::find($id);
+        $orderaddress=Order_info::find($id);
         if ($orderaddress == null){
             return view('404');
         }

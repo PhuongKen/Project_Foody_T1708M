@@ -17,10 +17,11 @@ use App\District;
 use App\Food;
 use App\Http\Controllers\Controller;
 use App\Order;
-use App\Order_address;
+use App\Order_info;
 use App\Order_detail;
 use App\Provind;
 use App\Ward;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -103,6 +104,13 @@ class CartController extends Controller
         return response()->json(['msg' => 'Thêm vào giỏ hàng thành công', 'cartItem' => $cart], 200);
     }
 
+    public function checkout(){
+        $categories = Category::all();
+        $provind = Provind::all();
+        $district = District::all();
+        $ward = Ward::all();
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
+    }
     public function showCheckout()
     {
         $cart = new Cart();
@@ -136,8 +144,27 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function checkoutCart()
+    public function checkoutCart(Request $request)
     {
+        $this->validate($request,
+            [
+                'name' => 'required',
+                'phone' => 'required|numeric',
+                'time' => 'required',
+                'date' => 'required',
+                'address' => 'required|min:6'
+            ],
+            [
+                'name.required' => 'Bạn chưa nhập tên',
+                'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.numeric' => 'Số điện thoại không chứa ký tự chũ cái và ký tự đặc biệt',
+                'time.required' => 'Bạn chưa nhập giờ đến',
+                'date.required' => 'Bạn chưa nhập ngày đến',
+                'address.required' => 'Bạn chưa nhập địa chỉ chi tiết',
+                'address.min'=>'Địa chỉ chi tiết phải lớn hơn 6 kí tụ',
+            ]
+
+        );
         $categories = Category::all();
         if (Session::has('cart')) {
             try {
@@ -156,14 +183,16 @@ class CartController extends Controller
                 $address->districtID = Input::get('district');
                 $address->save();
 
-                $order_address = new Order_address();
-                $order_address->orderID = $order->id;
-                $order_address->name = Input::get('name');
-                $order_address->phone = Input::get('phone');
-                $order_address->addressID = $address->id;
-                $order_address->address = Input::get('address');
-                $order_address->note = Input::get('note');
-                $order_address->save();
+                $order_info = new Order_info();
+                $order_info->orderID = $order->id;
+                $order_info->name = Input::get('name');
+                $order_info->phone = Input::get('phone');
+                $order_info->addressID = $address->id;
+                $order_info->address = Input::get('address');
+                $order_info->note = Input::get('note');
+                $order_info->time = Input::get('time');
+                $order_info->date = Input::get('date');
+                $order_info->save();
                 $order_id = $order->id;
                 $order_details = array();
                 foreach ($cart->items as $item) {
