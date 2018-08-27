@@ -35,7 +35,7 @@
     <link href="{{asset('css/helper.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/restaurant.css')}}" rel="stylesheet">
-    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}"/>
 @section('css')
 @show
@@ -387,8 +387,13 @@
 
 </div>
 <!-- END wrapper -->
-<script src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- jQuery  -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatable').dataTable();
+    } );
+</script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/waves.js')}}"></script>
@@ -401,21 +406,17 @@
 <script src="{{asset('js/jquery.blockUI.js')}}"></script>
 <!-- CUSTOM JS -->
 <script src="{{asset('js/jquery.app.js')}}"></script>
-
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- Chart JS -->
 <script src="{{asset('js/chart.min.js')}}"></script>
 <script src="{{asset('js/chartjs.init.js')}}"></script>
-<!-- Table-->
+<!--Table-->
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wysihtml5-0.3.0.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap-wysihtml5.js')}}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#datatable').dataTable();
-        $('.wysihtml5').wysihtml5();
-    });
-</script>
+
+
 @yield('script')
 </body>
 </html>
