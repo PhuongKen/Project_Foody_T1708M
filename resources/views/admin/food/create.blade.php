@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group d-block mt-2">
                     <h5>Image</h5>
-                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar" value="{{$item->image}}">
+                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar"">
                 </div>
                 <div class="form-group">
                     <h5>Giá tiền</h5>
