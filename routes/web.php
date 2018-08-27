@@ -93,6 +93,7 @@ Route::get('/foody/xoa-san-pham/{id}', [
     'as' => 'xoa1sanpham',
     'uses' => 'Client\CartController@destroyCart'
 ]);
+Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@checkout');
 Route::put('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');
 Route::get('edit-user/{id}', [

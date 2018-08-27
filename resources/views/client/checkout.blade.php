@@ -10,6 +10,19 @@
                     <div class="checkout-left col-lg-9 col-md-9 col-sm-9 col-xs-12">
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            <span class="sr-only">Close</span>
+                                        </button>
+                                    </div>
+                                @endif
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a class="accordion-toggle collapsed" data-toggle="collapse"
@@ -72,9 +85,9 @@
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label>Thời gian ăn:</label>
-                                                    <input type="time" id="time" min="9:00" max="21:00" name="time">
-                                                    <input type="date" id="time" min="27/8/2018" max="12/9/2018"
-                                                           name="time">
+                                                    <input type="time" name="time"id="time" min="9:00" max="21:00">
+                                                    <input type="date" id="date" min="27/8/2018" max="12/9/2018"
+                                                           name="date">
                                                 </div>
                                             </div>
                                             <div class="form-group">
