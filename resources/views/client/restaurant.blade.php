@@ -76,14 +76,14 @@
                                     @foreach($chunk_lists as $item)
                                         <div class="product-item">
                                             <div class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
+                                                <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
                                                     <img src="/images/food/{{$item->avatar}}" alt="Product Image">
                                                 </a>
                                             </div>
 
                                             <div class="product-info">
                                                 <div class="product-title">
-                                                    <a href="product-detail-left-sidebar.html">
+                                                    <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
                                                         {{$item->name}}
                                                     </a>
                                                 </div>

@@ -7,14 +7,15 @@
         <div class="product-detail">
             <div class="products-block layout-5">
                 <div class="product-item">
+
                     <div class="product-title">
-                        Organic Strawberry Fruits
+                        {{$food->name}}
                     </div>
                     <div class="row">
                         <div class="product-left col-md-5 col-sm-5 col-xs-12">
                             <div class="product-image vertical">
                                 <div class="main-image">
-                                    <img class="img-responsive" src="/images/foody/2.jpg" alt="Product Image">
+                                    <img class="img-responsive" src="/images/foody/{{$food->avartar}}" alt="Product Image">
                                 </div>
                                 <div class="thumb-images">
                                     <img class="img-responsive" src="/images/foody/33.jpg" alt="Product Image">
@@ -28,8 +29,12 @@
                         <div class="product-right col-md-7 col-sm-7 col-xs-12">
                             <div class="product-info">
                                 <div class="product-price">
-                                    <span class="sale-price">80000VND</span>
-                                    <span class="base-price">90000VND</span>
+                                    @if($food->promotion_price == 0)
+                                        <span class="sale-price">{{$food->price}} (VND)</span>
+                                    @else($food->promotion_price > 0)
+                                        <span class="sale-price">{{$food->promotion_price}} (VND)</span>
+                                        <span class="base-price">{{$food->price}}</span>
+                                     @endif
                                 </div>
 
                                 <div class="product-short-description">
@@ -81,10 +86,8 @@
                                                 class="control-label">E-02154</span>
                                     </div>
                                     <div class="item">
-                                        <span class="control-label">Categories :</span>
-                                        <a href="#" title="Vegetables">Vegetables,</a>
-                                        <a href="#" title="Fruits">Fruits,</a>
-                                        <a href="#" title="Apple">Apple</a>
+                                        <span class="control-label">Restaurant</span>
+                                        {{--<a href="#" title="Vegetables">{{$restaurant->name}}</a>--}}
                                     </div>
                                 </div>
                             </div>
@@ -153,16 +156,19 @@
 
             <div class="block-content">
                 <div class="products owl-theme owl-carousel">
+                    {{--@foreach($chunk_list as $chunk_list)--}}
+
                     <div class="product-item">
+                        @foreach($list_relate as $item)
                         <div class="product-image">
-                            <a href="product-detail-left-sidebar.html">
-                                <img src="/images/foody/4.jpg" alt="Product Image">
+                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
+                                <img src="/images/foody/{{$item->avartar}}" alt="Product Image">
                             </a>
                         </div>
 
                         <div class="product-title">
-                            <a href="product-detail-left-sidebar.html">
-                                Organic Strawberry Fruits
+                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
+                                {{$item->name}}
                             </a>
                         </div>
 
@@ -175,8 +181,12 @@
                         </div>
 
                         <div class="product-price">
-                            <span class="sale-price">800000đ</span>
-                            <span class="base-price">900000đ</span>
+                            @if($item->promotion_price == 0)
+                                <span class="sale-price">{{$item->price}} (VND)</span>
+                            @else($item->promotion_price > 0)
+                                <span class="sale-price">{{$item->promotion_price}} (VND)</span>
+                                <span class="base-price">{{$item->price}}</span>
+                            @endif
                         </div>
 
                         <div class="product-buttons">
@@ -192,169 +202,10 @@
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                         </div>
+                            @endforeach
                     </div>
+                   {{--@endforeach--}}
 
-                    <div class="product-item">
-                        <div class="product-image">
-                            <a href="product-detail-left-sidebar.html">
-                                <img src="/images/foody/15.jpg" alt="Product Image">
-                            </a>
-                        </div>
-
-                        <div class="product-title">
-                            <a href="product-detail-left-sidebar.html">
-                                Organic Strawberry Fruits
-                            </a>
-                        </div>
-
-                        <div class="product-rating">
-                            <div class="star on"></div>
-                            <div class="star on"></div>
-                            <div class="star on "></div>
-                            <div class="star on"></div>
-                            <div class="star"></div>
-                        </div>
-
-                        <div class="product-price">
-                            <span class="sale-price">800000đ</span>
-                        </div>
-
-                        <div class="product-buttons">
-                            <a class="add-to-cart" href="#">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="add-wishlist" href="#">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="quickview" href="#">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-image">
-                            <a href="product-detail-left-sidebar.html">
-                                <img src="/images/foody/31.jpg" alt="Product Image">
-                            </a>
-                        </div>
-
-                        <div class="product-title">
-                            <a href="product-detail-left-sidebar.html">
-                                Organic Strawberry Fruits
-                            </a>
-                        </div>
-
-                        <div class="product-rating">
-                            <div class="star on"></div>
-                            <div class="star on"></div>
-                            <div class="star on "></div>
-                            <div class="star on"></div>
-                            <div class="star"></div>
-                        </div>
-
-                        <div class="product-price">
-                            <span class="sale-price">800000đ</span>
-                            <span class="base-price">900000đ</span>
-                        </div>
-
-                        <div class="product-buttons">
-                            <a class="add-to-cart" href="#">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="add-wishlist" href="#">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="quickview" href="#">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-image">
-                            <a href="product-detail-left-sidebar.html">
-                                <img src="/images/foody/9.jpg" alt="Product Image">
-                            </a>
-                        </div>
-
-                        <div class="product-title">
-                            <a href="product-detail-left-sidebar.html">
-                                Organic Strawberry Fruits
-                            </a>
-                        </div>
-
-                        <div class="product-rating">
-                            <div class="star on"></div>
-                            <div class="star on"></div>
-                            <div class="star on "></div>
-                            <div class="star on"></div>
-                            <div class="star"></div>
-                        </div>
-
-                        <div class="product-price">
-                            <span class="sale-price">800000đ</span>
-                            <span class="base-price">900000đ</span>
-                        </div>
-
-                        <div class="product-buttons">
-                            <a class="add-to-cart" href="#">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="add-wishlist" href="#">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="quickview" href="#">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-image">
-                            <a href="product-detail-left-sidebar.html">
-                                <img src="/images/foody/15.jpg" alt="Product Image">
-                            </a>
-                        </div>
-
-                        <div class="product-title">
-                            <a href="product-detail-left-sidebar.html">
-                                Organic Strawberry Fruits
-                            </a>
-                        </div>
-
-                        <div class="product-rating">
-                            <div class="star on"></div>
-                            <div class="star on"></div>
-                            <div class="star on "></div>
-                            <div class="star on"></div>
-                            <div class="star"></div>
-                        </div>
-
-                        <div class="product-price">
-                            <span class="sale-price">800000đ</span>
-                        </div>
-
-                        <div class="product-buttons">
-                            <a class="add-to-cart" href="#">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="add-wishlist" href="#">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="quickview" href="#">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

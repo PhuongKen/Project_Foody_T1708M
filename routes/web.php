@@ -21,7 +21,7 @@ Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('/foody/trang-chu', 'HomeController@getHome');
 Route::get('/foody/danh-sach-nha-hang', 'Client\FoodController@index');
 Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
-Route::get('/foody/chi-tiet-mon-an', 'DetailController@getDetail');
+Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/order', 'OrderController');
