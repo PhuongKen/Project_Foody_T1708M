@@ -63,6 +63,7 @@ class RestaurantController extends Controller
                 'name' => 'required|min:15',
                 'avartar' => 'required|mimes:jpg,jpeg,png,gif|max:2048',
                 'phone' => 'required|numeric',
+                'addressDetail' => 'required|min:6',
                 'openTime' => 'required',
                 'closeTime' => 'required',
                 'shortDescription' => 'required|min:70',
@@ -72,6 +73,8 @@ class RestaurantController extends Controller
                 'name.required' => 'Bạn chưa nhập tên nhà hàng',
                 'name.min' => 'Tên nhà hàng phải lớn hơn 15 ký tự',
                 'avartar.required' => 'Bạn chưa thêm ảnh',
+                'addressDetail.required'=>'Bạn chưa nhập địa chỉ chi tiết',
+                'addressDetail.min'=>'Bạn phải nhập địa chỉ chi tiết trên 6 ký tự',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
                 'phone.numeric' => 'Số điện thoại không chứa ký tự chũ cái và ký tự đặc biệt',
                 'openTime.required' => 'Bạn chưa nhập giờ mở cửa',
@@ -109,6 +112,7 @@ class RestaurantController extends Controller
         $address->wardID = Input::get('ward');
         $address->save();
         $restaurant->addressID = $address->id;
+        $restaurant->addressDetail = Input::get('addressDetail');
         $restaurant->phone = Input::get('phone');
         $restaurant->openTime = Input::get('openTime');
         $restaurant->closeTime = Input::get('closeTime');
