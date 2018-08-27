@@ -212,10 +212,19 @@ class CartController extends Controller
                     $order->totalPrice += $order_detail->price * $order_detail->amount;
                     $order_detail->save();
                     array_push($order_details, $order_detail);
+                    $restaurant = DB::table('foods')
+                        ->join('restaurants','restaurants.id','=','foods.restaurantID')
+                        ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+                        ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+                        ->join('districts', 'addresses.districtID', '=', 'districts.id')
+                        ->join('wards', 'addresses.wardID', '=', 'wards.id')
+                        ->select('restaurants.*','provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+                        ->where('foods.restaurantID',$item->food->restaurantID)->get()->toArray();
                 }
                 $order->save();
-                Mail::send('client.send_cart', ['user' => $user], function ($message) use ($user) {
-                    $message->from('quangkhaivnt@gmail.com', 'quang khải');
+//                dd($restaurant);
+                Mail::send('client.send_cart',['user' => $user,'restaurant' =>$restaurant,'order_info'=>$order_info], function ($message) use ($user) {
+                    $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
                     $message->to($user->email, $user->name);
                     $message->subject('Thông tin đơn hàng');
                 });

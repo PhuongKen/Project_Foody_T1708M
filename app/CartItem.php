@@ -14,4 +14,5 @@ class CartItem
     public function getTotalPriceWithFormat(){
         return sprintf('%s', number_format($this->food->discountPrice * $this->quantity, 0));
     }
+
 }
