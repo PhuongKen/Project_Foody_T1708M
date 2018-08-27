@@ -59,4 +59,8 @@ class Food extends Model
             return '';
         }
     }
+
+//    public function restaurant(){
+//        return $this->belongsTo('App\Restaurant','restaurantID','id');
+//    }
 }
