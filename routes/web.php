@@ -87,6 +87,8 @@ Route::get('/foody/them-vao-gio-hang/{id}', [
 Route::post('/them-vao-gio-hang-api', 'Client\CartController@addToCartApi');
 Route::get('/foody/them-gio-hang', 'Client\CartController@addToCart');
 Route::get('/foody/xem-gio-hang', 'Client\CartController@showCart');
+Route::get('/foody/lien-he', 'Client\ContactController@index');
+Route::post('/foody/lien-he', 'Client\ContactController@store');
 Route::get('/foody/xoa-san-pham/{id}', [
     'as' => 'xoa1sanpham',
     'uses' => 'Client\CartController@destroyCart'

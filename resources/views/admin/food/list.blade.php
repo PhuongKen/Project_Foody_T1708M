@@ -55,7 +55,7 @@
                                         <td>{{$item->price}}</td>
                                         <td>
                                             <div class="card"
-                                                 style="width: 60px;height: 50px;background-image: url('{{$item->avartar}}'); background-size: cover">
+                                                 style="width: 60px;height: 50px;background-image: url('{{$item->avatar}}'); background-size: cover">
                                             </div>
                                         </td>
                                         <td>{{$item->status}}</td>

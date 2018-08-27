@@ -69,15 +69,20 @@
                          </div>
                      </div>
 
-                    <div class=" d-block">
-                        <h5>Image</h5>
-                        <input type="text" placeholder="Nhập link ảnh" size="100" name="image">
-                    </div>
+                    <div class="form-group">
+                        <label>Avatar 
+                            <div class="kv-avatar">
+                                <div class="file-loading">
+                                    <input id="product_image" type="file" name="image">
+                                </div>
+                            </div>
+                        </label>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Lưu">
                             <input type="reset" class="btn btn-success" value="Làm lại">
                         </div>
                     </div>
+
                 </div>
             </div>
         </div> <!-- End row -->

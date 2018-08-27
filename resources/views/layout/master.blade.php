@@ -77,7 +77,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="page-contact.html">Liên hệ</a>
+                                    <a href="/foody/lien-he">Liên hệ</a>
                                 </li>
                             </ul>
                         </div>
