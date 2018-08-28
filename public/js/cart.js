@@ -35,7 +35,7 @@ $('.btn-card').click(function () {
                 new_content += '</div>';
                 new_content += '</td>';
                 new_content += '<td class="action">';
-                new_content += '<a class="remove" href="#">';
+                new_content += '<a class="remove" href="/foody/xoa-san-pham/?id='+new_items[i].food.id+'">';
                 new_content += '<i class="fa fa-trash-alt" aria-hidden="true"></i>';
                 new_content += '</a>';
                 new_content += '</td>';

@@ -112,9 +112,6 @@
                                                     <button class="btn-card" id="add-cart-{{$item->id}}">
                                                         Đặt món
                                                     </button>
-                                                    {{--<a href="/foody/them-gio-hang?id={{$item->id}}&quantity=1">--}}
-                                                    {{--Thêm vào giỏ hàng--}}
-                                                    {{--</a>--}}
                                                 </div>
                                             </div>
                                         </div>

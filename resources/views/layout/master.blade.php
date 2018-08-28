@@ -137,7 +137,7 @@
                                                     </td>
                                                     <td class="action">
                                                         <a class="remove"
-                                                           href="{{route('xoa1sanpham',$item->food->id)}}">
+                                                           href="/foody/xoa-san-pham/{{'?id='.$item->food->id}}">
                                                             <i class="fa fa-trash-alt" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
@@ -160,7 +160,7 @@
                                                 </td>
                                             </tr>
                                         @else
-                                            <b class="else">Hiện tại không có sản phẩm nào trong giỏ hàng</b>
+
                                         @endif
                                         </tbody>
                                     </table>
