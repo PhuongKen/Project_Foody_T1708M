@@ -100,7 +100,7 @@
                     <div class="col-lg-5 col-md-5 col-sm-12 header-right d-flex justify-content-end align-items-center">
                         <!-- Search -->
                         <div class="form-search">
-                            <form action="index.html" method="get">
+                            <form action="#" method="get">
                                 <input type="text" class="form-input" placeholder="Tìm kiếm">
                                 <button type="submit" class="fa fa-search"></button>
                             </form>
@@ -121,14 +121,14 @@
                                             @foreach(\App\Cart::getCart()->items as $item)
                                                 <tr>
                                                     <td class="product-image">
-                                                        <a href="product-detail-left-sidebar.html">
+                                                        <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">
                                                             <img src="/images/food/{{$item->food->avatar}}"
                                                                  alt="Product">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <div class="product-name">
-                                                            <a href="product-detail-left-sidebar.html">{{$item->food->name}}</a>
+                                                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">{{$item->food->name}}</a>
                                                         </div>
                                                         <div>
                                                             {{$item->quantity}} x <span
@@ -180,11 +180,11 @@
                                            title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                             khoản của {{Auth::user()->name}}</a>
                                     </div>
-                                    <div class="item">
-                                        <a href="/foody/lich-su-don-hang"
-                                           title="Log in to your customer account"><i class="fa fa-cog"></i>
-                                            Lịch sử đơn hàng của{{Auth::user()->name}}</a>
-                                    </div>
+                                    {{--<div class="item">--}}
+                                        {{--<a href="/foody/lich-su-don-hang"--}}
+                                           {{--title="Log in to your customer account"><i class="fa fa-cog"></i>--}}
+                                            {{--Lịch sử đơn hàng của{{Auth::user()->name}}</a>--}}
+                                    {{--</div>--}}
                                     <div class="item">
                                         <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
                                                     class="fa fa-cog"></i>Đăng xuất
