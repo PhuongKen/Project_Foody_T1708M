@@ -134,7 +134,7 @@ class DetailOrderController extends Controller
      */
     public function destroy($id)
     {
-        $orderdetail = Order_detail::find($id);
+        $orderdetail = Order_detail::where('orderID',$id);
         if ($orderdetail==null){
             return view('404');
         }

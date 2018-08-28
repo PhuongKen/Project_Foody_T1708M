@@ -15,7 +15,8 @@
                         <div class="product-left col-md-5 col-sm-5 col-xs-12">
                             <div class="product-image vertical">
                                 <div class="main-image">
-                                    <img class="img-responsive" src="/images/food/{{$food->avatar}}" alt="Product Image">
+                                    <img class="img-responsive" src="/images/food/{{$food->avatar}}"
+                                         alt="Product Image">
                                 </div>
                             </div>
                         </div>
@@ -28,7 +29,7 @@
                                     @else($food->promotion_price > 0)
                                         <span class="sale-price">{{$food->promotion_price}} (VND)</span>
                                         <span class="base-price">{{$food->price}}</span>
-                                     @endif
+                                    @endif
                                 </div>
                                 <div class="product-add-to-cart border-bottom">
                                     <span class="control-label">QTY :</span>
@@ -45,25 +46,10 @@
                                     </div>
 
                                     <div class="product-buttons">
-                                        <a class="add-to-cart" href="#">
+                                        <a class="add-to-cart btn-card" href="#" id="add-cart-{{$food->id}}">
                                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                             <span>Đặt món</span>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="product-review border-bottom">
-                                    <div class="item">
-                                        <div class="product-quantity">
-                                            <span class="control-label">Review :</span>
-                                            <div class="product-rating">
-                                                <div class="star on"></div>
-                                                <div class="star on"></div>
-                                                <div class="star on"></div>
-                                                <div class="star on"></div>
-                                                <div class="star"></div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -82,55 +68,48 @@
             <div class="block-content">
                 <div class="products owl-theme owl-carousel">
                     {{--@foreach($chunk_list as $chunk_list)--}}
+                    @foreach($list_relate as $item)
+                        <div class="product-item">
+                            <div class="product-image">
+                                <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
+                                    <img src="/images/food/{{$item->avatar}}" alt="Product Image">
+                                </a>
+                            </div>
 
-                    <div class="product-item">
-                        @foreach($list_relate as $item)
-                        <div class="product-image">
-                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
-                                <img src="/images/foody/{{$item->avartar}}" alt="Product Image">
-                            </a>
+                            <div class="product-title">
+                                <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
+                                    {{$item->name}}
+                                </a>
+                            </div>
+
+                            <div class="product-rating">
+                                <div class="star on"></div>
+                                <div class="star on"></div>
+                                <div class="star on "></div>
+                                <div class="star on"></div>
+                                <div class="star"></div>
+                            </div>
+
+                            <div class="product-price">
+                                @if($item->discount==0)
+                                    <span class="sale-price">{{number_format($item->price)}}
+                                        vnd</span>
+                                @else
+                                    <span class="sale-price">{{number_format($item->discount)}}
+                                        vnd</span>
+                                    <span class="base-price">{{number_format($item->price)}}
+                                        vnd</span>
+                                @endif
+                            </div>
+
+                            <div class="product-buttons">
+                                <button class="btn-card" id="add-cart-{{$item->id}}">
+                                    Đặt món
+                                </button>
+                            </div>
                         </div>
-
-                        <div class="product-title">
-                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
-                                {{$item->name}}
-                            </a>
-                        </div>
-
-                        <div class="product-rating">
-                            <div class="star on"></div>
-                            <div class="star on"></div>
-                            <div class="star on "></div>
-                            <div class="star on"></div>
-                            <div class="star"></div>
-                        </div>
-
-                        <div class="product-price">
-                            @if($item->promotion_price == 0)
-                                <span class="sale-price">{{$item->price}} (VND)</span>
-                            @else($item->promotion_price > 0)
-                                <span class="sale-price">{{$item->promotion_price}} (VND)</span>
-                                <span class="base-price">{{$item->price}}</span>
-                            @endif
-                        </div>
-
-                        <div class="product-buttons">
-                            <a class="add-to-cart" href="#">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="add-wishlist" href="#">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </a>
-
-                            <a class="quickview" href="#">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                            @endforeach
-                    </div>
-                   {{--@endforeach--}}
-
+                        {{--@endforeach--}}
+                    @endforeach
                 </div>
             </div>
         </div>
