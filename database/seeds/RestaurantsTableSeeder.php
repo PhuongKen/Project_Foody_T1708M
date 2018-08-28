@@ -1141,7 +1141,7 @@ class RestaurantsTableSeeder extends Seeder
                 'categoryID' => 5,
                 'name' => 'Hoa Đại Quán - Cơm Văn Phòng, Fastfood & Coffee',
                 'avartar' => 'foody-mobile-le-festin-mb-jpg-204-635828549664359402.jpg',
-                'addressID' => 14,
+                'addressID' => 15,
                 'addressDetail' => '20 Ngõ 165 Cầu Giấy',
                 'phone' => '0984480116',
                 'openTime' => '08:30',
