@@ -17,13 +17,13 @@ $('.btn-card').click(function () {
             for (var i in new_items) {
                 new_content += '<tr>';
                 new_content += '<td class="product-image">';
-                new_content += '<a href="product-detail-left-sidebar.html">';
+                new_content += '<a href="/foody/chi-tiet-mon-an/?id=' + new_items[i].food.id + '">';
                 new_content += '<img src="/images/food/' + new_items[i].food.avatar + '" alt="Product">';
                 new_content += '</a>';
                 new_content += '</td>';
                 new_content += '<td>';
                 new_content += '<div class="product-name">';
-                new_content += '<a href="product-detail-left-sidebar.html">';
+                new_content += '<a href="/foody/chi-tiet-mon-an/?id=' + new_items[i].food.id + '">';
                 new_content += new_items[i].food.name;
                 new_content += '</a>';
                 new_content += '</div>';
@@ -35,7 +35,7 @@ $('.btn-card').click(function () {
                 new_content += '</div>';
                 new_content += '</td>';
                 new_content += '<td class="action">';
-                new_content += '<a class="remove" href="/foody/xoa-san-pham/?id='+new_items[i].food.id+'">';
+                new_content += '<a class="remove" href="/foody/xoa-san-pham/?id=' + new_items[i].food.id + '">';
                 new_content += '<i class="fa fa-trash-alt" aria-hidden="true"></i>';
                 new_content += '</a>';
                 new_content += '</td>';
