@@ -20,7 +20,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'gia-trung-ca-hoi2.jpg',
                 'price' => '50000',
                 'discount' => '43000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -28,7 +30,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'images.jpg',
                 'price' => '140000',
                 'discount' => '120000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -36,7 +40,10 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'thitkhoi.jpg',
                 'price' => '130000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+
             ],
             [
                 'restaurantID' => 1,
@@ -44,7 +51,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'LAT6.jpg',
                 'price' => '160000',
                 'discount' => '135000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -52,7 +61,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'kemca.jpg',
                 'price' => '100000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -60,7 +71,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'mẹo-chọn-hoa-quả1.jpg',
                 'price' => '120000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -68,7 +81,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'download.jpg',
                 'price' => '120000',
                 'discount' => '100000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -76,7 +91,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'nemcuon.jpg',
                 'price' => '60000',
                 'discount' => '50000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -84,7 +101,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'Canh-ca-tram-nau-doc-mung (1).jpg',
                 'price' => '90000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -92,7 +111,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'soup-1-7494-1389251301.jpg',
                 'price' => '70000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -100,7 +121,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'lam-pate-gan-don-gian-tai-nha-1.jpg',
                 'price' => '50000',
                 'discount' => '45000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 1,
@@ -108,7 +131,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'foody-mobile-t2-jpg-594-635925226775395566.jpg',
                 'price' => '35000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -116,7 +141,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => '5998432334_45140c2466.jpg',
                 'price' => '100000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -124,7 +151,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'nemchua.jpg',
                 'price' => '30000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -132,7 +161,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'banhmi.jpg',
                 'price' => '40000',
                 'discount' => '34000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -140,7 +171,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'comca.jpg',
                 'price' => '50000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -148,7 +181,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'cakho.jpg',
                 'price' => '75000',
                 'discount' => '65000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -156,7 +191,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'cach-lam-mi-y-xao-ca-hoi-kem-tuoi-moi-la-thom-ngon-beo-ngay-doi-vi-cho-ca-nha-7.jpg',
                 'price' => '120000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -164,7 +201,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'thit-lon-tam-bot-chien-sot-teriyaki-kieu-nhat-don-gian11521082470.jpg',
                 'price' => '60000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -172,7 +211,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => '0166-sup-trai-cay.png',
                 'price' => '44000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -180,7 +221,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'mon ca hoi ap chao com vung - tung lam.jpg',
                 'price' => '230000',
                 'discount' => '200000',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -188,7 +231,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'thuong-thuc-banh-khoai-tay-tam-bot-dau-xanh-cho-mua-dong-7.jpg',
                 'price' => '170000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -196,7 +241,9 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'BinaryImageShowBlogImage.jpg',
                 'price' => '99000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'restaurantID' => 2,
@@ -204,7 +251,129 @@ class FoodTableSeeder extends Seeder
                 'avatar' => 'cách-làm-shell-nướng-mỡ-hành-1.jpg',
                 'price' => '200000',
                 'discount' => '0',
-                'status' => 1
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Sườn nướng tảng sốt mật ông rừng',
+                'avatar' => 'cach-lam-suon-kinh-do-thom-ngon-thu-thiet-danh-cho-chi-em-4.jpg',
+                'price' => '300000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Mỳ Ý sốt Bolognese',
+                'avatar' => 'myy.jpg',
+                'price' => '115000',
+                'discount' => '105000',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Combo sườn nướng tảng+khoai chiên',
+                'avatar' => 'suon (2).jpg',
+                'price' => '340000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Salad Caeser Với Gà Nướng',
+                'avatar' => 'new-england-chicken-salad.jpg',
+                'price' => '200000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Cánh Gà Chiên Mật Ong Vừng',
+                'avatar' => 'cach-lam-canh-ga-chien-mat-ong-4.jpg',
+                'price' => '70000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Cơm Rang Dứa',
+                'avatar' => 'comrang.jpg',
+                'price' => '120000',
+                'discount' => '105000',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Cơm Sườn Nướng Sốt Mật Ong Vừng',
+                'avatar' => '670px-Make-Honey-Chicken-Wings-Step-7.jpg',
+                'price' => '120000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Cơm Rang Dưa Bò',
+                'avatar' => 'duabo.jpg',
+                'price' => '30000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Salad Xoài',
+                'avatar' => 'cach-lam-salad-xoai-dua-thom-mat-hap-dan-cuc-ngon-lam-mon-trang-mieng-cho-ca-nha-1.jpg',
+                'price' => '100000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Nước Quất',
+                'avatar' => 'lam-nuoc-rua-bat-tu-qua-quat-1.jpg',
+                'price' => '30000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Cafe',
+                'avatar' => 'foody-mobile-foody-vi-dang-cafe-1-171-635744689783199673.jpg',
+                'price' => '20000',
+                'discount' => '0',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'restaurantID' => 3,
+                'name' => 'Tôm hấp bia',
+                'avatar' => 'cach-lam-tom-hap-bia-4.jpg',
+                'price' => '80000',
+                'discount' => '60000',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
 
 
