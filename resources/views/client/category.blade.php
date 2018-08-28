@@ -69,7 +69,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="food-address2">
-                                                    <a href="#" class="text-dark" target="_blank"
+                                                    <a href="/foody/chi-tiet-nha-hang/{{'?id='.$value->id}}" class="text-dark" target="_blank"
                                                        title="HAT Snack Rounds - Fast Food">
                                                         <b class="food-address4">{{$value->name}}</b>
                                                     </a>

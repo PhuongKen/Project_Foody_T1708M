@@ -15,13 +15,7 @@
                         <div class="product-left col-md-5 col-sm-5 col-xs-12">
                             <div class="product-image vertical">
                                 <div class="main-image">
-                                    <img class="img-responsive" src="/images/foody/{{$food->avartar}}" alt="Product Image">
-                                </div>
-                                <div class="thumb-images">
-                                    <img class="img-responsive" src="/images/foody/33.jpg" alt="Product Image">
-                                    <img class="img-responsive" src="/images/foody/3.jpg" alt="Product Image">
-                                    <img class="img-responsive" src="/images/foody/7.jpg" alt="Product Image">
-                                    <img class="img-responsive" src="/images/foody/30.jpg" alt="Product Image">
+                                    <img class="img-responsive" src="/images/food/{{$food->avatar}}" alt="Product Image">
                                 </div>
                             </div>
                         </div>
@@ -36,13 +30,6 @@
                                         <span class="base-price">{{$food->price}}</span>
                                      @endif
                                 </div>
-
-                                <div class="product-short-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sapien urna,
-                                    commodo ut molestie vitae, feugiat tincidunt ligula. Nam gravida nulla in convallis
-                                    condimentum.
-                                </div>
-
                                 <div class="product-add-to-cart border-bottom">
                                     <span class="control-label">QTY :</span>
                                     <div class="product-quantity">
@@ -60,7 +47,7 @@
                                     <div class="product-buttons">
                                         <a class="add-to-cart" href="#">
                                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                            <span>Add To Cart</span>
+                                            <span>Đặt món</span>
                                         </a>
                                     </div>
                                 </div>
@@ -79,69 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="product-extra">
-                                    <div class="item">
-                                        <span class="control-label">Review :</span><span
-                                                class="control-label">E-02154</span>
-                                    </div>
-                                    <div class="item">
-                                        <span class="control-label">Restaurant</span>
-                                        {{--<a href="#" title="Vegetables">{{$restaurant->name}}</a>--}}
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="product-tab">
-                        <!-- Tab Navigation -->
-                        <div class="tab-nav">
-                            <ul>
-                                <li>
-                                    <span>MÔ TẢ</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Tab Content -->
-                        <div class="tab-content">
-                            <!-- Description -->
-                            <div role="tabpanel" class="tab-pane fade in active" id="description">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                    nec, vulputate eget, arcu.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                    nec, vulputate eget, arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-                                    magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                    justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                            </div>
-
-                            <!-- Product Tag -->
-                            <div role="tabpanel" class="tab-pane fade" id="additional-information">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                    nec, vulputate eget, arcu.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                    nec, vulputate eget, arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-                                    magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                    justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                            </div>
-
                         </div>
                     </div>
                 </div>
