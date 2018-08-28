@@ -35,7 +35,7 @@
                                     <div class="panel-body">
                                         <form action="/foody/gui-don-hang" id="formaddress" method="post"
                                               name="update-cart-form" class="form-horizontal">
-                                            @csrf();
+                                            @csrf()
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label>Tên</label>
@@ -83,9 +83,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label>Thời gian ăn:</label>
-                                                    <input type="time" name="time"id="time" min="9:00" max="21:00">
+                                                <div class="col-md-12">
+                                                    <label>Lựa chọn thời gian chuyển tới:</label>
+                                                    <input type="time" name="time" id="time" min="9:00" max="21:00">
                                                     <input type="date" id="date" min="27/8/2018" max="12/9/2018"
                                                            name="date">
                                                 </div>
