@@ -23,7 +23,7 @@
                             <tr>
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove"
-                                       href="{{route('xoa1sanpham',$item->food->id)}}">
+                                       href="/foody/xoa-san-pham/{{'?id='.$item->food->id}}">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </td>
