@@ -25,6 +25,7 @@ Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/order', 'OrderController');
+    Route::get('/admin/change-status', 'OrderController@changeStatus');
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
     Route::resource('admin/orderaddress', 'OrderAddessController');
@@ -89,10 +90,7 @@ Route::get('/foody/them-gio-hang', 'Client\CartController@addToCart');
 Route::get('/foody/xem-gio-hang', 'Client\CartController@showCart');
 Route::get('/foody/lien-he', 'Client\ContactController@index');
 Route::post('/foody/lien-he', 'Client\ContactController@store');
-Route::get('/foody/xoa-san-pham/{id}', [
-    'as' => 'xoa1sanpham',
-    'uses' => 'Client\CartController@destroyCart'
-]);
+Route::get('/foody/xoa-san-pham', 'Client\CartController@destroyCart');
 Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@checkout');
 Route::put('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');

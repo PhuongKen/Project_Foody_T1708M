@@ -44,7 +44,7 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',1)
+            ->where('categoryID', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
@@ -57,7 +57,7 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',2)
+            ->where('categoryID', 2)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
@@ -70,7 +70,7 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',3)
+            ->where('categoryID', 3)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
@@ -83,7 +83,7 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',4)
+            ->where('categoryID', 4)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
@@ -96,12 +96,12 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',5)
+            ->where('categoryID', 5)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         return view('client.index', compact('categories', 'chunk_list', 'chunk_list1', 'chunk_list2',
-            'chunk_list3','chunk_list4','chunk_list5','address','address1','address2','address3','address4','address5'));
+            'chunk_list3', 'chunk_list4', 'chunk_list5', 'address', 'address1', 'address2', 'address3', 'address4', 'address5'));
     }
 
     public function sendMail()
@@ -163,8 +163,86 @@ class HomeController extends Controller
     public function getLogin()
     {
         $categories = Category::all();
+        $restaurant = Restaurant::where('status', 1);
+        $list_all = $restaurant->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list = $list_all->chunk(3);
+        $address = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant1 = Restaurant::where('categoryID', 1);
+        $list_all1 = $restaurant1->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list1 = $list_all1->chunk(3);
+        $address1 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant2 = Restaurant::where('categoryID', 2);
+        $list_all2 = $restaurant2->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list2 = $list_all2->chunk(3);
+        $address2 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 2)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant3 = Restaurant::where('categoryID', 3);
+        $list_all3 = $restaurant3->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list3 = $list_all3->chunk(3);
+        $address3 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 3)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant4 = Restaurant::where('categoryID', 4);
+        $list_all4 = $restaurant4->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list4 = $list_all4->chunk(3);
+        $address4 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 4)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant5 = Restaurant::where('categoryID', 5);
+        $list_all5 = $restaurant5->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list5 = $list_all5->chunk(3);
+        $address5 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 5)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
         if (Auth::check()) {
-            return view('client.index', compact('categories'));
+            return view('client.index', compact('categories','chunk_list', 'chunk_list1', 'chunk_list2',
+                'chunk_list3', 'chunk_list4', 'chunk_list5', 'address', 'address1', 'address2', 'address3', 'address4', 'address5'));
         } else {
             return view('client.login', compact('categories'));
         }
@@ -172,9 +250,87 @@ class HomeController extends Controller
 
     public function postLogin(Request $req)
     {
+        $restaurant = Restaurant::where('status', 1);
+        $list_all = $restaurant->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list = $list_all->chunk(3);
+        $address = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant1 = Restaurant::where('categoryID', 1);
+        $list_all1 = $restaurant1->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list1 = $list_all1->chunk(3);
+        $address1 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant2 = Restaurant::where('categoryID', 2);
+        $list_all2 = $restaurant2->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list2 = $list_all2->chunk(3);
+        $address2 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 2)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant3 = Restaurant::where('categoryID', 3);
+        $list_all3 = $restaurant3->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list3 = $list_all3->chunk(3);
+        $address3 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 3)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant4 = Restaurant::where('categoryID', 4);
+        $list_all4 = $restaurant4->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list4 = $list_all4->chunk(3);
+        $address4 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 4)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant5 = Restaurant::where('categoryID', 5);
+        $list_all5 = $restaurant5->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list5 = $list_all5->chunk(3);
+        $address5 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 5)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
         $categories = Category::all();
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
-            return view('client.index', compact('categories'));
+            return view('client.index', compact('categories', 'chunk_list', 'chunk_list1', 'chunk_list2',
+                'chunk_list3', 'chunk_list4', 'chunk_list5', 'address', 'address1', 'address2', 'address3', 'address4', 'address5'));
         } else {
             return redirect()->back()->with('thatbai', 'Sai thông tin đăng nhập');
         }
@@ -182,9 +338,87 @@ class HomeController extends Controller
 
     public function getLogout()
     {
+        $restaurant = Restaurant::where('status', 1);
+        $list_all = $restaurant->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list = $list_all->chunk(3);
+        $address = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant1 = Restaurant::where('categoryID', 1);
+        $list_all1 = $restaurant1->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list1 = $list_all1->chunk(3);
+        $address1 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant2 = Restaurant::where('categoryID', 2);
+        $list_all2 = $restaurant2->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list2 = $list_all2->chunk(3);
+        $address2 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 2)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant3 = Restaurant::where('categoryID', 3);
+        $list_all3 = $restaurant3->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list3 = $list_all3->chunk(3);
+        $address3 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 3)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant4 = Restaurant::where('categoryID', 4);
+        $list_all4 = $restaurant4->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list4 = $list_all4->chunk(3);
+        $address4 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 4)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
+        $restaurant5 = Restaurant::where('categoryID', 5);
+        $list_all5 = $restaurant5->orderBy('created_at', 'DESC')->get()->take(15);
+        $chunk_list5 = $list_all5->chunk(3);
+        $address5 = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('categoryID', 5)
+            ->orderBy('created_at', 'DESC')
+            ->get()->toArray();
+
         $categories = Category::all();
         Auth::logout();
-        return view('client.index', compact('categories'));
+        return view('client.index', compact('categories', 'chunk_list', 'chunk_list1', 'chunk_list2',
+            'chunk_list3', 'chunk_list4', 'chunk_list5', 'address', 'address1', 'address2', 'address3', 'address4', 'address5'));
     }
 
     public function verifyEmail($id, $token)

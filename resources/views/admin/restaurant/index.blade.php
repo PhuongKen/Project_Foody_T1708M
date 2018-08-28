@@ -108,7 +108,7 @@
                     },
                     success: function (response) {
                         swal({
-                            text: 'ảnh đã bị xoá.',
+                            text: 'Ảnh đã bị xoá.',
                             type: 'success',
                             confirmButtonClass: "btn btn-success",
                             buttonsStyling: false

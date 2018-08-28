@@ -17,8 +17,8 @@ use App\District;
 use App\Food;
 use App\Http\Controllers\Controller;
 use App\Order;
-use App\Order_info;
 use App\Order_detail;
+use App\Order_info;
 use App\Provind;
 use App\Ward;
 use Illuminate\Http\Request;
@@ -104,13 +104,15 @@ class CartController extends Controller
         return response()->json(['msg' => 'Thêm vào giỏ hàng thành công', 'cartItem' => $cart], 200);
     }
 
-    public function checkout(){
+    public function checkout()
+    {
         $categories = Category::all();
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
         return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
+
     public function showCheckout()
     {
         $cart = new Cart();
@@ -135,11 +137,12 @@ class CartController extends Controller
         return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
 
-    public function destroyCart()
+    public function destroyCart(Request $request)
     {
+        $id = Input::get('id');
         if (Session::has('cart')) {
             $cart = Session::get('cart');
-            Session::remove('cart');
+            unset($cart->items[$id]);
         }
         return redirect()->back();
     }
@@ -161,7 +164,7 @@ class CartController extends Controller
                 'time.required' => 'Bạn chưa nhập giờ đến',
                 'date.required' => 'Bạn chưa nhập ngày đến',
                 'address.required' => 'Bạn chưa nhập địa chỉ chi tiết',
-                'address.min'=>'Địa chỉ chi tiết phải lớn hơn 6 kí tụ',
+                'address.min' => 'Địa chỉ chi tiết phải lớn hơn 6 kí tụ',
             ]
 
         );
@@ -213,17 +216,17 @@ class CartController extends Controller
                     $order_detail->save();
                     array_push($order_details, $order_detail);
                     $restaurant = DB::table('foods')
-                        ->join('restaurants','restaurants.id','=','foods.restaurantID')
+                        ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
                         ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
                         ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
                         ->join('districts', 'addresses.districtID', '=', 'districts.id')
                         ->join('wards', 'addresses.wardID', '=', 'wards.id')
-                        ->select('restaurants.*','provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-                        ->where('foods.restaurantID',$item->food->restaurantID)->get()->toArray();
+                        ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+                        ->where('foods.restaurantID', $item->food->restaurantID)->get()->toArray();
                 }
                 $order->save();
 //                dd($restaurant);
-                Mail::send('client.send_cart',['user' => $user,'restaurant' =>$restaurant,'order_info'=>$order_info], function ($message) use ($user) {
+                Mail::send('client.send_cart', ['user' => $user, 'restaurant' => $restaurant, 'order_info' => $order_info], function ($message) use ($user) {
                     $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
                     $message->to($user->email, $user->name);
                     $message->subject('Thông tin đơn hàng');

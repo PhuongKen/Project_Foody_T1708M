@@ -95,33 +95,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'userID' => 'required',
-            'amount' => 'required|numeric|min:1',
-            'totalPrice' => 'required|numeric|min:1',
-            'status'=> 'required|numeric|min:1',
-        ],
-            [
-                'userID.required' => 'Bạn chưa nhập tên',
-                'amount.required' => 'amount lớn hơn không',
-                'amount.required' => 'Bạn chưa nhập amount',
-                'totalPrice.required' => 'totalPrice lớn hơn không',
-                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
-                'status.required' => 'status lớn hơn không',
-                'status.required' => 'Bạn chưa nhập status'
-            ]
-        );
-        $order=Order::find($id);
-        if ($order==null){
-            return view('404');
+        $order = Order::find($id);
+        if($order == null){
+            return view('error.404');
         }
-        $order->userID = Input::get('userID');
-        $order->amount = Input::get('amount');
-        $order->totalPrice = Input::get('totalPrice');
-        $order->status = Input::get('status');
-        $order->save();
-        return redirect('/admin/order');
-
+        $order->status = 2;
+        $order->update();
+        return 'null';
     }
 
     /**
@@ -137,5 +117,18 @@ class OrderController extends Controller
            return view('404');
        }
        $order->delete();
+    }
+
+    public function changeStatus()
+    {
+        $id = Input::get('id');
+        $status = Input::get('status');
+        $order = Order::find($id);
+        if ($order == null) {
+            return view('error.404');
+        }
+        $order->status = $status;
+        $order->save();
+        return redirect('/admin/order');
     }
 }
