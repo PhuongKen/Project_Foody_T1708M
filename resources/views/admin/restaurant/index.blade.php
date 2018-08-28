@@ -53,7 +53,7 @@
                                         <td>{{$value->name}}</td>
                                         <td>{{$value->shortDescription}}</td>
                                         <td class="address" data-diachi="{{$value->addressID}}">
-                                            {{$address[$key]->wardName}},{{$address[$key]->districtName}},{{$address[$key]->provindName}}
+                                            {{--{{$address[$key]->wardName}},{{$address[$key]->districtName}},{{$address[$key]->provindName}}--}}
                                         </td>
                                         <td>
                                             @if($value->status == 1)

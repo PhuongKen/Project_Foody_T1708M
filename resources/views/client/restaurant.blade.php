@@ -41,14 +41,14 @@
                                     <p><img src="/images/foody/intro-icon-2.png" alt="Intro Image"></p>
                                     <h4>Liên hệ</h4>
                                     <p>Số điện thoại: {{$restaurant->phone}}</p>
-                                    <div class="food-address">
-                                        <a class="food-address1"
-                                           href="#"><span>{{$address[0]->wardName}}</span></a>,
-                                        <a class="food-address1"
-                                           href="#"><span>{{$address[0]->districtName}}</span></a>,
-                                        <a class="food-address1"
-                                           href="#"><span>{{$address[0]->provindName}}</span></a>
-                                    </div>
+                                    {{--<div class="food-address">--}}
+                                        {{--<a class="food-address1"--}}
+                                           {{--href="#"><span>{{$address[0]->wardName}}</span></a>,--}}
+                                        {{--<a class="food-address1"--}}
+                                           {{--href="#"><span>{{$address[0]->districtName}}</span></a>,--}}
+                                        {{--<a class="food-address1"--}}
+                                           {{--href="#"><span>{{$address[0]->provindName}}</span></a>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                             <div class="intro-right">
@@ -78,7 +78,7 @@
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
-                                                    <img src="/images/food/{{$item->avatar}}" alt="Product Image">
+                                                    <img src="/images/food/{{$item->avatar}}" style="display: block; height: 80px" alt="Product Image">
                                                 </a>
                                             </div>
 
@@ -90,10 +90,13 @@
                                                 </div>
                                                 <div class="product-price">
                                                     @if($item->discount==0)
-                                                        <span class="sale-price">{{number_format($item->price)}} vnd</span>
+                                                        <span class="sale-price">{{number_format($item->price)}}
+                                                            vnd</span>
                                                     @else
-                                                        <span class="sale-price">{{number_format($item->discount)}} vnd</span>
-                                                        <span class="base-price">{{number_format($item->price)}} vnd</span>
+                                                        <span class="sale-price">{{number_format($item->discount)}}
+                                                            vnd</span>
+                                                        <span class="base-price">{{number_format($item->price)}}
+                                                            vnd</span>
                                                     @endif
                                                 </div>
 

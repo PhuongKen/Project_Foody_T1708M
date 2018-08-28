@@ -57,7 +57,7 @@
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="product-grid-left-sidebar.html" title="Product">Danh mục</a>
+                                    <a href="#" title="Product">Danh mục</a>
                                     <div class="dropdown-menu">
                                         <ul>
                                             @foreach($categories as $c)
