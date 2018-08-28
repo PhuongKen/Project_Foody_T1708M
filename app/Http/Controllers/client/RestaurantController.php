@@ -31,7 +31,7 @@ class RestaurantController
                 ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
                 ->join('districts', 'addresses.districtID', '=', 'districts.id')
                 ->join('wards', 'addresses.wardID', '=', 'wards.id')
-                ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+                ->select('restaurants.name', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
                 ->where('restaurants.id',$selected_restaurantId)
                 ->get()->toArray();
             return view('client.restaurant',compact('categories','chunk_list','address','restaurant'));

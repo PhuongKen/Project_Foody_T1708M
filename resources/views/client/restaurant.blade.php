@@ -13,14 +13,6 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="intro-header">
                                 <h3>Chào mừng tới {{$restaurant->name}}</h3>
-                                <div class="food-address">
-                                    <a class="food-address1"
-                                       href="#"><span>{{$address[0]->wardName}}</span></a>,
-                                    <a class="food-address1"
-                                       href="#"><span>{{$address[0]->districtName}}</span></a>,
-                                    <a class="food-address1"
-                                       href="#"><span>{{$address[0]->provindName}}</span></a>
-                                </div>
                             </div>
                         </div>
 
@@ -30,6 +22,7 @@
                                     <p><img src="/images/foody/intro-icon-1.png" alt="Intro Image"></p>
                                     <h4>Về nhà hàng</h4>
                                     <p>{{$restaurant->shortDescription}}</p>
+                                    <p>{{$restaurant->description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -48,6 +41,14 @@
                                     <p><img src="/images/foody/intro-icon-2.png" alt="Intro Image"></p>
                                     <h4>Liên hệ</h4>
                                     <p>Số điện thoại: {{$restaurant->phone}}</p>
+                                    <div class="food-address">
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->wardName}}</span></a>,
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->districtName}}</span></a>,
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->provindName}}</span></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="intro-right">
@@ -76,16 +77,24 @@
                                     @foreach($chunk_lists as $item)
                                         <div class="product-item">
                                             <div class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
+                                                <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
                                                     <img src="/images/food/{{$item->avatar}}" alt="Product Image">
                                                 </a>
                                             </div>
 
                                             <div class="product-info">
                                                 <div class="product-title">
-                                                    <a href="product-detail-left-sidebar.html">
+                                                    <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
                                                         {{$item->name}}
                                                     </a>
+                                                </div>
+                                                <div class="product-price">
+                                                    @if($item->discount==0)
+                                                        <span class="sale-price">{{number_format($item->price)}} vnd</span>
+                                                    @else
+                                                        <span class="sale-price">{{number_format($item->discount)}} vnd</span>
+                                                        <span class="base-price">{{number_format($item->price)}} vnd</span>
+                                                    @endif
                                                 </div>
 
                                                 <div class="product-rating">
@@ -96,17 +105,12 @@
                                                     <div class="star"></div>
                                                 </div>
 
-                                                <div class="product-price">
-                                                    {{--<span class="sale-price">$35.00</span>--}}
-                                                    <span class="base-price">{{$item->price}}</span>
-                                                </div>
-
                                                 <div class="product-buttons">
                                                     <button class="btn-card" id="add-cart-{{$item->id}}">
                                                         Đặt món
                                                     </button>
                                                     {{--<a href="/foody/them-gio-hang?id={{$item->id}}&quantity=1">--}}
-                                                        {{--Thêm vào giỏ hàng--}}
+                                                    {{--Thêm vào giỏ hàng--}}
                                                     {{--</a>--}}
                                                 </div>
                                             </div>

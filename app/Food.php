@@ -11,7 +11,7 @@ class Food extends Model
         if ($this->discount == 0) {
             return sprintf('%s', number_format($this->price, 0));
         }
-        return sprintf('%s', number_format(($this->price - ($this->price * $this->discount / 100)), 0));
+        return sprintf('%s', number_format(($this->discount), 0));
     }
 
     public function getDiscountPriceStringAttribute()
@@ -19,7 +19,7 @@ class Food extends Model
         if ($this->discount == 0) {
             return sprintf('%s (vnd)', number_format($this->price, 0));
         }
-        return sprintf('%s (vnd)', number_format(($this->price - ($this->price * $this->discount / 100)), 0));
+        return sprintf('%s (vnd)', number_format(($this->discount), 0));
     }
 
     public function getOriginalPriceStringAttribute()
@@ -32,7 +32,10 @@ class Food extends Model
 
     public function getDiscountPriceAttribute()
     {
-        return $this->price - ($this->price * $this->discount / 100);
+        if ($this->discount == 0) {
+            return $this->price;
+        }
+        return $this->discount;
     }
 
     public function isNew()
@@ -59,4 +62,8 @@ class Food extends Model
             return '';
         }
     }
+
+//    public function restaurant(){
+//        return $this->belongsTo('App\Restaurant','restaurantID','id');
+//    }
 }

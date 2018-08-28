@@ -6,11 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
 </head>
 <body>
 <div>
-    <h3 style="color: #d33">Cảm ơn bạn đã đặt món ăn của chúng tôi</h3>
+    <h3 style="color: #d33">Cảm ơn bạn đã đặt món ăn của {{$restaurant[0]->name}}</h3>
+    <h4>Địa chỉ: {{$restaurant[0]->addressDetail}}, {{$restaurant[0]->wardName}}, {{$restaurant[0]->districtName}}, {{$restaurant[0]->provindName}}</h4>
     <h4>Thông tin đơn hàng của {{Auth::user()->name}}</h4>
+    <h5>Thời gian đến: {{$order_info->time}}, {{$order_info->date}}</h5>
     @if(count(\App\Cart::getCart()->items)>0)
         <div class="table-responsive">
             <table class="cart-summary table table-bordered">
@@ -38,6 +43,7 @@
     <br>
     <label>===================================================================</label>
     <h4><b>Tổng tiền:</b> {{\App\Cart::getCart()->getTotalMoneyString()}}</h4>
+    <br><h3 style="color: #d33">Hẹn gặp lại. Foody kính chào. Bye bye</h3>
 </div>
 </body>
 </html>
