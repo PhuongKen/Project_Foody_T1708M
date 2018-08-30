@@ -9452,9 +9452,6 @@ input {
     border-radius: 20px;
 }
 
-[class~=product-category-page] [class~=products-bar] [class~=filter-bar] select {
-    width: 6.875pc;
-}
 
 [class~=sidebar] [class~=filter-color] [class~=right] {
     padding-left: 22.5pt;

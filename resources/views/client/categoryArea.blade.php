@@ -3,7 +3,17 @@
     <div class="container container-edit">
         <div class="row" style="margin-top: 30px">
             <!-- Page Content -->
-            @if($list_restaurant -> isNotEmpty())
+            @if($list_restaurant == null)
+                @if($idDistrict = 0)
+                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa <b
+                                class="text-danger">"{{$search}}"</b> và địa chỉ là <b
+                                class="text-danger">"{{$provindName->name}}"</b></h4>
+                @else
+                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa <b
+                                class="text-danger">"{{$search}}"</b> và địa chỉ là <b
+                                class="text-danger">"{{$provindName->name}}, {{$districtName->name}}"</b></h4>
+                @endif
+            @else
                 <div id="center-column" class="col-lg-12 col-md-12">
                     <div class="product-category-page">
                         <!-- Nav Bar -->
@@ -16,7 +26,8 @@
                                                                   aria-expanded="true"><i
                                                             class="fa fa-th-large"></i></a>
                                             </li>
-                                            <li><a href="#products-list" data-toggle="tab" aria-expanded="false"><i
+                                            <li><a href="#products-list" data-toggle="tab"
+                                                   aria-expanded="false"><i
                                                             class="fa fa-bars"></i></a></li>
                                         </ul>
                                     </div>
@@ -33,10 +44,17 @@
                                                     <select class="form-control" name="district"
                                                             name="district"
                                                             id="district">
-                                                        <option value="0">Tất cả</option>
-                                                        @foreach($district as $d)
-                                                            <option value="{{$d->id}}">{{$d->name}}</option>
-                                                        @endforeach
+                                                        @if($idDistrict == 0)
+                                                            <option value="0">Tất cả</option>
+                                                            @foreach($district as $d)
+                                                                <option value="{{$d->id}}">{{$d->name}}</option>
+                                                            @endforeach
+                                                        @else
+                                                            <option value="{{$districtName->id}}">{{$districtName->name}}</option>
+                                                            @foreach($district as $d)
+                                                                <option value="{{$d->id}}">{{$d->name}}</option>
+                                                            @endforeach
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
@@ -44,7 +62,6 @@
                                                 <div class="select">
                                                     <select class="form-control" name="provind"
                                                             id="provind">
-                                                        <option value="0">Tất cả</option>
                                                         @foreach($provind as $p)
                                                             <option value="{{$p->id}}">{{$p->name}}</option>
                                                         @endforeach
@@ -52,7 +69,8 @@
                                                 </div>
                                             </div>
                                             <input type="hidden" value="{{$search}}" name="search">
-                                            <input type="submit" value="Lọc" style="padding: 4px; margin-right: 0">
+                                            <input type="submit" value="Lọc"
+                                                   style="padding: 4px; margin-right: 0">
                                         </form>
                                     </div>
                                 </div>
@@ -81,14 +99,14 @@
                                                             <b class="food-address4">{{$value->name}}</b>
                                                         </a>
                                                     </div>
-                                                    <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
-                                                    </div>
+                                                    {{--<div class="food-address">--}}
+                                                    {{--<a class="food-address1"--}}
+                                                    {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
+                                                    {{--<a class="food-address1"--}}
+                                                    {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
+                                                    {{--<a class="food-address1"--}}
+                                                    {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                    {{--</div>--}}
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
                                                         <div class="star on"></div>
@@ -126,14 +144,14 @@
                                                                 {{$value->name}}
                                                             </a>
                                                         </div>
-                                                        <div class="food-address">
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
-                                                        </div>
+                                                        {{--<div class="food-address">--}}
+                                                        {{--<a class="food-address1"--}}
+                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
+                                                        {{--<a class="food-address1"--}}
+                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
+                                                        {{--<a class="food-address1"--}}
+                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                        {{--</div>--}}
                                                         <div>
                                                             <span style="color: #4cae4c">Giờ mở cửa: {{$value->openTime}}</span><br>
                                                             <span style="color: #d33">Giờ đóng cửa: {{$value->closeTime}}</span>
@@ -179,9 +197,6 @@
                         </div>
                     </div>
                 </div>
-            @else
-                <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa <b
-                            class="text-danger">"{{$search}}"</b></h4>
             @endif
         </div>
     </div>

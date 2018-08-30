@@ -10,6 +10,8 @@ namespace App\Http\Controllers\client;
 
 
 use App\Category;
+use App\District;
+use App\Provind;
 use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +23,7 @@ class FoodController
     {
         $provind = Provind::all();
         $district = District::all();
+        $search = "";
         $categories = Category::where('status', 1)->get();
         $restaurants = Restaurant::where('status', 1);
         $selected_categoryId = $request->get('categoryID');
@@ -38,6 +41,6 @@ class FoodController
             ->get()->toArray();
 //        print_r(array_keys($address));
 
-        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district'));
+        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district','search'));
     }
 }
