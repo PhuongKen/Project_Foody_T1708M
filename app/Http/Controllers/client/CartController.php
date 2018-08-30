@@ -125,6 +125,9 @@ class CartController extends Controller
                 }
                 $item = new CartItem();
                 $item->food = $food;
+                if ($item->quantity = $foods[$key] < 0) {
+                    return view('error.404');
+                }
                 $item->quantity = $foods[$key];
                 $cart->items[$key] = $item;
             }
@@ -226,11 +229,19 @@ class CartController extends Controller
                 }
                 $order->save();
 //                dd($restaurant);
-                Mail::send('client.send_cart', ['user' => $user, 'restaurant' => $restaurant, 'order_info' => $order_info], function ($message) use ($user) {
-                    $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
-                    $message->to($user->email, $user->name);
-                    $message->subject('Thông tin đơn hàng');
-                });
+                if ($restaurant == null) {
+                    Mail::send('client.send_cart1', ['user' => $user, 'order_info' => $order_info], function ($message) use ($user) {
+                        $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                        $message->to($user->email, $user->name);
+                        $message->subject('Thông tin đơn hàng');
+                    });
+                } else {
+                    Mail::send('client.send_cart', ['user' => $user, 'restaurant' => $restaurant, 'order_info' => $order_info], function ($message) use ($user) {
+                        $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                        $message->to($user->email, $user->name);
+                        $message->subject('Thông tin đơn hàng');
+                    });
+                }
                 DB::commit();
                 // clear session cart.
                 Session::remove('cart');

@@ -48,7 +48,7 @@
                                         </button>
                                         <input class="size8 m-text18 t-center num-product"
                                                type="text" name="foods[{{$item->food->id}}]"
-                                               value="{{$item->quantity}}">
+                                               value="{{$item->quantity}}" readonly>
 
                                         <button class="btn-num-product-up  flex-c-m size7">
                                             <i class="fs-12 fa fa-plus" aria-hidden="true"></i>

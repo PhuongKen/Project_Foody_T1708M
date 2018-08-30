@@ -180,11 +180,11 @@
                                            title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                             khoản của {{Auth::user()->name}}</a>
                                     </div>
-                                    {{--<div class="item">--}}
-                                        {{--<a href="/foody/lich-su-don-hang"--}}
-                                           {{--title="Log in to your customer account"><i class="fa fa-cog"></i>--}}
-                                            {{--Lịch sử đơn hàng của{{Auth::user()->name}}</a>--}}
-                                    {{--</div>--}}
+                                    <div class="item">
+                                        <a href="/foody/lich-su-don-hang"
+                                           title="Log in to your customer account"><i class="fa fa-cog"></i>
+                                            Lịch sử đơn hàng của{{Auth::user()->name}}</a>
+                                    </div>
                                     <div class="item">
                                         <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
                                                     class="fa fa-cog"></i>Đăng xuất

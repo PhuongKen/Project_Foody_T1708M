@@ -23,12 +23,12 @@ class OrderHistoryController
         $order_detail = DB::table('orders')
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
             ->select('order_details.nameProduct', 'order_details.image', 'order_details.price',
-                'order_details.amount', 'orders.*')
+                'order_details.amount','order_details.id as idDetail', 'orders.id','orders.created_at')
             ->where('orders.userID', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->get()->groupBy('id')->toArray();
 //        $result = ($order_detail, true);
-//        print_r($result);
+//        print_r($order_detail);
         return view('client.order_history', compact('categories', 'order_detail', 'order'));
     }
 }

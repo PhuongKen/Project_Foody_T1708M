@@ -33,33 +33,38 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <tr>
-                                                    @foreach($order_detail[$value->id] as  $key1 =>$item)
+                                                @foreach($order_detail[$value->id] as  $key1 =>$item)
+                                                    {{--{{$item->nameProduct}}--}}
+                                                    <tr>
                                                         <td class="product-remove">
                                                         </td>
                                                         <td>
-                                                            <a href="product-detail-left-sidebar.html">
+                                                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->idDetail}}">
                                                                 <img width="80" alt=""
                                                                      style="display: block;width: 100%;height: auto"
-                                                                     src="/images/food/{{$item[0]->image}}">
+                                                                     src="/images/food/{{$item->image}}">
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a href="product-detail-left-sidebar.html"
-                                                               class="product-name">{{$item[0]->nameProduct}}</a>
+                                                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->idDetail}}"
+                                                               class="product-name">{{$item->nameProduct}}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{number_format($item[0]->price)}} vnđ
+                                                            {{number_format($item->price)}} vnđ
                                                         </td>
                                                         <td class="column-4">
-                                                            {{number_format($item[0]->amount)}}
+                                                            {{$item->amount}}
                                                         </td>
-                                                        <td class="text-center ">
-                                                            {{$item[0]->amount}}
-                                                            *{{$item[0]->price}}
+                                                        <td class="text-center multi">
+                                                            <?php
+                                                            $amount = $item->amount;
+                                                            $price = $item->price;
+                                                            $data = $amount * $price;
+                                                            echo $data . " vnđ";
+                                                            ?>
                                                         </td>
-                                                    @endforeach
-                                                </tr>
+                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                                 <tfoot>
                                                 <tr class="cart-total">
