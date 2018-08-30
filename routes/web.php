@@ -103,5 +103,5 @@ Route::post('edit-user/{id}', [
     'as' => 'edituser',
     'uses' => 'Client\UpdateUserController@postEdit'
 ]);
-Route::get('/foody/ve-chung-toi','Client\AboutusController@index');
-Route::get('/foody/lich-su-don-hang','Client\OrderHistoryController@index');
+Route::get('/foody/ve-chung-toi', 'Client\AboutusController@index');
+Route::get('/foody/lich-su-don-hang', 'Client\OrderHistoryController@index');
