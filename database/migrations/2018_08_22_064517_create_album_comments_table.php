@@ -16,11 +16,11 @@ class CreateAlbumCommentsTable extends Migration
         Schema::create('album_comments', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('userID')->unsigned();
-            $table->foreign('userID')->references('id')->on('users');
+//            $table->foreign('userID')->references('id')->on('users');
             $table->integer('restaurantID')->unsigned();
-            $table->foreign('restaurantID')->references('id')->on('restaurants');
+//            $table->foreign('restaurantID')->references('id')->on('restaurants');
             $table->integer('commentID')->unsigned();
-            $table->foreign('commentID')->references('id')->on('comments');
+//            $table->foreign('commentID')->references('id')->on('comments');
             $table->string('image');
             $table->timestamps();
         });
