@@ -19,6 +19,8 @@ class FoodController
 {
     public function index(Request $request)
     {
+        $provind = Provind::all();
+        $district = District::all();
         $categories = Category::where('status', 1)->get();
         $restaurants = Restaurant::where('status', 1);
         $selected_categoryId = $request->get('categoryID');
@@ -36,6 +38,6 @@ class FoodController
             ->get()->toArray();
 //        print_r(array_keys($address));
 
-        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address'));
+        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district'));
     }
 }

@@ -3414,9 +3414,10 @@ input {
     border-bottom-width: .75pt;
 }
 
-.product-rating .on{
+.product-rating .on {
     color: #f7bc3d;
 }
+
 .block-cart .cart-title span {
     border-right-width: .020833333in;
 }
@@ -8661,10 +8662,6 @@ input {
 
 [class~=go-up] a {
     width: 26.25pt;
-}
-
-[class~=header-top] [class~=form-search] form input[type="text"], [class~=category-tab] [class~=tab-nav] ul li a {
-    text-transform: uppercase;
 }
 
 [class~=home-4] [class~=header-top] {

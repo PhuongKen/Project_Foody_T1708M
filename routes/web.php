@@ -105,3 +105,4 @@ Route::post('edit-user/{id}', [
 ]);
 Route::get('/foody/ve-chung-toi', 'Client\AboutusController@index');
 Route::get('/foody/lich-su-don-hang', 'Client\OrderHistoryController@index');
+Route::post('/foody/tim-kiem','Client\SearchController@search');

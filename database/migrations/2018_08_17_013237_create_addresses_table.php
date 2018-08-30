@@ -16,11 +16,11 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('provindID')->unsigned();
-            $table->foreign('provindID')->references('id')->on('provinds');
+//            $table->foreign('provindID')->references('id')->on('provinds');
             $table->integer('districtID')->unsigned();
-            $table->foreign('districtID')->references('id')->on('districts');
+//            $table->foreign('districtID')->references('id')->on('districts');
             $table->integer('wardID')->unsigned();
-            $table->foreign('wardID')->references('id')->on('wards');
+//            $table->foreign('wardID')->references('id')->on('wards');
             $table->timestamps();
         });
     }
