@@ -65,6 +65,22 @@ class CartController extends Controller
         return redirect('/foody/xem-gio-hang');
     }
 
+    public function showDistrict($id)
+    {
+        $district = District::where('provindID', $id)->get();
+        foreach ($district as $d) {
+            echo "<option value='$d->id'>$d->name</option>";
+        }
+    }
+
+    public function showWard($id)
+    {
+        $ward = Ward::where('districtID', $id)->get();
+        foreach ($ward as $w) {
+            echo "<option value='$w->id'>$w->name</option>";
+        }
+    }
+
     public function showCart()
     {
         $categories = Category::all();

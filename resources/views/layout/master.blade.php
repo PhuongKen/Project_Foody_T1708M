@@ -100,9 +100,8 @@
                     <div class="col-lg-5 col-md-5 col-sm-12 header-right d-flex justify-content-end align-items-center">
                         <!-- Search -->
                         <div class="form-search">
-                            <form action="/foody/tim-kiem" method="post">
-                                {{csrf_field()}}
-                                <input type="text" name="search_data" class="form-input" placeholder="Tìm kiếm">
+                            <form action="{{route('search')}}" method="get">
+                                <input type="text" name="search" class="form-input" placeholder="Tìm kiếm">
                                 <button type="submit" class="fa fa-search"></button>
                             </form>
                         </div>
