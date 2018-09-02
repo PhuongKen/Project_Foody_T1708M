@@ -23,12 +23,11 @@ class FoodController
     {
         $provind = Provind::all();
         $district = District::all();
-        $search = "";
         $categories = Category::where('status', 1)->get();
         $restaurants = Restaurant::where('status', 1);
-        $selected_categoryId = $request->get('categoryID');
-        $selected_category = Category::find($selected_categoryId);
-        $restaurants = $restaurants->where('categoryID', $selected_categoryId);
+        $categoryID = $request->get('categoryID');
+        $selected_category = Category::find($categoryID);
+        $restaurants = $restaurants->where('categoryID', $categoryID);
         $list_restaurant = $restaurants->orderBy('created_at', 'DESC')->paginate(50);
         $address = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -36,11 +35,11 @@ class FoodController
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',$selected_categoryId)
+            ->where('categoryID',$categoryID)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 //        print_r(array_keys($address));
 
-        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district','search'));
+        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district','categoryID'));
     }
 }

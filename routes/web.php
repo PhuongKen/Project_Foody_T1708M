@@ -94,6 +94,8 @@ Route::post('/foody/lien-he', 'Client\ContactController@store');
 Route::get('/foody/xoa-san-pham', 'Client\CartController@destroyCart');
 Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@checkout');
 Route::put('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
+Route::get('/foody/district/{idDistrict}', 'Client\CartController@showDistrict');
+Route::get('/foody/ward/{idWard}', 'Client\CartController@showWard');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');
 Route::get('edit-user/{id}', [
     'as' => 'edituser',
@@ -105,6 +107,12 @@ Route::post('edit-user/{id}', [
 ]);
 Route::get('/foody/ve-chung-toi', 'Client\AboutusController@index');
 Route::get('/foody/lich-su-don-hang', 'Client\OrderHistoryController@index');
-Route::post('/foody/tim-kiem', 'Client\SearchController@search');
-Route::get('/client/district/{idProduct}', 'Client\SearchController@showDistrict');
-Route::post('/foody/dia-diem', 'Client\SearchController@searchArea');
+Route::get('/foody/tim-kiem', [
+    'as' => 'search',
+    'uses' => 'Client\SearchController@search'
+]);
+Route::get('/client/district/{idDistrict}', 'Client\SearchController@showDistrict');
+Route::get('/foody/dia-diem/', [
+    'as' => 'diadiem',
+    'uses' => 'Client\SearchController@searchArea'
+]);
