@@ -42,12 +42,12 @@
                                     <h4>Liên hệ</h4>
                                     <p>Số điện thoại: {{$restaurant->phone}}</p>
                                     {{--<div class="food-address">--}}
-                                        {{--<a class="food-address1"--}}
-                                           {{--href="#"><span>{{$address[0]->wardName}}</span></a>,--}}
-                                        {{--<a class="food-address1"--}}
-                                           {{--href="#"><span>{{$address[0]->districtName}}</span></a>,--}}
-                                        {{--<a class="food-address1"--}}
-                                           {{--href="#"><span>{{$address[0]->provindName}}</span></a>--}}
+                                    {{--<a class="food-address1"--}}
+                                    {{--href="#"><span>{{$address[0]->wardName}}</span></a>,--}}
+                                    {{--<a class="food-address1"--}}
+                                    {{--href="#"><span>{{$address[0]->districtName}}</span></a>,--}}
+                                    {{--<a class="food-address1"--}}
+                                    {{--href="#"><span>{{$address[0]->provindName}}</span></a>--}}
                                     {{--</div>--}}
                                 </div>
                             </div>
@@ -78,7 +78,8 @@
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->id}}">
-                                                    <img src="/images/food/{{$item->avatar}}" style="display: block; height: 80px" alt="Product Image">
+                                                    <img src="/images/food/{{$item->avatar}}"
+                                                         style="display: block; height: 80px" alt="Product Image">
                                                 </a>
                                             </div>
 
@@ -123,6 +124,32 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="fb-comments"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="stars stars-example-bootstrap">
+                        <select id="example-bootstrap" name="rating" autocomplete="off">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <span class="title">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=1930127023739706&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 @endsection
