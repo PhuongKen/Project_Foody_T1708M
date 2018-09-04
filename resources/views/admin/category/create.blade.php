@@ -49,8 +49,12 @@
                         <input type="text" placeholder="Nhập tên Category" size="100" name="name">
                     </div>
                     <div class="form-group">
-                        <h5>Avatar</h5>
-                        <input type="text" placeholder="Nhập description" size="100" name="avatar">
+                        <label>Avatar:</label>
+                        <div class="kv-avatar">
+                            <div class="file-loading">
+                                <input id="product_image" type="file" name="avartar">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Lưu">

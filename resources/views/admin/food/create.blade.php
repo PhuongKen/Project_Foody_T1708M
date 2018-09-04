@@ -32,38 +32,35 @@
                         </button>
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                    </div>
-                @endif
+                {{--@if ($errors->any())--}}
+                    {{--<div class="alert alert-danger alert-dismissible" role="alert">--}}
+                        {{--<ul>--}}
+                            {{--@foreach($errors->all() as $error)--}}
+                                {{--<li>{{$error}}</li>--}}
+                            {{--@endforeach--}}
+                        {{--</ul>--}}
+                        {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+                            {{--<span aria-hidden="true">&times;</span>--}}
+                            {{--<span class="sr-only">Close</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--@endif--}}
                 <div class="form-group">
                     <h5>Tên nhà hàng</h5>
-                    @foreach($restaurant as $item)
                     <select name="restaurantID">
-                        <option value="{{$item->id}}">{{$item->name}}</option>
-                    </select>
+                        @foreach($restaurant as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <h5>Tên món ăn</h5>
                     <input type="text" placeholder="Nhập name" size="100" name="name">
                 </div>
-                <div class="form-group">
-                    <label>Ảnh đại diện</label>
-                    <div class="kv-avatar">
-                        <div class="file-loading">
-                            <input id="product_image" type="file" name="avatar">
-                        </div>
-                    </div>
+                <div class="form-group d-block mt-2">
+                    <h5>Image</h5>
+                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar"">
                 </div>
                 <div class="form-group">
                     <h5>Giá tiền</h5>
@@ -76,7 +73,6 @@
                         <option value="1">Không hoạt động</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Lưu">
                     <input type="reset" class="btn btn-success" value="Làm lại">

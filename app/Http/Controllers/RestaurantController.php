@@ -10,6 +10,7 @@ use App\Provind;
 use App\Restaurant;
 use App\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class RestaurantController extends Controller
@@ -19,12 +20,18 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $restaurant = Restaurant::all();
-        $address = Address::all();
-        $provind = Provind::all();
-        return view('admin.restaurant.index', compact('restaurant', 'address', 'provind'));
+        $restaurant = DB::table('restaurants')->orderBy('created_at','desc')->get();
+        $address = DB::table('restaurants')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->orderBy('created_at','DESC')
+            ->get()->toArray();
+        return view('admin.restaurant.index', compact('restaurant', 'address'));
 
     }
 
@@ -56,6 +63,7 @@ class RestaurantController extends Controller
                 'name' => 'required|min:15',
                 'avartar' => 'required|mimes:jpg,jpeg,png,gif|max:2048',
                 'phone' => 'required|numeric',
+                'addressDetail' => 'required|min:6',
                 'openTime' => 'required',
                 'closeTime' => 'required',
                 'shortDescription' => 'required|min:70',
@@ -65,6 +73,8 @@ class RestaurantController extends Controller
                 'name.required' => 'Bạn chưa nhập tên nhà hàng',
                 'name.min' => 'Tên nhà hàng phải lớn hơn 15 ký tự',
                 'avartar.required' => 'Bạn chưa thêm ảnh',
+                'addressDetail.required'=>'Bạn chưa nhập địa chỉ chi tiết',
+                'addressDetail.min'=>'Bạn phải nhập địa chỉ chi tiết trên 6 ký tự',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
                 'phone.numeric' => 'Số điện thoại không chứa ký tự chũ cái và ký tự đặc biệt',
                 'openTime.required' => 'Bạn chưa nhập giờ mở cửa',
@@ -102,6 +112,7 @@ class RestaurantController extends Controller
         $address->wardID = Input::get('ward');
         $address->save();
         $restaurant->addressID = $address->id;
+        $restaurant->addressDetail = Input::get('addressDetail');
         $restaurant->phone = Input::get('phone');
         $restaurant->openTime = Input::get('openTime');
         $restaurant->closeTime = Input::get('closeTime');

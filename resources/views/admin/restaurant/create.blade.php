@@ -82,16 +82,20 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Địa chỉ chi tiết:</label>&nbsp<input type="text" name="addressDetail"
+                                                                     placeholder="Nhập địa chỉ chi tiết" size="50">
+                        </div>
+                        <div class="form-group">
                             <label>Số điện thoại:</label>&nbsp<input type="text" name="phone"
                                                                      placeholder="Nhập số điện thoại">
                         </div>
                         <div class="form-group">
                             <label>Giờ mở cửa:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="openTime" placeholder="Nhập giờ mở của">
+                            <input type="time" name="openTime" placeholder="Nhập giờ mở của">
                         </div>
                         <div class="form-group">
                             <label>Giờ đóng cửa:</label>
-                            <input type="text" name="closeTime" placeholder="Nhập giờ đóng của">
+                            <input type="time" name="closeTime" placeholder="Nhập giờ đóng của">
                         </div>
                         <div class="form-group">
                             <h5>Mô tả ngắn:</h5>
@@ -130,6 +134,10 @@
     <script src="{{asset('js/fileinput.min.js')}}"></script>
     <script src="{{asset('js/dropzone.min.js')}}"></script>
     <script>
+        $(document).ready(function() {
+            $('#datatable').dataTable();
+            $('.wysihtml5').wysihtml5();
+        } );
         var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
             'onclick="alert(\'Call your custom code here.\')">' +
             '<i class="fas fa-tag"></i>' +

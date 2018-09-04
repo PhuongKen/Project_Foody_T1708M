@@ -16,14 +16,15 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('categoryID')->unsigned();
-       //     $table->foreign('categoryID')->references('id')->on('categories');
+//            $table->foreign('categoryID')->references('id')->on('categories');
             $table->string('name');
             $table->string('avartar');
             $table->integer('addressID')->unsigned();
-          //  $table->foreign('addressID')->references('id')->on('addresses');
+//            $table->foreign('addressID')->references('id')->on('addresses');
+            $table->string('addressDetail');
             $table->integer('phone');
-            $table->string('openTime');
-            $table->string('closeTime');
+            $table->time('openTime');
+            $table->time('closeTime');
             $table->string('shortDescription');
             $table->text('description');
             $table->integer('status')->default(1); // 1 hoạt động, 0 đã xóa, 2 ngừng bán

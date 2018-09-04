@@ -64,7 +64,7 @@ class FoodController extends Controller
         if ($request->hasFile('avatar')) {
             $this->validate($request,
                 [
-                    'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                   'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
                 ],
                 [
                     'avatar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
@@ -76,12 +76,11 @@ class FoodController extends Controller
             $distional_path = public_path('/images/food');
             $avartar->move($distional_path, $getAvartar);
         }
-        $food->avatar = $getAvartar;
+        $food->avartar = Input::get('avatar');
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
         return redirect('/admin/food');
-
     }
 
     /**
@@ -142,7 +141,7 @@ class FoodController extends Controller
         }
         $food->restaurantID = Input::get('restaurantID');
         $food->name = Input::get('name');
-        $food->avatar = Input::get('avatar');
+        $food->avartar = Input::get('avatar');
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();

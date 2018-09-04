@@ -27,12 +27,15 @@ class AdminController extends Controller
             ->groupBy('day')
             ->orderBy('day', 'desc')
             ->get();
+
         if(Auth::check()){
             return view('admin.home', compact('chart_data'));
         }else{
             return view('admin.login.login');
         }
     }
+
+
 
     public function getLogin()
     {

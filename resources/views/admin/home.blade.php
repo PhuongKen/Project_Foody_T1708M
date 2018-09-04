@@ -1,90 +1,40 @@
 @extends('layout.admin-master',['page_title'=>'Chart'])
 @section('content')
-    <!-- Page-Title -->
-    <div class="row">
-        <div class="col-sm-12">
-            <h4 class="pull-left page-title">Chartjs</h4>
-            <ol class="breadcrumb pull-right">
-                <li><a href="#">Moltran</a></li>
-                <li><a href="#">Charts</a></li>
-                <li class="active">Chartjs</li>
-            </ol>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Line Chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="lineChart" data-type="Line" width="520" height="250"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Bar chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="bar" data-type="Bar" height="250" width="800" ></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Pie chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="pie" data-type="Pie" height="300" width="800" ></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Radar chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="radar" data-type="Radar" width="300" height="300"></canvas>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Donut chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="doughnut" data-type="Doughnut" height="250" width="800" ></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6">
-            <div class="panel panel-border panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Polar area chart</h3>
-                </div>
-                <div class="panel-body">
-                    <canvas id="polarArea" data-type="PolarArea" width="300" height="250"> </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+    <div id="linechart_material"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['line']});
+        google.charts.setOnLoadCallback(function () {
+            $.ajax({
+                url:'/admin',
+                method:'GET',
+                success:function (resp) {
+                    drawChart(resp);
+                },
+                error: function () {
+                    swal('Có lỗi xảy ra', 'Không thể lấy dữ liệu từ api', 'error');
+                }
+            });
+        });
+        function drawChart(chart_data) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('date', 'Ngày');
+            data.addColumn('number', 'Doanh thu');
+            for (var i = 0; i < chart_data.length; i++){
+                data.addRow([new Date(chart_data[i].day),  Number(chart_data[i].revenue)]);
+            }
+            var options = {
+                chart: {
+                    title: 'Biểu đồ doanh thu theo thời gian',
+                    subtitle: 'tính theo đơn vị (vnd)'
+                },
+                height: 500,
+                hAxis: {
+                    format: 'dd/MM/yyyy'
+                }
+            };
+            var chart = new google.charts.Line(document.getElementById('linechart_material'));
+            chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+    </script>
 @endsection

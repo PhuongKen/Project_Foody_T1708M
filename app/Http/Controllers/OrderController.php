@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -32,16 +34,16 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'userID' => 'required',
             'amount' => 'required|numeric|min:0',
             'totalPrice' => 'required|numeric|min:0',
-            'status'=> 'required|numeric|min:0',
+            'status' => 'required|numeric|min:0',
         ],
             [
                 'userID.required' => 'Bạn chưa nhập tên',
@@ -53,7 +55,7 @@ class OrderController extends Controller
                 'status.required' => 'Bạn chưa nhập status'
             ]
         );
-        $order=new Order();
+        $order = new Order();
         $order->userID = Input::get('userID');
         $order->amount = Input::get('amount');
         $order->totalPrice = Input::get('totalPrice');
@@ -66,7 +68,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,65 +79,76 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $order= Order::find($id);
-        return view('admin.order.edit')->with('order',$order);
+        $order = Order::find($id);
+        return view('admin.order.edit')->with('order', $order);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'userID' => 'required',
-            'amount' => 'required|numeric|min:1',
-            'totalPrice' => 'required|numeric|min:1',
-            'status'=> 'required|numeric|min:1',
-        ],
-            [
-                'userID.required' => 'Bạn chưa nhập tên',
-                'amount.required' => 'amount lớn hơn không',
-                'amount.required' => 'Bạn chưa nhập amount',
-                'totalPrice.required' => 'totalPrice lớn hơn không',
-                'totalPrice.required' => 'Bạn chưa nhập totalPrice',
-                'status.required' => 'status lớn hơn không',
-                'status.required' => 'Bạn chưa nhập status'
-            ]
-        );
-        $order=Order::find($id);
-        if ($order==null){
-            return view('404');
+        $order = Order::find($id);
+        if ($order == null) {
+            return view('error.404');
         }
-        $order->userID = Input::get('userID');
-        $order->amount = Input::get('amount');
-        $order->totalPrice = Input::get('totalPrice');
-        $order->status = Input::get('status');
-        $order->save();
-        return redirect('/admin/order');
-
+        $order->status = 2;
+        $order->update();
+        return 'null';
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $order = Order::find($id);
-       if ($order==null){
-           return view('404');
-       }
-       $order->delete();
+        $order = Order::find($id);
+        if ($order == null) {
+            return view('404');
+        }
+        $order->delete();
+    }
+
+    public function changeStatus()
+    {
+        $id = Input::get('id');
+        $status = Input::get('status');
+        $order = Order::find($id);
+        if ($order == null) {
+            return view('error.404');
+        }
+        $order->status = $status;
+        $order->save();
+        $mail = DB::table('orders')
+            ->join('users', 'users.id', '=', 'orders.userID')
+            ->select('users.email', 'users.name')
+            ->where('orders.id', $id)->get();
+        if ($status == 2) {
+            Mail::send('admin.sendMail',['user' => $mail], function ($message) use ($mail) {
+                $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                $message->to($mail[0]->email, $mail[0]->name);
+                $message->subject('Đơn hàng của bạn đã được xác nhận');
+            });
+        }
+        if ($status == 3) {
+            Mail::send('admin.sendMail1',['user' => $mail], function ($message) use ($mail) {
+                $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                $message->to($mail[0]->email, $mail[0]->name);
+                $message->subject('Đơn hàng của bạn đã hoàn thành');
+            });
+        }
+        return redirect('/admin/order');
     }
 }

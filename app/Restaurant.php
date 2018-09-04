@@ -10,4 +10,8 @@ class Restaurant extends Model
     public function addressProvind(){
         return $this->hasManyThrough('App\Provind','App\Address','provindID','addressID','id');
     }
+
+//    public function food(){
+////        return $this->hasOne('App\Food','restaurantID','id');
+////    }
 }
