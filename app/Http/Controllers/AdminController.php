@@ -27,7 +27,12 @@ class AdminController extends Controller
             ->groupBy('day')
             ->orderBy('day', 'desc')
             ->get();
-        return view('admin.home', compact('chart_data'));
+
+        if(Auth::check()){
+            return view('admin.home', compact('chart_data'));
+        }else{
+            return view('admin.login.login');
+        }
     }
 
 
