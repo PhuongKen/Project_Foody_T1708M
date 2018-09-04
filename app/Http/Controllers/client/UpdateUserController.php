@@ -63,7 +63,6 @@ class UpdateUserController extends Controller
         $address -> save();
         $list_obj -> addressID = $address-> id;
         $list_obj -> name = Input::get('name');
-        $list_obj -> password = Hash::make(Input::get('password'));
         $getAvartar = '';
         if ($request->hasFile('avartar')) {
             $this->validate($request,
