@@ -13,7 +13,15 @@
                                     <h4 class="panel-title">
                                         <a class="accordion-toggle"
                                            data-parent="#accordion">
-                                            {{$value->created_at}}
+                                            {{$value->created_at}}, {{$order_detail[$value->id][0]->nameRestaurant}}
+                                            , Trạng thái:
+                                            @if($order_detail[$value->id][0]->st == 1)
+                                                <span style="color: #d33">đang xử lý</span>
+                                            @elseif($order_detail[$value->id][0]->st == 2)
+                                                <span style="color: #d33">đã xác nhận</span>
+                                            @elseif($order_detail[$value->id][0]->st == 3)
+                                                <span style="color: #d33">đã hoàn thành</span>
+                                            @endif
                                         </a>
                                     </h4>
                                 </div>
@@ -60,7 +68,7 @@
                                                             $amount = $item->amount;
                                                             $price = $item->price;
                                                             $data = $amount * $price;
-                                                            echo $data . " vnđ";
+                                                            echo number_format($data) . " vnđ";
                                                             ?>
                                                         </td>
                                                     </tr>

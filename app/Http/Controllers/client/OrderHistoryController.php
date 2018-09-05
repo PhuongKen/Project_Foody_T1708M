@@ -22,8 +22,10 @@ class OrderHistoryController
         $order = Order::where('userID', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         $order_detail = DB::table('orders')
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
+            ->join('foods', 'foods.id', '=', 'order_details.foodID')
+            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
             ->select('order_details.nameProduct', 'order_details.image', 'order_details.price',
-                'order_details.amount','order_details.id as idDetail', 'orders.id','orders.created_at')
+                'order_details.amount', 'order_details.id as idDetail', 'orders.id', 'orders.status as st', 'orders.created_at', 'restaurants.name as nameRestaurant')
             ->where('orders.userID', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->get()->groupBy('id')->toArray();

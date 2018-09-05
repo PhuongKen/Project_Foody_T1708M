@@ -116,3 +116,4 @@ Route::get('/foody/dia-diem/', [
     'as' => 'diadiem',
     'uses' => 'Client\SearchController@searchArea'
 ]);
+Route::post('/foody/danh-gia', 'Client\RestaurantController@rating');

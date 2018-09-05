@@ -34,6 +34,8 @@
     {{--<!-- Template CSS -->--}}
     <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
     <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/examples.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-stars.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -385,6 +387,8 @@
 <!-- Template CSS -->
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/cart.js')}}"></script>
+<script src="{{asset('js/examples.js')}}"></script>
+<script src="{{asset('js/jquery.barrating.js')}}"></script>
 @yield('script')
 <script>
     @if(count(\App\Cart::getCart()->items)==0)
