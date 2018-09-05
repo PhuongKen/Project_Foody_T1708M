@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRestaurantsTable extends Migration
 {
@@ -15,17 +15,21 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id')->unsigned();
+            $table->integer('userID')->usigined();
             $table->integer('categoryID')->unsigned();
-       //     $table->foreign('categoryID')->references('id')->on('categories');
+            //     $table->foreign('categoryID')->references('id')->on('categories');
             $table->string('name');
             $table->string('avartar');
             $table->integer('addressID')->unsigned();
-          //  $table->foreign('addressID')->references('id')->on('addresses');
+            //  $table->foreign('addressID')->references('id')->on('addresses');
             $table->integer('phone');
             $table->string('openTime');
             $table->string('closeTime');
             $table->string('shortDescription');
             $table->text('description');
+            $table->bigInteger('numberTable');
+            $table->float('lat');
+            $table->float('lng');
             $table->integer('status')->default(1); // 1 hoạt động, 0 đã xóa, 2 ngừng bán
             $table->timestamps();
         });
