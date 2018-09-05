@@ -18,9 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Google Fonts -->
-{{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
-{{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
-<!-- Vendor CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
+    <!-- Vendor CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -80,6 +80,16 @@
 
                                 <li>
                                     <a href="/foody/lien-he">Liên hệ</a>
+                                </li>
+
+                                <li>
+                                    <form id="nearBy" action="{{route('nearBy')}}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="lat" name="lat">
+                                        <input type="hidden" id="lng" name="lng">
+                                        <input id="nearBy" type="button"  value="Gần tôi" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
+                                         font-size: .125in; font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -391,10 +401,26 @@
 <script src="{{asset('js/jquery.barrating.js')}}"></script>
 @yield('script')
 <script>
+    $('#nearBy').click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                alert(lat);
+                $('#lat').val(lat);
+                $('#lng').val(lng);
+                $('#nearBy').submit();
+            });
+        } else {
+            alert('vui lòng cho phép sử dụng vị trí của bạn.')
+        }
+    });
+
     @if(count(\App\Cart::getCart()->items)==0)
     $('.cart-content').height('auto');
     $('.else').display('none');
     @endif
+
 </script>
 </body>
 
