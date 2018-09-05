@@ -33,7 +33,7 @@ class CreateRestaurantsTable extends Migration
             $table->time('closeTime');
             $table->string('shortDescription');
             $table->text('description');
-            $table->bigInteger('numberTable');
+            $table->int('numberTable');
             $table->float('lat');
             $table->float('lng');
             $table->integer('status')->default(1); // 1 hoạt động, 0 đã xóa, 2 ngừng bán
