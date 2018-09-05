@@ -1,4 +1,4 @@
-@extends('layout.master',['page_title'=>'Danh mục'])
+@extends('layout.master',['page_title'=>'Nhà hàng gần tôi'])
 @section('content')
     <div class="container container-edit">
         <div class="row" style="margin-top: 30px">
@@ -29,29 +29,29 @@
                                         <form action="{{route('diadiem')}}" method="get">
                                             <div class="pull-right">
                                                 <div class="select">
-                                                    <select class="form-control" name="district"
-                                                            name="district"
-                                                            id="district">
-                                                        <option value="0">Tất cả</option>
-                                                        @foreach($district as $d)
-                                                            <option value="{{$d->id}}">{{$d->name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    {{--<select class="form-control" name="district"--}}
+                                                            {{--name="district"--}}
+                                                            {{--id="district">--}}
+                                                        {{--<option value="0">Tất cả</option>--}}
+                                                        {{--@foreach($district as $d)--}}
+                                                            {{--<option value="{{$d->id}}">{{$d->name}}</option>--}}
+                                                        {{--@endforeach--}}
+                                                    {{--</select>--}}
                                                 </div>
                                             </div>
                                             <div class="pull-right">
                                                 <div class="select">
-                                                    <select class="form-control" name="provind"
-                                                            id="provind">
-                                                        <option value="0">Tất cả</option>
-                                                        @foreach($provind as $p)
-                                                            <option value="{{$p->id}}">{{$p->name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    {{--<select class="form-control" name="provind"--}}
+                                                            {{--id="provind">--}}
+                                                        {{--<option value="0">Tất cả</option>--}}
+                                                        {{--@foreach($provind as $p)--}}
+                                                            {{--<option value="{{$p->id}}">{{$p->name}}</option>--}}
+                                                        {{--@endforeach--}}
+                                                    {{--</select>--}}
                                                 </div>
                                             </div>
-                                            <input type="hidden" value="{{$categoryID}}" name="categoryID">
-                                            <input type="submit" value="Lọc" style="padding: 4px; margin-right: 0">
+                                            {{--<input type="hidden" value="{{$categoryID}}" name="categoryID">--}}
+                                            {{--<input type="submit" value="Lọc" style="padding: 4px; margin-right: 0">--}}
                                         </form>
                                     </div>
                                 </div>
@@ -172,8 +172,7 @@
                     </div>
                 </div>
             @else
-                <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa <b
-                            class="text-danger">"{{$search}}"</b></h4>
+                <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn</h4>
             @endif
         </div>
     </div>

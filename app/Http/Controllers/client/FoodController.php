@@ -28,7 +28,10 @@ class FoodController
         $categoryID = $request->get('categoryID');
         $selected_category = Category::find($categoryID);
         $restaurants = $restaurants->where('categoryID', $categoryID);
-        $list_restaurant = $restaurants->orderBy('created_at', 'DESC')->paginate(50);
+        $countRestaurant = $restaurants->get();
+        $list_restaurant = $restaurants->orderBy('created_at', 'DESC')->paginate(12);
+//        dd(count($countRestaurant));
+//        dd($list_restaurant);
         $address = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
             ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
@@ -40,6 +43,7 @@ class FoodController
             ->get()->toArray();
 //        print_r(array_keys($address));
 
-        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant', 'selected_category','address','provind','district','categoryID'));
+        return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant',
+            'selected_category','address','provind','district','categoryID', 'countRestaurant'));
     }
 }

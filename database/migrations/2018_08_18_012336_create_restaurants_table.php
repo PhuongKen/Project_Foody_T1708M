@@ -34,8 +34,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('shortDescription');
             $table->text('description');
             $table->int('numberTable');
-            $table->float('lat');
-            $table->float('lng');
+            $table->double('lat');
+            $table->double('lng');
             $table->integer('status')->default(1); // 1 hoạt động, 0 đã xóa, 2 ngừng bán
             $table->timestamps();
         });

@@ -117,3 +117,8 @@ Route::get('/foody/dia-diem/', [
     'uses' => 'Client\SearchController@searchArea'
 ]);
 Route::post('/foody/danh-gia', 'Client\RestaurantController@rating');
+//Route::post('/foody/gan-toi', 'Client\LocationController@nearBy');
+Route::match(['get', 'post'], '/foody/gan-toi',[
+    'as' => 'nearBy',
+    'uses' => 'Client\LocationController@nearBy'
+]);
