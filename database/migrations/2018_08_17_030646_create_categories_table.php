@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('avartar');
             $table->timestamps();
+            $table->integer('status')->default(1);
         });
     }
 

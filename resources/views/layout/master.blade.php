@@ -4,6 +4,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>{{$page_title}}</title>
 
     <meta name="keywords" content="Organic, Fresh Food, Farm Store">
@@ -17,9 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
-    <!-- Vendor CSS -->
+{{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
+{{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
+<!-- Vendor CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -29,12 +30,15 @@
     <link rel="stylesheet" href="{{asset('css/stylefoody1.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jslider.css')}}">
-
+    <link rel="stylesheet" href="{{asset('css/util.css')}}">
     {{--<!-- Template CSS -->--}}
     <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
     <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/examples.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-stars.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -55,45 +59,27 @@
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="product-grid-left-sidebar.html" title="Product">Danh mục</a>
+                                    <a href="#" title="Product">Danh mục</a>
                                     <div class="dropdown-menu">
                                         <ul>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-1.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc"
-                                                   title="Vegetables">Sang trọng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-2.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Fruits">Buffet</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-3.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Bread">Nhà hàng</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-4.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Juices">Ăn chay</a>
-                                            </li>
-                                            <li class="has-image">
-                                                <img src="/images/foody/product-category-5.png"
-                                                     alt="Product Category Image">
-                                                <a href="/foody/danh-muc" title="Tea and coffee">Tiệc</a>
-                                            </li>
+                                            @foreach($categories as $c)
+                                                <li class="has-image">
+                                                    <img src="/images/foody/product-category-1.png"
+                                                         alt="Product Category Image">
+                                                    <a href="/foody/danh-sach-nha-hang/{{'?categoryID='.$c->id}}"
+                                                       title="Vegetables">{{$c->name}}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <a href="page-about-us.html">Về chúng tôi</a>
+                                    <a href="/foody/ve-chung-toi">Về chúng tôi</a>
                                 </li>
 
                                 <li>
-                                    <a href="page-contact.html">Liên hệ</a>
+                                    <a href="/foody/lien-he">Liên hệ</a>
                                 </li>
                             </ul>
                         </div>
@@ -116,87 +102,73 @@
                     <div class="col-lg-5 col-md-5 col-sm-12 header-right d-flex justify-content-end align-items-center">
                         <!-- Search -->
                         <div class="form-search">
-                            <form action="index.html" method="get">
-                                <input type="text" class="form-input" placeholder="Tìm kiếm">
+                            <form action="{{route('search')}}" method="get">
+                                <input type="text" name="search" class="form-input" placeholder="Tìm kiếm">
                                 <button type="submit" class="fa fa-search"></button>
                             </form>
                         </div>
 
                         <!-- Cart -->
                         <div class="block-cart dropdown">
-                            <div class="cart-title">
+                            <div class="cart-title ">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <span class="cart-count">2</span>
+                                <span class="cart-count" id="cart-count">{{\App\Cart::getTotalItem()}}</span>
                             </div>
 
                             <div class="dropdown-content">
-                                <div class="cart-content">
+                                <div class="cart-content" style="overflow: scroll; height: 400px; width: 430px">
                                     <table>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
-                                                    <img src="/images/foody/7.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail-left-sidebar.html">Organic Strawberry
-                                                        Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x <span class="product-price">20000đ</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-alt" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <tbody id="header-cart-wrapitem">
+                                        @if(count(\App\Cart::getCart()->items)>0)
+                                            @foreach(\App\Cart::getCart()->items as $item)
+                                                <tr>
+                                                    <td class="product-image">
+                                                        <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">
+                                                            <img src="/images/food/{{$item->food->avatar}}"
+                                                                 alt="Product">
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="product-name">
+                                                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">{{$item->food->name}}</a>
+                                                        </div>
+                                                        <div>
+                                                            {{$item->quantity}} x <span
+                                                                    class="product-price">{{$item->food->discountPriceString}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="action">
+                                                        <a class="remove"
+                                                           href="/foody/xoa-san-pham/{{'?id='.$item->food->id}}">
+                                                            <i class="fa fa-trash-alt" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            <tr class="total">
+                                                <td>Tổng giá:</td>
+                                                <td colspan="2"
+                                                    id="header-cart-total">{{\App\Cart::getCart()->getTotalMoneyString()}}</td>
+                                            </tr>
 
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail-left-sidebar.html">
-                                                    <img src="/images/foody/6.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail-left-sidebar.html">Organic Strawberry</a>
-                                                </div>
-                                                <div>
-                                                    1 x <span class="product-price">40000đ</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-alt" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="cart-button">
+                                                        <a class="btn btn-primary" href="/foody/xem-gio-hang"
+                                                           title="View Cart">Xem đơn hàng</a>
+                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang"
+                                                           title="Checkout">Gửi đơn hàng</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @else
 
-                                        <tr class="total">
-                                            <td>Tổng giá:</td>
-                                            <td colspan="2">80000đ</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <div class="cart-button">
-                                                    <a class="btn btn-primary" href="/foody/gio-hang"
-                                                       title="View Cart">Xem đơn hàng</a>
-                                                    <a class="btn btn-primary" href="/foody/thanh-toan"
-                                                       title="Checkout">Thanh toán</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
 
                         <!-- My Account -->
                         <div class="my-account dropdown toggle-icon">
@@ -205,23 +177,30 @@
                             </div>
                             <div class="dropdown-menu">
                                 @if(Auth::check())
-                                <div class="item">
-                                    <a href="#" title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
-                                        khoản của {{Auth::user()->name}}</a>
-                                </div>
-                                <div class="item">
-                                    <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i class="fa fa-cog"></i>Đăng xuất
+                                    <div class="item">
+                                        <a href="/edit-user/{{Auth::user()->id}}"
+                                           title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
+                                            khoản của {{Auth::user()->name}}</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="/foody/lich-su-don-hang"
+                                           title="Log in to your customer account"><i class="fa fa-cog"></i>
+                                            Lịch sử đơn hàng của{{Auth::user()->name}}</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
+                                                    class="fa fa-cog"></i>Đăng xuất
                                         </a>
-                                </div>
+                                    </div>
                                 @else
-                                <div class="item">
-                                    <a href="/dang-nhap" title="Log in to your customer account"><i
-                                                class="fa fa-sign-in-alt"></i>Đăng nhập</a>
-                                </div>
-                                <div class="item">
-                                    <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
-                                        ký</a>
-                                </div>
+                                    <div class="item">
+                                        <a href="/dang-nhap" title="Log in to your customer account"><i
+                                                    class="fa fa-sign-in-alt"></i>Đăng nhập</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="/dang-ki" title="Register Account"><i class="fa fa-user"></i>Đăng
+                                            ký</a>
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -404,11 +383,19 @@
 <script src="{{asset('js/draggable-0.1.js')}}"></script>
 <script src="{{asset('js/jquery.slider.js')}}"></script>
 <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- Template CSS -->
 <script src="{{asset('js/main.js')}}"></script>
-
+<script src="{{asset('js/cart.js')}}"></script>
+<script src="{{asset('js/examples.js')}}"></script>
+<script src="{{asset('js/jquery.barrating.js')}}"></script>
 @yield('script')
+<script>
+    @if(count(\App\Cart::getCart()->items)==0)
+    $('.cart-content').height('auto');
+    $('.else').display('none');
+    @endif
+</script>
 </body>
 
 </html>

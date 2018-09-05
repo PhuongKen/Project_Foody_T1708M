@@ -9,9 +9,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Category;
+
 class DetailController
 {
         public function getDetail(){
-            return view('client.detail');
+            $categories = Category::all();
+            return view('client.detail',compact('categories'));
         }
 }

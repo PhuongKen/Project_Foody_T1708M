@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/orderdetail" method="post" enctype="multipart/form-data">
+    <form action="/admin/detailorder" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -23,12 +23,25 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Add orderdetail</h4>
                         </ul>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button></div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h5>orderID</h5>
@@ -51,10 +64,14 @@
                             <h5>nameProduct</h5>
                             <input type="text" placeholder="Nhập nameProduct" size="100" name="nameProduct">
                         </div>
-                        <div class="form-group">
-                            <h5>image</h5>
-                            <input type="text" placeholder="Nhập image" size="100" name="image">
+                    <div class="form-group">
+                        <label>image:</label>
+                        <div class="kv-avatar">
+                            <div class="file-loading">
+                                <input id="product_image" type="file" name="image">
+                            </div>
                         </div>
+                    </div>
                         <div class="form-group">
                             <h5>price</h5>
                             <input type="text" placeholder="Nhập price" size="100" name="price">
