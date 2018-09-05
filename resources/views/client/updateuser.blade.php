@@ -76,14 +76,6 @@
                     <input type="text" value="{{$list_obj->name}}" name="name">
                 </div>
                 <div class="form-group">
-                    <label>Mật khẩu</label>
-                    <input type="password" value="{{$list_obj->password}}" name="password">
-                </div>
-                <div class="form-group">
-                    <label>Nhập lại mật khẩu</label>
-                    <input type="password" value="" name="comfirm_password">
-                </div>
-                <div class="form-group">
                     <label>Ảnh đại diện:</label>
                     <div class="kv-avatar">
                         <div class="file-loading">
