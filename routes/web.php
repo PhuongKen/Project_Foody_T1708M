@@ -43,6 +43,7 @@ Route::group(['middleware' => 'adminLogin'], function () {
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });
+
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('dang-ki', [
     'as' => 'dangki',
@@ -128,12 +129,22 @@ Route::match(['get', 'post'], '/foody/gan-toi', [
     'uses' => 'Client\LocationController@nearBy'
 ]);
 
+
 Route::match(['get', 'post'], '/foody/map', [
    'as' => 'map',
    'uses' => 'Client\MapController@map'
+]);
 
 Route::get('/foody/gan-toi/danh-muc/', [
     'as' => 'gantoi',
     'uses' => 'Client\LocationController@selectCategory'
 
 ]);
+
+Route::get('/foody/dat-cho', 'Client\BookTableController@datCho');
+Route::post('/foody/dat-cho', 'Client\BookTableController@store');
+Route::get('/foody/gan-toi/danh-muc/', [
+    'as' => 'gantoi',
+    'uses' => 'Client\LocationController@selectCategory'
+]);
+

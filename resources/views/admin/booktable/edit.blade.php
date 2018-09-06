@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/booktable" method="post" enctype="multipart/form-data">
+    <form action="/admin/booktable/{{$list_obj->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
+        @method('put')
         <div class="row">
             <div class="col-md-10">
                 <h3>
@@ -46,17 +47,26 @@
                         @endif
                         <div class="col-md-12" style="padding: 20px">
                             <div class="row">
-                                <input class="col-md-5" type="date" id="date" min="27/8/2018" max="12/9/2018"
-                                       name="ngaydat"
-                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
+                                <input class="col-md-5" type="date" id="date" min="27/8/2018" max="12/9/2018" name="ngaydat"
+                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" value="{{$list_obj->ngaydat}}">
                                 <input class="col-md-5" type="time" name="thoigiandat" id="time" min="9000" max="2100"
-                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
+                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" value="{{$list_obj->thoigiandat}}">
                             </div>
                             <div class="row">
-                                <select class="col-md-3" name="soluongnguoilon" id="provind"
-                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
+                                <select class="col-md-5" name="soluongnguoilon" id="provind"
+                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" value="{{$list_obj->soluongnguoilon}}">
                                     >
-                                    <option value="0">Số khách</option>
+                                    <option value="0">Người lớn</option>
+                                    <option value="1">1 người</option>
+                                    <option value="2">2 người</option>
+                                    <option value="3">3 người</option>
+                                    <option value="4">4 người</option>
+                                    <option value="5">5 người</option>
+                                </select>
+                                <select class="col-md-5" name="soluongtreem" id="provind"
+                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" value="{{$list_obj->soluongtreem}}">
+                                    >
+                                    <option value="0">Trẻ em</option>
                                     <option value="1">1 người</option>
                                     <option value="2">2 người</option>
                                     <option value="3">3 người</option>
@@ -66,14 +76,14 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <textarea name="ghichu" class="col-md-11" style="width: 886px; " placeholder="Ghi chú"></textarea>
+                                    <textarea name="ghichu" class="col-md-11" style="width: 886px; " placeholder="Ghi chú">{{$list_obj->ghichu}}</textarea>
                                 </div>
 
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <input style="width: 886px;color: #fff!important;outline: 0;text-decoration: none!important;-webkit-border-radius: 4px;text-transform: capitalize;height: 50px;line-height: 50px;text-align: center;font-size: 16px;background-color: #f37934;margin-top: 15px;display: block;cursor: pointer;margin: 0;    -webkit-box-sizing: border-box;white-space: normal;box-sizing: border-box;box-sizing: border-box;padding: 0;"
-                                           type="submit" class="btn btn-primary" value="Đặt chỗ">
+                                           type="submit" class="btn btn-primary" value="submit">
                                 </div>
                             </div>
                         </div>
