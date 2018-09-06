@@ -46,8 +46,12 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
                                         <td>
-                                            <div class="card" style="width: 90px;height: 70px;background-image: url('{{$item->avartar}}'); background-size: cover">
-                                            </div>
+                                            @if($item->avartar == null)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Chưa update</h6>
+                                                @else($item->avartar != null)
+                                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/restaurant/{{$item->avartar}}'); background-size: cover"> </div>
+                                            @endif
                                         </td>
                                         <td>
                                             <a href="/admin/category/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
