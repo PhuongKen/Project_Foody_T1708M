@@ -39,6 +39,8 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/album_restaurant', 'AlbumRestaurantController');
     Route::resource('/admin/user', 'UserController');
     Route::resource('admin/orderdetail', 'OrderDetailController');
+    Route::resource('/admin/booktable', 'BookTableController');
+
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });
 Route::get('gui-mail', 'HomeController@sendMail');

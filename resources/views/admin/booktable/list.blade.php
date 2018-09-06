@@ -16,7 +16,7 @@
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/category/create" class="btn btn-primary">Create new restaurant</a>
+            <a href="/admin/booktable/create" class="btn btn-primary">Create new booktable</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -34,9 +34,16 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Avartar</th>
-                                    <th scope="col">Manipulation</th>
+                                    <th scope="col">nguoidat</th>
+                                    <th scope="col">sodienthoai</th>
+                                    <th scope="col">ngaydat</th>
+                                    <th scope="col">thoigiandat</th>
+                                    <th scope="col">nguoilon</th>
+                                    <th scope="col">treem</th>
+                                    <th scope="col">soluongban</th>
+                                    <th scope="col">ghichu</th>
+                                    <th scope="col">thaotac</th>
+
                                 </tr>
                                 </thead>
 
@@ -44,17 +51,17 @@
                                 @foreach($list_obj as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->name}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{$item->ngaydat}}</td>
+                                        <td>{{$item->thoigiandat}}</td>
+                                        <td>{{$item->soluongnguoilon}}</td>
+                                        <td>{{$item->soluongtreem}}</td>
+                                        <td></td>
+                                        <td>{{$item->ghichu}}</td>
+
                                         <td>
-                                            @if($item->avartar == null)
-                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                    Chưa update</h6>
-                                                @else($item->avartar != null)
-                                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/restaurant/{{$item->avartar}}'); background-size: cover"> </div>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="/admin/category/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
+                                            <a href="/admin/booktable/{{$item->id}}/edit" class="btn btn-simple btn-outline-primary">edit</a>
                                             <a href="{{$item->id}}" class="btn btn-simple btn-outline-danger btn-delete">delete</a>
                                         </td>
                                     </tr>

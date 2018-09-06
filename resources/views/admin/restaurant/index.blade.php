@@ -52,8 +52,14 @@
                                         </td>
                                         <td>{{$value->name}}</td>
                                         <td>{{$value->shortDescription}}</td>
-                                        <td class="address" data-diachi="{{$value->addressID}}">
+                                        <td class="address" data-diachi="">
                                             {{--{{$address[$key]->wardName}},{{$address[$key]->districtName}},{{$address[$key]->provindName}}--}}
+                                            @if($value->addressID == null)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Chưa update</h6>
+                                            @else($value->addressID != null)
+                                                   <p>{{$value->addressID}}</p>
+                                                @endif
                                         </td>
                                         <td>
                                             @if($value->status == 1)

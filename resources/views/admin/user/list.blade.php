@@ -55,17 +55,32 @@
                                 @foreach($list_obj as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td class="address" data-diachi="{{$item->addressID}}">
-                                            {{$item->addressID}}
+                                        <td class="address" data-diachi="">
+                                            @if($item->addressID == null)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                   Chưa update</h6>
+                                                @else($item->addressID != null)
+                                                    <p>{{$item->addressID}}</p>
+                                                @endif
                                         </td>
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->email}}</td>
                                         <td>
-                                            <div class="card"
-                                                 style="width: 60px;height: 50px;background-image: url('/images/user/{{$item->avartar}}'); background-size: cover">
-                                            </div>
+                                             @if($item->avartar == null)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Chưa update</h6>
+                                                 @else($item->avartar != null)
+                                                <div class="card" style="width: 60px;height: 50px;background-image: url('/images/user/{{$item->avartar}}'); background-size: cover"> </div>
+                                                 @endif
                                         </td>
-                                        <td>{{$item->phone}}</td>
+                                        <td>
+                                            @if($item->phone == null)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Chưa update</h6>
+                                                @else($item->phone != null)
+                                                   <p>{{$item->phone}}</p>
+                                                @endif
+                                        </td>
                                         <td>
                                             @if($item->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">

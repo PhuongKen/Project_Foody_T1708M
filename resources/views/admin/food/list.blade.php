@@ -4,7 +4,7 @@
         <div class="col-md-10">
             <h3>
                 <label>Quản lý</label>
-                <small>Nhà hàng</small>
+                <small>Món ăn</small>
             </h3>
         </div>
         <div class="col-2">
@@ -43,22 +43,36 @@
                                         <th>Status</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
                                     @foreach($foods as $item)
                                         <tr>
 
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->name}}</td>
-                                            <td>{{$item->description}}</td>
+                                            <td>
+                                                @if($item->description == null)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Chưa có</h6>
+                                                    @else($item->description != null)
+                                                    <p>{{$item->description}}</p>
+                                                    @endif
+                                            </td>
                                             <td>{{$item->restaurantID}}</td>
                                             <td>{{$item->price}}</td>
                                             <td>
                                                 <div class="card"
-                                                     style="width: 60px;height: 50px;background-image: url('{{$item->avatar}}'); background-size: cover">
+                                                     style="width: 60px;height: 50px;background-image: url('/images/food/{{$item->avatar}}'); background-size: cover">
                                                 </div>
                                             </td>
-                                            <td>{{$item->status}}</td>
+                                            <td>
+                                                @if($item->status == 0)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Đã xóa</h6>
+                                                    @else($item->status == 1)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Hoạt động</h6>
+                                                    @endif
+                                            </td>
                                             <td>
                                                 <a href="/admin/food/{{$item->id}}"
                                                    class="btn btn-outline-success"
@@ -70,7 +84,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                     </tbody>
                                 </table>
                                 <div class="row float-right mr-3">
@@ -80,8 +93,7 @@
                                     <div class="alert alert-primary" role="alert">
                                         Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user"
                                                                                     class="btn-link"
-                                                                                    href="/admin/food/create">thêm sản
-                                            phẩm</a> mới.
+                                                                                    href="/admin/food/create">thêm sản phẩm</a> mới.
                                     </div>
                                 @endif
                             </div>
