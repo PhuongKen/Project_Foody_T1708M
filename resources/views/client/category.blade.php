@@ -26,13 +26,13 @@
 
                                 <div class="col-md-6 col-xs-6">
                                     <div class="filter-bar">
-                                        <form action="{{route('diadiem')}}" method="get">
+                                        <form action="{{route('category')}}" method="get">
                                             <div class="pull-right">
                                                 <div class="select">
                                                     <select class="form-control" name="district"
                                                             name="district"
                                                             id="district">
-                                                        <option value="0">Tất cả</option>
+                                                        <option value="0">Tất cả Quận/Huyện</option>
                                                         @foreach($district as $d)
                                                             <option value="{{$d->id}}">{{$d->name}}</option>
                                                         @endforeach
@@ -43,7 +43,7 @@
                                                 <div class="select">
                                                     <select class="form-control" name="provind"
                                                             id="provind">
-                                                        <option value="0">Tất cả</option>
+                                                        <option value="0">Tất cả Tỉnh/Thành Phố</option>
                                                         @foreach($provind as $p)
                                                             <option value="{{$p->id}}">{{$p->name}}</option>
                                                         @endforeach
@@ -63,7 +63,7 @@
                             <div class="tab-pane active" id="products-grid">
                                 <div class="products-block">
                                     <div class="row">
-                                        @foreach($list_restaurant as $key => $value)
+                                        @foreach($list_restaurant as  $value)
                                             <div class="col-md-3 col-sm-4 col-xs-12">
                                                 <div class="product-item">
                                                     <div class="product-image">
@@ -81,12 +81,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$value->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$value->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -105,7 +105,7 @@
                             <!-- Products List -->
                             <div class="tab-pane" id="products-list">
                                 <div class="products-block layout-5">
-                                    @foreach($list_restaurant as $key => $value)
+                                    @foreach($list_restaurant as $value)
                                         <div class="product-item">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
@@ -126,12 +126,12 @@
                                                             </a>
                                                         </div>
                                                         <div class="food-address">
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                            <a class="food-address1"
+                                                            href="#"><span>{{$value->wardName}}</span></a>,
+                                                            <a class="food-address1"
+                                                            href="#"><span>{{$value->districtName}}</span></a>,
+                                                            <a class="food-address1"
+                                                            href="#"><span>{{$value->provindName}}</span></a>
                                                         </div>
                                                         <div>
                                                             <span style="color: #4cae4c">Giờ mở cửa: {{$value->openTime}}</span><br>

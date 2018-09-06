@@ -9,7 +9,7 @@
                         <!-- Nav Bar -->
                         <div class="products-bar">
                             <div class="row">
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-4 col-xs-4">
                                     <div class="gridlist-toggle" role="tablist">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#products-grid" data-toggle="tab"
@@ -21,10 +21,10 @@
                                         </ul>
                                     </div>
 
-                                    <div class="total-products">There are 12 products</div>
+                                    <div class="total-products">Gồm {{count($list_restaurant)}} nhà hàng</div>
                                 </div>
 
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-8 col-xs-8">
                                     <div class="filter-bar">
                                         <form action="{{route('diadiem')}}" method="get">
                                             <div class="pull-right">
@@ -32,7 +32,7 @@
                                                     <select class="form-control" name="district"
                                                             name="district"
                                                             id="district">
-                                                        <option value="0">Tất cả</option>
+                                                        <option value="0">Tất cả Quận/Huyện</option>
                                                         @foreach($district as $d)
                                                             <option value="{{$d->id}}">{{$d->name}}</option>
                                                         @endforeach
@@ -43,9 +43,19 @@
                                                 <div class="select">
                                                     <select class="form-control" name="provind"
                                                             id="provind">
-                                                        <option value="0">Tất cả</option>
+                                                        <option value="0">Tất cả Tỉnh/Thành Phố</option>
                                                         @foreach($provind as $p)
                                                             <option value="{{$p->id}}">{{$p->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <div class="select">
+                                                    <select class="form-control" name="category">
+                                                        <option value="0">Tất cả danh mục</option>
+                                                        @foreach($categories as $c)
+                                                            <option value="{{$c->id}}">{{$c->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -63,7 +73,7 @@
                             <div class="tab-pane active" id="products-grid">
                                 <div class="products-block">
                                     <div class="row">
-                                        @foreach($list_restaurant as $key => $value)
+                                        @foreach($list_restaurant as $value)
                                             <div class="col-md-3 col-sm-4 col-xs-12">
                                                 <div class="product-item">
                                                     <div class="product-image">
@@ -81,12 +91,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -105,7 +115,7 @@
                             <!-- Products List -->
                             <div class="tab-pane" id="products-list">
                                 <div class="products-block layout-5">
-                                    @foreach($list_restaurant as $key => $value)
+                                    @foreach($list_restaurant as $value)
                                         <div class="product-item">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
@@ -126,12 +136,12 @@
                                                             </a>
                                                         </div>
                                                         <div class="food-address">
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->wardName}}</span></a>,
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->districtName}}</span></a>,
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->provindName}}</span></a>
                                                         </div>
                                                         <div>
                                                             <span style="color: #4cae4c">Giờ mở cửa: {{$value->openTime}}</span><br>
@@ -161,18 +171,13 @@
                         <div class="pagination-bar">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="text">Showing 1-12 of 20 item(s)</div>
+                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng
+                                        số {{count($countRestaurant)}} nhà hàng
+                                    </div>
                                 </div>
 
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="pagination">
-                                        <ul class="page-list">
-                                            <li><a href="#" class="prev">Previous</a></li>
-                                            <li><a href="#" class="current">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#" class="next">Next</a></li>
-                                        </ul>
-                                    </div>
+                                    {{$list_restaurant->appends(Request::all())->links()}}
                                 </div>
                             </div>
                         </div>
