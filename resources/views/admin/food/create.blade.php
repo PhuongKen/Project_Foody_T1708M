@@ -10,7 +10,7 @@
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>food</small>
+                    <small>Món ăn</small>
                 </h3>
             </div>
             <div class="col-2">
@@ -32,19 +32,19 @@
                         </button>
                     </div>
                 </div>
-                {{--@if ($errors->any())--}}
-                    {{--<div class="alert alert-danger alert-dismissible" role="alert">--}}
-                        {{--<ul>--}}
-                            {{--@foreach($errors->all() as $error)--}}
-                                {{--<li>{{$error}}</li>--}}
-                            {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
-                            {{--<span aria-hidden="true">&times;</span>--}}
-                            {{--<span class="sr-only">Close</span>--}}
-                        {{--</button>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="form-group">
                     <h5>Tên nhà hàng</h5>
                     <select name="restaurantID">
@@ -60,11 +60,17 @@
                 </div>
                 <div class="form-group d-block mt-2">
                     <h5>Image</h5>
-                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar"">
+                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar">
                 </div>
                 <div class="form-group">
                     <h5>Giá tiền</h5>
                     <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
+                </div>
+                <div class="form-group">
+                    <form action="/admin/food" method="post" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <input type="file" name="img[]" multiple>
+                    </form>
                 </div>
                 <div class="form-group">
                     <h5>Trạng thái</h5>

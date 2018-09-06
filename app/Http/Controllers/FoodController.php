@@ -76,7 +76,7 @@ class FoodController extends Controller
             $distional_path = public_path('/images/food');
             $avartar->move($distional_path, $getAvartar);
         }
-        $food->avartar = Input::get('avatar');
+            $food->avartar = Input::get('avatar');
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
