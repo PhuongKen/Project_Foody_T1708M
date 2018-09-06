@@ -11,7 +11,7 @@
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>Food</small>
+                    <small>Món ăn</small>
                 </h3>
             </div>
             <div class="col-2">
