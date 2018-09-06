@@ -9,7 +9,7 @@
                         <!-- Nav Bar -->
                         <div class="products-bar">
                             <div class="row">
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-9 col-xs-9">
                                     <div class="gridlist-toggle" role="tablist">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#products-grid" data-toggle="tab"
@@ -24,34 +24,22 @@
                                     <div class="total-products">Gồm {{count($list_restaurant)}} nhà hàng</div>
                                 </div>
 
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-3 col-xs-3">
                                     <div class="filter-bar">
-                                        <form action="{{route('diadiem')}}" method="get">
+                                        <form action="{{route('gantoi')}}" method="get">
                                             <div class="pull-right">
                                                 <div class="select">
-                                                    {{--<select class="form-control" name="district"--}}
-                                                            {{--name="district"--}}
-                                                            {{--id="district">--}}
-                                                        {{--<option value="0">Tất cả</option>--}}
-                                                        {{--@foreach($district as $d)--}}
-                                                            {{--<option value="{{$d->id}}">{{$d->name}}</option>--}}
-                                                        {{--@endforeach--}}
-                                                    {{--</select>--}}
+                                                    <select class="form-control" name="categoryID">
+                                                        <option value="0">Tất cả danh mục</option>
+                                                        @foreach($categories as $c)
+                                                            <option value="{{$c->id}}">{{$c->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="pull-right">
-                                                <div class="select">
-                                                    {{--<select class="form-control" name="provind"--}}
-                                                            {{--id="provind">--}}
-                                                        {{--<option value="0">Tất cả</option>--}}
-                                                        {{--@foreach($provind as $p)--}}
-                                                            {{--<option value="{{$p->id}}">{{$p->name}}</option>--}}
-                                                        {{--@endforeach--}}
-                                                    {{--</select>--}}
-                                                </div>
-                                            </div>
-                                            {{--<input type="hidden" value="{{$categoryID}}" name="categoryID">--}}
-                                            {{--<input type="submit" value="Lọc" style="padding: 4px; margin-right: 0">--}}
+                                            <input type="hidden" name="lat" value="{{$lat}}">
+                                            <input type="hidden" name="lng" value="{{$lng}}">
+                                            <input type="submit" value="Lọc" style="padding: 4px;">
                                         </form>
                                     </div>
                                 </div>
@@ -63,7 +51,7 @@
                             <div class="tab-pane active" id="products-grid">
                                 <div class="products-block">
                                     <div class="row">
-                                        @foreach($list_restaurant as $key => $value)
+                                        @foreach($list_restaurant as $value)
                                             <div class="col-md-3 col-sm-4 col-xs-12">
                                                 <div class="product-item">
                                                     <div class="product-image">
@@ -81,12 +69,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -105,7 +93,7 @@
                             <!-- Products List -->
                             <div class="tab-pane" id="products-list">
                                 <div class="products-block layout-5">
-                                    @foreach($list_restaurant as $key => $value)
+                                    @foreach($list_restaurant as $value)
                                         <div class="product-item">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
@@ -126,12 +114,12 @@
                                                             </a>
                                                         </div>
                                                         <div class="food-address">
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                            {{--<a class="food-address1"--}}
-                                                            {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->wardName}}</span></a>,
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->districtName}}</span></a>,
+                                                            <a class="food-address1"
+                                                               href="#"><span>{{$value->provindName}}</span></a>
                                                         </div>
                                                         <div>
                                                             <span style="color: #4cae4c">Giờ mở cửa: {{$value->openTime}}</span><br>
@@ -161,9 +149,10 @@
                         <div class="pagination-bar">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng số {{count($countRestaurant)}} nhà hàng</div>
+                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng
+                                        số {{count($countRestaurant)}} nhà hàng
+                                    </div>
                                 </div>
-
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     {{$list_restaurant->appends(Request::all())->links()}}
                                 </div>
@@ -171,21 +160,57 @@
                         </div>
                     </div>
                 </div>
+            @elseif($list_restaurant[0] == null)
+                @if($categoryID == 0)
+                    <h4 style="text-align: center">Vui lòng chọn danh mục trước khi lọc</h4>
+                    <h4 style="text-align: center">
+                        <form class="nearBy" action="{{route('nearBy')}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" class="lat" name="lat">
+                            <input type="hidden" class="lng" name="lng">
+                            <input class="nearBy" type="button" value="Quay lại" style="border: none; background: none; word-spacing: 2px;
+                                         font-size: 15px; font-weight: 700; color: #d33">
+                        </form>
+                    </h4>
+                @else
+                    <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn có danh mục là
+                        "{{$category->name}}"</h4>
+                    <form class="nearBy" action="{{route('nearBy')}}" method="post">
+                        {{csrf_field()}}
+                        <input type="hidden" class="lat" name="lat">
+                        <input type="hidden" class="lng" name="lng">
+                        <input class="nearBy" type="button" value="Quay lại" style="border: none; background: none; word-spacing: 2px;
+                                         font-size: 15px; font-weight: 700; color: #d33">
+                    </form>
+                @endif
             @else
                 <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn</h4>
+                <form class="nearBy" action="{{route('nearBy')}}" method="post">
+                    {{csrf_field()}}
+                    <input type="hidden" class="lat" name="lat">
+                    <input type="hidden" class="lng" name="lng">
+                    <input class="nearBy" type="button" value="Quay lại" style="border: none; background: none; word-spacing: 2px;
+                                         font-size: 15px; font-weight: 700; color: #d33">
+                </form>
             @endif
         </div>
     </div>
 @endsection
 @section('script')
     <script>
-        var idProvind = $("#provind").val();
-        // var search = $('#provind').attr('data-search1');
-        $("#provind").change(function () {
-            var idProvind = $(this).val();
-            $.get("/client/district/" + idProvind, function (data) {
-                $("#district").html(data);
-            });
+        $('.nearBy').click(function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    // alert(lat);
+                    $('.lat').val(lat);
+                    $('.lng').val(lng);
+                    $('.nearBy').submit();
+                });
+            } else {
+                alert('vui lòng cho phép sử dụng vị trí của bạn.')
+            }
         });
     </script>
 @endsection

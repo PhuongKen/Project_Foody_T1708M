@@ -29,21 +29,19 @@ class FoodController
         $selected_category = Category::find($categoryID);
         $restaurants = $restaurants->where('categoryID', $categoryID);
         $countRestaurant = $restaurants->get();
-        $list_restaurant = $restaurants->orderBy('created_at', 'DESC')->paginate(12);
-//        dd(count($countRestaurant));
-//        dd($list_restaurant);
-        $address = DB::table('restaurants')
+
+        $list_restaurant = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
             ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
-            ->where('categoryID',$categoryID)
+            ->where('categoryID', $categoryID)
             ->orderBy('created_at', 'DESC')
-            ->get()->toArray();
+            ->paginate(8);
 //        print_r(array_keys($address));
 
         return view('client.category', compact('categories', 'selected_categoryId', 'list_restaurant',
-            'selected_category','address','provind','district','categoryID', 'countRestaurant'));
+            'selected_category', 'provind', 'district', 'categoryID', 'countRestaurant'));
     }
 }

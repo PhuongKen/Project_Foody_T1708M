@@ -118,13 +118,22 @@ Route::get('/foody/dia-diem/', [
     'as' => 'diadiem',
     'uses' => 'Client\SearchController@searchArea'
 ]);
+Route::get('/foody/danh-muc-dia-diem/', [
+    'as' => 'category',
+    'uses' => 'Client\SearchController@categoryArea'
+]);
 Route::post('/foody/danh-gia', 'Client\RestaurantController@rating');
-//Route::post('/foody/gan-toi', 'Client\LocationController@nearBy');
-Route::match(['get', 'post'], '/foody/gan-toi',[
+Route::match(['get', 'post'], '/foody/gan-toi', [
     'as' => 'nearBy',
     'uses' => 'Client\LocationController@nearBy'
 ]);
+
 Route::match(['get', 'post'], '/foody/map', [
    'as' => 'map',
    'uses' => 'Client\MapController@map'
+
+Route::get('/foody/gan-toi/danh-muc/', [
+    'as' => 'gantoi',
+    'uses' => 'Client\LocationController@selectCategory'
+
 ]);
