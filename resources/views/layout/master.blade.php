@@ -91,6 +91,16 @@
                                           font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
                                     </form>
                                 </li>
+
+                                <li>
+                                    <form id="map" action="{{route('map')}}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="lat1" name="lat">
+                                        <input type="hidden" id="lng1" name="lng">
+                                        <input id="map" type="button"  value="Map" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
+                                         font-size: .125in; font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -416,10 +426,27 @@
         }
     });
 
+
+    $('#map').click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                alert(lat);
+                $('#lat1').val(lat);
+                $('#lng1').val(lng);
+                $('#map').submit();
+            });
+        } else {
+            alert('vui lòng cho phép sử dụng vị trí của bạn.')
+        }
+    });
     @if(count(\App\Cart::getCart()->items)==0)
     $('.cart-content').height('auto');
     $('.else').display('none');
     @endif
+
+
 
 </script>
 </body>
