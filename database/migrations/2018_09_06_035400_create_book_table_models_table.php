@@ -15,10 +15,11 @@ class CreateBookTableModelsTable extends Migration
     {
         Schema::create('book_table_models', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userID');
+            $table->integer('restaurantID');
             $table->date('ngaydat');
             $table->time('thoigiandat');
-            $table->integer('soluongnguoilon');
-            $table->integer('soluongtreem');
+            $table->integer('sokhach');
             $table->string('ghichu');
             $table->timestamps();
         });
