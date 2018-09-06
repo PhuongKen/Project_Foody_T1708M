@@ -111,5 +111,3 @@
         });
     </script>
 @endsection
-Kết thúc cuộc trò chuyện
-Nhập tin nhắn...

@@ -65,6 +65,7 @@
             </div>
 
             <!-- Product - New Arrivals -->
+            <a href="/foody/dat-cho/{{'?id='.$restaurant->id}}" >Đặt bàn</a>
             <div class="section products-block new-arrivals layout-3">
                 <div class="block-title">
                     <h2 class="title">Thực đơn <span>Nhà hàng</span></h2>

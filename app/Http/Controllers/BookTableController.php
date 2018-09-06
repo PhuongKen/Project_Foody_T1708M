@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BookTableModel;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -15,8 +16,9 @@ class BookTableController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $list_obj = BookTableModel::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.booktable.list')->with('list_obj',$list_obj);
+        return view('admin.booktable.booktable')->with('list_obj',$list_obj)->with('categories',$categories);
     }
 
     /**
@@ -40,15 +42,13 @@ class BookTableController extends Controller
         $this->validate($request, [
             'ngaydat' => 'required',
             'thoigiandat' => 'required',
-            'soluongnguoilon' => 'required',
-            'soluongtreem' => 'required',
+            'sokhach' => 'required',
             'ghichu' => 'required',
         ],
             [
                 'ngaydat.required' => 'Bạn chưa nhập tên',
                 'thoigiandat.required' => 'Bạn chưa nhập thời gian đặt',
-                'soluongnguoilon.required' => 'Bạn chưa nhập số lượng người lớn',
-                'soluongtreem.required' => 'Bạn chưa nhập số lượng trẻ em',
+                'sokhach.required' => 'Bạn chưa nhập số lượng người',
                 'ghichu.required' => 'Bạn chưa nhập gi chú'
 
             ]
@@ -56,9 +56,8 @@ class BookTableController extends Controller
         $booktable = new BookTableModel();
         $booktable->ngaydat = Input::get('ngaydat');
         $booktable->thoigiandat = Input::get('thoigiandat');
-        $booktable->soluongnguoilon = Input::get('soluongnguoilon');
-        $booktable->soluongtreem = Input::get('soluongtreem');
-        $booktable->soluongtreem = Input::get('ghichu');
+        $booktable->sokhach = Input::get('sokhach');
+        $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
         return redirect('/admin/booktable');
     }
@@ -82,7 +81,8 @@ class BookTableController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list_obj = BookTableModel::find($id);
+        return view('admin.booktable.edit')->with('list_obj',$list_obj);
     }
 
     /**
@@ -94,7 +94,30 @@ class BookTableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ngaydat' => 'required',
+            'thoigiandat' => 'required',
+            'sokhach' => 'required',
+            'ghichu' => 'required',
+        ],
+            [
+                'ngaydat.required' => 'Bạn chưa nhập tên',
+                'thoigiandat.required' => 'Bạn chưa nhập thời gian đặt',
+                'sokhach.required' => 'Bạn chưa nhập số lượng người',
+                'ghichu.required' => 'Bạn chưa nhập gi chú'
+
+            ]
+        );
+        $booktable = BookTableModel::find($id);
+        if ($booktable == null){
+            return view('404');
+        }
+        $booktable->ngaydat = Input::get('ngaydat');
+        $booktable->thoigiandat = Input::get('thoigiandat');
+        $booktable->sokhach = Input::get('sokhach');
+        $booktable->ghichu = Input::get('ghichu');
+        $booktable->save();
+        return redirect('/admin/booktable');
     }
 
     /**
@@ -105,6 +128,10 @@ class BookTableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $booktable = BookTableModel::find($id);
+        if ($booktable == null){
+            return view('404');
+        }
+        $booktable->delete();
     }
 }
