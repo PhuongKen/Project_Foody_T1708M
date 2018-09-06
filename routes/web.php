@@ -124,3 +124,7 @@ Route::match(['get', 'post'], '/foody/gan-toi',[
     'as' => 'nearBy',
     'uses' => 'Client\LocationController@nearBy'
 ]);
+Route::match(['get', 'post'], '/foody/map', [
+   'as' => 'map',
+   'uses' => 'Client\MapController@map'
+]);
