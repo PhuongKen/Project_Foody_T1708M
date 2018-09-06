@@ -88,7 +88,7 @@
                                         <input type="hidden" id="lat" name="lat">
                                         <input type="hidden" id="lng" name="lng">
                                         <input id="nearBy" type="button"  value="Gần tôi" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
-                                         font-size: .125in; font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
+                                          font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
                                     </form>
                                 </li>
                             </ul>
@@ -406,7 +406,7 @@
             navigator.geolocation.getCurrentPosition(function (position) {
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
-                alert(lat);
+                // alert(lat);
                 $('#lat').val(lat);
                 $('#lng').val(lng);
                 $('#nearBy').submit();

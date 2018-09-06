@@ -4,73 +4,41 @@
         <div class="row" style="margin-top: 30px">
             <!-- Page Content -->
             @if($list_restaurant[0] == null)
-                @if($idProvind == 0 && $idDistrict == 0 && $category == 0)
-                    <h4 style="text-align: center">Vui lòng chọn địa điểm hoặc danh mục trước khi lọc</h4>
+                @if($idProvind == 0 && $idDistrict == 0)
+                    <h4 style="text-align: center">Vui lòng chọn địa điểm trước khi lọc</h4>
                     <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
-                    </h4>
-                @elseif($idProvind == 0 && $category == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
-                        <b class="text-danger">"{{$districtName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
-                    </h4>
-                @elseif($idProvind == 0 && $idDistrict == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b>
-                        thuộc danh mục
-                        <b class="text-danger">"{{$categoryName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
-                    </h4>
-                @elseif($idDistrict == 0 && $category == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
-                        <b class="text-danger">"{{$provindName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
+                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
+                            lại</a>
                     </h4>
                 @elseif($idProvind == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
+                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
                         <b class="text-danger">"{{$districtName->name}}"</b>
                         thuộc danh mục
                         <b class="text-danger">"{{$categoryName->name}}"</b>
                     </h4>
                     <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
+                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
+                            lại</a>
                     </h4>
                 @elseif($idDistrict == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
+                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
                         <b class="text-danger">"{{$provindName->name}}"</b>
                         thuộc danh mục
                         <b class="text-danger">"{{$categoryName->name}}"</b>
                     </h4>
                     <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
-                    </h4>
-                @elseif($category == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
-                        <b class="text-danger">"{{$districtName->name}}, {{$provindName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
+                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
+                            lại</a>
                     </h4>
                 @else
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa
-                        <b class="text-danger">"{{$search}}"</b> và địa chỉ là
+                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
                         <b class="text-danger">"{{$districtName->name}}, {{$provindName->name}}"</b>
                         thuộc danh mục
                         <b class="text-danger">"{{$categoryName->name}}"</b>
                     </h4>
                     <h4 style="text-align: center">
-                        <a style="color: #4cae4c" href="/foody/tim-kiem/{{'?search='.$search}}">Quay lại</a>
+                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
+                            lại</a>
                     </h4>
                 @endif
             @else
@@ -97,7 +65,7 @@
 
                                 <div class="col-md-8 col-xs-8">
                                     <div class="filter-bar">
-                                        <form action="{{route('diadiem')}}" method="get">
+                                        <form action="{{route('category')}}" method="get">
                                             <div class="pull-right">
                                                 <div class="select">
                                                     <select class="form-control" name="district"
@@ -135,24 +103,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="pull-right">
-                                                <div class="select">
-                                                    <select class="form-control" name="category">
-                                                        @if($category == 0)
-                                                            <option value="0">Tất cả danh mục</option>
-                                                            @foreach($categories as $c)
-                                                                <option value="{{$c->id}}">{{$c->name}}</option>
-                                                            @endforeach
-                                                        @else
-                                                            <option value="{{$categoryName->id}}">{{$categoryName->name}}</option>
-                                                            @foreach($categories as $c)
-                                                                <option value="{{$c->id}}">{{$c->name}}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" value="{{$search}}" name="search">
+                                            <input type="hidden" value="{{$categoryID}}" name="categoryID">
                                             <input type="submit" value="Lọc"
                                                    style="padding: 4px; margin-right: 0">
                                         </form>
