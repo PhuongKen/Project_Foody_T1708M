@@ -65,7 +65,16 @@
             </div>
 
             <!-- Product - New Arrivals -->
-            <a href="/foody/dat-cho/{{'?id='.$restaurant->id}}" >Đặt bàn</a>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="intro-left">
+                        <div class="btn btn-danger"><a href="/foody/dat-cho/{{'?id='.$restaurant->id}}"
+                                                       style="vertical-align: middle;font-weight: 700;font-size: 20px;cursor: pointer;color: #f37934;">
+                                Đặt bàn</a></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="section products-block new-arrivals layout-3">
                 <div class="block-title">
                     <h2 class="title">Thực đơn <span>Nhà hàng</span></h2>
