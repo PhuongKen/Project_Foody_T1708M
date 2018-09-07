@@ -49,9 +49,9 @@
                                         <h4>Thông tin liên hệ</h4>
                                         <div class="row">
                                             <input class="col-md-5" type="text"
-                                                   name="name" placeholder="tên"
+                                                   name="name" placeholder="Tên"
                                                    style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
-                                            <input class="col-md-5" type="text" placeholder="số điện thoại" name="sdt"
+                                            <input class="col-md-5" type="text" placeholder="Số điện thoại" name="sdt"
                                                    style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
                                         </div>
                                         <div class="row">

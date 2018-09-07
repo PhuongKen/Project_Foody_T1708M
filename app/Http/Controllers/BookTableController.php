@@ -43,12 +43,17 @@ class BookTableController extends Controller
             'ngaydat' => 'required',
             'thoigiandat' => 'required',
             'sokhach' => 'required',
+            'name' => 'required',
+            'sdt' => 'required|numeric',
             'ghichu' => 'required',
         ],
             [
                 'ngaydat.required' => 'Bạn chưa nhập tên',
                 'thoigiandat.required' => 'Bạn chưa nhập thời gian đặt',
                 'sokhach.required' => 'Bạn chưa nhập số lượng người',
+                'name.required' => 'Bạn chưa nhập tên',
+                'sdt.required'=>'Số điện thoại không được để trống',
+                'sdt.numeric'=>'Số điện thoại phải là số',
                 'ghichu.required' => 'Bạn chưa nhập gi chú'
 
             ]
@@ -57,6 +62,8 @@ class BookTableController extends Controller
         $booktable->ngaydat = Input::get('ngaydat');
         $booktable->thoigiandat = Input::get('thoigiandat');
         $booktable->sokhach = Input::get('sokhach');
+        $booktable->name = Input::get('name');
+        $booktable->sdt = Input::get('sdt');
         $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
         return redirect('/admin/booktable');
@@ -98,12 +105,17 @@ class BookTableController extends Controller
             'ngaydat' => 'required',
             'thoigiandat' => 'required',
             'sokhach' => 'required',
+            'name' => 'required',
+            'sdt' => 'required|numeric',
             'ghichu' => 'required',
         ],
             [
                 'ngaydat.required' => 'Bạn chưa nhập tên',
                 'thoigiandat.required' => 'Bạn chưa nhập thời gian đặt',
                 'sokhach.required' => 'Bạn chưa nhập số lượng người',
+                'name.required' => 'Bạn chưa nhập tên',
+                'sdt.required'=>'Số điện thoại không được để trống',
+                'sdt.numeric'=>'Số điện thoại phải là số',
                 'ghichu.required' => 'Bạn chưa nhập gi chú'
 
             ]
@@ -115,11 +127,12 @@ class BookTableController extends Controller
         $booktable->ngaydat = Input::get('ngaydat');
         $booktable->thoigiandat = Input::get('thoigiandat');
         $booktable->sokhach = Input::get('sokhach');
+        $booktable->name = Input::get('name');
+        $booktable->sdt = Input::get('sdt');
         $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
         return redirect('/admin/booktable');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -133,5 +146,16 @@ class BookTableController extends Controller
             return view('404');
         }
         $booktable->delete();
+    }
+    public function status(){
+        $id = Input::get('id');
+        $status = Input::get('status');
+        $booktable = BookTableModel::find($id);
+        if ($booktable == null) {
+            return view('error.404');
+        }
+        $booktable->status = $status;
+        $booktable->save();
+        return redirect('/admin/booktable');
     }
 }
