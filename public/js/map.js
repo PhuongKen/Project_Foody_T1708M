@@ -34,19 +34,6 @@ $(document).ready(function() {
             maxwidth: 300,
         });
 
-        // infowindow = new InfoBox({
-        //   content: contentString,
-        //   disableAutoPan: false,
-        //   pixelOffset: new google.maps.Size(-160,-382),
-        //   zIndex: null,
-        //   position: marker.getPosition(),
-        //   boxStyle:{
-        //     width: '330px'
-        //   },
-        //   closeBoxMargin: '0',
-        //   closeBoxURL: 'images/icon.png',
-        //   infoBoxClearance: new google.maps.Size(1,1)
-        // });
         marker.addListener('click', function(){
             infowindow.open(map, marker);
         });
@@ -162,15 +149,25 @@ $(document).ready(function() {
 
     function createMarkers(pos){
 
+        var icon = {
+            url: '/images/restaurant/' +pos.avartar,
+            scaledSize: new google.maps.Size(40, 40), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0), // anchor
+        };
+        $('.iconMaker').css('border','3px solid black');
         var newMarker = new google.maps.Marker({
             position: pos,
             map: map,
+            icon: icon,
+            animation: google.maps.Animation.DROP
         });
 
+
         var contentString2 = '<div id="container-infobox">' +
-            '<h6><a  href="#" class="direction">' +pos.name+ '</a></h6>' +
-            '<div style="background: url('+"/images/restaurant/"+ pos.avartar + ') no-repeat center; width:180px; height: 130px">'+
-            '</div>'+
+            '<h6><a  href="/foody/chi-tiet-nha-hang/?id='+pos.id+'">' +pos.name+ '</a></h6>' +
+            '<a href="/foody/chi-tiet-nha-hang/?id='+pos.id+'"><div style="background: url('+"/images/restaurant/"+ pos.avartar + ') no-repeat center; width:180px; height: 130px">'+
+            '</div></a>'+ '<h5 style="text-align: center;"><a href="#" class="direction" style="color: #dd3333;">Chỉ đường</a></h5>' +
             '</div>';
         var options = {
             content: contentString2
