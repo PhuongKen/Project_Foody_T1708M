@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="panel panel-default">
-                            <div class="panel-body p-0"><h4 style="color: #333333;">{{$booktable->name}}</h4>
+                            <div class="panel-body p-0 "><h4 style="color: #337ab7;font-weight: 700;    font-family: 'OpenSans-Bold';text-transform: capitalize;    font-size: 18px;">{{$booktable->name}}</h4>
                                 @if ($errors->any())
                                     <div class="alert alert-danger alert-dismissible" role="alert">
                                         <ul>
@@ -46,11 +46,18 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <h4>Thông tin liên hệ</h4>
                                         <div class="row">
-                                    <textarea name="ghichu" class="col-md-11" style="width: 886px; "
+                                            <input class="col-md-5" type="text"
+                                                   name="name" placeholder="Tên"
+                                                   style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
+                                            <input class="col-md-5" type="text" placeholder="Số điện thoại" name="sdt"
+                                                   style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
+                                        </div>
+                                        <div class="row">
+                                    <textarea name="ghichu" class="col-md-10" style=" width: 913px ;border: 1px solid #eee;"
                                               placeholder="Ghi chú"></textarea>
                                         </div>
-
                                     </div>
                                     <input type="hidden" value="{{$booktable->id}}" name="restaurant">
                                     <div class="form-group">

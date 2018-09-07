@@ -40,6 +40,7 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/user', 'UserController');
     Route::resource('admin/orderdetail', 'OrderDetailController');
     Route::resource('/admin/booktable', 'BookTableController');
+    Route::get('/admin/status','BookTableController@status');
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });

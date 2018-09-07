@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add booktable</h4>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Sửa thông tin đặt bàn</h4>
                         <div>
                             </ul>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -53,32 +53,31 @@
                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" value="{{$list_obj->thoigiandat}}">
                             </div>
                             <div class="row">
-                                <select class="col-md-5" name="soluongnguoilon" id="provind"
-                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" value="{{$list_obj->soluongnguoilon}}">
+                                <select class="col-md-5" name="sokhach" id="provind"
+                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" value="{{$list_obj->sokhach}}">
                                     >
-                                    <option value="0">Người lớn</option>
+                                    <option value="0">Số khách</option>
                                     <option value="1">1 người</option>
                                     <option value="2">2 người</option>
                                     <option value="3">3 người</option>
                                     <option value="4">4 người</option>
                                     <option value="5">5 người</option>
                                 </select>
-                                <select class="col-md-5" name="soluongtreem" id="provind"
-                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" value="{{$list_obj->soluongtreem}}">
-                                    >
-                                    <option value="0">Trẻ em</option>
-                                    <option value="1">1 người</option>
-                                    <option value="2">2 người</option>
-                                    <option value="3">3 người</option>
-                                    <option value="4">4 người</option>
-                                    <option value="5">5 người</option>
-                                </select>
+
                             </div>
                             <div class="form-group">
+                                <h4>Thông tin liên hệ</h4>
                                 <div class="row">
-                                    <textarea name="ghichu" class="col-md-11" style="width: 886px; " placeholder="Ghi chú">{{$list_obj->ghichu}}</textarea>
+                                    <input class="col-md-5" type="text"
+                                           name="name" placeholder="Tên"
+                                           style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" value="{{$list_obj->name}}">
+                                    <input class="col-md-5" type="text" placeholder="Số điện thoại" name="sdt"
+                                           style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" value="{{$list_obj->sdt}}">
                                 </div>
-
+                                <div class="row">
+                                    <textarea name="ghichu" class="col-md-10" style=" width: 85% ;border: 1px solid #eee;"
+                                              placeholder="Ghi chú">{{$list_obj->ghichu}}</textarea>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">

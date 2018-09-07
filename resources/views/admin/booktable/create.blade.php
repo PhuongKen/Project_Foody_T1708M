@@ -23,14 +23,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add booktable</h4>
-                        <div>
-                            </ul>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                        </div>
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Đặt bàn</h4>
+
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <ul>
@@ -65,11 +59,21 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <h4>Thông tin liên hệ</h4>
                                 <div class="row">
-                                    <textarea name="ghichu" class="col-md-11" style="width: 886px; " placeholder="Ghi chú"></textarea>
+                                    <input class="col-md-5" type="text"
+                                           name="name" placeholder="Tên"
+                                           style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;" >
+                                    <input class="col-md-5" type="text" placeholder="Số điện thoại" name="sdt"
+                                           style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" >
                                 </div>
-
+                                <div class="row">
+                                    <textarea name="ghichu" class="col-md-10" style=" width: 85% ;border: 1px solid #eee;"
+                                              placeholder="Ghi chú"></textarea>
+                                </div>
                             </div>
+
+
                             <div class="form-group">
                                 <div class="row">
                                     <input style="width: 886px;color: #fff!important;outline: 0;text-decoration: none!important;-webkit-border-radius: 4px;text-transform: capitalize;height: 50px;line-height: 50px;text-align: center;font-size: 16px;background-color: #f37934;margin-top: 15px;display: block;cursor: pointer;margin: 0;    -webkit-box-sizing: border-box;white-space: normal;box-sizing: border-box;box-sizing: border-box;padding: 0;"
