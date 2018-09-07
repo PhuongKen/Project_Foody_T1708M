@@ -18,7 +18,7 @@ class BookTableController extends Controller
     {
         $categories = Category::all();
         $list_obj = BookTableModel::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.booktable.booktable')->with('list_obj',$list_obj)->with('categories',$categories);
+        return view('admin.booktable.list')->with('list_obj',$list_obj)->with('categories',$categories);
     }
 
     /**

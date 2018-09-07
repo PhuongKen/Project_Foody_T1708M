@@ -20,6 +20,8 @@ class CreateBookTableModelsTable extends Migration
             $table->date('ngaydat');
             $table->time('thoigiandat');
             $table->integer('sokhach');
+            $table->string('name');
+            $table->string('sdt');
             $table->string('ghichu');
             $table->timestamps();
         });
