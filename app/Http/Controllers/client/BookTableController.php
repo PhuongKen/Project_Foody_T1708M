@@ -35,7 +35,7 @@ class BookTableController extends Controller
             'thoigiandat' => 'required',
             'sokhach' => 'required',
             'name' => 'required',
-            'sdt' => 'required|numeric|min:9',
+            'sdt' => 'required|numeric',
             'ghichu' => 'required',
         ],
             [
@@ -43,12 +43,13 @@ class BookTableController extends Controller
                 'thoigiandat.required' => 'Bạn chưa nhập thời gian đặt',
                 'sokhach.required' => 'Bạn chưa nhập số lượng người',
                 'name.required' => 'Bạn chưa nhập tên',
+                'sdt.required'=>'Số điện thoại không được để trống',
                 'sdt.numeric'=>'Số điện thoại phải là số',
-                'sdt.min'=>'Số điện thoại không ngắn quá 9 kí tự',
                 'ghichu.required' => 'Bạn chưa nhập gi chú'
 
             ]
         );
+        $categories = Category::all();
         $booktable = new BookTableModel();
         $booktable->userID = Auth::user()->id;
         $booktable->restaurantID = Input::get('restaurant');
@@ -56,9 +57,9 @@ class BookTableController extends Controller
         $booktable->thoigiandat = Input::get('thoigiandat');
         $booktable->sokhach = Input::get('sokhach');
         $booktable->name = Input::get('name');
-        $booktable->sdt = Input::get('sodienthoai');
+        $booktable->sdt = Input::get('sdt');
         $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
-        return redirect('/foody/trang-chu');
+        return view('client.thongbaodatban',compact('categories'));
     }
 }

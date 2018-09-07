@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="container-edit container">
-        <h4></h4>
+        <h4>Bạn đã đặt chỗ thành công</h4>
+        <a href="/foody/trang-chu"> Quay lại trang chủ</a>
     </div>
 @endsection
