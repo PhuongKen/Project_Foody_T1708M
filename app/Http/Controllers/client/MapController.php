@@ -20,7 +20,7 @@ class MapController
          if($lat == null){
              return "Vui lòng cho phép sử dụng vị trí của bạn";
          }
-         $restaurants =Restaurant::whereBetween('lat',[$lat-0.1,$lat+0.1])->whereBetween('lng',[$lng-0.1,$lng+0.1])->get();
+         $restaurants =Restaurant::whereBetween('lat',[$lat-0.01,$lat+0.01])->whereBetween('lng',[$lng-0.1,$lng+0.1])->get();
          $map = $restaurants->toJson();
 //         dd($map);
          return view('client.map', compact('categories', 'list_restaurant','map'));
