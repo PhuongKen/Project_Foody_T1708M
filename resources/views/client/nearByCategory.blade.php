@@ -161,10 +161,30 @@
                     </div>
                 </div>
             @else
-                <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn</h4>
-                <h4 style="text-align: center">
-                    <a href="{{ url()->previous()}}" style="color: #d33">Quay lại</a>
-                </h4>
+                @if($categoryID == 0)
+                    <h4 style="text-align: center">Vui lòng chọn danh mục trước khi lọc</h4>
+                    <h4 style="text-align: center">
+                        <form class="nearBy" action="{{route('nearBy')}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" class="lat" name="lat">
+                            <input type="hidden" class="lng" name="lng">
+                            <input class="nearBy" type="button" value="Quay lại" style="border: none; background: none; word-spacing: 2px;
+                                         font-size: 15px; font-weight: 700; color: #d33">
+                        </form>
+                    </h4>
+                @else
+                    <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn có danh mục là
+                        <b class="text-danger">"{{$category->name}}"</b></h4>
+                    <h4 style="text-align: center">
+                        <form class="nearBy" action="{{route('nearBy')}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" class="lat" name="lat">
+                            <input type="hidden" class="lng" name="lng">
+                            <input class="nearBy" type="button" value="Quay lại" style="border: none; background: none; word-spacing: 2px;
+                                         font-size: 15px; font-weight: 700; color: #d33">
+                        </form>
+                    </h4>
+                @endif
             @endif
         </div>
     </div>

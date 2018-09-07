@@ -99,12 +99,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address[$key]->provindName}}</span></a>
                                                     </div>
 
                                                     <div class="product-rating">
@@ -143,12 +143,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address1[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address1[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address1[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address1[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address1[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address1[$key]->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -186,12 +186,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address2[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address2[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address2[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address2[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address2[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address2[$key]->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -229,12 +229,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -272,12 +272,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                        href="#"><span>{{$address3[$key]->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -315,12 +315,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="food-address">
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->wardName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->districtName}}</span></a>,--}}
-                                                        {{--<a class="food-address1"--}}
-                                                        {{--href="#"><span>{{$address3[$key]->provindName}}</span></a>--}}
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$address3[$key]->wardName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$address3[$key]->districtName}}</span></a>,
+                                                        <a class="food-address1"
+                                                           href="#"><span>{{$address3[$key]->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>

@@ -92,7 +92,6 @@
                                           font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
                                     </form>
                                 </li>
-
                                 <li>
                                     <form id="mapid" action="{{route('map')}}" method="post">
                                         {{csrf_field()}}
@@ -115,9 +114,8 @@
                             </a>
                         </div>
 
-                        <span id="toggle-mobile-menu"><i class="zmdi zmdi-menu"></i></span>
+                        <span id="toggle-mobile-menu"><i class="fa fa-bars"></i></span>
                     </div>
-
 
                     <!-- Header Right -->
                     <div class="col-lg-5 col-md-5 col-sm-12 header-right d-flex justify-content-end align-items-center">

@@ -21,6 +21,7 @@ class LocationController
         $categories = Category::all();
         $lat = $request->get('lat');
         $lng = $request->get('lng');
+        $categoryID = null;
         if ($lat == null) {
             return "Vui lòng cho phép sử dụng vị trí của bạn";
         }
@@ -38,7 +39,7 @@ class LocationController
 
 //        dd($address);
 
-        return view('client.nearBy', compact('categories', 'countRestaurant', 'list_restaurant', 'lat', 'lng'));
+        return view('client.nearBy', compact('categories', 'countRestaurant', 'list_restaurant', 'lat', 'lng','categoryID'));
     }
 
     public function selectCategory(Request $request)
