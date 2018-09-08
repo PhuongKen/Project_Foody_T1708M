@@ -16,11 +16,11 @@ class CreateOrderInfosTable extends Migration
         Schema::create('order_infos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('orderID')->unsigned();
-//            $table->foreign('orderID')->references('id')->on('orders');
+            $table->foreign('orderID')->references('id')->on('orders');
             $table->string('name');
             $table->integer('phone');
             $table->integer('addressID')->unsigned();
-//            $table->foreign('addressID')->references('id')->on('addresses');
+            $table->foreign('addressID')->references('id')->on('addresses');
             $table->string('address');
             $table->string('note');
             $table->time('time');

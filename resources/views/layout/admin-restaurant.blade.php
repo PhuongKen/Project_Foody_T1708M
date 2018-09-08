@@ -216,28 +216,28 @@
                             <span> Chart </span></a>
                     </li>
                     <!--- user -->
-                    <li>
-                        <a href="/admin/user" class="waves-effect"><i class="fas fa-user"></i><span> User </span></a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="/admin/user" class="waves-effect"><i class="fas fa-user"></i><span> User </span></a>--}}
+                    {{--</li>--}}
                     <!--- Category -->
-                    <li>
-                        <a href="/admin/category" class="waves-effect"><i
-                                    class="fas fa-sitemap"></i><span> Category </span></a>
-                    </li>
                     {{--<li>--}}
-                        {{--<a href="/admin/food" class="waves-effect"><i--}}
-                                    {{--class="fas fa-utensils"></i><span> Food </span></a>--}}
+                        {{--<a href="/admin/category" class="waves-effect"><i--}}
+                                    {{--class="fas fa-sitemap"></i><span> Category </span></a>--}}
                     {{--</li>--}}
+                    <li>
+                        <a href="/admin/food" class="waves-effect"><i
+                                    class="fas fa-utensils"></i><span> Food </span></a>
+                    </li>
                     <!--- Restaurant -->
-                    <li>
-                        <a href="/admin/restaurant" class="waves-effect"><i
-                                    class="fas fa-hotel"></i><span> Restaurant </span></a>
-                    </li>
-                    <!--- order -->
                     {{--<li>--}}
-                        {{--<a href="/admin/order" class="waves-effect"><i--}}
-                                    {{--class="fas fa-shopping-basket"></i><span> Order </span></a>--}}
+                        {{--<a href="/admin/restaurant" class="waves-effect"><i--}}
+                                    {{--class="fas fa-hotel"></i><span> Restaurant </span></a>--}}
                     {{--</li>--}}
+                    <!--- order -->
+                    <li>
+                        <a href="/admin/order" class="waves-effect"><i
+                                    class="fas fa-shopping-basket"></i><span> Order </span></a>
+                    </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
