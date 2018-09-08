@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +18,17 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $list_obj = Order::orderBy('created_at', 'DESC')->paginate(3);
+
+
+        $list_obj = DB::table('orders')
+            ->join('order_details', 'order_details.orderID', '=', 'orders.id')
+            ->join('foods', 'foods.id', '=', 'order_details.foodID')
+            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
+            ->where('restaurants.userID','=',Auth::user()->id)
+            ->select('orders.*')
+            ->orderBy('created_at','desc')
+            ->groupBy('orders.id')->get();
+//        dd($list_obj);
         return view('admin.order.list')->with('list_obj', $list_obj);
     }
 
@@ -135,6 +146,7 @@ class OrderController extends Controller
             ->join('users', 'users.id', '=', 'orders.userID')
             ->select('users.email', 'users.name')
             ->where('orders.id', $id)->get();
+//        dd($mail);
         if ($status == 2) {
             Mail::send('admin.sendMail',['user' => $mail], function ($message) use ($mail) {
                 $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
