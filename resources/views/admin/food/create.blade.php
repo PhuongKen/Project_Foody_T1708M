@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/food" method="post" enctype="multipart/form-data">
+    <form action="/restaurant/food" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -67,7 +67,7 @@
                     <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
                 </div>
                 <div class="form-group">
-                    <form action="/admin/food" method="post" enctype="multipart/form-data">
+                    <form action="/restaurant/food" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input type="file" name="img[]" multiple>
                     </form>

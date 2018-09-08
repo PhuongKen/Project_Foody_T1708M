@@ -24,7 +24,7 @@ class OrderController extends Controller
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
             ->join('foods', 'foods.id', '=', 'order_details.foodID')
             ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
-            ->where('restaurants.userID','=',Auth::user()->id)
+//            ->where('restaurants.userID','=',Auth::user()->id)
             ->select('orders.*')
             ->orderBy('created_at','desc')
             ->groupBy('orders.id')->get();
@@ -72,7 +72,7 @@ class OrderController extends Controller
         $order->totalPrice = Input::get('totalPrice');
         $order->status = Input::get('status');
         $order->save();
-        return redirect('/admin/order');
+        return redirect('/restaurant/order');
 
     }
 
@@ -161,6 +161,6 @@ class OrderController extends Controller
                 $message->subject('Đơn hàng của bạn đã hoàn thành');
             });
         }
-        return redirect('/admin/order');
+        return redirect('/restaurant/order');
     }
 }

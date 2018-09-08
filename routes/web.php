@@ -12,8 +12,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/admin/food', 'FoodController');
-Route::resource('/food', 'FoodController');
+
 Route::get('/errors', function () {
     return view('error.404');
 });
@@ -24,13 +23,13 @@ Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
 Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
-    Route::resource('/admin/order', 'OrderController');
+    Route::resource('/restaurant/order', 'OrderController');
     Route::get('/admin/change-status', 'OrderController@changeStatus');
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
     Route::resource('admin/orderaddress', 'OrderAddessController');
-    Route::resource('admin/detailorder', 'DetailOrderController');
-    Route::resource('/admin/food', 'FoodController');
+    Route::resource('restaurant/detailorder', 'DetailOrderController');
+    Route::resource('/restaurant/food', 'FoodController');
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/restaurant', 'RestaurantController');
     Route::resource('/admin/district', 'DistrictController');

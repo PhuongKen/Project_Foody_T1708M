@@ -16,7 +16,7 @@ class OrderDetailController extends Controller
     public function index()
     {
         $list_obj = Order_detail::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.orderdetail.list')->with('list_obj', $list_obj);    }
+        return view('restaurant.orderdetail.list')->with('list_obj', $list_obj);    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +25,7 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        return view('admin.orderdetail.create');
+        return view('restaurant.orderdetail.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class OrderDetailController extends Controller
         $orderdetail->amount = Input::get('amount');
 
         $orderdetail->save();
-        return redirect('/admin/orderdetail');
+        return redirect('/restaurant/orderdetail');
     }
 
     /**
@@ -91,7 +91,7 @@ class OrderDetailController extends Controller
         $orderdetail->price = Input::get('price');
         $orderdetail->amount = Input::get('amount');
         $orderdetail->save();
-        return redirect('/admin/orderdetail ');
+        return redirect('/restaurant/orderdetail ');
     }
 
     /**

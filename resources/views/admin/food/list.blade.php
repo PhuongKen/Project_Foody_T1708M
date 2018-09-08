@@ -16,7 +16,7 @@
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/food/create" class="btn btn-primary">Tạo mới sản phẩm</a>
+            <a href="/restaurant/food/create" class="btn btn-primary">Tạo mới sản phẩm</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -69,10 +69,10 @@
                                                     @endif
                                         </td>
                                             <td>
-                                                <a href="/admin/food/{{$value->id}}"
+                                                <a href="/restaurant/food/{{$value->id}}"
                                                    class="btn btn-outline-success"
                                                    style="border: 1px solid #d33;">Xem</a>
-                                                <a href="/admin/food/{{$value->id}}/edit"
+                                                <a href="/restaurant/food/{{$value->id}}/edit"
                                                    class="btn btn-outline-primary">Sửa</a>
                                                 <a href="{{$value->id}}"
                                                    class="btn btn-outline-danger btn-delete">Xoá</a>
@@ -102,7 +102,7 @@
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
             if (user_confirm) {
                 $.ajax({
-                    url: '/admin/food/' + cateId,
+                    url: '/restaurant/food/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"
