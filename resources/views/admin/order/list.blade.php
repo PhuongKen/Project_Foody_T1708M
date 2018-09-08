@@ -16,7 +16,7 @@
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/detailorder" class="btn btn-primary">Đơn hàng chi tiết</a>
+            <a href="/restaurant/detailorder" class="btn btn-primary">Đơn hàng chi tiết</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -108,7 +108,7 @@
             }).then((result) => {
                 var cateId = $(this).attr('href');
                 $.ajax({
-                    url: '/admin/orderaddress/' + cateId,
+                    url: '/restaurant/order/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"

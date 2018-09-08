@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/order/{{$order->id}}" method="post" enctype="multipart/form-data">
+    <form action="/restaurant/order/{{$order->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         @method('put')
         <div class="row">

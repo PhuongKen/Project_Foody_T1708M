@@ -54,7 +54,7 @@
                                         <th scope="row">{{$item->price}}</th>
                                         <th scope="row">{{$item->amount}}</th>
                                         <td>
-                                            <a href="/admin/detailorder/{{$item->id}}/edit"
+                                            <a href="/restaurant/detailorder/{{$item->id}}/edit"
                                                class="btn btn-simple btn-outline-primary">edit</a>
                                             <a href="{{$item->id}}"
                                                class="btn btn-simple btn-outline-danger btn-delete">delete</a>
@@ -79,7 +79,7 @@
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
             if(user_confirm){
                 $.ajax({
-                    url: '/admin/detailorder/' + cateId,
+                    url: '/restaurant/detailorder/' + cateId,
                     method:'DELETE',
                     data:{
                         '_token': "{{ csrf_token() }}"

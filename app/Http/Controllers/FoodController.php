@@ -35,7 +35,7 @@ class FoodController extends Controller
     public function create()
     {
         $restaurant = Restaurant::all();
-        return view('admin.food.create')->with('restaurant',$restaurant);
+        return view('restaurant.food.create')->with('restaurant',$restaurant);
     }
 
     /**
@@ -85,7 +85,7 @@ class FoodController extends Controller
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
-        return redirect('/admin/food');
+        return redirect('/restaurant/food');
     }
 
     /**
@@ -150,7 +150,7 @@ class FoodController extends Controller
         $food->price = Input::get('price');
         $food->status = Input::get('status');
         $food-> save();
-        return redirect('/admin/food');
+        return redirect('/restaurant/food');
 
     }
 

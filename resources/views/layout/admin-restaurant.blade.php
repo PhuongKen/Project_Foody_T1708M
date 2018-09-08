@@ -225,7 +225,7 @@
                                     {{--class="fas fa-sitemap"></i><span> Category </span></a>--}}
                     {{--</li>--}}
                     <li>
-                        <a href="/admin/food" class="waves-effect"><i
+                        <a href="/restaurant/food" class="waves-effect"><i
                                     class="fas fa-utensils"></i><span> Food </span></a>
                     </li>
                     <!--- Restaurant -->
@@ -235,7 +235,7 @@
                     {{--</li>--}}
                     <!--- order -->
                     <li>
-                        <a href="/admin/order" class="waves-effect"><i
+                        <a href="/restaurant/order" class="waves-effect"><i
                                     class="fas fa-shopping-basket"></i><span> Order </span></a>
                     </li>
                 </ul>
