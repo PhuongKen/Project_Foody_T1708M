@@ -7,6 +7,7 @@ use App\Restaurant;
 use Faker\Guesser\Name;
 use Hamcrest\Description;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class FoodController extends Controller
@@ -18,7 +19,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $list_obj = Food::where('status', 1)->orderBy('created_at', 'DESC')->paginate(3);
+        $list_obj = DB::table('foods')
+            ->join('restaurants','foods.restaurantID','=','restaurants.id')
+            ->select('foods.*')
+            ->where('restaurants.userID','2')
+            ->orderBy('created_at','desc')->get();
         return view('admin.food.list')->with('foods', $list_obj);
     }
 

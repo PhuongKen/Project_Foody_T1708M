@@ -16,9 +16,9 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('userID')->unsigned();
-//            $table->foreign('userID')->references('id')->on('users');
+            $table->foreign('userID')->references('id')->on('users');
             $table->integer('restaurantID')->unsigned();
-//            $table->foreign('restaurantID')->references('id')->on('restaurants');
+            $table->foreign('restaurantID')->references('id')->on('restaurants');
             $table->integer('rate');
             $table->timestamps();
         });

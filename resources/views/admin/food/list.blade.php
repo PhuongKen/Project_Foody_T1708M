@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Manager restaurant'])
+@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant'])
 @section('content')
     <div class="row">
         <div class="col-md-10">
@@ -28,74 +28,67 @@
                     <h3 class="panel-title">Tạo mới</h3>
                 </div>
                 <div class="panel-body">
-                    @if($foods->count() > 0)
+                    {{--@if($foods->count() > 0)--}}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <table id="datatable" class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>RestaurantID</th>
-                                        <th>Price</th>
-                                        <th>Avatar</th>
-                                        <th>Status</th>
+                                        <th>Stt</th>
+                                        <th>Tên</th>
+                                        <th>Địa chỉ nhà hàng</th>
+                                        <th>Giá tiền</th>
+                                        <th>Ảnh đại diện</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hoạt động</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($foods as $item)
+                                    @foreach($foods as $key => $value)
                                         <tr>
 
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>
-                                                @if($item->description == null)
-                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                        Chưa có</h6>
-                                                    @else($item->description != null)
-                                                    <p>{{$item->description}}</p>
-                                                    @endif
+                                            <td><?php
+                                                    echo $key+1;
+                                            ?>
                                             </td>
-                                            <td>{{$item->restaurantID}}</td>
-                                            <td>{{$item->price}}</td>
+                                            <td>{{$value->name}}</td>
+                                            <td>{{$value->restaurantID}}</td>
+                                            <td>{{$value->price}}</td>
                                             <td>
                                                 <div class="card"
-                                                     style="width: 60px;height: 50px;background-image: url('/images/food/{{$item->avatar}}'); background-size: cover">
+                                                     style="width: 60px;height: 50px;background-image: url('/images/food/{{$value->avatar}}'); background-size: cover">
                                                 </div>
                                             </td>
-                                            <td>
-                                                @if($item->status == 0)
+                                        <td>
+                                                @if($value->status == 0)
                                                     <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                         Đã xóa</h6>
                                                     @else($item->status == 1)
                                                     <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                         Hoạt động</h6>
                                                     @endif
-                                            </td>
+                                        </td>
                                             <td>
-                                                <a href="/admin/food/{{$item->id}}"
+                                                <a href="/admin/food/{{$value->id}}"
                                                    class="btn btn-outline-success"
                                                    style="border: 1px solid #d33;">Xem</a>
-                                                <a href="/admin/food/{{$item->id}}/edit"
+                                                <a href="/admin/food/{{$value->id}}/edit"
                                                    class="btn btn-outline-primary">Sửa</a>
-                                                <a href="{{$item->id}}" data-address="{{$item->addressID}}"
+                                                <a href="{{$value->id}}"
                                                    class="btn btn-outline-danger btn-delete">Xoá</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <div class="row float-right mr-3">
-                                    {{$foods->links()}}
-                                </div>
-                                @else
-                                    <div class="alert alert-primary" role="alert">
-                                        Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user"
-                                                                                    class="btn-link"
-                                                                                    href="/admin/food/create">thêm sản phẩm</a> mới.
-                                    </div>
-                                @endif
+
+                                {{--@else--}}
+                                    {{--<div class="alert alert-primary" role="alert">--}}
+                                        {{--Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user"--}}
+                                                                                    {{--class="btn-link"--}}
+                                                                                    {{--href="/admin/food/create">thêm sản phẩm</a> mới.--}}
+                                    {{--</div>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
                 </div>
