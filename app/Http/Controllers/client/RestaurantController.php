@@ -25,6 +25,9 @@ class RestaurantController
         $food = Food::where('status', 1);
         $selected_restaurantId = $request->get('id');
         $restaurant = Restaurant::find($selected_restaurantId);
+        if($restaurant == null){
+            return view('error.404');
+        }
         $food = $food->where('restaurantID', $selected_restaurantId)->get();
         $list_food = $food->take(count($food));
         $chunk_list = $list_food->chunk(3);

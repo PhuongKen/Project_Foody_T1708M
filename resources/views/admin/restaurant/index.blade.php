@@ -58,8 +58,9 @@
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Chưa update</h6>
                                             @else($value->addressID != null)
-                                                   <p>{{$value->addressID}}</p>
-                                                @endif
+                                                <p>{{$value->addressDetail}}, {{$address[$key]->wardName}},{{$address[$key]->districtName}}
+                                                    ,{{$address[$key]->provindName}}</p>
+                                            @endif
                                         </td>
                                         <td>
                                             @if($value->status == 1)
@@ -74,7 +75,8 @@
                                         <td>
                                             <a href="/admin/restaurant/{{$value->id}}"
                                                class="btn btn-outline-success">Xem</a>
-                                            <a href="/admin/restaurant/{{$value->id}}/edit" class="btn btn-outline-primary">Sửa</a>
+                                            <a href="/admin/restaurant/{{$value->id}}/edit"
+                                               class="btn btn-outline-primary">Sửa</a>
                                             <a href="{{$value->id}}" data-address="{{$value->addressID}}"
                                                class="btn btn-outline-danger btn-delete">Xoá</a>
                                         </td>
@@ -103,7 +105,7 @@
                 cancelButtonColor: '#d33',
                 confirmButtonClass: 'Đồng ý',
                 cancelButtonClass: 'Huỷ bỏ',
-            }).then((result)=> {
+            }).then((result) => {
                 var restaurantID = thisButton.attr('href');
                 var addressID = thisButton.attr('data-address');
                 $.ajax({
@@ -167,7 +169,7 @@
                         })
                         setTimeout(function () {
                             window.location.reload();
-                        }, 2*1000);
+                        }, 2 * 1000);
                     },
                     error: function () {
                         swal({
