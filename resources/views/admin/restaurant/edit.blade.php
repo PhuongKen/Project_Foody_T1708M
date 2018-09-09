@@ -86,19 +86,29 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Số điện thoại:</label>&nbsp<input type="text" name="phone"
-                                                                     placeholder="Nhập số điện thoại"
-                                                                     value="{{$restaurant->phone}}">
+                            <label>Địa chỉ chi tiết:</label>&nbsp&nbsp
+                            <input type="text" value="{{$restaurant->addressDetail}}" name="addressDetail"
+                                   placeholder="Nhập địa chỉ chi tiết" size="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại:</label>&nbsp
+                            <input type="text" name="phone" placeholder="Nhập số điện thoại"
+                                   value="{{$restaurant->phone}}" style="margin-left: 10px">
                         </div>
                         <div class="form-group">
                             <label>Giờ mở cửa:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="openTime" placeholder="Nhập giờ mở của"
-                                   value="{{$restaurant->openTime}}">
+                            <input type="time" name="openTime" placeholder="Nhập giờ mở của"
+                                   value="{{$restaurant->openTime}}" style="margin-left: 10px">
                         </div>
                         <div class="form-group">
                             <label>Giờ đóng cửa:</label>
-                            <input type="text" name="closeTime" placeholder="Nhập giờ đóng của"
-                                   value="{{$restaurant->closeTime}}">
+                            <input type="time" name="closeTime" placeholder="Nhập giờ đóng của"
+                                   value="{{$restaurant->closeTime}}" style="margin-left: 10px">
+                        </div>
+                        <div class="form-group">
+                            <label>Số bàn:</label>
+                            <input type="text" value="{{$restaurant->numberTable}}" name="numberTable"
+                                   placeholder="Nhập số bàn" style="margin-left: 51px">
                         </div>
                         <div class="form-group">
                             <h5>Mô tả ngắn:</h5>
@@ -117,13 +127,13 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="form-group">
-                            <form action="/admin/album_restaurant" method="post" enctype="multipart/form-data">
-                                {{csrf_field()}}
+                        {{--<div class="form-group">--}}
+                        {{--<form action="/admin/album_restaurant" method="post" enctype="multipart/form-data">--}}
+                        {{--{{csrf_field()}}--}}
 
-                                <input type="file" name="img[]" multiple>
-                            </form>
-                        </div>
+                        {{--<input type="file" name="img[]" multiple>--}}
+                        {{--</form>--}}
+                        {{--</div>--}}
                         <div class="form-group">
                             <label>Trạng thái</label>
                             <select name="status">

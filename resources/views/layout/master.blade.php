@@ -18,9 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Google Fonts -->
-{{--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">--}}
-{{--<link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">--}}
-<!-- Vendor CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
+    <!-- Vendor CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -34,8 +34,11 @@
     {{--<!-- Template CSS -->--}}
     <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
     <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/examples.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-stars.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    @yield('css')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -79,6 +82,25 @@
                                 <li>
                                     <a href="/foody/lien-he">Liên hệ</a>
                                 </li>
+
+                                <li>
+                                    <form id="nearBy" action="{{route('nearBy')}}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="lat" name="lat">
+                                        <input type="hidden" id="lng" name="lng">
+                                        <input id="nearBy" type="button"  value="Gần tôi" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
+                                          font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form id="mapid" action="{{route('map')}}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="lat1" name="lat">
+                                        <input type="hidden" id="lng1" name="lng">
+                                        <input id="mapid" type="button"  value="Map" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
+                                         font-size: .125in; font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -92,16 +114,15 @@
                             </a>
                         </div>
 
-                        <span id="toggle-mobile-menu"><i class="zmdi zmdi-menu"></i></span>
+                        <span id="toggle-mobile-menu"><i class="fa fa-bars"></i></span>
                     </div>
-
 
                     <!-- Header Right -->
                     <div class="col-lg-5 col-md-5 col-sm-12 header-right d-flex justify-content-end align-items-center">
                         <!-- Search -->
                         <div class="form-search">
-                            <form action="index.html" method="get">
-                                <input type="text" class="form-input" placeholder="Tìm kiếm">
+                            <form action="{{route('search')}}" method="get">
+                                <input type="text" name="search" class="form-input" placeholder="Tìm kiếm">
                                 <button type="submit" class="fa fa-search"></button>
                             </form>
                         </div>
@@ -121,14 +142,14 @@
                                             @foreach(\App\Cart::getCart()->items as $item)
                                                 <tr>
                                                     <td class="product-image">
-                                                        <a href="product-detail-left-sidebar.html">
+                                                        <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">
                                                             <img src="/images/food/{{$item->food->avatar}}"
                                                                  alt="Product">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <div class="product-name">
-                                                            <a href="product-detail-left-sidebar.html">{{$item->food->name}}</a>
+                                                            <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->food->id}}">{{$item->food->name}}</a>
                                                         </div>
                                                         <div>
                                                             {{$item->quantity}} x <span
@@ -179,6 +200,11 @@
                                         <a href="/edit-user/{{Auth::user()->id}}"
                                            title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
                                             khoản của {{Auth::user()->name}}</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="/foody/lich-su-don-hang"
+                                           title="Log in to your customer account"><i class="fa fa-cog"></i>
+                                            Lịch sử đơn hàng của{{Auth::user()->name}}</a>
                                     </div>
                                     <div class="item">
                                         <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
@@ -380,12 +406,47 @@
 <!-- Template CSS -->
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/cart.js')}}"></script>
+<script src="{{asset('js/examples.js')}}"></script>
+<script src="{{asset('js/jquery.barrating.js')}}"></script>
 @yield('script')
 <script>
+    $('#nearBy').click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                // alert(lat);
+                $('#lat').val(lat);
+                $('#lng').val(lng);
+                $('#nearBy').submit();
+            });
+        } else {
+            alert('vui lòng cho phép sử dụng vị trí của bạn.')
+        }
+    });
+
+
+    $('#mapid').click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                alert(lat);
+                $('#lat1').val(lat);
+                $('#lng1').val(lng);
+                $('#mapid').submit();
+            });
+        } else {
+            alert('vui lòng cho phép sử dụng vị trí của bạn.')
+        }
+    });
     @if(count(\App\Cart::getCart()->items)==0)
     $('.cart-content').height('auto');
-    $('.else').display('none');
+    // $('.else').display('none');
     @endif
+
+
+
 </script>
 </body>
 

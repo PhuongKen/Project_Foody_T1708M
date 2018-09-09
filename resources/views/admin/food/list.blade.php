@@ -1,10 +1,10 @@
-@extends('layout.admin-master',['page_title'=>'Manager restaurant'])
+@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant'])
 @section('content')
     <div class="row">
         <div class="col-md-10">
             <h3>
                 <label>Quản lý</label>
-                <small>Nhà hàng</small>
+                <small>Món ăn</small>
             </h3>
         </div>
         <div class="col-2">
@@ -16,7 +16,7 @@
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/food/create" class="btn btn-primary">Tạo mới sản phẩm</a>
+            <a href="/restaurant/food/create" class="btn btn-primary">Tạo mới sản phẩm</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -28,59 +28,69 @@
                     <h3 class="panel-title">Tạo mới</h3>
                 </div>
                 <div class="panel-body">
-                    @if($foods->count() > 0)
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <table id="datatable" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>RestaurantID</th>
-                                    <th>Price</th>
-                                    <th>Avatar</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                @foreach($foods as $item)
+                    {{--@if($foods->count() > 0)--}}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
                                     <tr>
-
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td>{{$item->restaurantID}}</td>
-                                        <td>{{$item->price}}</td>
-                                        <td>
-                                            <div class="card"
-                                                 style="width: 60px;height: 50px;background-image: url('{{$item->avatar}}'); background-size: cover">
-                                            </div>
-                                        </td>
-                                        <td>{{$item->status}}</td>
-                                        <td>
-                                            <a href="/admin/food/{{$item->id}}"
-                                               class="btn btn-outline-success" style="border: 1px solid #d33;">Xem</a>
-                                            <a href="/admin/food/{{$item->id}}/edit" class="btn btn-outline-primary">Sửa</a>
-                                            <a href="{{$item->id}}" data-address="{{$item->addressID}}"
-                                               class="btn btn-outline-danger btn-delete">Xoá</a>
-                                        </td>
+                                        <th>Stt</th>
+                                        <th>Tên</th>
+                                        <th>Địa chỉ nhà hàng</th>
+                                        <th>Giá tiền</th>
+                                        <th>Ảnh đại diện</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hoạt động</th>
                                     </tr>
-                                @endforeach
+                                    </thead>
+                                    <tbody>
+                                    @foreach($foods as $key => $value)
+                                        <tr>
 
-                                </tbody>
-                            </table>
-                            <div class="row float-right mr-3">
-                                {{$foods->links()}}
+                                            <td><?php
+                                                    echo $key+1;
+                                            ?>
+                                            </td>
+                                            <td>{{$value->name}}</td>
+                                            <td>{{$value->restaurantID}}</td>
+                                            <td>{{$value->price}}</td>
+                                            <td>
+                                                <div class="card"
+                                                     style="width: 60px;height: 50px;background-image: url('/images/food/{{$value->avatar}}'); background-size: cover">
+                                                </div>
+                                            </td>
+                                        <td>
+                                                @if($value->status == 0)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Đã xóa</h6>
+                                                    @else($item->status == 1)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Hoạt động</h6>
+                                                    @endif
+                                        </td>
+                                            <td>
+                                                <a href="/restaurant/food/{{$value->id}}"
+                                                   class="btn btn-outline-success"
+                                                   style="border: 1px solid #d33;">Xem</a>
+                                                <a href="/restaurant/food/{{$value->id}}/edit"
+                                                   class="btn btn-outline-primary">Sửa</a>
+                                                <a href="{{$value->id}}"
+                                                   class="btn btn-outline-danger btn-delete">Xoá</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+
+                                {{--@else--}}
+                                    {{--<div class="alert alert-primary" role="alert">--}}
+                                        {{--Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user"--}}
+                                                                                    {{--class="btn-link"--}}
+                                                                                    {{--href="/admin/food/create">thêm sản phẩm</a> mới.--}}
+                                    {{--</div>--}}
+                                {{--@endif--}}
                             </div>
-                            @else
-                                <div class="alert alert-primary" role="alert">
-                                    Hiện tại chưa có tài khoản nào, vui lòng <a title="Thêm mới user" class="btn-link" href="/admin/food/create">thêm sản phẩm</a> mới.
-                                </div>
-                            @endif
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -90,18 +100,18 @@
         $('.btn-delete').click(function () {
             var cateId = $(this).attr('href');
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
-            if(user_confirm){
+            if (user_confirm) {
                 $.ajax({
-                    url: '/admin/food/' + cateId,
-                    method:'DELETE',
-                    data:{
+                    url: '/restaurant/food/' + cateId,
+                    method: 'DELETE',
+                    data: {
                         '_token': "{{ csrf_token() }}"
                     },
-                    success:function (response) {
+                    success: function (response) {
                         alert('Xoá thành công');
                         window.location.reload();
                     },
-                    error:function () {
+                    error: function () {
                         alert('Có lỗi xảy ra, vui lòng thử lại.');
                     }
                 });

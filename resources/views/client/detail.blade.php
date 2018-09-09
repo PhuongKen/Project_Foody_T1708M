@@ -32,18 +32,6 @@
                                     @endif
                                 </div>
                                 <div class="product-add-to-cart border-bottom">
-                                    <span class="control-label">QTY :</span>
-                                    <div class="product-quantity">
-                                        <div class="qty">
-                                            <div class="input-group">
-                                                <input type="text" name="qty" id="qtyvalue" value="1" data-min="1">
-                                                <span class="adjust-qty">
-																<span class="adjust-btn plus btn-plus">+</span>
-																<span class="adjust-btn minus btn-minus">-</span>
-															</span>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="product-buttons">
                                         <a class="add-to-cart btn-card" href="#" id="add-cart-{{$food->id}}">

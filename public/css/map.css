@@ -1,0 +1,25 @@
+
+#map{
+    height: 500px;
+    width: 100%;
+}
+.control-left-wrapper{
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    cursor: pointer;
+    margin: 14px 10px 0;
+}
+.control-left-wrapper .zoom-in, .zoom-out, .current-location{
+    background: #008000;
+    padding: 7px;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+#container-infobox{
+    background: white;
+    height: 220px;
+    padding: 10px;
+}

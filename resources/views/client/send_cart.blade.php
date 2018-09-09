@@ -13,7 +13,8 @@
 <body>
 <div>
     <h3 style="color: #d33">Cảm ơn bạn đã đặt món ăn của {{$restaurant[0]->name}}</h3>
-    <h4>Địa chỉ: {{$restaurant[0]->addressDetail}}, {{$restaurant[0]->wardName}}, {{$restaurant[0]->districtName}}, {{$restaurant[0]->provindName}}</h4>
+    <h4>Địa chỉ: {{$restaurant[0]->addressDetail}}, {{$restaurant[0]->wardName}}, {{$restaurant[0]->districtName}}
+        , {{$restaurant[0]->provindName}}</h4>
     <h4>Thông tin đơn hàng của {{Auth::user()->name}}</h4>
     <h4>Thời gian đến: {{$order_info->time}}, {{$order_info->date}}</h4>
     @if(count(\App\Cart::getCart()->items)>0)
@@ -33,7 +34,7 @@
                         <td>{{$item->food->name}}</td>
                         <td>{{$item->food->discountPriceWithFormat}}</td>
                         <td>{{$item->quantity}}</td>
-                        <td>{{$item->getTotalPriceWithFormat()}}  (vnd)</td>
+                        <td>{{$item->getTotalPriceWithFormat()}} (vnd)</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -43,8 +44,8 @@
     <br>
     <label>===================================================================</label>
     <h4><b>Tổng tiền:</b> {{\App\Cart::getCart()->getTotalMoneyString()}}</h4>
-    <h4>Đơn hàng của bạn đang được xử lý.</h4>
-    <br><h3 style="color: #d33">Hẹn gặp lại. Foody kính chào. Bye bye</h3>
+    <h4>Đơn hàng của bạn đang được xử lý. Chúng tôi sẽ gửi mail khi xác nhận</h4>
+    <h3 style="color: #d33">Hẹn gặp lại. Foody kính chào. Bye bye</h3>
 </div>
 </body>
 </html>

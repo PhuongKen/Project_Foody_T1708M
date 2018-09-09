@@ -1,22 +1,22 @@
-@extends('layout.admin-master',['page_title'=>'Manager restaurant'])
+@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant'])
 @section('content')
     <div class="row">
         <div class="col-md-10">
             <h3>
                 <label>Quản lý</label>
-                <small>đơn hàng</small>
+                <small>Đơn hàng</small>
             </h3>
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
                 <li><a href="/admin/home"><i class="fas fa-home"></i>Trang chủ</a></li>
-                <li class="active">đơn hàng</li>
+                <li class="active">Đơn hàng</li>
             </ol>
         </div>
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/detailorder" class="btn btn-primary">Đơn hàng chi tiết</a>
+            <a href="/restaurant/detailorder" class="btn btn-primary">Đơn hàng chi tiết</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -45,36 +45,40 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($list_obj as $item)
+                                @foreach($list_obj as $key => $value)
                                     <tr>
-                                        <th scope="row">{{$item->id}}</th>
-                                        <th scope="row">{{$item->userID}}</th>
-                                        <th scope="row">{{$item->amount}}</th>
-                                        <th scope="row">{{$item->totalPrice}}</th>
+                                        <th><?php
+
+                                            echo $key+1;
+                                        ?>
+                                        </th>
+                                        <th scope="row">{{$value->userID}}</th>
+                                        <th scope="row">{{$value->amount}}</th>
+                                        <th scope="row">{{$value->totalPrice}}</th>
                                         <th scope="row">
-                                            @if($item->status == 1)
+                                            @if($value->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đang chờ xử lý</h6>
-                                            @elseif($item->status == 2)
+                                            @elseif($value->status == 2)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đang chờ xác nhận</h6>
-                                            @elseif($item->status == 3)
+                                            @elseif($value->status == 3)
                                                 <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Hoàn thành</h6>
                                             @endif
                                         </th>
-                                        <th scope="row">{{$item->created_at}}</th>
-                                        <th scope="row">{{$item->updated_at}}</th>
+                                        <th scope="row">{{$value->created_at}}</th>
+                                        <th scope="row">{{$value->updated_at}}</th>
                                         <td>
-                                            @if($item->status==1)
-                                                <a href="/admin/change-status?id={{$item->id}}&status=2" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
+                                            @if($value->status==1)
+                                                <a href="/admin/change-status?id={{$value->id}}&status=2" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
                                                    class="btn btn-simple btn-outline-primary btn-finish">Xác nhận</a>
-                                            @elseif($item->status==2)
-                                                <a href="/admin/change-status?id={{$item->id}}&status=3"
-                                                   class="btn btn-simple btn-outline-primary btn-finish" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')">Hoàn thành</a>
+                                            @elseif($value->status==2)
+                                                <a href="/admin/change-status?id={{$value->id}}&status=3"
+                                                   class="btn btn-simple btn-outline-primary btn-finish" onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn thành</a>
                                             @endif
-                                            @if($item->status==1)
-                                                <a href="{{$item->id}}"
+                                            @if($value->status==1)
+                                                <a href="{{$value->id}}"
                                                    class="btn btn-simple btn-outline-danger btn-delete">Xóa</a>
                                             @endif
                                         </td>
@@ -82,9 +86,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row float-right mr-3">
-                                {{$list_obj->links()}}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -107,7 +108,7 @@
             }).then((result) => {
                 var cateId = $(this).attr('href');
                 $.ajax({
-                    url: '/admin/orderaddress/' + cateId,
+                    url: '/restaurant/order/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"

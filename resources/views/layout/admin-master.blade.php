@@ -226,25 +226,20 @@
                         <a href="/admin/category" class="waves-effect"><i
                                     class="fas fa-sitemap"></i><span> Category </span></a>
                     </li>
+                    {{--<li>--}}
+                        {{--<a href="/admin/food" class="waves-effect"><i--}}
+                                    {{--class="fas fa-utensils"></i><span> Food </span></a>--}}
+                    {{--</li>--}}
                     <!--- Restaurant -->
                     <li>
                         <a href="/admin/restaurant" class="waves-effect"><i
                                     class="fas fa-hotel"></i><span> Restaurant </span></a>
                     </li>
-                    <!--- dish -->
-                    <li>
-                        <a href="/admin/dish" class="waves-effect"><i
-                                    class="fas fa-utensils"></i><span> Dish </span></a>
-                    </li>
                     <!--- order -->
-                    <li>
-                        <a href="/admin/order" class="waves-effect"><i
-                                    class="fas fa-shopping-basket"></i><span> Order </span></a>
-                    </li>
-                    <li>
-                        <a href="/admin/image" class="waves-effect"><i
-                                    class="fas fa-images"></i><span> Image </span></a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="/admin/order" class="waves-effect"><i--}}
+                                    {{--class="fas fa-shopping-basket"></i><span> Order </span></a>--}}
+                    {{--</li>--}}
                 </ul>
                 <div class="clearfix"></div>
             </div>

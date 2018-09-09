@@ -23,7 +23,7 @@
                             <tr>
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove"
-                                       href="{{route('xoa1sanpham',$item->food->id)}}">
+                                       href="/foody/xoa-san-pham/{{'?id='.$item->food->id}}">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </td>
@@ -48,7 +48,7 @@
                                         </button>
                                         <input class="size8 m-text18 t-center num-product"
                                                type="text" name="foods[{{$item->food->id}}]"
-                                               value="{{$item->quantity}}">
+                                               value="{{$item->quantity}}" readonly>
 
                                         <button class="btn-num-product-up  flex-c-m size7">
                                             <i class="fs-12 fa fa-plus" aria-hidden="true"></i>

@@ -35,7 +35,7 @@
                                     <div class="panel-body">
                                         <form action="/foody/gui-don-hang" id="formaddress" method="post"
                                               name="update-cart-form" class="form-horizontal">
-                                            @csrf();
+                                            @csrf()
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label>Tên</label>
@@ -83,9 +83,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label>Thời gian ăn:</label>
-                                                    <input type="time" name="time"id="time" min="9:00" max="21:00">
+                                                <div class="col-md-12">
+                                                    <label>Lựa chọn thời gian chuyển tới:</label>
+                                                    <input type="time" name="time" id="time" min="9000" max="2100">
                                                     <input type="date" id="date" min="27/8/2018" max="12/9/2018"
                                                            name="date">
                                                 </div>
@@ -132,25 +132,32 @@
         // Lấy id provind và set district theo id provind
         var idProvind = $("#provind").val();
 
-        $.get("/admin/district/" + idProvind, function (data) {
+        $.get("/foody/district/" + idProvind, function (data) {
+            var idDistrict = $("#district").val();
+            $.get("/foody/ward/" + idDistrict, function (data) {
+                $("#ward").html(data);
+            });
             $("#district").html(data);
         });
 
         $("#provind").change(function () {
             var idProvind = $(this).val();
-            $.get("/admin/district/" + idProvind, function (data) {
+            $.get("/foody/district/" + idProvind, function (data) {
                 $("#district").html(data);
+                var idDistrict = $("#district").val();
+                $.get("/foody/ward/" + idDistrict, function (data) {
+                    $("#ward").html(data);
+                });
             });
         });
         // Lấy id distict và set district theo id ward
         var idDistrict = $("#district").val();
-        $.get("/admin/ward/" + idDistrict, function (data) {
+        $.get("/foody/ward/" + idDistrict, function (data) {
             $("#ward").html(data);
         });
-
         $("#district").change(function () {
             var idDistrict = $(this).val();
-            $.get("/admin/ward/" + idDistrict, function (data) {
+            $.get("/foody/ward/" + idDistrict, function (data) {
                 $("#ward").html(data);
             });
         });

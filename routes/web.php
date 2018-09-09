@@ -12,8 +12,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/admin/food', 'FoodController');
-Route::resource('/food', 'FoodController');
+
 Route::get('/errors', function () {
     return view('error.404');
 });
@@ -24,13 +23,13 @@ Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
 Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
-    Route::resource('/admin/order', 'OrderController');
+    Route::resource('/restaurant/order', 'OrderController');
     Route::get('/admin/change-status', 'OrderController@changeStatus');
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
     Route::resource('admin/orderaddress', 'OrderAddessController');
-    Route::resource('admin/detailorder', 'DetailOrderController');
-    Route::resource('/admin/food', 'FoodController');
+    Route::resource('restaurant/detailorder', 'DetailOrderController');
+    Route::resource('/restaurant/food', 'FoodController');
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/restaurant', 'RestaurantController');
     Route::resource('/admin/district', 'DistrictController');
@@ -39,8 +38,12 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/album_restaurant', 'AlbumRestaurantController');
     Route::resource('/admin/user', 'UserController');
     Route::resource('admin/orderdetail', 'OrderDetailController');
+    Route::resource('/admin/booktable', 'BookTableController');
+    Route::get('/admin/status','BookTableController@status');
+
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });
+
 Route::get('gui-mail', 'HomeController@sendMail');
 Route::get('dang-ki', [
     'as' => 'dangki',
@@ -95,6 +98,8 @@ Route::post('/foody/lien-he', 'Client\ContactController@store');
 Route::get('/foody/xoa-san-pham', 'Client\CartController@destroyCart');
 Route::get('/foody/nhap-thong-tin-don-hang', 'Client\CartController@checkout');
 Route::put('/foody/nhap-thong-tin-don-hang', 'Client\CartController@showCheckout');
+Route::get('/foody/district/{idDistrict}', 'Client\CartController@showDistrict');
+Route::get('/foody/ward/{idWard}', 'Client\CartController@showWard');
 Route::post('/foody/gui-don-hang', 'Client\CartController@checkoutCart');
 Route::get('edit-user/{id}', [
     'as' => 'edituser',
@@ -104,4 +109,43 @@ Route::post('edit-user/{id}', [
     'as' => 'edituser',
     'uses' => 'Client\UpdateUserController@postEdit'
 ]);
-Route::get('/foody/ve-chung-toi','Client\AboutusController@index');
+Route::get('/foody/ve-chung-toi', 'Client\AboutusController@index');
+Route::get('/foody/lich-su-don-hang', 'Client\OrderHistoryController@index');
+Route::get('/foody/tim-kiem', [
+    'as' => 'search',
+    'uses' => 'Client\SearchController@search'
+]);
+Route::get('/client/district/{idDistrict}', 'Client\SearchController@showDistrict');
+Route::get('/foody/dia-diem/', [
+    'as' => 'diadiem',
+    'uses' => 'Client\SearchController@searchArea'
+]);
+Route::get('/foody/danh-muc-dia-diem/', [
+    'as' => 'category',
+    'uses' => 'Client\SearchController@categoryArea'
+]);
+Route::post('/foody/danh-gia', 'Client\RestaurantController@rating');
+Route::match(['get', 'post'], '/foody/gan-toi', [
+    'as' => 'nearBy',
+    'uses' => 'Client\LocationController@nearBy'
+]);
+
+
+Route::match(['get', 'post'], '/foody/map', [
+   'as' => 'map',
+   'uses' => 'Client\MapController@map'
+]);
+
+Route::get('/foody/gan-toi/danh-muc/', [
+    'as' => 'gantoi',
+    'uses' => 'Client\LocationController@selectCategory'
+
+]);
+
+Route::get('/foody/dat-cho', 'Client\BookTableController@datCho');
+Route::post('/foody/dat-cho', 'Client\BookTableController@store');
+Route::get('/foody/gan-toi/danh-muc/', [
+    'as' => 'gantoi',
+    'uses' => 'Client\LocationController@selectCategory'
+]);
+

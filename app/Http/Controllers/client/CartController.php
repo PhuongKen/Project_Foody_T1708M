@@ -65,6 +65,22 @@ class CartController extends Controller
         return redirect('/foody/xem-gio-hang');
     }
 
+    public function showDistrict($id)
+    {
+        $district = District::where('provindID', $id)->get();
+        foreach ($district as $d) {
+            echo "<option value='$d->id'>$d->name</option>";
+        }
+    }
+
+    public function showWard($id)
+    {
+        $ward = Ward::where('districtID', $id)->get();
+        foreach ($ward as $w) {
+            echo "<option value='$w->id'>$w->name</option>";
+        }
+    }
+
     public function showCart()
     {
         $categories = Category::all();
@@ -125,6 +141,9 @@ class CartController extends Controller
                 }
                 $item = new CartItem();
                 $item->food = $food;
+                if ($item->quantity = $foods[$key] < 0) {
+                    return view('error.404');
+                }
                 $item->quantity = $foods[$key];
                 $cart->items[$key] = $item;
             }
@@ -226,11 +245,19 @@ class CartController extends Controller
                 }
                 $order->save();
 //                dd($restaurant);
-                Mail::send('client.send_cart', ['user' => $user, 'restaurant' => $restaurant, 'order_info' => $order_info], function ($message) use ($user) {
-                    $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
-                    $message->to($user->email, $user->name);
-                    $message->subject('Thông tin đơn hàng');
-                });
+                if ($restaurant == null) {
+                    Mail::send('client.send_cart1', ['user' => $user, 'order_info' => $order_info], function ($message) use ($user) {
+                        $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                        $message->to($user->email, $user->name);
+                        $message->subject('Thông tin đơn hàng');
+                    });
+                } else {
+                    Mail::send('client.send_cart', ['user' => $user, 'restaurant' => $restaurant, 'order_info' => $order_info], function ($message) use ($user) {
+                        $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
+                        $message->to($user->email, $user->name);
+                        $message->subject('Thông tin đơn hàng');
+                    });
+                }
                 DB::commit();
                 // clear session cart.
                 Session::remove('cart');

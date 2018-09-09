@@ -32,8 +32,10 @@ class AdminController extends Controller
         $order = DB::table('Orders')
             ->where($totalPrice)
             ->get();
+
 //        $order = Order::all()->take(3);
         return response()->json($order);
+
     }
 
 
