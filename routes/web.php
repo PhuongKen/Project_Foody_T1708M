@@ -82,6 +82,7 @@ Route::get('admin', [
     'as' => 'admin',
     'uses' => 'AdminController@getHome'
 ]);
+Route::get('admin/chart', 'AdminController@chart');
 Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
     'uses' => 'Client\CartController@getAddtoCart'
