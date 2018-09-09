@@ -86,6 +86,15 @@ Route::get('admin', [
     'uses' => 'AdminController@getHome'
 ]);
 Route::get('admin/chart', 'AdminController@chart');
+
+Route::get('admin-restaurant', [
+    'as' => 'admin-restaurant',
+    'uses' => 'AdminRestaurantController@getHome'
+]);
+//Chart doanh thu nhà hàng theo ngày
+Route::get('admin/chart-restaurant', 'AdminRestaurantController@chart');
+//Chart doanh thu nhà hàng theo tháng
+Route::get('admin/chart-restaurantmonth', 'AdminRestaurantController@chartmonth');
 Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
     'uses' => 'Client\CartController@getAddtoCart'
