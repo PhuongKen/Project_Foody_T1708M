@@ -39,8 +39,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     @yield('css')
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
 </head>
 
 <body class="home home-4">
@@ -165,8 +167,8 @@
                                                 <td colspan="3">
                                                     <div class="cart-button">
                                                         <a class="btn btn-primary" href="/foody/xem-gio-hang"
-                                                           title="View Cart">Xem đơn hàng</a>
-                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang"
+                                                           title="Xem giỏ hàng">Xem đơn hàng</a>
+                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang/{{'?id='.$item->food->id}}"
                                                            title="Checkout">Gửi đơn hàng</a>
                                                     </div>
                                                 </td>
