@@ -1,4 +1,4 @@
-@extends('layout.master',['page_title'=>'Đặt chỗ'])
+@extends('layout.master',['page_title'=>'Đặt chỗ','active'=>''])
 @section('css')
     <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
 @endsection

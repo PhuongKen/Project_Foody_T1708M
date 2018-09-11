@@ -1,4 +1,4 @@
-@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant'])
+@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant','active'=>'order'])
 @section('content')
     <div class="row">
         <div class="col-md-10">

@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản'])
+@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản','active'=>'user'])
 @section('css')
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection

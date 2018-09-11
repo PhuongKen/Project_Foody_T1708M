@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +54,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
-
+<style>
+    li.sale-noti > a {
+        background: #a8a8a8;
+    }
+</style>
 
 <body class="fixed-left">
 
@@ -210,11 +215,11 @@
                             <span> Chart </span></a>
                     </li>
                     <!--- user -->
-                    <li>
+                    <li class="{{$active == 'user' ? 'sale-noti' : ''}}">
                         <a href="/admin/user" class="waves-effect"><i class="fas fa-user"></i><span> User </span></a>
                     </li>
                     <!--- Category -->
-                    <li>
+                    <li  class="{{$active == 'category' ? 'sale-noti' : ''}}">
                         <a href="/admin/category" class="waves-effect"><i
                                     class="fas fa-sitemap"></i><span> Category </span></a>
                     </li>
@@ -223,7 +228,7 @@
                                     {{--class="fas fa-utensils"></i><span> Food </span></a>--}}
                     {{--</li>--}}
                     <!--- Restaurant -->
-                    <li>
+                    <li  class="{{$active == 'restaurant' ? 'sale-noti' : ''}}">
                         <a href="/admin/restaurant" class="waves-effect"><i
                                     class="fas fa-hotel"></i><span> Restaurant </span></a>
                     </li>
