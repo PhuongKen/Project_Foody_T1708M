@@ -49,7 +49,7 @@ $('.btn-card').click(function () {
             new_content += '<td colspan="3">';
             new_content += '<div class="cart-button">';
             new_content += '<a class="btn btn-primary" href="/foody/xem-gio-hang" title="View Cart">Xem đơn hàng</a>';
-            new_content += '<a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang/?id=' + new_items[i].food.id + '" title="Checkout">Gửi đơn hàng</a>';
+            new_content += '<a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang" title="Checkout">Gửi đơn hàng</a>';
             new_content += '</div>';
             new_content += '</td>';
             new_content += '</tr>';

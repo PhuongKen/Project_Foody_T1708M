@@ -122,17 +122,11 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
-        $id = $request->get('id');
-
         $categories = Category::all();
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-        $time = DB::table('foods')
-            ->join('restaurants','restaurants.id','=','foods.restaurantID')
-            ->select('restaurants.*')
-            ->where('foods.id',$id)->get()->toArray();
-        return view('client.checkout', compact('categories', 'provind', 'district', 'ward', 'time'));
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
 
     public function showCheckout()
@@ -159,12 +153,7 @@ class CartController extends Controller
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-        $time = DB::table('foods')
-            ->join('restaurants','restaurants.id','=','foods.restaurantID')
-            ->select('restaurants.*')
-            ->where('foods.id',$foods)->get()->toArray();
-//        dd($time);
-        return view('client.checkout', compact('categories', 'provind', 'district', 'ward','time'));
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
     }
 
     public function destroyCart(Request $request)
