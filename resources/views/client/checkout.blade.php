@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-12">
-                                                    <label>Địa chỉ chi tiết: (*) </label>
+                                                    <label>Địa chỉ chi tiết: (*)</label>
                                                     <input type="text" name="address" class="form-control">
                                                 </div>
                                             </div>
@@ -85,9 +85,14 @@
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label>Lựa chọn thời gian chuyển tới:</label>
-                                                    <input type="time" name="time" id="time" min="9000" max="2100">
-                                                    <input type="date" id="date" min="27/8/2018" max="12/9/2018"
-                                                           name="date">
+                                                    <input type="time" name="time" id="time"
+                                                           min="{{$time[0]->openTime}}" max="{{$time[0]->closeTime}}"
+                                                           required>
+                                                    <?php
+                                                    $mytime = date('Y-m-d');
+                                                    ?>
+                                                    <input type="date" id="date" min="{{$mytime}}"
+                                                           name="date" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
