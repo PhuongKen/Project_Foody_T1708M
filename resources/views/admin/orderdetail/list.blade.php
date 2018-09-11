@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Manager restaurant','active'=>''])
+@extends('layout.admin-restaurant',['page_title'=>'Manager restaurant','active'=>''])
 @section('content')
     <div class="row">
         <div class="col-md-10">
@@ -35,6 +35,8 @@
                                     <th scope="col">image</th>
                                     <th scope="col">price</th>
                                     <th scope="col">amount</th>
+                                    <th scope="col">action</th>
+
                                 </tr>
                                 </thead>
 
@@ -47,7 +49,7 @@
                                         <th scope="row">{{$item->nameProduct}}</th>
                                         <td>
                                             <div class="card"
-                                                 style="width: 90px;height: 70px;background-image: url('{{$item->image}}'); background-size: cover">
+                                                 style="width: 90px;height: 70px;background-image: url('/images/food/{{$item->image}}'); background-size: cover">
 
                                             </div>
                                         </td>
