@@ -27,9 +27,10 @@ class AdminRestaurantController extends Controller
     public function chart(){
             $order = DB::table('orders')
                 ->join('order_details', 'order_details.orderID', '=','orders.id')
-                ->join('foods', 'foods.id', '=', 'order_details.id')
+                ->join('foods', 'foods.id', '=', 'order_details.foodID')
                 ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
                 ->where('orders.status','=',3)
+                ->where('restaurants.userID', '=', Auth::user()->id)
                 ->orderBy('orders.updated_at', 'ASC')
                 ->groupBy('order_details.orderID')
                 ->select('restaurants.name', 'orders.totalPrice','orders.updated_at')
@@ -43,12 +44,15 @@ class AdminRestaurantController extends Controller
     public function chartmonth(){
         $order = DB::table('orders')
             ->join('order_details', 'order_details.orderID', '=','orders.id')
-            ->join('foods', 'foods.id', '=', 'order_details.id')
+            ->join('foods', 'foods.id', '=', 'order_details.foodID')
             ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
+            ->select(DB::raw('sum(orders.totalPrice)'), 'restaurants.name', DB::raw('MONTH(orders.updated_at) as month'))
             ->where('orders.status','=',3)
+            ->where('restaurants.userID', '=', Auth::user()->id)
             ->orderBy(DB::raw('MONTH(orders.updated_at)'), 'ASC')
             ->groupBy(DB::raw('MONTH(orders.updated_at)'))
-            ->select('restaurants.name', DB::raw('MONTH(orders.updated_at) as month'), DB::raw('sum(orders.totalPrice) as price'))
+
+//            ->groupBy(DB::raw('MONTH(orders.updated_at)'))
             ->get();
         return response()->json($order);
     }

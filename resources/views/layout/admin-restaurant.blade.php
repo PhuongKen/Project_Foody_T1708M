@@ -485,7 +485,7 @@
             response.forEach(function(data){
                 Years1.push(data.month);
                 Labels1.push(data.name);
-                Prices1.push(data.price);
+                Prices1.push(data.totalPrice);
                 // TotalPrice.push(data.totalPrice);
             });
             var ctx = document.getElementById("canvas1").getContext('2d');
