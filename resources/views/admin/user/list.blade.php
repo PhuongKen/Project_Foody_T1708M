@@ -110,6 +110,10 @@
                                                     <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                         Admin</h6>
                                                 @endif
+                                            @if($item->role == 2)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Nhà hàng</h6>
+                                                @endif
                                         </td>
                                         <td>
                                             <a href="/admin/user/{{$item->id}}/edit" class="btn btn-outline-primary">Sửa</a>
