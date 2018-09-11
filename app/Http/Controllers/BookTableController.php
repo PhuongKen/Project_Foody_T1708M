@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BookTableModel;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class BookTableController extends Controller
@@ -17,7 +18,9 @@ class BookTableController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $list_obj = BookTableModel::orderBy('created_at', 'DESC')->paginate(3);
+        $list_obj = DB::table('book_table_models')
+           // ->where('book_table_models.restaurantID','2')
+            ->orderBy('created_at', 'DESC')->get();
         return view('admin.booktable.list')->with('list_obj',$list_obj)->with('categories',$categories);
     }
 

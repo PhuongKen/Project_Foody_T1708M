@@ -3,20 +3,20 @@
     <div class="row">
         <div class="col-md-10">
             <h3>
-                <label>Quản lí</label>
-                <small>nhà hàng</small>
+                <label>Quản lý</label>
+                <small>Nhà hàng</small>
             </h3>
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
                 <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
-                <li class="active">nhà hàng</li>
+                <li class="active">Nhà hàng</li>
             </ol>
         </div>
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/booktable/create" class="btn btn-primary">Tạo đặt bàn mới</a>
+            <a href="/restaurant/booktable/create" class="btn btn-primary">Tạo đặt bàn mới</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -47,52 +47,51 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($list_obj as $item)
+                                @foreach($list_obj as $key => $value)
                                     <tr>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->sdt}}</td>
-                                        <td>{{$item->ngaydat}}</td>
-                                        <td>{{$item->thoigiandat}}</td>
-                                        <td>{{$item->sokhach}}</td>
-                                        <td>{{$item->ghichu}}</td>
-                                        <th scope="row">
-                                            @if($item->status == 1)
+                                        <td><?php
+                                            echo  $key+1;
+                                            ?>
+                                        </td>
+                                        <td>{{$value->name}}</td>
+                                        <td>{{$value->sdt}}</td>
+                                        <td>{{$value->ngaydat}}</td>
+                                        <td>{{$value->thoigiandat}}</td>
+                                        <td>{{$value->sokhach}}</td>
+                                        <td>{{$value->ghichu}}</td>
+                                        <td >
+                                            @if($value->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đang chờ xử lý</h6>
-                                            @elseif($item->status == 2)
+                                            @elseif($value->status == 2)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đang chờ xác nhận</h6>
-                                            @elseif($item->status == 3)
+                                            @elseif($value->status == 3)
                                                 <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Hoàn thành</h6>
                                             @endif
-                                        </th>
-
+                                        </td>
                                         <td>
-                                            @if($item->status==1)
-                                                <a href="/admin/status?id={{$item->id}}&status=2" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
+                                            @if($value->status==1)
+                                                <a href="/admin/status?id={{$value->id}}&status=2" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
                                                    class="btn btn-simple btn-outline-primary btn-finish">Xác nhận</a>
-                                            @elseif($item->status==2)
-                                                <a href="/admin/status?id={{$item->id}}&status=3"
+                                            @elseif($value->status==2)
+                                                <a href="/admin/status?id={{$value->id}}&status=3"
                                                    class="btn btn-simple btn-outline-primary btn-finish" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')">Hoàn thành</a>
                                             @endif
-                                            @if($item->status==1)
-                                                <a href="{{$item->id}}"
+                                            @if($value->status==1)
+                                                <a href="{{$value->id}}"
                                                    class="btn btn-simple btn-outline-danger btn-delete">Xóa</a>
                                             @endif
-                                            <a href="/admin/booktable/{{$item->id}}/edit"
+                                            <a href="/restaurant/booktable/{{$value->id}}/edit"
                                                class="btn btn-simple btn-outline-primary">edit</a>
-                                            <a href="{{$item->id}}"
+                                            <a href="{{$value->id}}"
                                                class="btn btn-simple btn-outline-danger btn-delete">delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row float-right mr-3">
-                                {{$list_obj->links()}}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +105,7 @@
             var user_confirm = confirm('Bạn có chắc muốn xoá sản phẩm này không?');
             if (user_confirm) {
                 $.ajax({
-                    url: '/admin/booktable/' + cateId,
+                    url: '/restaurant/booktable/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"
