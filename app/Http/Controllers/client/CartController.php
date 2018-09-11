@@ -120,13 +120,19 @@ class CartController extends Controller
         return response()->json(['msg' => 'Thêm vào giỏ hàng thành công', 'cartItem' => $cart], 200);
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $id = $request->get('id');
+
         $categories = Category::all();
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
+        $time = DB::table('foods')
+            ->join('restaurants','restaurants.id','=','foods.restaurantID')
+            ->select('restaurants.*')
+            ->where('foods.id',$id)->get()->toArray();
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward', 'time'));
     }
 
     public function showCheckout()
@@ -153,7 +159,12 @@ class CartController extends Controller
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-        return view('client.checkout', compact('categories', 'provind', 'district', 'ward'));
+        $time = DB::table('foods')
+            ->join('restaurants','restaurants.id','=','foods.restaurantID')
+            ->select('restaurants.*')
+            ->where('foods.id',$foods)->get()->toArray();
+//        dd($time);
+        return view('client.checkout', compact('categories', 'provind', 'district', 'ward','time'));
     }
 
     public function destroyCart(Request $request)

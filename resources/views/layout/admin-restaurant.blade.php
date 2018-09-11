@@ -51,6 +51,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
+<style>
+    li.sale-noti > a {
+        background: #a8a8a8;
+    }
+</style>
 
 
 <body class="fixed-left">
@@ -216,7 +221,7 @@
                         {{--<a href="/admin/category" class="waves-effect"><i--}}
                                     {{--class="fas fa-sitemap"></i><span> Category </span></a>--}}
                     {{--</li>--}}
-                    <li>
+                    <li class="{{$active == 'food' ? 'sale-noti' : ''}}">
                         <a href="/restaurant/food" class="waves-effect"><i
                                     class="fas fa-utensils"></i><span> Food </span></a>
                     </li>
@@ -226,11 +231,11 @@
                                     {{--class="fas fa-hotel"></i><span> Restaurant </span></a>--}}
                     {{--</li>--}}
                     <!--- order -->
-                    <li>
+                    <li class="{{$active == 'order' ? 'sale-noti' : ''}}">
                         <a href="/restaurant/order" class="waves-effect"><i
                                     class="fas fa-shopping-basket"></i><span> Order </span></a>
                     </li>
-                    <li>
+                    <li class="{{$active == 'datban' ? 'sale-noti' : ''}}">
                         <a href="/restaurant/booktable" class="waves-effect"><i
                                     class="fas fa-bookmark"></i><span>Đặt bàn</span></a>
                     </li>

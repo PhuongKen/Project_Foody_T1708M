@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản'])
+@extends('layout.admin-master',['page_title'=>'Danh sách tài khoản','active'=>'user'])
 @section('css')
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
@@ -109,6 +109,10 @@
                                                 @if($item->role == 1)
                                                     <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                         Admin</h6>
+                                                @endif
+                                            @if($item->role == 2)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Nhà hàng</h6>
                                                 @endif
                                         </td>
                                         <td>

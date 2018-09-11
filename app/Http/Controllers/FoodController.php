@@ -9,6 +9,8 @@ use Hamcrest\Description;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+
 
 class FoodController extends Controller
 {
@@ -22,7 +24,7 @@ class FoodController extends Controller
         $list_obj = DB::table('foods')
             ->join('restaurants','foods.restaurantID','=','restaurants.id')
             ->select('foods.*')
-            ->where('restaurants.userID','2')
+            ->where('restaurants.userID','=',Auth::user()->id)
             ->orderBy('created_at','desc')->get();
         return view('admin.food.list')->with('foods', $list_obj);
     }
@@ -35,7 +37,7 @@ class FoodController extends Controller
     public function create()
     {
         $restaurant = Restaurant::all();
-        return view('restaurant.food.create')->with('restaurant',$restaurant);
+        return view('admin.food.create')->with('restaurant',$restaurant);
     }
 
     /**

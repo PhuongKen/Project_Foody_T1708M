@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Manager restaurant'])
+@extends('layout.admin-master',['page_title'=>'Manager restaurant','active'=>'category'])
 @section('content')
     <div class="row">
         <div class="col-md-10">
@@ -9,7 +9,7 @@
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
-                <li><a href="/admin/home"><i class="fas fa-home"></i></i>home page</a></li>
+                <li><a href="/admin/home"><i class="fas fa-home"></i></i>Home page</a></li>
                 <li class="active">Restaurant</li>
             </ol>
         </div>
