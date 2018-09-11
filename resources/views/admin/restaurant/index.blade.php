@@ -93,6 +93,13 @@
         </div>
 
     </div> <!-- End Row -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable').dataTable();
+            $('.wysihtml5').wysihtml5();
+        } );
+    </script>
+
     <script>
         $('.btn-delete').click(function () {
             var thisButton = $(this);
