@@ -22,18 +22,21 @@ class AdminController extends Controller
     public function getHome(){
 //        $order = DB::table('Orders')->max('totalPrice');
 //        dd($order);
-        return view('admin.home',compact('order'));
+        return view('admin.home');
     }
 
     public function chart(){
-        $totalPrice = [
-            ['totalPrice', '>=', 'sum(totalPrice) / 2']
-        ];
-        $order = DB::table('Orders')
-            ->where($totalPrice)
+        $order = DB::table('orders')
+            ->join('order_details', 'order_details.orderID', '=','orders.id')
+            ->join('foods', 'foods.id', '=', 'order_details.id')
+            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
+            ->where('orders.status','=',3)
+            ->select('restaurants.name', 'orders.updated_at',DB::raw('max(orders.totalPrice) as price'))
+            ->orderBy('orders.updated_at', 'ASC')
+//            ->orderBy(DB::raw('max(orders.totalPrice) as price'), 'DESC')
+            ->groupBy('order_details.orderID')
+            ->take(10)
             ->get();
-
-//        $order = Order::all()->take(3);
         return response()->json($order);
 
     }
