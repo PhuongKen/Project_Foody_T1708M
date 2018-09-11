@@ -168,7 +168,7 @@
                                                     <div class="cart-button">
                                                         <a class="btn btn-primary" href="/foody/xem-gio-hang"
                                                            title="Xem giỏ hàng">Xem đơn hàng</a>
-                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang/{{'?id='.$item->food->id}}"
+                                                        <a class="btn btn-primary" href="/foody/nhap-thong-tin-don-hang"
                                                            title="Checkout">Gửi đơn hàng</a>
                                                     </div>
                                                 </td>

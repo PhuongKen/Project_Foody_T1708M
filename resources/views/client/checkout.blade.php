@@ -86,7 +86,7 @@
                                                 <div class="col-md-12">
                                                     <label>Lựa chọn thời gian chuyển tới:</label>
                                                     <input type="time" name="time" id="time"
-                                                           min="{{$time[0]->openTime}}" max="{{$time[0]->closeTime}}"
+                                                           min="08:00" max="21:00"
                                                            required>
                                                     <?php
                                                     $mytime = date('Y-m-d');

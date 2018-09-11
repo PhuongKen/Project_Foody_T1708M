@@ -49,8 +49,8 @@
                                     <tr>
                                         <th><?php
 
-                                            echo $key+1;
-                                        ?>
+                                            echo $key + 1;
+                                            ?>
                                         </th>
                                         <th scope="row">{{$value->userID}}</th>
                                         <th scope="row">{{$value->amount}}</th>
@@ -71,11 +71,14 @@
                                         <th scope="row">{{$value->updated_at}}</th>
                                         <td>
                                             @if($value->status==1)
-                                                <a href="/admin/change-status?id={{$value->id}}&status=2" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
+                                                <a href="/restaurant/change-status?id={{$value->id}}&status=2"
+                                                   onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
                                                    class="btn btn-simple btn-outline-primary btn-finish">Xác nhận</a>
                                             @elseif($value->status==2)
-                                                <a href="/admin/change-status?id={{$value->id}}&status=3"
-                                                   class="btn btn-simple btn-outline-primary btn-finish" onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn thành</a>
+                                                <a href="/restaurant/change-status?id={{$value->id}}&status=3"
+                                                   class="btn btn-simple btn-outline-primary btn-finish"
+                                                   onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn
+                                                    thành</a>
                                             @endif
                                             @if($value->status==1)
                                                 <a href="{{$value->id}}"
@@ -108,7 +111,7 @@
             }).then((result) => {
                 var cateId = $(this).attr('href');
                 $.ajax({
-                    url: '/restaurant/order/' + cateId,
+                    url: '/restaurant/orderaddress/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"
@@ -135,7 +138,7 @@
                 });
 
                 $.ajax({
-                    url: '/admin/detailorder/' + cateId,
+                    url: '/restaurant/detailorder/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"
@@ -159,7 +162,7 @@
                 });
 
                 $.ajax({
-                    url: '/admin/order/' + cateId,
+                    url: '/restaurant/order/' + cateId,
                     method: 'DELETE',
                     data: {
                         '_token': "{{ csrf_token() }}"
