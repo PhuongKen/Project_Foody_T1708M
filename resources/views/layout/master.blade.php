@@ -12,7 +12,7 @@
     <meta name="author" content="tivatheme">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="{{asset('images/foody/anhfoody2.png')}}" type="image/png">
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -88,17 +88,8 @@
                                         {{csrf_field()}}
                                         <input type="hidden" id="lat" name="lat">
                                         <input type="hidden" id="lng" name="lng">
-                                        <input id="nearBy" type="button"  value="Gần tôi" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
+                                        <input id="nearBy" type="button" value="Gần tôi" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
                                           font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
-                                    </form>
-                                </li>
-                                <li>
-                                    <form id="mapid" action="{{route('map')}}" method="post">
-                                        {{csrf_field()}}
-                                        <input type="hidden" id="lat1" name="lat">
-                                        <input type="hidden" id="lng1" name="lng">
-                                        <input id="mapid" type="button"  value="Map" style="border: none; background: none;text-transform: uppercase; word-spacing: 2px;
-                                         font-size: .125in; font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
                                     </form>
                                 </li>
                             </ul>
@@ -425,26 +416,10 @@
         }
     });
 
-
-    $('#mapid').click(function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var lat = position.coords.latitude;
-                var lng = position.coords.longitude;
-                alert(lat);
-                $('#lat1').val(lat);
-                $('#lng1').val(lng);
-                $('#mapid').submit();
-            });
-        } else {
-            alert('vui lòng cho phép sử dụng vị trí của bạn.')
-        }
-    });
     @if(count(\App\Cart::getCart()->items)==0)
     $('.cart-content').height('auto');
     // $('.else').display('none');
     @endif
-
 
 
 </script>

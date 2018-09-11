@@ -47,7 +47,7 @@
                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
                             </div>
                             <div class="row">
-                                <select class="col-md-3" name="soluongnguoilon" id="provind"
+                                <select class="col-md-3" name="sokhach" id="provind"
                                         style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
                                     >
                                     <option value="0">Số khách</option>
