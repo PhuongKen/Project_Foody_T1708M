@@ -10,7 +10,7 @@
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>food</small>
+                    <small>Food</small>
                 </h3>
             </div>
             <div class="col-2">

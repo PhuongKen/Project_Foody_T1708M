@@ -230,6 +230,10 @@
                         <a href="/restaurant/order" class="waves-effect"><i
                                     class="fas fa-shopping-basket"></i><span> Order </span></a>
                     </li>
+                    <li>
+                        <a href="/restaurant/booktable" class="waves-effect"><i
+                                    class="fas fa-bookmark"></i><span>Đặt bàn</span></a>
+                    </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
