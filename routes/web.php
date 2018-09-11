@@ -81,19 +81,20 @@ Route::get('dang-xuat-admin', [
     'as' => 'dangxuatadmin',
     'uses' => 'AdminController@getLogout',
 ]);
+//admin foody
 Route::get('admin', [
     'as' => 'admin',
     'uses' => 'AdminController@getHome'
 ]);
 Route::get('admin/chart', 'AdminController@chart');
-
+//Admin restaurant
 Route::get('admin-restaurant', [
     'as' => 'admin-restaurant',
     'uses' => 'AdminRestaurantController@getHome'
 ]);
-//Chart doanh thu nhà hàng theo ngày
+//Chart doanh thu nhà hàng theo ngày admin restaurant
 Route::get('admin/chart-restaurant', 'AdminRestaurantController@chart');
-//Chart doanh thu nhà hàng theo tháng
+//Chart doanh thu nhà hàng theo tháng admin restaurant
 Route::get('admin/chart-restaurantmonth', 'AdminRestaurantController@chartmonth');
 Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
