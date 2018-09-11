@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Edit restaurant'])
+@extends('layout.admin-master',['page_title'=>'Edit restaurant','active'=>''])
 @section('css')
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">

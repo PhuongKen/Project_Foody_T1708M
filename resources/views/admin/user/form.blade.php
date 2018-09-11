@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Tạo mới người dùng'])
+@extends('layout.admin-master',['page_title'=>'Tạo mới người dùng','active'=>''])
 @section('css')
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection

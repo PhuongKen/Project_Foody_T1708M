@@ -1,4 +1,4 @@
-@extends('layout.admin-master',['page_title'=>'Create restaurant'])
+@extends('layout.admin-master',['page_title'=>'Create restaurant','active'=>''])
 @section('css')
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
@@ -10,7 +10,6 @@
             <div class="col-md-10">
                 <h3>
                     <label>Manage</label>
-                    <small>food</small>
                 </h3>
             </div>
             <div class="col-2">

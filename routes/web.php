@@ -23,7 +23,6 @@ Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
 Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
-    Route::resource('/restaurant/order', 'OrderController');
     Route::get('/admin/change-status', 'OrderController@changeStatus');
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
@@ -36,7 +35,6 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/album_restaurant', 'AlbumRestaurantController');
     Route::resource('/admin/user', 'UserController');
     Route::resource('admin/orderdetail', 'OrderDetailController');
-    Route::resource('/restaurant/booktable', 'BookTableController');
     Route::get('/admin/status','BookTableController@status');
     //admin foody
     Route::get('admin', [
@@ -50,6 +48,8 @@ Route::group(['middleware' => 'adminLogin'], function () {
 Route::group(['middleware'=> 'adminrestaurantLogin'], function (){
     Route::resource('restaurant/detailorder', 'DetailOrderController');
     Route::resource('/restaurant/food', 'FoodController');
+    Route::resource('/restaurant/order', 'OrderController');
+    Route::resource('/restaurant/booktable', 'BookTableController');
     //Admin restaurant
     Route::get('admin-restaurant', [
         'as' => 'admin-restaurant',

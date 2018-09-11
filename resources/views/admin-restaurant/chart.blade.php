@@ -1,4 +1,4 @@
-@extends('layout.admin-restaurant',['page_title'=>'Chart'])
+@extends('layout.admin-restaurant',['page_title'=>'Chart','active'=>''])
 @section('content')
     <div class="container">
         <canvas id="canvas" width="200px" height="100px"></canvas>
