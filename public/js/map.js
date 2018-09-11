@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     'user strick'
     var map, marker, infowindow, markerCluster;
     var infowindow3 = new google.maps.InfoWindow();
     var markers_created = [];
     var myDiv = document.getElementById('map');
-    var myLatLng = new google.maps.LatLng(21.0287616,105.7817144);
+    var myLatLng = new google.maps.LatLng(21.0287616, 105.7817144);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionDistance = new google.maps.DistanceMatrixService;
@@ -34,18 +34,18 @@ $(document).ready(function() {
             maxwidth: 300,
         });
 
-        marker.addListener('click', function(){
+        marker.addListener('click', function () {
             infowindow.open(map, marker);
         });
 
-        map.addListener('click', function(){
+        map.addListener('click', function () {
             infowindow.close();
         });
-        google.maps.event.addDomListener(marker, 'dragstart', function(event){
+        google.maps.event.addDomListener(marker, 'dragstart', function (event) {
             // console.log('bat dau di chuyen marker', event);
         });
 
-        google.maps.event.addDomListener(marker, 'dragend', function(event){
+        google.maps.event.addDomListener(marker, 'dragend', function (event) {
             // console.log('da dat marker o vi tri moi', event, event.latLng.lat(), event.latLng.lng());
             var newMyLatLng = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
             getNewMarker();
@@ -55,7 +55,7 @@ $(document).ready(function() {
         });
 
         var customMapType = new google.maps.StyledMapType([
-            { styler: [{hanoi: '#D2E4C8'}]},
+            {styler: [{hanoi: '#D2E4C8'}]},
             {
                 featureType: 'water',
                 styler: [{color: '#599459'}]
@@ -67,23 +67,25 @@ $(document).ready(function() {
         geolocate();
     };
 
-    function ZoomControl(){
+    function ZoomControl() {
         var zoomInButton = document.getElementById('zoom-in');
         var zoomOutButton = document.getElementById('zoom-out');
-        google.maps.event.addDomListener(zoomInButton, 'click', function(){
+        google.maps.event.addDomListener(zoomInButton, 'click', function () {
             map.setZoom(map.getZoom() + 1);
         });
-        google.maps.event.addDomListener(zoomOutButton, 'click', function(){
+        google.maps.event.addDomListener(zoomOutButton, 'click', function () {
             map.setZoom(map.getZoom() - 1);
         });
     }
-    function GeolocationControl(){
+
+    function GeolocationControl() {
         var geoButton = document.getElementById('current-location');
         google.maps.event.addDomListener(geoButton, 'click', geolocate);
     };
-    function geolocate(){
+
+    function geolocate() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 console.log(position);
                 var pos = {
                     lat: position.coords.latitude,
@@ -98,10 +100,10 @@ $(document).ready(function() {
         }
     };
 
-    function getNewMarker(){
+    function getNewMarker() {
         var markers = JSON.parse(document.getElementById('data').getAttribute('value'));
         console.log(markers);
-        for(var i = markers.length -1; i >= 0; i--){
+        for (var i = markers.length - 1; i >= 0; i--) {
             var item = createMarkers(markers[i]);
             markers_created.push(item);
             // console.log(markers_created);
@@ -109,7 +111,7 @@ $(document).ready(function() {
         createClusterer(markers_created);
     };
 
-    function createClusterer(markers_created){
+    function createClusterer(markers_created) {
 
         var clusterStyles = [
             {
@@ -135,8 +137,9 @@ $(document).ready(function() {
         var mcOptions = {gridSize: 50, maxZoom: 20, textColor: 'white', zoomOnClick: false, styles: clusterStyles};
 
         markerCluster = new MarkerClusterer(map, markers_created, mcOptions);
-        google.maps.event.addDomListener(markerCluster, 'click', function(cluster){
-            var mk = cluster.getMarkers(); console.log(mk);
+        google.maps.event.addDomListener(markerCluster, 'click', function (cluster) {
+            var mk = cluster.getMarkers();
+            console.log(mk);
         });
         // google.maps.event.addListener(markerCluster, 'click', function(cluster){
         //   var mk = cluster.getMarkers(); console.log(mk);
@@ -147,62 +150,62 @@ $(document).ready(function() {
         // })
     }
 
-    function createMarkers(pos){
+    function createMarkers(pos) {
 
         var icon = {
-            url: '/images/restaurant/' +pos.avartar,
+            url: '/images/restaurant/' + pos.avartar,
             scaledSize: new google.maps.Size(40, 40), // scaled size
-            origin: new google.maps.Point(0,0), // origin
+            origin: new google.maps.Point(0, 0), // origin
             anchor: new google.maps.Point(0, 0), // anchor
         };
-        $('.iconMaker').css('border','3px solid black');
+        $('.iconMaker').css('border', '3px solid black');
         var newMarker = new google.maps.Marker({
             position: pos,
             map: map,
-            icon: icon,
             animation: google.maps.Animation.DROP
         });
 
 
         var contentString2 = '<div id="container-infobox">' +
-            '<h6><a  href="/foody/chi-tiet-nha-hang/?id='+pos.id+'">' +pos.name+ '</a></h6>' +
-            '<a href="/foody/chi-tiet-nha-hang/?id='+pos.id+'"><div style="background: url('+"/images/restaurant/"+ pos.avartar + ') no-repeat center; width:180px; height: 130px">'+
-            '</div></a>'+ '<h5 style="text-align: center;"><a href="#" class="direction" style="color: #dd3333;">Chỉ đường</a></h5>' +
+            '<h6><a  href="/foody/chi-tiet-nha-hang/?id=' + pos.id + '">' + pos.name + '</a></h6>' +
+            '<a href="/foody/chi-tiet-nha-hang/?id=' + pos.id + '"><div style="background: url(' + "/images/restaurant/" + pos.avartar + ') no-repeat center; width:180px; height: 130px">' +
+            '</div></a>' + '<div><h6 class="food-address" title="' + pos.addressDetail + ", " + pos.wardName+  ", " + pos.districtName+  ", " + pos.provindName+ '">' + pos.addressDetail + ", " + pos.wardName+  ", " + pos.districtName+  ", " + pos.provindName+ '</h6></div>' +
+            '<h5 style="text-align: center;"><a href="#" class="direction" style="color: #dd3333;">Chỉ đường</a></h5>' +
             '</div>';
         var options = {
             content: contentString2
-            ,disableAutoPan: false
-            ,maxWidth: 0
-            ,pixelOffset: new google.maps.Size(-160, -260)
-            ,zIndex: null
-            ,boxStyle: {
+            , disableAutoPan: false
+            , maxWidth: 0
+            , pixelOffset: new google.maps.Size(-160, -260)
+            , zIndex: null
+            , boxStyle: {
                 width: "200px"
             }
-            ,closeBoxMargin: "10px 2px 2px 2px"
-            ,closeBoxURL: "https://www.google.com/intl/en_us/mapfiles/close.gif"
-            ,infoBoxClearance: new google.maps.Size(1, 1)
-            ,isHidden: false
-            ,pane: "floatPane"
-            ,enableEventPropagation: false
+            , closeBoxMargin: "10px 2px 2px 2px"
+            , closeBoxURL: "https://www.google.com/intl/en_us/mapfiles/close.gif"
+            , infoBoxClearance: new google.maps.Size(1, 1)
+            , isHidden: false
+            , pane: "floatPane"
+            , enableEventPropagation: false
         };
 
         var ib = new InfoBox(options);
 
-        ib.addListener('domready',function(){
-            $('.direction').on('click', function() {
+        ib.addListener('domready', function () {
+            $('.direction').on('click', function () {
                 calculateAndDisplayRoute(newMarker);
             });
         });
 
-        lastWindow=null;
+        lastWindow = null;
 
-        newMarker.addListener('click', function(){
+        newMarker.addListener('click', function () {
             if (lastWindow) lastWindow.close();
             ib.open(map, newMarker);
-            lastWindow=ib;
+            lastWindow = ib;
         });
-        google.maps.event.addListener(map, 'click', function() {
-            if(ib){
+        google.maps.event.addListener(map, 'click', function () {
+            if (ib) {
                 ib.close();
             }
         });
@@ -217,16 +220,16 @@ $(document).ready(function() {
             origin: marker.getPosition(),
             destination: newMarker.getPosition(),
             travelMode: 'DRIVING'
-        }, function(response, status) {
+        }, function (response, status) {
             if (status === 'OK') {
                 directionsDisplay.setDirections(response);
-                var m = Math.ceil((response.routes[0].overview_path.length)/2);
+                var m = Math.ceil((response.routes[0].overview_path.length) / 2);
                 middle = response.routes[0].overview_path[m];
                 directionDistance.getDistanceMatrix({
                     origins: [marker.getPosition()],
                     destinations: [newMarker.getPosition()],
                     travelMode: 'DRIVING'
-                }, function(response, status) {
+                }, function (response, status) {
                     if (status === 'OK') {
                         // console.log(response);
                         var originList = response.originAddresses;
@@ -237,23 +240,26 @@ $(document).ready(function() {
                                 var element = results[j];
                                 var dt = element.distance.text;
                                 var dr = element.duration.text;
-                            };
-                        };
+                            }
+                            ;
+                        }
+                        ;
 
                         var content = '<div>' + dt +
-                            '<br>' +dr+'</div>';
+                            '<br>' + dr + '</div>';
 
                         infowindow3.setContent(content);
                         infowindow3.setPosition(middle);
                         infowindow3.open(map);
-                        return middle;
-                    };
+                    }
+                    ;
                 });
             } else {
                 window.alert('Không thể lấy ra quãng đường và thời gian.' + status);
             }
         });
     }
+
     initMap();
     ZoomControl();
     GeolocationControl();

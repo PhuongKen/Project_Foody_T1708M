@@ -2,6 +2,7 @@
 @section('content')
     <div class="container container-edit">
         <div class="page-checkout" style="margin-top: 20px">
+            <h4 style="text-align: center">Lịch sử đơn hàng</h4>
             @foreach($order as $key => $value)
                 <div class="row">
                     <div class="checkout-left col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
