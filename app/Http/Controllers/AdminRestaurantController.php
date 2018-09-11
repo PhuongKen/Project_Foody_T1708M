@@ -52,4 +52,27 @@ class AdminRestaurantController extends Controller
             ->get();
         return response()->json($order);
     }
+
+    public function getLogin()
+    {
+        if(Auth::check()){
+            return redirect('/admin-restaurant');
+        }else{
+            return view('admin-restaurant.login');
+        }
+    }
+
+    public function postLogin(Request $req)
+    {
+        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
+            return redirect('/admin-restaurant');
+        }else{
+            return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
+        }
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect('/dang-nhap-admin-restaurant');
+    }
 }
