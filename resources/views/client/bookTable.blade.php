@@ -26,23 +26,28 @@
                                 @endif
                                 <div class="col-md-12" style="padding: 20px">
                                     <div class="row">
-                                        <input class="col-md-5" type="date" id="date" min="27/8/2018" max="12/9/2018"
+                                        <?php
+                                        $mydate=date("Y-m-d")
+                                        ?>
+                                        <h4>Ngày đặt, giờ đặt</h4>
+                                        <input class="col-md-5" type="date" id="date" min="{{$mydate}}"
                                                name="ngaydat"
                                                style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
-                                        <input class="col-md-5" type="time" name="thoigiandat" id="time" min="9000"
-                                               max="2100"
-                                               style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
+                                        <input class="col-md-5" type="time" name="thoigiandat" id="time" min="08:00"
+                                               max="21:00"
+                                               style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" required>
                                     </div>
                                     <div class="row">
                                         <select class="col-md-3" name="sokhach" id="provind"
                                                 style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
                                             >
                                             <option value="0">Số khách</option>
-                                            <option value="1">1 người</option>
-                                            <option value="2">2 người</option>
-                                            <option value="3">3 người</option>
-                                            <option value="4">4 người</option>
-                                            <option value="5">5 người</option>
+                                            <?php
+                                            for ($i=1; $i<101; $i++){
+                                                echo "<option value=".$i.">".$i." "."người</option>";
+                                            }
+
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
