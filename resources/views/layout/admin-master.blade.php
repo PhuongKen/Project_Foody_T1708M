@@ -430,9 +430,9 @@
     $(document).ready(function(){
         $.get(url, function(response){
             response.forEach(function(data){
-                Years.push(data.created_at);
-                Labels.push(data.userID);
-                Prices.push(data.totalPrice);
+                Years.push(data.updated_at);
+                Labels.push(data.name);
+                Prices.push(data.price);
                 // TotalPrice.push(data.totalPrice);
             });
             var ctx = document.getElementById("canvas").getContext('2d');
@@ -441,7 +441,7 @@
                 data: {
                     labels:Years,
                     datasets: [{
-                        label: 'Doanh thu các đơn đặt hàng online',
+                        label: 'Doanh thu các đơn đặt hàng online theo ngày',
                         data: Prices,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
