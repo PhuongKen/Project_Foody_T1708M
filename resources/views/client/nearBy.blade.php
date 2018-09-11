@@ -1,4 +1,7 @@
 @extends('layout.master',['page_title'=>'Nhà hàng gần tôi'])
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('css/map.css')}}">
+@endsection
 @section('content')
     <div class="container container-edit">
         <div class="row" style="margin-top: 30px">
@@ -167,6 +170,18 @@
                 </h4>
             @endif
         </div>
+        <div class="row" style="margin-top: 20px">
+            <h3 style="text-align: center">Xem với map</h3>
+        </div>
+        <div class="row" style="margin-top: 30px">
+            <input id="data" style="display: none;" value="{{$map}}">
+            <div id="map"></div>
+            <div class="control-left-wrapper">
+                <div class="zoom-in" id="zoom-in"><i class="fa fa-plus"></i></div>
+                <div class="zoom-out" id="zoom-out"><i class="fa fa-minus"></i></div>
+                <div class="current-location" id="current-location"><i class="fa fa-paper-plane"></i></div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('script')
@@ -186,4 +201,8 @@
             }
         });
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY6H84yE2eLGCdVI6_lcauSxb2Tar0N6k"></script>
+    <script src="{{asset('js/map.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="{{asset('js/infobox.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/markerclusterer.js')}}" type="text/javascript"></script>
 @endsection

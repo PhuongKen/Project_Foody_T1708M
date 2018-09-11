@@ -3636,6 +3636,7 @@ input {
 
 [class~=products-block][class~=layout-3] [class~=product-item] {
     text-align: left;
+    height: 140px;
 }
 
 #mobile-menu [class~=dropdown-menu][class~=tiva-active] [class~=menu-title] a, [class~=products-block][class~=layout-5] [class~=product-item] [class~=product-buttons] [class~=add-to-cart] {
@@ -9451,7 +9452,6 @@ input {
 [class~=sidebar] [class~=layout-slider] span[class~=jslider][class~=jslider_plastic] [class~=jslider-bg] i[class~=f] {
     border-radius: 20px;
 }
-
 
 [class~=sidebar] [class~=filter-color] [class~=right] {
     padding-left: 22.5pt;
