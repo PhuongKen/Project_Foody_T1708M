@@ -28,8 +28,6 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
     Route::resource('admin/orderaddress', 'OrderAddessController');
-    Route::resource('restaurant/detailorder', 'DetailOrderController');
-    Route::resource('/restaurant/food', 'FoodController');
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/restaurant', 'RestaurantController');
     Route::resource('/admin/district', 'DistrictController');
@@ -40,8 +38,27 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('admin/orderdetail', 'OrderDetailController');
     Route::resource('/admin/booktable', 'BookTableController');
     Route::get('/admin/status','BookTableController@status');
+    //admin foody
+    Route::get('admin', [
+        'as' => 'admin',
+        'uses' => 'AdminController@getHome'
+    ]);
+    Route::get('admin/chart', 'AdminController@chart');
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
+});
+Route::group(['middleware'=> 'adminrestaurantLogin'], function (){
+    Route::resource('restaurant/detailorder', 'DetailOrderController');
+    Route::resource('/restaurant/food', 'FoodController');
+    //Admin restaurant
+    Route::get('admin-restaurant', [
+        'as' => 'admin-restaurant',
+        'uses' => 'AdminRestaurantController@getHome'
+    ]);
+//Chart doanh thu nhà hàng theo ngày admin restaurant
+    Route::get('admin/chart-restaurant', 'AdminRestaurantController@chart');
+//Chart doanh thu nhà hàng theo tháng admin restaurant
+    Route::get('admin/chart-restaurantmonth', 'AdminRestaurantController@chartmonth');
 });
 
 Route::get('gui-mail', 'HomeController@sendMail');
@@ -69,6 +86,7 @@ Route::get('send-to-mail/{id}/{token}', [
     'as' => 'send-to-mail',
     'uses' => 'HomeController@verifyEmail'
 ]);
+//Dang nhap admin foody
 Route::get('dang-nhap-admin', [
     'as' => 'dangnhapadmin',
     'uses' => 'AdminController@getLogin'
@@ -81,21 +99,21 @@ Route::get('dang-xuat-admin', [
     'as' => 'dangxuatadmin',
     'uses' => 'AdminController@getLogout',
 ]);
-//admin foody
-Route::get('admin', [
-    'as' => 'admin',
-    'uses' => 'AdminController@getHome'
+//Dang nhap admin restaurant
+Route::get('dang-nhap-admin-restaurant', [
+    'as' => 'dangnhapadminrestaurant',
+    'uses' => 'AdminRestaurantController@getLogin'
 ]);
-Route::get('admin/chart', 'AdminController@chart');
-//Admin restaurant
-Route::get('admin-restaurant', [
-    'as' => 'admin-restaurant',
-    'uses' => 'AdminRestaurantController@getHome'
+Route::post('dang-nhap-admin-restaurant', [
+    'as' => 'dangnhapadminrestaurant',
+    'uses' => 'AdminRestaurantController@postLogin'
 ]);
-//Chart doanh thu nhà hàng theo ngày admin restaurant
-Route::get('admin/chart-restaurant', 'AdminRestaurantController@chart');
-//Chart doanh thu nhà hàng theo tháng admin restaurant
-Route::get('admin/chart-restaurantmonth', 'AdminRestaurantController@chartmonth');
+Route::get('dang-xuat-admin-restaurant', [
+    'as' => 'dangxuatadminrestaurant',
+    'uses' => 'AdminRestaurantController@getLogout',
+]);
+
+
 Route::get('/foody/them-vao-gio-hang/{id}', [
     'as' => 'themvaogiohang',
     'uses' => 'Client\CartController@getAddtoCart'

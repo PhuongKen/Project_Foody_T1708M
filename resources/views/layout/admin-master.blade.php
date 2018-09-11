@@ -158,9 +158,6 @@
                                    aria-expanded="true"><img src="/images/user/{{Auth::user()->avartar}}" alt="user-img"
                                                              class="img-circle"> </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                     <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
                                             xuất</a></li>
                                     @else
@@ -192,11 +189,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile
-                                        <div class="ripple-wrapper"></div>
-                                    </a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                 <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
                                         xuất</a></li>
                                 @else
