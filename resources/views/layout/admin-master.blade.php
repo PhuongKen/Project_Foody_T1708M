@@ -158,9 +158,6 @@
                                    aria-expanded="true"><img src="/images/user/{{Auth::user()->avartar}}" alt="user-img"
                                                              class="img-circle"> </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                     <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
                                             xuất</a></li>
                                     @else
@@ -192,11 +189,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile
-                                        <div class="ripple-wrapper"></div>
-                                    </a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                 <li><a href="{{route('dangxuatadmin')}}"><i class="md md-settings-power"></i>Đăng
                                         xuất</a></li>
                                 @else
@@ -436,44 +428,53 @@
                 Years.push(data.created_at);
                 Labels.push(data.userID);
                 Prices.push(data.totalPrice);
-                // TotalPrice.push(data.totalPrice);
-            });
-            var ctx = document.getElementById("canvas").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Years,
-                    datasets: [{
-                        label: 'Doanh thu các đơn đặt hàng online',
-                        data: Prices,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
+                $(document).ready(function () {
+                    $.get(url, function (response) {
+                        response.forEach(function (data) {
+                            Years.push(data.updated_at);
+                            Labels.push(data.name);
+                            Prices.push(data.price);
+                            // TotalPrice.push(data.totalPrice);
+                        });
+                        var ctx = document.getElementById("canvas").getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: Years,
+                                datasets: [{
+                                    label: 'Doanh thu các đơn đặt hàng online theo ngày',
+                                    data: Prices,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
                             }
-                        }]
-                    }
-                }
+                        });
+                    });
+                });
             });
         });
     });
