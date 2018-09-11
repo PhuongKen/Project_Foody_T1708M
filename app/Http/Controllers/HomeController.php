@@ -125,7 +125,7 @@ class HomeController extends Controller
     {
         $this->validate($req,
             [
-                'email' => 'required|email',
+                'email' => 'required|email'|'unique:users',
                 'name' => 'required',
                 'password' => 'required|min:6|max:20',
                 'comfirm_password' => 'required|same:password'
@@ -133,6 +133,7 @@ class HomeController extends Controller
             [
                 'email.required' => 'Vui lòng nhập email',
                 'email.email' => 'Email phải đúng định dạng',
+                'email.unique'=>'Email đã tồn tại',
                 'name.required' => 'Vui lòng nhập tên',
                 'password.required' => 'Mật khẩu không được bỏ trống',
                 'password.min' => 'Password không được nhỏ quá 6 kí tự',

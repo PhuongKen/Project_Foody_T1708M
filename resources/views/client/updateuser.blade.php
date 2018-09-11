@@ -84,6 +84,11 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>Giới tính</label>
+                    <input type="checkbox" name="gender" value="0"> Nam
+                    <input type="checkbox" name="gender" value="1"> Nữ
+                </div>
+                <div class="form-group">
                     <label>Số điện thoại:</label>&nbsp<input type="text" name="phone"
                                                              placeholder="Nhập số điện thoại" value="{{$list_obj->phone}}">
                 </div>

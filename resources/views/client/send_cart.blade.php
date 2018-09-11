@@ -16,7 +16,7 @@
     <h4>Địa chỉ: {{$restaurant[0]->addressDetail}}, {{$restaurant[0]->wardName}}, {{$restaurant[0]->districtName}}
         , {{$restaurant[0]->provindName}}</h4>
     <h4>Thông tin đơn hàng của {{Auth::user()->name}}</h4>
-    <h4>Thời gian đến: {{$order_info->time}}, {{$order_info->date}}</h4>
+    <h4>Thời gian đến: {{$order_info->time}}, {{\Carbon\Carbon::parse($order_info->date)->format('d/m/Y')}}</h4>
     @if(count(\App\Cart::getCart()->items)>0)
         <div class="table-responsive">
             <table class="cart-summary table table-bordered">

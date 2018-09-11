@@ -23,10 +23,8 @@ Route::get('/foody/chi-tiet-nha-hang', 'Client\RestaurantController@index');
 Route::get('/foody/chi-tiet-mon-an', 'Client\FoodDetailController@getIndex');
 Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/category', 'CategoryController');
-    Route::get('/admin/change-status', 'OrderController@changeStatus');
     Route::resource('/admin/comment', 'CommentController');
     Route::resource('admin/album', 'AlbumCmtController');
-    Route::resource('admin/orderaddress', 'OrderAddessController');
     Route::resource('/admin/category', 'CategoryController');
     Route::resource('/admin/restaurant', 'RestaurantController');
     Route::resource('/admin/district', 'DistrictController');
@@ -34,8 +32,7 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/address', 'AddressController');
     Route::resource('/admin/album_restaurant', 'AlbumRestaurantController');
     Route::resource('/admin/user', 'UserController');
-    Route::resource('admin/orderdetail', 'OrderDetailController');
-    Route::get('/admin/status','BookTableController@status');
+    Route::get('/admin/status', 'BookTableController@status');
     //admin foody
     Route::get('admin', [
         'as' => 'admin',
@@ -45,11 +42,13 @@ Route::group(['middleware' => 'adminLogin'], function () {
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });
-Route::group(['middleware'=> 'adminrestaurantLogin'], function (){
-    Route::resource('restaurant/detailorder', 'DetailOrderController');
+Route::group(['middleware' => 'adminrestaurantLogin'], function () {
+    Route::resource('/restaurant/orderaddress', 'OrderAddessController');
+    Route::resource('/restaurant/detailorder', 'DetailOrderController');
     Route::resource('/restaurant/food', 'FoodController');
     Route::resource('/restaurant/order', 'OrderController');
     Route::resource('/restaurant/booktable', 'BookTableController');
+    Route::get('/restaurant/change-status', 'OrderController@changeStatus');
     //Admin restaurant
     Route::get('admin-restaurant', [
         'as' => 'admin-restaurant',
@@ -160,8 +159,8 @@ Route::match(['get', 'post'], '/foody/gan-toi', [
 
 
 Route::match(['get', 'post'], '/foody/map', [
-   'as' => 'map',
-   'uses' => 'Client\MapController@map'
+    'as' => 'map',
+    'uses' => 'Client\MapController@map'
 ]);
 
 Route::get('/foody/gan-toi/danh-muc/', [

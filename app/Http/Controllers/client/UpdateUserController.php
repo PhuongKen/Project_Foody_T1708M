@@ -33,8 +33,7 @@ class UpdateUserController extends Controller
     public function postEdit(Request $request, $id){
         $this->validate($request,[
             'name' => 'required|min:3',
-            'password' => 'required|min:6|max:20',
-            'comfirm_password'=>'required|min:6|max:20|same:password',
+            'gender'=>'required',
             'avartar' => 'required',
             'phone' => 'required|numeric',
 
@@ -42,13 +41,7 @@ class UpdateUserController extends Controller
             [
                 'name.required' => 'Bạn chưa nhập tên',
                 'name.min'=>'Tên không ngắn quá 3 ký tự',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
-                'password.max'=>'Mật khẩu không dài quá 20 kí tự',
-                'comfirm_password.required' => 'Bạn chưa nhập mật khẩu',
-                'comfirm_password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
-                'comfirm_password.max'=>'Mật khẩu không dài quá 20 kí tự',
-                'comfirm_password.same'=>'Mật khẩu phải giống nhau',
+                'gender.required'=>'Giới tính không được để trống',
                 'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
                 'phone.numeric'=>'Số điện thoại phải là số'
@@ -80,6 +73,7 @@ class UpdateUserController extends Controller
             $avartar->move($distional_path, $getAvartar);
         }
         $list_obj->avartar = $getAvartar;
+        $list_obj->gender = Input::get('gender');
         $list_obj -> phone = Input::get('phone');
         $list_obj -> save();
         return redirect()->back()->with('thanhcong','Thay đổi thành công');
