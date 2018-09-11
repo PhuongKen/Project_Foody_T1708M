@@ -85,9 +85,7 @@
                                             @endif
                                             <a href="/restaurant/booktable/{{$value->id}}/edit"
                                                class="btn btn-simple btn-outline-primary">edit</a>
-                                            <a href="{{$value->id}}"
-                                               class="btn btn-simple btn-outline-danger btn-delete">delete</a>
-                                        </td>
+                                             </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
