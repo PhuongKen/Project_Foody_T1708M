@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/admin/booktable" method="post" enctype="multipart/form-data">
+    <form action="/restaurant/booktable" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-10">
@@ -47,8 +47,8 @@
                                 <input class="col-md-5" type="date" id="date" min="{{$mydate}}"
                                        name="ngaydat"
                                        style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
-                                <input class="col-md-5" type="time" name="thoigiandat" id="time" min="08:00" max="21:00"
-                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
+                                <input class="col-md-5" type="time" name="thoigiandat" id="time" min="{{$booktable->openTime}}" max="{{$booktable->closeTime}}"
+                                       style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" required>
                             </div>
                             <div class="row">
                                 <select class="col-md-3" name="sokhach" id="provind"

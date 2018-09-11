@@ -33,8 +33,8 @@
                                         <input class="col-md-5" type="date" id="date" min="{{$mydate}}"
                                                name="ngaydat"
                                                style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
-                                        <input class="col-md-5" type="time" name="thoigiandat" id="time" min="08:00"
-                                               max="21:00"
+                                        <input class="col-md-5" type="time" name="thoigiandat" id="time" min="{{$booktable->openTime}}"
+                                               max="{{$booktable->closeTime}}"
                                                style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" required>
                                     </div>
                                     <div class="row">

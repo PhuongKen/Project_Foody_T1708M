@@ -33,7 +33,9 @@ class BookTableController extends Controller
      */
     public function create()
     {
-        return view('admin.booktable.create');
+        $booktable = DB::table("restaurants")->where('userID', '=', Auth::user()->id)->get();
+        $booktable1= $booktable[0];
+        return view('admin.booktable.create')->with('booktable', $booktable1);
     }
 
     /**
@@ -71,7 +73,7 @@ class BookTableController extends Controller
         $booktable->sdt = Input::get('sdt');
         $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
-        return redirect('/admin/booktable');
+        return redirect('/restaurant/booktable');
     }
 
     /**
@@ -136,7 +138,7 @@ class BookTableController extends Controller
         $booktable->sdt = Input::get('sdt');
         $booktable->ghichu = Input::get('ghichu');
         $booktable->save();
-        return redirect('/admin/booktable');
+        return redirect('/restaurant/booktable');
     }
     /**
      * Remove the specified resource from storage.
