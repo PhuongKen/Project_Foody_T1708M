@@ -84,6 +84,7 @@ class FoodController extends Controller
         }
             $food->avatar = $getAvartar;
         $food->price = Input::get('price');
+        $food->discount = Input::get('discount');
         $food->status = Input::get('status');
         $food-> save();
         return redirect('/restaurant/food');
@@ -160,6 +161,7 @@ class FoodController extends Controller
         }
         $food->avatar = $getAvartar;
         $food->price = Input::get('price');
+        $food->discount = Input::get('discount');
         $food->status = Input::get('status');
         $food-> save();
         return redirect('/restaurant/food');
