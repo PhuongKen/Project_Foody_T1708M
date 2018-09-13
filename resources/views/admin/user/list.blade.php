@@ -46,9 +46,10 @@
                                     <th>Ảnh đại diện</th>
                                     <th>Số điện thoại</th>
                                     <th>Giới tính</th>
-                                    <th>Status</th>
-                                    <th>VerifyEmail</th>
-                                    <th>Role</th>
+                                    <th>Trạng thái</th>
+                                    <th>Kích hoạt mail</th>
+                                    <th>Phân quyền</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
 
@@ -146,6 +147,12 @@
         </div>
 
     </div> <!-- End Row -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable').dataTable();
+            $('.wysihtml5').wysihtml5();
+        } );
+    </script>
     <script>
 
         $('.btn-delete').click(function () {
