@@ -34,11 +34,11 @@ Route::group(['middleware' => 'adminLogin'], function () {
     Route::resource('/admin/user', 'UserController');
     Route::get('/admin/status', 'BookTableController@status');
     //admin foody
-    Route::get('admin', [
+    Route::get('/admin', [
         'as' => 'admin',
         'uses' => 'AdminController@getHome'
     ]);
-    Route::get('admin/chart', 'AdminController@chart');
+    Route::get('/admin/chart', 'AdminController@chart');
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });

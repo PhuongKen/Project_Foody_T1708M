@@ -45,8 +45,9 @@ class AdminController extends Controller
 
     public function getLogin()
     {
-        if(Auth::check()){
-            return redirect('/admin');
+        $user = Auth::user();
+        if(Auth::check() && $user->role == 1){
+            return redirect('/admin/chart');
         }else{
             return view('admin.login.login');
         }
@@ -55,7 +56,7 @@ class AdminController extends Controller
     public function postLogin(Request $req)
     {
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
-            return redirect('/admin');
+            return redirect('/admin/chart');
         }else{
             return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
         }

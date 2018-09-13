@@ -10,6 +10,7 @@ $('.btn-card').click(function () {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
         success: function (resp) {
+            $('.cart-empty').hide();
             var new_count = resp.cartItem.count;
             var new_total_money = resp.cartItem.total_money;
             var new_items = resp.cartItem.items;
