@@ -59,7 +59,7 @@
                                                 <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$value->id}}">
-                                                            <img class="img-responsive"
+                                                            <img class="img-responsive imageReponsive"
                                                                  src="/images/restaurant/{{$value->avartar}}"
                                                                  alt="Product Image">
                                                         </a>

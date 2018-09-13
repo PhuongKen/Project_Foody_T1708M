@@ -14,11 +14,11 @@
             </ol>
         </div>
     </div>
-    <div class="row form-group" style="margin-top: 30px">
-        <div class="col-md-12 col-xs-12">
-            <a href="/restaurant/detailorder" class="btn btn-primary">Đơn hàng chi tiết</a>
-        </div>
-    </div>
+    {{--<div class="row form-group" style="margin-top: 30px">--}}
+    {{--<div class="col-md-12 col-xs-12">--}}
+    {{--<a href="/restaurant/detailorder" class="btn btn-primary">Thêm đơ</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     <!-- col-md-12 -->
 
     <div class="row">
@@ -33,10 +33,10 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">Số thứ tự</th>
                                     <th scope="col">userID</th>
                                     <th scope="col">Số lượng</th>
-                                    <th scope="col">Tổng giá</th>
+                                    <th scope="col">Tổng giá(vnd)</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Ngày tạo</th>
                                     <th scope="col">Ngày update</th>
@@ -54,7 +54,9 @@
                                         </th>
                                         <th scope="row">{{$value->userID}}</th>
                                         <th scope="row">{{$value->amount}}</th>
-                                        <th scope="row">{{$value->totalPrice}}</th>
+                                        <th scope="row"><?php
+                                            echo number_format($value->totalPrice)
+                                            ?></th>
                                         <th scope="row">
                                             @if($value->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
@@ -83,7 +85,10 @@
                                             @if($value->status==1)
                                                 <a href="{{$value->id}}"
                                                    class="btn btn-simple btn-outline-danger btn-delete">Xóa</a>
+                                                <a href="/restaurant/detailorder/?id={{$value->id}}"
+                                                   class="btn btn-simple btn-outline-danger">Chi tiết</a>
                                             @endif
+
                                         </td>
                                     </tr>
                                 @endforeach

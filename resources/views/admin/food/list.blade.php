@@ -37,7 +37,7 @@
                                         <th>Stt</th>
                                         <th>Tên</th>
                                         <th>Địa chỉ nhà hàng</th>
-                                        <th>Giá tiền</th>
+                                        <th>Giá tiền(vnd)</th>
                                         <th>Ảnh đại diện</th>
                                         <th>Trạng thái</th>
                                         <th>Hoạt động</th>
@@ -53,7 +53,9 @@
                                             </td>
                                             <td>{{$value->name}}</td>
                                             <td>{{$value->restaurantID}}</td>
-                                            <td>{{$value->price}}</td>
+                                            <td><?php
+                                                echo number_format($value->price)
+                                                ?></td>
                                             <td>
                                                 <div class="card"
                                                      style="width: 60px;height: 50px;background-image: url('/images/food/{{$value->avatar}}'); background-size: cover">
