@@ -128,7 +128,7 @@
                             </div>
 
                             <div class="dropdown-content">
-                                <div class="cart-content" style="overflow: scroll; height: 400px; width: 430px">
+                                <div class="cart-content" style="overflow-y: auto; max-height: 400px;">
                                     <table>
                                         <tbody id="header-cart-wrapitem">
                                         @if(count(\App\Cart::getCart()->items)>0)
@@ -174,7 +174,7 @@
                                                 </td>
                                             </tr>
                                         @else
-
+                                            <div class="cart-empty">Hiện tại không có sản phẩm nào trong giỏ hàng.</div>
                                         @endif
                                         </tbody>
                                     </table>

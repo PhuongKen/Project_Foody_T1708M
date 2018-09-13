@@ -1,4 +1,4 @@
-@media screen and (min-width: 1200px) {
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img@media screen and (min-width: 1200px) {
     [class~=col-20p], .col-80p {
         position: relative;
     }

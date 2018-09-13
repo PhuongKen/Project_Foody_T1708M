@@ -83,7 +83,7 @@
                                     @foreach($chunk_list as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
@@ -127,7 +127,7 @@
                                     @foreach($chunk_list1 as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
@@ -170,7 +170,7 @@
                                     @foreach($chunk_list2 as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
@@ -213,7 +213,7 @@
                                     @foreach($chunk_list3 as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
@@ -256,7 +256,7 @@
                                     @foreach($chunk_list4 as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
@@ -299,7 +299,7 @@
                                     @foreach($chunk_list5 as $chunk_lists)
                                         <div class="product-group">
                                             @foreach($chunk_lists as $key => $item)
-                                                <div class="product-item product-item1">
+                                                <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$item->id}}">
                                                             <img src="/images/restaurant/{{$item->avartar}}"
