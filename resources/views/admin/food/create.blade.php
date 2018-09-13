@@ -54,6 +54,10 @@
                     <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
                 </div>
                 <div class="form-group">
+                    <h5>Giá khuyến mãi</h5>
+                    <input type="text" placeholder="Nhập giá tiền" size="100" name="discount">
+                </div>
+                <div class="form-group">
                         <input type="file" name="avatar" multiple>
                 </div>
                 <div class="form-group">

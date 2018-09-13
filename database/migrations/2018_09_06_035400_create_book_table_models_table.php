@@ -23,6 +23,7 @@ class CreateBookTableModelsTable extends Migration
             $table->string('name');
             $table->string('sdt');
             $table->string('ghichu');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
