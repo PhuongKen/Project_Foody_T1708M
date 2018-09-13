@@ -139,25 +139,25 @@
                     <div class="fb-comments"></div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    @if(Auth::check())
-                        @if($rate != null)
-                            <div class="stars stars-example-bootstrap">
-                                <form action="/foody/danh-gia" method="post">
-                                    {{csrf_field()}}
-                                    <label>Đánh giá của bạn</label>
-                                    <select id="example-bootstrap" name="rating" autocomplete="off">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <input type="hidden" name="restaurantID" value="{{$selected_restaurantId}}">
-                                    <input type="submit" value="Gửi đánh giá">
-                                </form>
-                            </div>
-                        @endif
-                    @endif
+                    {{--@if(Auth::check())--}}
+                        {{--@if($rate != null)--}}
+                            {{--<div class="stars stars-example-bootstrap">--}}
+                                {{--<form action="/foody/danh-gia" method="post">--}}
+                                    {{--{{csrf_field()}}--}}
+                                    {{--<label>Đánh giá của bạn</label>--}}
+                                    {{--<select id="example-bootstrap" name="rating" autocomplete="off">--}}
+                                        {{--<option value="1">1</option>--}}
+                                        {{--<option value="2">2</option>--}}
+                                        {{--<option value="3">3</option>--}}
+                                        {{--<option value="4">4</option>--}}
+                                        {{--<option value="5">5</option>--}}
+                                    {{--</select>--}}
+                                    {{--<input type="hidden" name="restaurantID" value="{{$selected_restaurantId}}">--}}
+                                    {{--<input type="submit" value="Gửi đánh giá">--}}
+                                {{--</form>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                    {{--@endif--}}
                 </div>
             </div>
         </div>
