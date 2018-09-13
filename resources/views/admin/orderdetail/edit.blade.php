@@ -23,13 +23,10 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add order</h4>
+                <div class="panel panel-default" style="padding: 20px">
+                    <div class="panel-body"><h4 style="color: #333333;">Sửa đơn hàng</h4>
                         </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button></div>
+                        </div>
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible" role="alert">
                             <ul>
@@ -43,47 +40,48 @@
                             </button>
                         </div>
                     @endif
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <h5>orderID</h5>
-                            <select name="orderID">
-                                <option value="0">order 1</option>
-                                <option value="1">order 2</option>
-                                <option value="2">order 3</option>
-                            </select>
+                    {{--<div class="row">--}}
+                    {{--<div class="form-group col-md-6">--}}
+                    {{--<h5>orderID</h5>--}}
+                    {{--<select name="orderID">--}}
+                    {{--<option value="0">order 1</option>--}}
+                    {{--<option value="1">order 2</option>--}}
+                    {{--<option value="2">order 3</option>--}}
+                    {{--</select>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group col-md-6">--}}
+                    {{--<h5>foodID</h5>--}}
+                    {{--<select name="foodID">--}}
+                    {{--<option value="0">food 1</option>--}}
+                    {{--<option value="1">food 2</option>--}}
+                    {{--<option value="2">food 3</option>--}}
+                    {{--</select>--}}
+                    {{--</div>--}}
+                            <div class="form-group">
+                                <h5>Tên món ăn</h5>
+                                <input type="text" style="width: 40%" placeholder="Nhập nameProduct" size="100" name="nameProduct" value="{{$orderaddress->nameProduct}}">
+                            </div>
+                            {{--<div class="form-group">--}}
+                            {{--<h5>Hình ảnh</h5>--}}
+                            {{--<input type="text" placeholder="Nhập image" size="100" name="image" value="{{$orderaddress->image}}">--}}
+                            {{--</div>--}}
+                            <div class="form-group">
+                                <h5>Giá(vnd)</h5>
+                                <input type="text" style="width: 15%" placeholder="Nhập price" size="100" name="price" value="{{$orderaddress->price}}">
+                            </div>
+                            <div class="form-group">
+                                <h5>Số lượng</h5>
+                                <input type="text" style="width: 5%" placeholder="Nhập tên amount" size="100" name="amount" value="{{$orderaddress->amount}}">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Lưu">
+                                <input type="reset" class="btn btn-success" value="Làm lại">
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <h5>foodID</h5>
-                            <select name="foodID">
-                                <option value="0">food 1</option>
-                                <option value="1">food 2</option>
-                                <option value="2">food 3</option>
-                            </select>
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <h5>nameProduct</h5>
-                        <input type="text" placeholder="Nhập nameProduct" size="100" name="nameProduct" value="{{$orderaddress->nameProduct}}">
-                    </div>
-                    <div class="form-group">
-                        <h5>image</h5>
-                        <input type="text" placeholder="Nhập image" size="100" name="image" value="{{$orderaddress->image}}">
-                    </div>
-                    <div class="form-group">
-                        <h5>price</h5>
-                        <input type="text" placeholder="Nhập price" size="100" name="price" value="{{$orderaddress->price}}">
-                    </div>
-                    <div class="form-group">
-                        <h5>amount</h5>
-                        <input type="text" placeholder="Nhập tên amount" size="100" name="amount" value="{{$orderaddress->amount}}">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Lưu">
-                        <input type="reset" class="btn btn-success" value="Làm lại">
-                    </div>
-                </div>
+
             </div>
-        </div>
+            </div>
         </div> <!-- End row -->
     </form>
 @endsection
