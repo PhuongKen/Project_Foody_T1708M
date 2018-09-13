@@ -3263,7 +3263,7 @@ input {
 }
 
 [class~=products-block][class~=layout-2] [class~=product-item], [class~=products-block] [class~=product-item] {
-    padding-left: 1.875pc;
+    /*padding-left: 1.875pc;*/
 }
 
 [class~=my-account][class~=toggle-icon] [class~=dropdown-menu] [class~=item] [class~=switcher] a, .block-cart .cart-title span {
@@ -3279,11 +3279,11 @@ input {
 }
 
 [class~=products-block] [class~=product-item], [class~=products-block][class~=layout-2] [class~=product-item] {
-    padding-bottom: 1.875pc;
+    /*padding-bottom: 1.875pc;*/
 }
 
 [class~=products-block][class~=layout-2] [class~=product-item], [class~=products-block] [class~=product-item] {
-    padding-right: 1.875pc;
+    /*padding-right: 1.875pc;*/
 }
 
 #main-menu [class~=dropdown-menu] {
@@ -3311,7 +3311,7 @@ input {
 }
 
 [class~=products-block] [class~=product-item], [class~=products-block][class~=layout-2] [class~=product-item] {
-    padding-top: 1.875pc;
+    /*padding-top: 1.875pc;*/
 }
 
 [class~=products-block][class~=layout-2] [class~=product-price] {
@@ -3700,7 +3700,7 @@ input {
 }
 
 [class~=products-block] [class~=product-item] {
-    border-radius: 10px;
+    /*border-radius: 10px;*/
 }
 
 [class~=products-block] [class~=product-item]:hover [class~=product-buttons] {

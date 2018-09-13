@@ -386,7 +386,7 @@
     font-weight: 700;
     text-overflow: ellipsis;
 }
-.product-item1{
-    background: url('/images/foody/backgroundFoody.jpg');
-    background-size: cover;
+
+.imageReponsive{
+    height: 140px;
 }

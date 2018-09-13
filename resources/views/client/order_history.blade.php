@@ -5,8 +5,8 @@
             <h4 style="text-align: center">Lịch sử đơn hàng</h4>
             @foreach($order as $key => $value)
                 <div class="row">
-                    <div class="checkout-left col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
-                    <div class="checkout-left col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    {{--<div class="checkout-left col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>--}}
+                    <div class="checkout-left col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{--<h4>Đơn hàng của bạn</h4>--}}
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
@@ -14,7 +14,7 @@
                                     <h4 class="panel-title">
                                         <a class="accordion-toggle"
                                            data-parent="#accordion">
-                                            {{$value->created_at}}, {{$order_detail[$value->id][0]->nameRestaurant}}
+                                            Nhà hàng {{$order_detail[$value->id][0]->nameRestaurant}}
                                             , Trạng thái:
                                             @if($order_detail[$value->id][0]->st == 1)
                                                 <span style="color: #d33">đang xử lý</span>
@@ -27,6 +27,20 @@
                                     </h4>
                                 </div>
                                 <div class="panel-body">
+                                    <div>Mã đơn hàng: {{$order_detail[$value->id][0]->id}}, Ngày
+                                        đặt {{$value->created_at}}</div><br>
+                                    <b>Thông tin đơn hàng.</b><br>
+                                    <div>Người gửi: Nhà hàng {{$order_detail[$value->id][0]->nameRestaurant}}</div>
+                                    <div>SĐT người gửi: {{$order_detail[$value->id][0]->phoneRestaurant}}</div>
+                                    <div>Địa chỉ: {{$order_detail[$value->id][0]->addRestaurant}},
+                                        {{$order_detail[$value->id][0]->wardName}},{{$order_detail[$value->id][0]->districtName}},
+                                        {{$order_detail[$value->id][0]->provindName}}</div><br>
+                                    <div>Người nhận: {{$order_detail[$value->id][0]->nameUser}}</div>
+                                    <div>SĐT người nhận: {{$order_detail[$value->id][0]->phoneUser}}</div>
+                                    <div>Địa chỉ: {{$order_detail[$value->id][0]->addressUser}},
+                                        {{$order_detail[$value->id][0]->wardUserName}},{{$order_detail[$value->id][0]->disName}},
+                                        {{$order_detail[$value->id][0]->proName}}
+                                    </div>
                                     <div class="page-cart" style="margin-top: 30px">
                                         <div class="table-responsive">
                                             <table class="cart-summary table table-bordered">
@@ -92,6 +106,14 @@
                     </div>
                 </div>
             @endforeach
+            <div class="row">
+                <div class="col-md-5">
+
+                </div>
+                <div class="col-md-5">
+                    {{$order->links()}}
+                </div>
+            </div>
         </div>
     </div>
 @endsection
