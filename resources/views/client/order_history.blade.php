@@ -65,12 +65,12 @@
                                                             <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->idDetail}}">
                                                                 <img width="80" alt=""
                                                                      style="display: block;width: 100%;height: auto"
-                                                                     src="/images/food/{{$item->image}}">
+                                                                     src="/images/food/{{$item->imageFood}}">
                                                             </a>
                                                         </td>
                                                         <td>
                                                             <a href="/foody/chi-tiet-mon-an/{{'?id='.$item->idDetail}}"
-                                                               class="product-name">{{$item->nameProduct}}</a>
+                                                               class="product-name">{{$item->nameFood}}</a>
                                                         </td>
                                                         <td class="text-center">
                                                             {{number_format($item->price)}} vnđ

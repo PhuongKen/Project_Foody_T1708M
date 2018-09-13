@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('userID')->unsigned();
             $table->foreign('userID')->references('id')->on('users');
+            $table->integer('restaurantID')->unsigned();
+            $table->foreign('restaurantID')->references('id')->on('restaurants');
             $table->integer('amount');
             $table->bigInteger('totalPrice');
             $table->integer('status')->default(1); // 0 delete, 1 Process, 2 Done, 3 Block.
