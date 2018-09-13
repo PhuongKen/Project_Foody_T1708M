@@ -36,7 +36,7 @@
                                     <th scope="col">Số thứ tự</th>
                                     <th scope="col">userID</th>
                                     <th scope="col">Số lượng</th>
-                                    <th scope="col">Tổng giá</th>
+                                    <th scope="col">Tổng giá(vnd)</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Ngày tạo</th>
                                     <th scope="col">Ngày update</th>
@@ -54,7 +54,9 @@
                                         </th>
                                         <th scope="row">{{$value->userID}}</th>
                                         <th scope="row">{{$value->amount}}</th>
-                                        <th scope="row">{{$value->totalPrice}}</th>
+                                        <th scope="row"><?php
+                                            echo number_format($value->totalPrice)
+                                            ?></th>
                                         <th scope="row">
                                             @if($value->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">

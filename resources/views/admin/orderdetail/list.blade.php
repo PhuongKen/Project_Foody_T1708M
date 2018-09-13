@@ -33,7 +33,7 @@
                                     <th scope="col">foodID</th>
                                     <th scope="col">Tên sản phẩm</th>
                                     <th scope="col">Hình ảnh</th>
-                                    <th scope="col">Giá</th>
+                                    <th scope="col">Giá(vnd)</th>
                                     <th scope="col">Số lượng</th>
                                     <th scope="col">Trạng thái</th>
 
@@ -53,7 +53,10 @@
 
                                             </div>
                                         </td>
-                                        <th scope="row">{{$item->price}}</th>
+                                        <th scope="row"><?php
+                                                echo number_format($item->price)
+                                            ?>
+                                        </th>
                                         <th scope="row">{{$item->amount}}</th>
                                         <td>
                                             <a href="/restaurant/detailorder/{{$item->id}}/edit"
