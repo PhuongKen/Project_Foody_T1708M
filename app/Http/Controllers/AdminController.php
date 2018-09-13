@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller
 {
@@ -45,6 +47,7 @@ class AdminController extends Controller
 
     public function getLogin()
     {
+        Session::put("backUrl", URL::previous());
         $user = Auth::user();
         if(Auth::check() && $user->role == 1){
             return redirect('/admin/chart');

@@ -68,7 +68,7 @@
                                                 <div class="product-item">
                                                     <div class="product-image">
                                                         <a href="/foody/chi-tiet-nha-hang/{{'?id='.$value->id}}">
-                                                            <img class="img-responsive"
+                                                            <img class="img-responsive imageReponsive"
                                                                  src="/images/restaurant/{{$value->avartar}}"
                                                                  alt="Product Image">
                                                         </a>
@@ -82,11 +82,11 @@
                                                     </div>
                                                     <div class="food-address">
                                                         <a class="food-address1"
-                                                        href="#"><span>{{$value->wardName}}</span></a>,
+                                                           href="#"><span>{{$value->wardName}}</span></a>,
                                                         <a class="food-address1"
-                                                        href="#"><span>{{$value->districtName}}</span></a>,
+                                                           href="#"><span>{{$value->districtName}}</span></a>,
                                                         <a class="food-address1"
-                                                        href="#"><span>{{$value->provindName}}</span></a>
+                                                           href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
                                                     <div class="product-rating">
                                                         <div class="star on"></div>
@@ -127,11 +127,11 @@
                                                         </div>
                                                         <div class="food-address">
                                                             <a class="food-address1"
-                                                            href="#"><span>{{$value->wardName}}</span></a>,
+                                                               href="#"><span>{{$value->wardName}}</span></a>,
                                                             <a class="food-address1"
-                                                            href="#"><span>{{$value->districtName}}</span></a>,
+                                                               href="#"><span>{{$value->districtName}}</span></a>,
                                                             <a class="food-address1"
-                                                            href="#"><span>{{$value->provindName}}</span></a>
+                                                               href="#"><span>{{$value->provindName}}</span></a>
                                                         </div>
                                                         <div>
                                                             <span style="color: #4cae4c">Giờ mở cửa: {{$value->openTime}}</span><br>
@@ -161,7 +161,9 @@
                         <div class="pagination-bar">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng số {{count($countRestaurant)}} nhà hàng</div>
+                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng
+                                        số {{count($countRestaurant)}} nhà hàng
+                                    </div>
                                 </div>
 
                                 <div class="col-md-8 col-sm-8 col-xs-12">
@@ -172,8 +174,9 @@
                     </div>
                 </div>
             @else
-                <h4 style="text-align: center">Không tìm thấy kết quả nào với từ khóa <b
-                            class="text-danger">"{{$search}}"</b></h4>
+                <h4 style="text-align: center">Không tìm thấy kết quả nào</h4>
+                <h5 style="text-align: center"><a href="{{\Illuminate\Support\Facades\URL::previous()}}"
+                                                  style="color: #d33;">Quay lại</a></h5>
             @endif
         </div>
     </div>
