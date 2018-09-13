@@ -1,31 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,700" rel="stylesheet">
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/material-design-iconic-font.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/nivo-slider.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/stylefoody1.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jslider.css')}}">
-
-    {{--<!-- Template CSS -->--}}
-    <link rel="stylesheet" href="{{asset('css/stylefoody.css')}}">
-    <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <title>Thông tin tài khoản</title>
-</head>
-<body>
+@extends('layout.master', ['page_title'=> 'Thông tin tài khoản'])
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/fileinput.min.css')}}">
+@endsection
+@section('content')
 <div class="container">
     @if(count($errors)>0)
         <div class="alert alert-danger">
@@ -45,7 +22,7 @@
             <div class="block-title">
                 <h2 class="title"><span>Thông tin tài khoản</span></h2>
             </div>
-            <form action="/edit-user/{{$list_obj->id}}" method="post">
+            <form action="/edit-user/{{$list_obj->id}}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <label>Tỉnh\Thành Phố</label>
@@ -54,16 +31,14 @@
                             <option value="{{$p->id}}">{{$p->name}}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class="form-group">
+                    &nbsp;&nbsp;
                     <label>Quận\Huyện\Thành Phố</label>
                     <select name="district" id="district">
                         @foreach($district as $d)
                             <option value="{{$d->id}}">{{$d->name}}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class="form-group">
+                    &nbsp;&nbsp;&nbsp;
                     <label>Xã/Phường/Thị trấn</label>
                     <select name="ward" id="ward">
                         @foreach($ward as $w)
@@ -79,12 +54,12 @@
                     <label>Ảnh đại diện:</label>
                     <div class="kv-avatar">
                         <div class="file-loading">
-                            <input name="avartar" value="/images/uer/{{$list_obj->avartar}}" type="file">
+                            <input id="product_image" name="avartar" value="/images/user/{{$list_obj->avartar}}" type="file">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Giới tính</label>
+                    <label>Giới tính : </label>
                     <input type="checkbox" name="gender" value="0"> Nam
                     <input type="checkbox" name="gender" value="1"> Nữ
                 </div>
@@ -99,6 +74,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
 <script src="{{asset('js/fileinput.min.js')}}"></script>
 <script>
     var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
@@ -144,5 +122,4 @@
         });
     });
 </script>
-</body>
-</html>
+@endsection
