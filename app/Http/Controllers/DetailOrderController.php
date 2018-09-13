@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class DetailOrderController extends Controller
@@ -15,8 +16,10 @@ class DetailOrderController extends Controller
      */
     public function index()
     {
-        $list_obj = Order_detail::orderBy('created_at', 'DESC')->paginate(3);
-        return view('admin.orderdetail.list')->with('list_obj', $list_obj);    }
+        $list_obj = DB::table('order_details')->where('orderID','=',Input::get('id'))->orderBy('created_at', 'DESC')->get();
+//        dd($list_obj);
+        return view('admin.orderdetail.list')->with('list_obj', $list_obj);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -97,14 +100,14 @@ class DetailOrderController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'orderID' => 'required',
+           // 'orderID' => 'required',
             'nameProduct' => 'required',
             'image'=> 'required',
             'price'=> 'required',
             'amount'=> 'required',
         ],
             [
-                'orderID.required' => 'Bạn chưa nhập tên',
+            //    'orderID.required' => 'Bạn chưa nhập tên',
                 'nameProduct.required' => 'Bạn chưa nhập nameProduct',
                 'image.required' => 'Bạn chưa nhập image',
                 'price.required' => 'Bạn chưa nhập price',
@@ -116,14 +119,18 @@ class DetailOrderController extends Controller
         if ($orderdetail == null) {
             return view('404');
         }
-        $orderdetail->orderID = Input::get('orderID');
-        $orderdetail->foodID = Input::get('foodID');
+//        $orderdetail->orderID = Input::get('orderID');
+//        $orderdetail->foodID = Input::get('foodID');
         $orderdetail->nameProduct = Input::get('nameProduct');
         $orderdetail->image = Input::get('image');
         $orderdetail->price = Input::get('price');
         $orderdetail->amount = Input::get('amount');
         $orderdetail->save();
-        return redirect('/admin/orderdetail ');
+        $list_obj = DB::table('order_details')->where('orderID','=',$orderdetail->orderID)->orderBy('created_at', 'DESC')->get();
+        // dd($orderdetail);
+
+        return view('admin.orderdetail.list')->with('list_obj', $list_obj);
+//        return redirect('/restaurant/detailorder');
     }
 
     /**
@@ -134,7 +141,7 @@ class DetailOrderController extends Controller
      */
     public function destroy($id)
     {
-        $orderdetail = Order_detail::where('orderID',$id);
+        $orderdetail = Order_detail::find($id);
         if ($orderdetail==null){
             return view('404');
         }
