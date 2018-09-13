@@ -248,6 +248,7 @@ class CartController extends Controller
                 }
                 $order->save();
 //                dd($restaurant);
+                DB::commit();
                 if ($restaurant == null) {
                     Mail::send('client.send_cart1', ['user' => $user, 'order_info' => $order_info], function ($message) use ($user) {
                         $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
@@ -261,7 +262,6 @@ class CartController extends Controller
                         $message->subject('Thông tin đơn hàng');
                     });
                 }
-                DB::commit();
                 // clear session cart.
                 Session::remove('cart');
                 // send mail or sms.

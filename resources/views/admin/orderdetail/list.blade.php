@@ -46,10 +46,10 @@
                                         {{--<th scope="row">{{$item->id}}</th>--}}
                                         <th scope="row">{{$item->orderID}}</th>
                                         <th scope="row">{{$item->foodID}}</th>
-                                        <th scope="row">{{$item->nameProduct}}</th>
+                                        <th scope="row">{{$item->name}}</th>
                                         <td>
                                             <div class="card"
-                                                 style="width: 90px;height: 70px;background-image: url('/images/food/{{$item->image}}'); background-size: cover">
+                                                 style="width: 90px;height: 70px;background-image: url('/images/food/{{$item->avatar}}'); background-size: cover">
 
                                             </div>
                                         </td>

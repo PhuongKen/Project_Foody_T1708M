@@ -16,7 +16,10 @@ class DetailOrderController extends Controller
      */
     public function index()
     {
-        $list_obj = DB::table('order_details')->where('orderID','=',Input::get('id'))->orderBy('created_at', 'DESC')->get();
+        $list_obj = DB::table('order_details')
+            ->join('foods', 'foods.id', '=', 'order_details.foodID')
+            ->where('orderID', '=', Input::get('id'))
+            ->orderBy('order_details.created_at', 'DESC')->get();
 //        dd($list_obj);
         return view('admin.orderdetail.list')->with('list_obj', $list_obj);
     }
@@ -34,17 +37,17 @@ class DetailOrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'orderID' => 'required',
             'nameProduct' => 'required',
-            'image'=> 'required',
-            'price'=> 'required',
-            'amount'=> 'required',
+            'image' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
         ],
             [
                 'orderID.required' => 'Bạn chưa nhập tên',
@@ -70,7 +73,7 @@ class DetailOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +84,7 @@ class DetailOrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -93,21 +96,21 @@ class DetailOrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-           // 'orderID' => 'required',
+        $this->validate($request, [
+            // 'orderID' => 'required',
             'nameProduct' => 'required',
-            'image'=> 'required',
-            'price'=> 'required',
-            'amount'=> 'required',
+            'image' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
         ],
             [
-            //    'orderID.required' => 'Bạn chưa nhập tên',
+                //    'orderID.required' => 'Bạn chưa nhập tên',
                 'nameProduct.required' => 'Bạn chưa nhập nameProduct',
                 'image.required' => 'Bạn chưa nhập image',
                 'price.required' => 'Bạn chưa nhập price',
@@ -126,7 +129,7 @@ class DetailOrderController extends Controller
         $orderdetail->price = Input::get('price');
         $orderdetail->amount = Input::get('amount');
         $orderdetail->save();
-        $list_obj = DB::table('order_details')->where('orderID','=',$orderdetail->orderID)->orderBy('created_at', 'DESC')->get();
+        $list_obj = DB::table('order_details')->where('orderID', '=', $orderdetail->orderID)->orderBy('created_at', 'DESC')->get();
         // dd($orderdetail);
 
         return view('admin.orderdetail.list')->with('list_obj', $list_obj);
@@ -136,14 +139,14 @@ class DetailOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $orderdetail = Order_detail::find($id);
-        if ($orderdetail==null){
-            return view('404');
+        $orderdetail = Order_detail::where('orderID', $id);
+        if ($orderdetail == null) {
+            return view('error.404');
         }
         $orderdetail->delete();
     }
