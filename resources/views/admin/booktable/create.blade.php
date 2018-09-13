@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-md-10">
                 <h3>
-                    <label>Manage</label>
-                    <small>Food</small>
+                    <label>Quản lí</label>
+                    <small>đặt bàn</small>
                 </h3>
             </div>
             <div class="col-2">

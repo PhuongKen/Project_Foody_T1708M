@@ -10,7 +10,7 @@
         <div class="col-2">
             <ol class="breadcrumb">
                 <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
-                <li class="active">Danh sách món ăn</li>
+                <li class="active">Danh sách</li>
             </ol>
         </div>
     </div>
@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>Stt</th>
                                         <th>Tên</th>
-                                        <th>Địa chỉ nhà hàng</th>
+                                        <th>ID nhà hàng</th>
                                         <th>Giá tiền(vnd)</th>
                                         <th>Ảnh đại diện</th>
                                         <th>Trạng thái</th>
@@ -71,9 +71,9 @@
                                                     @endif
                                         </td>
                                             <td>
-                                                <a href="/restaurant/food/{{$value->id}}"
-                                                   class="btn btn-outline-success"
-                                                   style="border: 1px solid #d33;">Xem</a>
+                                                {{--<a href="/restaurant/food/{{$value->id}}"--}}
+                                                   {{--class="btn btn-outline-success"--}}
+                                                   {{--style="border: 1px solid #d33;">Xem</a>--}}
                                                 <a href="/restaurant/food/{{$value->id}}/edit"
                                                    class="btn btn-outline-primary">Sửa</a>
                                                 <a href="{{$value->id}}"

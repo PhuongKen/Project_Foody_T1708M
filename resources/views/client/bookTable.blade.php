@@ -4,13 +4,14 @@
 @endsection
 @section('content')
     <div class="container-edit container">
-        <form action="/foody/dat-cho" method="post"  style="margin-top: 30px">
+        <form action="/foody/dat-cho" method="post" style="margin-top: 30px">
             {{csrf_field()}}
             @if(Auth::check())
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="panel panel-default">
-                            <div class="panel-body p-0 "><h4 style="color: #337ab7;font-weight: 700;    font-family: 'OpenSans-Bold';text-transform: capitalize;    font-size: 18px;">{{$booktable->name}}</h4>
+                            <div class="panel-body p-0 "><h4
+                                        style="color: #337ab7;font-weight: 700;    font-family: 'OpenSans-Bold';text-transform: capitalize;    font-size: 18px;">{{$booktable->name}}</h4>
                                 @if ($errors->any())
                                     <div class="alert alert-danger alert-dismissible" role="alert">
                                         <ul>
@@ -27,15 +28,25 @@
                                 <div class="col-md-12" style="padding: 20px">
                                     <div class="row">
                                         <?php
-                                        $mydate=date("Y-m-d")
+                                        $mydate = date("Y-m-d")
                                         ?>
                                         <h4>Ngày đặt, giờ đặt</h4>
                                         <input class="col-md-5" type="date" id="date" min="{{$mydate}}"
                                                name="ngaydat"
                                                style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;margin-right: 12px;">
-                                        <input class="col-md-5" type="time" name="thoigiandat" id="time" min="{{$booktable->openTime}}"
-                                               max="{{$booktable->closeTime}}"
-                                               style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;" required>
+                                        @if($mytime > $booktable->openTime)
+                                            <input class="col-md-5" type="time" name="thoigiandat" id="time"
+                                                   min="{{$mytime}}"
+                                                   max="{{$booktable->closeTime}}"
+                                                   style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;"
+                                                   required>
+                                        @else
+                                            <input class="col-md-5" type="time" name="thoigiandat" id="time"
+                                                   min="{{$booktable->openTime}}"
+                                                   max="{{$booktable->closeTime}}"
+                                                   style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;"
+                                                   required>
+                                        @endif
                                     </div>
                                     <div class="row">
                                         <select class="col-md-3" name="sokhach" id="provind"
@@ -43,8 +54,8 @@
                                             >
                                             <option value="0">Số khách</option>
                                             <?php
-                                            for ($i=1; $i<101; $i++){
-                                                echo "<option value=".$i.">".$i." "."người</option>";
+                                            for ($i = 1; $i < 101; $i++) {
+                                                echo "<option value=" . $i . ">" . $i . " " . "người</option>";
                                             }
 
                                             ?>
@@ -60,7 +71,8 @@
                                                    style="height: 30px;border: 1px solid #eee;padding-left: 35px;background-color: #fff;border-radius: 2px;margin-bottom: 15px;padding: 0 5px;">
                                         </div>
                                         <div class="row">
-                                    <textarea name="ghichu" class="col-md-10" style=" width: 913px ;border: 1px solid #eee;"
+                                    <textarea name="ghichu" class="col-md-10"
+                                              style=" width: 913px ;border: 1px solid #eee;"
                                               placeholder="Ghi chú"></textarea>
                                         </div>
                                     </div>

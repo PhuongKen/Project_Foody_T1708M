@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" type="text/css">
 @endsection
 @section('content')
-    <form action="/food/{{$foods->id}}" method="post" enctype="multipart/form-data">
+    <form action="/restaurant/food/{{$foods->id}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         @method('put')
         <div class="row">
@@ -46,20 +46,15 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <h5>Tên nhà hàng</h5>
-                        <input type="text" placeholder="Nhập tên nhà hàng" size="100" name="restaurantID" value="{{$foods->restaurantID}}">
-                    </div>
-                    <div class="form-group">
                         <h5>Tên món ăn</h5>
                         <input type="text" placeholder="Nhập tên món ăn" size="100" name="name" value="{{$foods->name}}">
                     </div>
                     <div class="form-group">
-                        <h5>Ảnh đại diện</h5>
-                        <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar" value="{{$foods->avatar}}">
-                    </div>
-                    <div class="form-group">
                         <h5>Giá tiền</h5>
                         <input type="text" placeholder="Nhập tên nhập giá tiền" size="100" name="price" value="{{$foods->price}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="avatar" multiple>
                     </div>
                     <div class="form-group">
                         <h5>Trạng thái</h5>

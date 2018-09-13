@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="padding: 20px">
                     <div class="panel-body p-0"><h4 style="color: #333333;">Add category</h4></div>
                     <div>
                         </ul>
@@ -50,10 +50,13 @@
                         <input type="text" placeholder="Nhập tên Category" size="100" name="name" value="{{$category->name}}">
                     </div>
                     <div class="form-group">
-                        <h5>Avatar</h5>
-                        <input type="text" placeholder="Nhập description" size="100" name="avatar" value="{{$category->avartar}}">
-                    </div>
-                    <div class="form-group">
+                        <label>Avatar:</label>
+                        <div class="kv-avatar">
+                            <div class="file-loading">
+                                <input id="product_image" type="file" name="avartar">
+                            </div>
+                        </div>
+                    <div class="form-group" style="margin-top: 10px">
                         <input type="submit" class="btn btn-primary" value="Lưu">
                         <input type="reset" class="btn btn-success" value="Làm lại">
                     </div>
