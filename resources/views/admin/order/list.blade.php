@@ -46,51 +46,54 @@
 
                                 <tbody>
                                 @foreach($list_obj as $key => $value)
-                                    <tr>
-                                        <th><?php
+                                    @if($value->status!=0)
+                                        <tr>
+                                            <th><?php
 
-                                            echo $key + 1;
-                                            ?>
-                                        </th>
-                                        <th scope="row">{{$value->userID}}</th>
-                                        <th scope="row">{{$value->amount}}</th>
-                                        <th scope="row"><?php
-                                            echo number_format($value->totalPrice)
-                                            ?></th>
-                                        <th scope="row">
-                                            @if($value->status == 1)
-                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                    Đang chờ xử lý</h6>
-                                            @elseif($value->status == 2)
-                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                    Đang chờ xác nhận</h6>
-                                            @elseif($value->status == 3)
-                                                <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                    Hoàn thành</h6>
-                                            @endif
-                                        </th>
-                                        <th scope="row">{{$value->created_at}}</th>
-                                        <th scope="row">{{$value->updated_at}}</th>
-                                        <td>
-                                            @if($value->status==1)
-                                                <a href="/restaurant/change-status?id={{$value->id}}&status=2"
-                                                   onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
-                                                   class="btn btn-simple btn-outline-primary btn-finish">Xác nhận</a>
-                                            @elseif($value->status==2)
-                                                <a href="/restaurant/change-status?id={{$value->id}}&status=3"
-                                                   class="btn btn-simple btn-outline-primary btn-finish"
-                                                   onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn
-                                                    thành</a>
-                                            @endif
-                                            @if($value->status==1)
-                                                <a href="{{$value->id}}"
-                                                   class="btn btn-simple btn-outline-danger btn-delete">Xóa</a>
-                                                <a href="/restaurant/detailorder/?id={{$value->id}}"
-                                                   class="btn btn-simple btn-outline-danger">Chi tiết</a>
-                                            @endif
+                                                echo $key + 1;
+                                                ?>
+                                            </th>
+                                            <th scope="row">{{$value->userID}}</th>
+                                            <th scope="row">{{$value->amount}}</th>
+                                            <th scope="row"><?php
+                                                echo number_format($value->totalPrice)
+                                                ?></th>
+                                            <th scope="row">
+                                                @if($value->status == 1)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Đang chờ xử lý</h6>
+                                                @elseif($value->status == 2)
+                                                    <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Đang chờ xác nhận</h6>
+                                                @elseif($value->status == 3)
+                                                    <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Hoàn thành</h6>
+                                                @endif
+                                            </th>
+                                            <th scope="row">{{$value->created_at}}</th>
+                                            <th scope="row">{{$value->updated_at}}</th>
+                                            <td>
+                                                @if($value->status==1)
+                                                    <a href="/restaurant/change-status?id={{$value->id}}&status=2"
+                                                       onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng?')"
+                                                       class="btn btn-simple btn-outline-primary btn-finish">Xác
+                                                        nhận</a>
+                                                @elseif($value->status==2)
+                                                    <a href="/restaurant/change-status?id={{$value->id}}&status=3"
+                                                       class="btn btn-simple btn-outline-primary btn-finish"
+                                                       onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn
+                                                        thành</a>
+                                                @endif
+                                                @if($value->status==1)
+                                                    <a href="{{$value->id}}"
+                                                       class="btn btn-simple btn-outline-danger btn-delete">Xóa</a>
+                                                    <a href="/restaurant/detailorder/?id={{$value->id}}"
+                                                       class="btn btn-simple btn-outline-danger">Chi tiết</a>
+                                                @endif
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
@@ -167,30 +170,30 @@
                 });
 
                 $.ajax({
-                    url: '/restaurant/order/' + cateId,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token() }}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Đơn hàng đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2 * 1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
+                url: '/restaurant/order/' + cateId,
+                method: 'DELETE',
+                data: {
+                '_token': "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                swal({
+                text: 'Đơn hàng đã bị xoá.',
+                type: 'success',
+                confirmButtonClass: "btn btn-success",
+                buttonsStyling: false
+                })
+                setTimeout(function () {
+                window.location.reload();
+                }, 2 * 1000);
+                },
+                error: function () {
+                swal({
+                text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                type: 'warning',
+                confirmButtonClass: "btn btn-danger",
+                buttonsStyling: false
+                })
+                }
                 });
             });
             return false;

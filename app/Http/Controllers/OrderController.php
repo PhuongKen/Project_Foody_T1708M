@@ -24,9 +24,9 @@ class OrderController extends Controller
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
             ->join('foods', 'foods.id', '=', 'order_details.foodID')
             ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
-            ->where('restaurants.userID','=',Auth::user()->id)
+            ->where('restaurants.userID', '=', Auth::user()->id)
             ->select('orders.*')
-            ->orderBy('created_at','desc')
+            ->orderBy('created_at', 'desc')
             ->groupBy('orders.id')->get();
 //        dd($list_obj);
         return view('admin.order.list')->with('list_obj', $list_obj);
@@ -127,7 +127,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         if ($order == null) {
-            return view('404');
+            return view('error.404');
         }
         $order->delete();
     }
@@ -148,14 +148,14 @@ class OrderController extends Controller
             ->where('orders.id', $id)->get();
 //        dd($mail);
         if ($status == 2) {
-            Mail::send('admin.sendMail',['user' => $mail], function ($message) use ($mail) {
+            Mail::send('admin.sendMail', ['user' => $mail], function ($message) use ($mail) {
                 $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
                 $message->to($mail[0]->email, $mail[0]->name);
                 $message->subject('Đơn hàng của bạn đã được xác nhận');
             });
         }
         if ($status == 3) {
-            Mail::send('admin.sendMail1',['user' => $mail], function ($message) use ($mail) {
+            Mail::send('admin.sendMail1', ['user' => $mail], function ($message) use ($mail) {
                 $message->from('quangkhaivnt@gmail.com', 'Foody Việt Nam');
                 $message->to($mail[0]->email, $mail[0]->name);
                 $message->subject('Đơn hàng của bạn đã hoàn thành');
