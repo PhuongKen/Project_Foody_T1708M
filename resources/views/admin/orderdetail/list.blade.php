@@ -57,7 +57,6 @@
                                                 echo number_format($item->price)
                                             ?>
                                         </th>
-
                                         <th scope="row">{{$item->amount}}</th>
                                         <td>
                                             <a href="/restaurant/detailorder/{{$item->id}}/edit"
