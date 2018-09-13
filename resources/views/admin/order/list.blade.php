@@ -34,7 +34,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">Số thứ tự</th>
-                                    <th scope="col">userID</th>
+                                    <th scope="col">ID người dùng</th>
                                     <th scope="col">Số lượng</th>
                                     <th scope="col">Tổng giá(vnd)</th>
                                     <th scope="col">Trạng thái</th>

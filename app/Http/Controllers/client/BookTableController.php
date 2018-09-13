@@ -14,6 +14,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -24,8 +25,9 @@ class BookTableController extends Controller
         $categories = Category::all();
         $id = $request->get('id');
         $booktable = Restaurant::find($id);
-      //  dd($booktable);
-        return view('client.bookTable',compact('categories','booktable'));
+        $mytime = Carbon::now()->format('H:i:s');
+        //dd($mytime);
+        return view('client.bookTable',compact('categories','booktable','mytime'));
 
     }
     public function store(Request $request)

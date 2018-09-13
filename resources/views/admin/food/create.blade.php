@@ -9,14 +9,14 @@
         <div class="row">
             <div class="col-md-10">
                 <h3>
-                    <label>Manage</label>
+                    <label>Quản lí</label>
                     <small>Món ăn</small>
                 </h3>
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
-                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
-                    <li class="active">Restaurant</li>
+                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Trang chủ</a></li>
+                    <li class="active">Thêm mới</li>
                 </ol>
             </div>
         </div>
@@ -46,31 +46,15 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <h5>Tên nhà hàng</h5>
-                    <select name="restaurantID">
-                        @foreach($restaurant as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
-                        @endforeach
-                    </select>
-
-                </div>
-                <div class="form-group">
                     <h5>Tên món ăn</h5>
                     <input type="text" placeholder="Nhập name" size="100" name="name">
-                </div>
-                <div class="form-group d-block mt-2">
-                    <h5>Image</h5>
-                    <input type="text" placeholder="Nhập link ảnh" size="100" name="avatar">
                 </div>
                 <div class="form-group">
                     <h5>Giá tiền</h5>
                     <input type="text" placeholder="Nhập giá tiền" size="100" name="price">
                 </div>
                 <div class="form-group">
-                    <form action="/restaurant/food" method="post" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <input type="file" name="img[]" multiple>
-                    </form>
+                        <input type="file" name="avatar" multiple>
                 </div>
                 <div class="form-group">
                     <h5>Trạng thái</h5>

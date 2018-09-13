@@ -9,26 +9,22 @@
         <div class="row">
             <div class="col-md-10">
                 <h3>
-                    <label>Manage</label>
+                    <label>Tạo mới sản phẩm</label>
                 </h3>
             </div>
             <div class="col-2">
                 <ol class="breadcrumb">
-                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Home</a></li>
-                    <li class="active">Restaurant</li>
+                    <li><a href="/admin/home"><i class="fas fa-home"></i></i> Trang chủ</a></li>
+                    <li class="active">Tạo mới</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-body p-0"><h4 style="color: #333333;">Add category</h4></div>
+                <div class="panel panel-default" style="padding: 15px">
+                    <div class="panel-body p-0"><h4 style="color: #333333;">Sản phẩm mới</h4></div>
                     <div>
                         </ul>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
                     </div>
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible" role="alert">
@@ -44,11 +40,11 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <h5>Category name</h5>
+                        <h5>Tên sản phẩm</h5>
                         <input type="text" placeholder="Nhập tên Category" size="100" name="name">
                     </div>
                     <div class="form-group">
-                        <label>Avatar:</label>
+                        <label>Hình ảnh:</label>
                         <div class="kv-avatar">
                             <div class="file-loading">
                                 <input id="product_image" type="file" name="avartar">

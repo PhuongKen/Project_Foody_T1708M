@@ -68,7 +68,7 @@
         <!-- LOGO -->
         <div class="topbar-left">
             <div class="text-center">
-                <a href="index.html" class="logo"><i class="fas fa-home"></i> <span>Foody</span></a>
+                <a href="/foody/trang-chu" class="logo"><i class="fas fa-home"></i> <span>Foody</span></a>
             </div>
         </div>
         <!-- Button mobile view to collapse sidebar menu -->
@@ -259,7 +259,7 @@
         </div> <!-- content -->
 
         <footer class="footer text-right">
-            2015 © Moltran.
+            2018 © Ngự miêu.
         </footer>
 
     </div>

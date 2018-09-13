@@ -9,14 +9,14 @@
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
-                <li><a href="/admin/home"><i class="fas fa-home"></i></i>Home page</a></li>
-                <li class="active">Restaurant</li>
+                <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
+                <li class="active">nhà hàng</li>
             </ol>
         </div>
     </div>
     <div class="row form-group" style="margin-top: 30px">
         <div class="col-md-12 col-xs-12">
-            <a href="/admin/category/create" class="btn btn-primary">Create new restaurant</a>
+            <a href="/admin/category/create" class="btn btn-primary">Tạo mới sản phẩm</a>
         </div>
     </div>
     <!-- col-md-12 -->
@@ -25,7 +25,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Datatable</h3>
+                    <h3 class="panel-title">Nhà hàng</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -34,9 +34,9 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Avartar</th>
-                                    <th scope="col">Manipulation</th>
+                                    <th scope="col">Tên</th>
+                                    <th scope="col">Hình ảnh</th>
+                                    <th scope="col">Thao tác</th>
                                 </tr>
                                 </thead>
 
@@ -50,7 +50,7 @@
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Chưa update</h6>
                                                 @else($item->avartar != null)
-                                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/restaurant/{{$item->avartar}}'); background-size: cover"> </div>
+                                                <div class="card" style="width: 90px;height: 70px;background-image: url('/images/category/{{$item->avartar}}'); background-size: cover"> </div>
                                             @endif
                                         </td>
                                         <td>

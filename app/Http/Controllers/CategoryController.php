@@ -39,18 +39,33 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'avatar' => 'required',
         ],
             [
                 'name.required' => 'Bạn chưa nhập tên',
-                'avatar.required' => 'Bạn chưa nhập avatar'
             ]
         );
-        $category = new Category();
-        $category->name = Input::get('name');
-        $category->avartar = Input::get('avatar');
-        $category->save();
-        return redirect('/admin/category');
+        $getAvartar = '';
+        if ($request->hasFile('avartar')) {
+            $this->validate($request,
+                [
+                    'avartar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    'avartar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
+                    'avartar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
+                ]
+            );
+            $avartar = $request->file('avartar');
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
+            $distional_path = public_path('/images/category');
+            $avartar->move($distional_path, $getAvartar);
+        }
+            $category = new Category();
+            $category->name = Input::get('name');
+            $category->avartar = $getAvartar;
+            $category->save();
+            return redirect('/admin/category');
+
     }
 
     /**
@@ -86,23 +101,34 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-        'name' => 'required',
-        'avartar' => 'required',
-
-    ],
-        [
-            'name.required' => 'Bạn chưa nhập tên',
-            'avartar.required' => 'Bạn chưa nhập avatar'
-        ]
-    );
-        $category= Category::find($id);
-        if ($category==null){
-            return view('404');
+            'name' => 'required',
+        ],
+            [
+                'name.required' => 'Bạn chưa nhập tên',
+            ]
+        );
+        $getAvartar = '';
+        if ($request->hasFile('avartar')) {
+            $this->validate($request,
+                [
+                    'avartar' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    'avartar.mimes' => 'Chỉ chấp nhận ảnh với đuôi .jpg .jpeg .png .gif',
+                    'avartar.max' => 'Ảnh giới hạn dung lượng không quá 2M',
+                ]
+            );
+            $avartar = $request->file('avartar');
+            $getAvartar = time() . '_' . $avartar->getClientOriginalName();
+            $distional_path = public_path('/images/category');
+            $avartar->move($distional_path, $getAvartar);
         }
+        $category = Category::find($id);
         $category->name = Input::get('name');
-        $category->avartar = Input::get('avatar');
+        $category->avartar = $getAvartar;
         $category->save();
         return redirect('/admin/category');
+
     }
 
     /**
