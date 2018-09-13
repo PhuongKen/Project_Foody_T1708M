@@ -16,10 +16,10 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $user = Auth::user();
         if(!Auth::check()){
             return redirect('/dang-nhap-admin');
         }else{
-            $user = Auth::user();
             if($user->role == 1){
                 return $next($request);
             }else{

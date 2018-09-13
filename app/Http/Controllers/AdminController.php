@@ -63,7 +63,10 @@ class AdminController extends Controller
     }
 
     public function getLogout(){
-        Auth::logout();
+        $user = Auth::user();
+        if (Auth::check() && $user->role == 1) {
+            Auth::logout();
+        }
         return redirect('/dang-nhap-admin');
     }
 

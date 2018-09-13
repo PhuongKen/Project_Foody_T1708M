@@ -127,7 +127,7 @@ class HomeController extends Controller
     {
         $this->validate($req,
             [
-                'email' => 'required|email' | 'unique:users',
+                'email' => 'required|email|unique:users',
                 'name' => 'required',
                 'password' => 'required|min:6|max:20',
                 'comfirm_password' => 'required|same:password'
@@ -165,15 +165,20 @@ class HomeController extends Controller
 
     public function getLogin()
     {
+//        $user = Auth::user();
         Session::put("backUrl", URL::previous());
         $categories = Category::all();
-        return view('client.login', compact('categories'));
+        if (Auth::check() && Auth::user()->role == 0) {
+            return redirect('/foody/trang-chu');
+        } else {
+            return view('client.login', compact('categories'));
+        }
     }
 
     public function postLogin(Request $req)
     {
 //        $categories = Category::all();
-        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
+        if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1, 'role' => 0])) {
             return redirect(Session::get("backUrl"));
         } else {
             return redirect()->back()->with('thatbai', 'Sai thông tin đăng nhập');
@@ -182,7 +187,10 @@ class HomeController extends Controller
 
     public function getLogout()
     {
-        Auth::logout();
+        $user = Auth::user();
+        if (Auth::check() && $user->role == 0) {
+            Auth::logout();
+        }
         return redirect('/foody/trang-chu');
     }
 

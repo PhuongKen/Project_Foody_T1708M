@@ -188,7 +188,7 @@
                                 <i class="fa fa-bars"></i>
                             </div>
                             <div class="dropdown-menu">
-                                @if(Auth::check())
+                                @if(Auth::check() && Auth::user()->role == 0)
                                     <div class="item">
                                         <a href="/edit-user/{{Auth::user()->id}}"
                                            title="Log in to your customer account"><i class="fa fa-cog"></i>Tài
@@ -197,7 +197,7 @@
                                     <div class="item">
                                         <a href="/foody/lich-su-don-hang"
                                            title="Log in to your customer account"><i class="fa fa-cog"></i>
-                                            Lịch sử đơn hàng của{{Auth::user()->name}}</a>
+                                            Lịch sử đơn hàng của {{Auth::user()->name}}</a>
                                     </div>
                                     <div class="item">
                                         <a href="{{route('dangxuat')}}" title="Log in to your customer account"><i
