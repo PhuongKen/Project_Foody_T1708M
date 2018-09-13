@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-md-10">
             <h3>
-                <label>Manage</label>
-                <small>Restaurant</small>
+                <label>Quản lí</label>
+                <small>nhà hàng</small>
             </h3>
         </div>
         <div class="col-2">
             <ol class="breadcrumb">
-                <li><a href="/admin/home"><i class="fas fa-home"></i></i>home page</a></li>
-                <li class="active">Restaurant</li>
+                <li><a href="/admin/home"><i class="fas fa-home"></i></i>Trang chủ</a></li>
+                <li class="active">Đơn hàng</li>
             </ol>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Datatable</h3>
+                    <h3 class="panel-title">Order chi tiết</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -28,14 +28,14 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th scope="col">id</th>
+                                    {{--<th scope="col">id</th>--}}
                                     <th scope="col">orderID</th>
                                     <th scope="col">foodID</th>
-                                    <th scope="col">nameProduct</th>
-                                    <th scope="col">image</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">amount</th>
-                                    <th scope="col">action</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Hình ảnh</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Trạng thái</th>
 
                                 </tr>
                                 </thead>
@@ -43,7 +43,7 @@
                                 <tbody>
                                 @foreach($list_obj as $item)
                                     <tr>
-                                        <th scope="row">{{$item->id}}</th>
+                                        {{--<th scope="row">{{$item->id}}</th>--}}
                                         <th scope="row">{{$item->orderID}}</th>
                                         <th scope="row">{{$item->foodID}}</th>
                                         <th scope="row">{{$item->nameProduct}}</th>
@@ -65,9 +65,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row float-right mr-3">
-                                {{$list_obj->links()}}
-                            </div>
                         </div>
                     </div>
                 </div>
