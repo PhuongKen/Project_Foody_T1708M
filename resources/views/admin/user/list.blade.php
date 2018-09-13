@@ -21,7 +21,7 @@
         <div class="col-md-12 col-xs-12">
             <div id="messages"></div>
         </div>
-        <a href="" class="btn btn-success">View Restaurant</a>
+
         <br/> <br/>
         <!-- /.box -->
     </div>
@@ -45,6 +45,7 @@
                                     <th>Email</th>
                                     <th>Ảnh đại diện</th>
                                     <th>Số điện thoại</th>
+                                    <th>Giới tính</th>
                                     <th>Status</th>
                                     <th>VerifyEmail</th>
                                     <th>Role</th>
@@ -82,14 +83,25 @@
                                                 @endif
                                         </td>
                                         <td>
+                                            @if($item->gender == 0)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Nam</h6>
+                                                @elseif($item->gender == 1)
+                                                <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                    Nữ</h6>
+                                                @endif
+                                        </td>
+                                        <td>
                                             @if($item->status == 1)
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Hoạt động</h6>
-                                            @endif
-                                            @if($item->status == 0)
+                                            @elseif($item->status == 0)
                                                 <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Đã xóa</h6>
-                                            @endif
+                                                @elseif($item->status == 2)
+                                                    <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
+                                                        Bị chặn</h6>
+                                                @endif
                                         </td>
                                         <td>
                                             @if($item->verifyEmail == 1)

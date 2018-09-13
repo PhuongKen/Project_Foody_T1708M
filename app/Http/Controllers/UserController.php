@@ -7,6 +7,8 @@ use App\User;
 use App\Provind;
 use App\District;
 use App\Ward;
+use App\Address;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -17,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $list_obj = User::where('status', 1)->orderBy('created_at', 'DESC')->paginate(3);
+        $list_obj = User::orderBy('created_at', 'DESC')->paginate(3);
         return view('admin.user.list')->with('list_obj', $list_obj);
     }
 
@@ -66,7 +68,7 @@ class UserController extends Controller
         $district = District::all();
         $ward = Ward::all();
         if ($list_obj == null) {
-            return view('404');
+            return view('error.404');
         }
         return view('admin.user.edit',compact('list_obj','provind','district','ward'));
     }
@@ -83,9 +85,7 @@ class UserController extends Controller
         $this->validate($request,[
             'name' => 'required|min:3',
             'email' => 'required|email',
-            'password' => 'required|min:6|max:20',
-            'avartar' => 'required',
-            'phone' => 'required|numeric|min:9|max:12',
+            'phone' => 'required|numeric',
 
         ],
             [
@@ -93,14 +93,8 @@ class UserController extends Controller
                 'name.min'=>'Tên không ngắn quá 3 ký tự',
                 'email.required' => 'Bạn chưa nhập email',
                 'email.email'=>'Phải đúng định dạng email',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.min'=>'Mật khẩu không ngắn quá 6 kí tự',
-                'password.max'=>'Mật khẩu không dài quá 20 kí tự',
-                'avartar.required' => 'Bạn chưa nhập ảnh đại diện',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',
                 'phone.numeric'=>'Số điện thoại phải là số',
-                'phone.min'=>'Số điện thoại không ngắn quá 9 kí tự',
-                'phone.max'=>'Số điện thoại không dài quá 12 kí tự'
             ]
         );
 
@@ -113,7 +107,6 @@ class UserController extends Controller
         $list_obj -> addressID = $address-> id;
         $list_obj -> name = Input::get('name');
         $list_obj -> email = Input::get('email');
-        $list_obj -> password = Hash::make(Input::get('password'));
         $getAvartar = '';
         if ($request->hasFile('avartar')) {
             $this->validate($request,
@@ -130,9 +123,11 @@ class UserController extends Controller
             $distional_path = public_path('/images/user');
             $avartar->move($distional_path, $getAvartar);
         }
-        $list_obj->avatar = $getAvartar;
+        $list_obj->avartar = $getAvartar;
         $list_obj -> phone = Input::get('phone');
+        $list_obj->gender = Input::get('gender');
         $list_obj -> status = Input::get('status');
+        $list_obj->role = Input::get('role');
         $list_obj -> save();
         return redirect('/admin/user');
     }
@@ -147,7 +142,7 @@ class UserController extends Controller
     {
         $obj = User::find($id);
         if($obj == null){
-            return view('404');
+            return view('error.404');
         }
         $obj->delete();
     }
