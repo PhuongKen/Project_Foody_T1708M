@@ -24,7 +24,7 @@ class OrderHistoryController
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
             ->join('foods', 'foods.id', '=', 'order_details.foodID')
             ->join('order_infos', 'order_infos.orderID', '=', 'orders.id')
-            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
             ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
@@ -33,7 +33,7 @@ class OrderHistoryController
             ->join('provinds as proUser', 'addUser.provindID', '=', 'proUser.id')
             ->join('districts as disUser', 'addUser.districtID', '=', 'disUser.id')
             ->join('wards as wardUser', 'addUser.wardID', '=', 'wardUser.id')
-            ->select('order_details.nameProduct', 'order_details.image', 'order_details.price',
+            ->select('foods.name as nameFood', 'foods.avatar as imageFood', 'order_details.price',
                 'order_details.amount', 'order_details.id as idDetail', 'orders.id', 'orders.status as st',
                 'orders.created_at', 'restaurants.name as nameRestaurant', 'restaurants.phone as phoneRestaurant',
                 'provinds.name as provindName', 'districts.name as districtName','wards.name as wardName',

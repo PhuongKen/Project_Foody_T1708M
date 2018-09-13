@@ -195,6 +195,11 @@ class CartController extends Controller
                 $order = new Order();
                 $user = Auth::user();
                 $order->userID = $user->id;
+                foreach ($cart->items as $item) {
+                    $resID = $item->food->restaurantID;
+                }
+//                dd($resID);
+                $order->restaurantID = $resID;
                 $order->amount = 0;
                 $order->totalPrice = 0;
                 $order->save();
@@ -227,8 +232,6 @@ class CartController extends Controller
                     $order_detail->orderID = $order_id;
                     $order_detail->foodID = $food->id;
                     $order_detail->amount = $quantity;
-                    $order_detail->image = $item->food->avatar;
-                    $order_detail->nameProduct = $item->food->name;
                     $order_detail->price = $food->discountPrice;
                     $order->amount += $order_detail->amount;
                     $order->totalPrice += $order_detail->price * $order_detail->amount;
