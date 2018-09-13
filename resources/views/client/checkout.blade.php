@@ -85,9 +85,18 @@
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label>Lựa chọn thời gian chuyển tới:</label>
-                                                    <input type="time" name="time" id="time"
-                                                           min="08:00" max="21:00"
-                                                           required>
+                                                    <?php
+                                                    $myHour = date('H:i');
+                                                    ?>
+                                                    @if($myHour > '08:00')
+                                                        <input type="time" name="time" id="time"
+                                                               min="{{$myHour}}" max="21:00"
+                                                               required>
+                                                    @else
+                                                        <input type="time" name="time" id="time"
+                                                               min="08:00" max="21:00"
+                                                               required>
+                                                    @endif
                                                     <?php
                                                     $mytime = date('Y-m-d');
                                                     ?>
