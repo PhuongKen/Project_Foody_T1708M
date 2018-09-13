@@ -3,7 +3,7 @@
     <link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 @section('content')
-    <form action="/admin/user/{{$list_obj->id}}" method="post">
+    <form action="/admin/user/{{$list_obj->id}}" method="post" enctype="multipart/form-data">
         @method('PUT')
         {{csrf_field()}}
         <div class="row">
@@ -62,21 +62,17 @@
                         </div>
                         <div class="form-group">
                             <h5>Tên</h5>
-                            <input type="text" placeholder="Nhập tên" size="100" name="name" value="{{$list_obj->name}}">
+                            <input type="text" placeholder="Nhập tên" size="25" name="name" value="{{$list_obj->name}}">
                         </div>
                         <div class="form-group">
                             <label>Email :</label>&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="text" name="email" placeholder="Nhập email" value="{{$list_obj->email}}">
                         </div>
                         <div class="form-group">
-                            <label>Nhập mật khẩu:</label>
-                            <input type="password" name="password" placeholder="Nhập mật khẩu" value="{{$list_obj->password}}">
-                        </div>
-                        <div class="form-group">
                             <label>Ảnh đại diện:</label>
                             <div class="kv-avatar">
                                 <div class="file-loading">
-                                    <input id="product_image" name="avartar" type="file" value="{{$list_obj->avatar}}">
+                                    <input id="product_image" name="avartar" type="file" value="/images/user/{{$list_obj->avartar}}">
                                 </div>
                             </div>
                         </div>
@@ -84,13 +80,32 @@
                             <label>Số điện thoại:</label>&nbsp<input type="text" name="phone"
                                                                      placeholder="Nhập số điện thoại" value="{{$list_obj->phone}}">
                         </div>
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <select name="gender">
+                                    <option value="1">Nữ</option>
+                                    <option value="0">Nam</option>
+                                </select>
+                                {{--<input type="checkbox" name="status" value="{{$list_obj->status}}">Bị chặn--}}
+                            </div>
                         <div class="form-group">
-                            <label>Active</label>
-                            <select name="status">
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                            </select>
+                            <label>Status</label>
+                                <select name="status">
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Đã xóa</option>
+                                    <option value="2">Bị chặn</option>
+                                </select>
+                            {{--<input type="checkbox" name="status" value="{{$list_obj->status}}">Bị chặn--}}
                         </div>
+                            <div class="form-group">
+                                <label>Role</label>
+                                <select name="role">
+                                    <option value="1">Admin</option>
+                                    <option value="0">Người dùng</option>
+                                    <option value="2">Nhà hàng</option>
+                                </select>
+                                {{--<input type="checkbox" name="status" value="{{$list_obj->status}}">Bị chặn--}}
+                            </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Lưu">
                             <input type="reset" class="btn btn-success" value="Làm lại">

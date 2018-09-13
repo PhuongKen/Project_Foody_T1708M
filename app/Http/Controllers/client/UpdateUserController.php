@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\client;
 
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Address;
@@ -23,11 +24,12 @@ use Illuminate\Support\Facades\Input;
 class UpdateUserController extends Controller
 {
     public function getEdit($id){
+        $categories = Category::all();
         $user = User::find($id);
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
-        return view('client.updateuser',['list_obj'=>$user],compact('provind', 'district', 'ward'));
+        return view('client.updateuser',['list_obj'=>$user],compact('categories','provind', 'district', 'ward'));
     }
 
     public function postEdit(Request $request, $id){
