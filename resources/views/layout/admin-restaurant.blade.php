@@ -37,6 +37,7 @@
     <link href="{{asset('css/restaurant.css')}}" rel="stylesheet">
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @section('css')
 @show
 
@@ -402,14 +403,20 @@
 <script src="{{asset('js/jquery.app.js')}}"></script>
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
 <!-- Chart JS -->
-<script src="{{asset('js/chart.min.js')}}"></script>
-<script src="{{asset('js/chartjs.init.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"
+        charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
 <!--Table-->
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wysihtml5-0.3.0.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap-wysihtml5.js')}}"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 @yield('script')
 </body>
 </html>

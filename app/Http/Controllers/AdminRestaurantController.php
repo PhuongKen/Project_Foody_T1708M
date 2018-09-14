@@ -8,15 +8,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class AdminRestaurantController extends Controller
 {
     public function getHome()
     {
         return view('admin-restaurant.chart', compact('order'));
+    }
+
+    public function getChartDataApi()
+    {
+        $start_date = Input::get('startDate');
+        $end_date = Input::get('endDate');
+        $chart_data = DB::table('orders')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
+            ->select(DB::raw('sum(totalPrice) as revenue'), DB::raw('date(orders.created_at) as day'))
+            ->where('restaurants.userID', '=', Auth::user()->id)
+            ->where('orders.status', '=', 3)
+            ->whereBetween('orders.created_at', array($start_date . ' 00:00:00', $end_date . ' 23:59:59'))
+            ->groupBy('day')
+            ->orderBy('day', 'asc')
+            ->get();
+        return $chart_data;
     }
 
     public function chart()
