@@ -25,6 +25,13 @@
                                     <p>{{$restaurant->description}}</p>
                                 </div>
                             </div>
+                            <div class="intro-left">
+                                <div class="intro-item">
+                                    <div class="btn btn-danger"><a href="/foody/dat-cho/{{'?id='.$restaurant->id}}"
+                                                                   style="vertical-align: middle;font-weight: 700;font-size: 20px;cursor: pointer;color: #f37934;">
+                                            Đặt bàn</a></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="effect">
@@ -41,14 +48,15 @@
                                     <p><img src="/images/foody/intro-icon-2.png" alt="Intro Image"></p>
                                     <h4>Liên hệ</h4>
                                     <p>Số điện thoại: {{$restaurant->phone}}</p>
-                                    {{--<div class="food-address">--}}
-                                    {{--<a class="food-address1"--}}
-                                    {{--href="#"><span>{{$address[0]->wardName}}</span></a>,--}}
-                                    {{--<a class="food-address1"--}}
-                                    {{--href="#"><span>{{$address[0]->districtName}}</span></a>,--}}
-                                    {{--<a class="food-address1"--}}
-                                    {{--href="#"><span>{{$address[0]->provindName}}</span></a>--}}
-                                    {{--</div>--}}
+                                    <div>
+                                        <a href="#" class="food-address1" >{{$restaurant->addressDetail}},</a>
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->wardName}}</span></a>,
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->districtName}}</span></a>,
+                                        <a class="food-address1"
+                                           href="#"><span>{{$address[0]->provindName}}</span></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="intro-right">
@@ -65,15 +73,7 @@
             </div>
 
             <!-- Product - New Arrivals -->
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="intro-left">
-                        <div class="btn btn-danger"><a href="/foody/dat-cho/{{'?id='.$restaurant->id}}"
-                                                       style="vertical-align: middle;font-weight: 700;font-size: 20px;cursor: pointer;color: #f37934;">
-                                Đặt bàn</a></div>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="section products-block new-arrivals layout-3">
                 <div class="block-title">
@@ -140,23 +140,23 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     {{--@if(Auth::check())--}}
-                        {{--@if($rate != null)--}}
-                            {{--<div class="stars stars-example-bootstrap">--}}
-                                {{--<form action="/foody/danh-gia" method="post">--}}
-                                    {{--{{csrf_field()}}--}}
-                                    {{--<label>Đánh giá của bạn</label>--}}
-                                    {{--<select id="example-bootstrap" name="rating" autocomplete="off">--}}
-                                        {{--<option value="1">1</option>--}}
-                                        {{--<option value="2">2</option>--}}
-                                        {{--<option value="3">3</option>--}}
-                                        {{--<option value="4">4</option>--}}
-                                        {{--<option value="5">5</option>--}}
-                                    {{--</select>--}}
-                                    {{--<input type="hidden" name="restaurantID" value="{{$selected_restaurantId}}">--}}
-                                    {{--<input type="submit" value="Gửi đánh giá">--}}
-                                {{--</form>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
+                    {{--@if($rate != null)--}}
+                    {{--<div class="stars stars-example-bootstrap">--}}
+                    {{--<form action="/foody/danh-gia" method="post">--}}
+                    {{--{{csrf_field()}}--}}
+                    {{--<label>Đánh giá của bạn</label>--}}
+                    {{--<select id="example-bootstrap" name="rating" autocomplete="off">--}}
+                    {{--<option value="1">1</option>--}}
+                    {{--<option value="2">2</option>--}}
+                    {{--<option value="3">3</option>--}}
+                    {{--<option value="4">4</option>--}}
+                    {{--<option value="5">5</option>--}}
+                    {{--</select>--}}
+                    {{--<input type="hidden" name="restaurantID" value="{{$selected_restaurantId}}">--}}
+                    {{--<input type="submit" value="Gửi đánh giá">--}}
+                    {{--</form>--}}
+                    {{--</div>--}}
+                    {{--@endif--}}
                     {{--@endif--}}
                 </div>
             </div>

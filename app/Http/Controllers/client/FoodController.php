@@ -37,6 +37,7 @@ class FoodController
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', $categoryID)
+            ->where('restaurants.status','=',1)
             ->orderBy('created_at', 'DESC')
             ->paginate(8);
 //        print_r(array_keys($address));

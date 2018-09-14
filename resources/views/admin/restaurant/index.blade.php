@@ -58,7 +58,8 @@
                                                 <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                     Chưa update</h6>
                                             @else($value->addressID != null)
-                                                <p>{{$value->addressDetail}}, {{$address[$key]->wardName}},{{$address[$key]->districtName}}
+                                                <p>{{$value->addressDetail}}, {{$address[$key]->wardName}}
+                                                    ,{{$address[$key]->districtName}}
                                                     ,{{$address[$key]->provindName}}</p>
                                             @endif
                                         </td>
@@ -73,12 +74,15 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/admin/restaurant/{{$value->id}}"
-                                               class="btn btn-outline-success">Xem</a>
-                                            <a href="/admin/restaurant/{{$value->id}}/edit"
-                                               class="btn btn-outline-primary">Sửa</a>
-                                            <a href="{{$value->id}}" data-address="{{$value->addressID}}"
-                                               class="btn btn-outline-danger btn-delete">Xoá</a>
+                                            @if($value->status == 1)
+                                                <a href="/admin/restaurant/{{$value->id}}"
+                                                   class="btn btn-outline-success">Xem</a>
+                                                <a href="/admin/restaurant/{{$value->id}}/edit"
+                                                   class="btn btn-outline-primary">Sửa</a>
+                                                <a href="{{$value->id}}" data-address="{{$value->addressID}}"
+                                                   class="btn btn-outline-danger btn-delete">Xoá</a>
+                                            @else
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -94,10 +98,10 @@
 
     </div> <!-- End Row -->
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').dataTable();
             $('.wysihtml5').wysihtml5();
-        } );
+        });
     </script>
 
     <script>
@@ -115,29 +119,7 @@
             }).then((result) => {
                 var restaurantID = thisButton.attr('href');
                 var addressID = thisButton.attr('data-address');
-                $.ajax({
-                    url: '/admin/album_restaurant/' + restaurantID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Ảnh đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
+
                 $.ajax({
                     url: '/admin/restaurant/' + restaurantID,
                     method: 'DELETE',
@@ -151,32 +133,9 @@
                             confirmButtonClass: "btn btn-success",
                             buttonsStyling: false
                         })
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-                $.ajax({
-                    url: '/admin/address/' + addressID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Địa chỉ đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
                         setTimeout(function () {
                             window.location.reload();
-                        }, 2 * 1000);
+                        }, 1 * 1000);
                     },
                     error: function () {
                         swal({
@@ -187,6 +146,7 @@
                         })
                     }
                 });
+
             });
             return false;
         });

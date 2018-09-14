@@ -159,10 +159,10 @@ Route::match(['get', 'post'], '/foody/gan-toi', [
 ]);
 
 
-Route::match(['get', 'post'], '/foody/map', [
-    'as' => 'map',
-    'uses' => 'Client\MapController@map'
-]);
+//Route::match(['get', 'post'], '/foody/map', [
+//    'as' => 'map',
+//    'uses' => 'Client\MapController@map'
+//]);
 
 Route::get('/foody/gan-toi/danh-muc/', [
     'as' => 'gantoi',

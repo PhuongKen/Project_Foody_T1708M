@@ -6,6 +6,10 @@ use App\Address;
 use App\Album_restaurant;
 use App\Category;
 use App\District;
+use App\Food;
+use App\Order;
+use App\Order_detail;
+use App\Order_info;
 use App\Provind;
 use App\Restaurant;
 use App\Ward;
@@ -199,6 +203,7 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
+//        dd($restaurant);
         return view('admin.restaurant.view', compact('restaurant'));
     }
 
@@ -370,10 +375,18 @@ class RestaurantController extends Controller
      */
     public function destroy($id)
     {
+        $album = Album_restaurant::where('restaurantID', $id);
+        if ($album == null) {
+            return 'Không có ảnh hoặc đã bị xóa';
+        }
+        $album->delete();
+
         $restaurant = Restaurant::find($id);
         if ($restaurant == null) {
-            return response('Sản phẩm không tồn tại hoặc đã bị xóa', '404');
+            return response('Nhà hàng không tồn tại hoặc đã bị xóa', '404');
         }
-        $restaurant->delete();
+        $restaurant->status = 0;
+
+        $restaurant->save();
     }
 }
