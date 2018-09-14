@@ -1,6 +1,6 @@
 @extends('layout.master',['page_title'=>'Đăng nhập'])
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 50px">
         @if(Session::has('thatbai'))
             <div class="alert alert-danger">{{Session::get('thatbai')}}</div>
         @endif

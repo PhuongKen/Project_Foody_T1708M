@@ -1,6 +1,6 @@
 @extends('layout.master',['page_title'=>'Đăng kí'])
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 50px">
         @if(count($errors)>0)
             <div class="alert alert-danger">
                 @foreach($errors->all() as $err)

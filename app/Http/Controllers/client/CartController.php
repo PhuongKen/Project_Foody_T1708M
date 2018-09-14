@@ -99,9 +99,23 @@ class CartController extends Controller
             return response()->json(['msg' => 'Thông tin không hợp lệ'], 404);
         }
         $food = Food::find($id);
+
+        $resID = $food->restaurantID;
+        if (Session::has('cart')) {
+            $cart = Session::get('cart');
+            foreach ($cart->items as $item) {
+                if ($resID != $item->food->restaurantID) {
+                    return response()->json(['msg' => 'Bạn không thể thực hiện điều này.
+                 Hiện tại bạn không thể đặt món ăn của nhà hàng khác. Nếu muốn tiếp
+                  tục điều này hãy xóa món ăn trong giỏ hàng và thử lại.'], 404);
+                }
+            }
+        }
+
         if ($food == null || $food->status != 1) {
             return response()->json(['msg' => 'Sản phẩm không tồn tại hoặc đã bị xoá!'], 404);
         }
+
         $cart = new Cart();
         if (Session::has('cart')) {
             $cart = Session::get('cart');
@@ -183,7 +197,7 @@ class CartController extends Controller
                 'time.required' => 'Bạn chưa nhập giờ đến',
                 'date.required' => 'Bạn chưa nhập ngày đến',
                 'address.required' => 'Bạn chưa nhập địa chỉ chi tiết',
-                'address.min' => 'Địa chỉ chi tiết phải lớn hơn 6 kí tụ',
+                'address.min' => 'Địa chỉ chi tiết phải lớn hơn 6 kí tụ'
             ]
 
         );

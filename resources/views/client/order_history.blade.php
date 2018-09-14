@@ -1,7 +1,7 @@
 @extends('layout.master',['page_title'=>'Lịch sử đơn hàng'])
 @section('content')
     <div class="container container-edit">
-        <div class="page-checkout" style="margin-top: 20px">
+        <div class="page-checkout" style="margin-top: 50px">
             <h4 style="text-align: center">Lịch sử đơn hàng</h4>
             @foreach($order as $key => $value)
                 <div class="row">
