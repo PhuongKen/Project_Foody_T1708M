@@ -411,9 +411,6 @@
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wysihtml5-0.3.0.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap-wysihtml5.js')}}"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datatable').dataTable();

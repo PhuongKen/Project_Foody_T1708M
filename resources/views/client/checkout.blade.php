@@ -86,22 +86,15 @@
                                                 <div class="col-md-12">
                                                     <label>Lựa chọn thời gian chuyển tới:</label>
                                                     <?php
+                                                    $mytime = date('Y-m-d');
                                                     $myHour = date('H:i');
                                                     ?>
-                                                    @if($myHour > '08:00')
-                                                        <input type="time" name="time" id="time"
-                                                               min="{{$myHour}}" max="21:00"
-                                                               required>
-                                                    @else
-                                                        <input type="time" name="time" id="time"
-                                                               min="08:00" max="21:00"
-                                                               required>
-                                                    @endif
-                                                    <?php
-                                                    $mytime = date('Y-m-d');
-                                                    ?>
                                                     <input type="date" id="date" min="{{$mytime}}"
-                                                           name="date" required>
+                                                           name="date" required data-date="{{$mytime}}"
+                                                           data-hour="{{$myHour}}">
+                                                    <input type="time" name="time" id="time"
+                                                           min="08:00" max="21:00"
+                                                           required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -176,5 +169,16 @@
             });
         });
 
+        $('#time').click(function () {
+            var date = $('#date').val();
+            var date1 = $('#date').attr('data-date');
+            var hour = $('#date').attr('data-hour');
+            if (date == date1) {
+               $('#time').attr({"min": hour, "max": "21:00"});
+            }else {
+                $('#time').attr({"min": "08:00", "max": "21:00"});
+            }
+
+        });
     </script>
 @endsection

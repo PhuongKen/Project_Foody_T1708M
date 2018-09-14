@@ -34,11 +34,12 @@ class HomeController extends Controller
             ->join('districts', 'addresses.districtID', '=', 'districts.id')
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         $restaurant1 = Restaurant::where('categoryID', 1);
-        $list_all1 = $restaurant1->orderBy('created_at', 'DESC')->get()->take(15);
+        $list_all1 = $restaurant1->where('restaurants.status', '=', 1)->orderBy('created_at', 'DESC')->get()->take(15);
         $chunk_list1 = $list_all1->chunk(3);
         $address1 = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -47,11 +48,12 @@ class HomeController extends Controller
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', 1)
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         $restaurant2 = Restaurant::where('categoryID', 2);
-        $list_all2 = $restaurant2->orderBy('created_at', 'DESC')->get()->take(15);
+        $list_all2 = $restaurant2->where('restaurants.status', '=', 1)->orderBy('created_at', 'DESC')->get()->take(15);
         $chunk_list2 = $list_all2->chunk(3);
         $address2 = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -60,11 +62,12 @@ class HomeController extends Controller
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', 2)
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         $restaurant3 = Restaurant::where('categoryID', 3);
-        $list_all3 = $restaurant3->orderBy('created_at', 'DESC')->get()->take(15);
+        $list_all3 = $restaurant3->where('restaurants.status', '=', 1)->orderBy('created_at', 'DESC')->get()->take(15);
         $chunk_list3 = $list_all3->chunk(3);
         $address3 = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -73,11 +76,12 @@ class HomeController extends Controller
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', 3)
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         $restaurant4 = Restaurant::where('categoryID', 4);
-        $list_all4 = $restaurant4->orderBy('created_at', 'DESC')->get()->take(15);
+        $list_all4 = $restaurant4->where('restaurants.status', '=', 1)->orderBy('created_at', 'DESC')->get()->take(15);
         $chunk_list4 = $list_all4->chunk(3);
         $address4 = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -86,11 +90,12 @@ class HomeController extends Controller
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', 4)
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 
         $restaurant5 = Restaurant::where('categoryID', 5);
-        $list_all5 = $restaurant5->orderBy('created_at', 'DESC')->get()->take(15);
+        $list_all5 = $restaurant5->where('restaurants.status', '=', 1)->orderBy('created_at', 'DESC')->get()->take(15);
         $chunk_list5 = $list_all5->chunk(3);
         $address5 = DB::table('restaurants')
             ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
@@ -99,6 +104,7 @@ class HomeController extends Controller
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.*', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('categoryID', 5)
+            ->where('restaurants.status', '=', 1)
             ->orderBy('created_at', 'DESC')
             ->get()->toArray();
 

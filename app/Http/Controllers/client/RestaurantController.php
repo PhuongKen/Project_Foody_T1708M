@@ -39,6 +39,7 @@ class RestaurantController
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.name', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('restaurants.id', $selected_restaurantId)
+            ->where('restaurants.status','=',1)
             ->get()->toArray();
         if (Auth::check()) {
             $rate = DB::table('orders')

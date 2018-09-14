@@ -2683,7 +2683,7 @@ input {
 }
 
 [class~=product-tab] [class~=tab-nav] ul li a {
-    background: url("../img/bg-tab.png") no-repeat;
+    background: url("/images/foody/bg-tab-2.png") no-repeat;
 }
 
 [class~=block-cart] [class~=dropdown-content] [class~=cart-content] [class~=cart-button] {
@@ -5220,7 +5220,7 @@ input {
 }
 
 [class~=product-tab][class~=tab-2] [class~=tab-nav] ul li[class~=active] a {
-    background: url("../img/bg-tab-2.png") center no-repeat;
+    background: url("/images/foody/bg-tab-2.png") center no-repeat;
 }
 
 [class~=product-tab] [class~=owl-carousel] [class~=owl-stage-outer]:after {
@@ -7648,7 +7648,7 @@ input {
 }
 
 [class~=product-tab][class~=tab-2] [class~=tab-nav] ul li:hover a {
-    background: url("../img/bg-tab-2.png") center no-repeat;
+    background: url("/images/foody/bg-tab-2.png") center no-repeat;
 }
 
 [class~=home-2] [class~=intro] [class~=intro-header] h3 {
@@ -8425,7 +8425,7 @@ input {
 
 [class~=home-4] [class~=container-edit] {
     width: 12in;
-    border-top: 2px solid #d33;
+    margin-top: 20px;
     margin-bottom: 35px;
 }
 
@@ -10941,7 +10941,7 @@ input {
 }
 
 [class~=home-4] [class~=header-top]:after {
-    background: url("../img/bg-header-4.png") no-repeat top center;
+    background: url("/images/foody/bg-header-4.png") no-repeat top center;
 }
 
 .product-detail .control-label {
