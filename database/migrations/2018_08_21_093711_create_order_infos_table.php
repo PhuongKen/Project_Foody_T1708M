@@ -22,7 +22,7 @@ class CreateOrderInfosTable extends Migration
             $table->integer('addressID')->unsigned();
             $table->foreign('addressID')->references('id')->on('addresses');
             $table->string('address');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->time('time');
             $table->date('date');
             $table->timestamps();

@@ -6,7 +6,7 @@
     <div class="container container-edit">
         <div class="page-checkout" style="margin-top: 30px">
             <div class="row">
-                @if(Auth::check())
+                @if(Auth::check() && Auth::user()->role == 0)
                     <div class="checkout-left col-lg-9 col-md-9 col-sm-9 col-xs-12">
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
