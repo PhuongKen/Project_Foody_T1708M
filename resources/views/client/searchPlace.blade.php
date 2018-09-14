@@ -191,13 +191,6 @@
                                                         <a class="food-address1"
                                                            href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
-                                                    <div class="product-rating">
-                                                        <div class="star on"></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star on "></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -242,14 +235,6 @@
                                                         </div>
                                                         <div class="product-description">
                                                             {{$value->shortDescription}}
-                                                        </div>
-                                                        <div class="product-rating">
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on "></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star"></div>
-                                                            <span class="review-count">(3 Reviews)</span>
                                                         </div>
                                                     </div>
                                                 </div>

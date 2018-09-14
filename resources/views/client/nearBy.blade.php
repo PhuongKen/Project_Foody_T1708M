@@ -3,10 +3,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/map.css')}}">
 @endsection
 @section('content')
-    <div class="container container-edit">
-        <div class="row" style="margin-top: 30px">
-            <!-- Page Content -->
-            @if($list_restaurant -> isNotEmpty())
+    <div class="container container-edit" style="margin-top: 50px">
+        @if($list_restaurant -> isNotEmpty())
+            <div class="row" style="margin-top: 30px">
+                <!-- Page Content -->
                 <div id="center-column" class="col-lg-12 col-md-12">
                     <div class="product-category-page">
                         <!-- Nav Bar -->
@@ -79,13 +79,6 @@
                                                         <a class="food-address1"
                                                            href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
-                                                    <div class="product-rating">
-                                                        <div class="star on"></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star on "></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -131,14 +124,6 @@
                                                         <div class="product-description">
                                                             {{$value->shortDescription}}
                                                         </div>
-                                                        <div class="product-rating">
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on "></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star"></div>
-                                                            <span class="review-count">(3 Reviews)</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,25 +148,25 @@
                         </div>
                     </div>
                 </div>
-            @else
-                <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn</h4>
-                <h4 style="text-align: center">
-                    <a href="{{ url()->previous()}}" style="color: #d33">Quay lại</a>
-                </h4>
-            @endif
-        </div>
-        <div class="row" style="margin-top: 20px">
-            <h3 style="text-align: center">Xem với map</h3>
-        </div>
-        <div class="row" style="margin-top: 30px">
-            <input id="data" style="display: none;" value="{{$map}}">
-            <div id="map"></div>
-            <div class="control-left-wrapper">
-                <div class="zoom-in" id="zoom-in"><i class="fa fa-plus"></i></div>
-                <div class="zoom-out" id="zoom-out"><i class="fa fa-minus"></i></div>
-                <div class="current-location" id="current-location"><i class="fa fa-paper-plane"></i></div>
             </div>
-        </div>
+            <div class="row" style="margin-top: 20px">
+                <h3 style="text-align: center">Xem với map</h3>
+            </div>
+            <div class="row" style="margin-top: 30px">
+                <input id="data" style="display: none;" value="{{$map}}">
+                <div id="map"></div>
+                <div class="control-left-wrapper">
+                    <div class="zoom-in" id="zoom-in"><i class="fa fa-plus"></i></div>
+                    <div class="zoom-out" id="zoom-out"><i class="fa fa-minus"></i></div>
+                    <div class="current-location" id="current-location"><i class="fa fa-paper-plane"></i></div>
+                </div>
+            </div>
+        @else
+            <h4 style="text-align: center">Rất tiếc không có nhà hàng nào gần bạn</h4>
+            <h4 style="text-align: center">
+                <a href="{{ url()->previous()}}" style="color: #d33">Quay lại</a>
+            </h4>
+        @endif
     </div>
 @endsection
 @section('script')

@@ -1,62 +1,23 @@
-@extends('layout.master',['page_title'=>'Tìm kiếm'])
+@extends('layout.master',['page_title'=>'Nhà hàng nổi bật'])
 @section('content')
     <div class="container container-edit">
         <div class="row" style="margin-top: 30px">
             <!-- Page Content -->
-            @if($list_restaurant[0] == null)
-                @if($idProvind == 0 && $idDistrict == 0)
-                    <h4 style="text-align: center">Vui lòng chọn địa điểm trước khi lọc</h4>
-                    <h4 style="text-align: center">
-                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
-                            lại</a>
-                    </h4>
-                @elseif($idProvind == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
-                        <b class="text-danger">"{{$districtName->name}}"</b>
-                        thuộc danh mục
-                        <b class="text-danger">"{{$categoryName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
-                            lại</a>
-                    </h4>
-                @elseif($idDistrict == 0)
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
-                        <b class="text-danger">"{{$provindName->name}}"</b>
-                        thuộc danh mục
-                        <b class="text-danger">"{{$categoryName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
-                            lại</a>
-                    </h4>
-                @else
-                    <h4 style="text-align: center">Không tìm thấy kết quả nào với địa chỉ là
-                        <b class="text-danger">"{{$districtName->name}}, {{$provindName->name}}"</b>
-                        thuộc danh mục
-                        <b class="text-danger">"{{$categoryName->name}}"</b>
-                    </h4>
-                    <h4 style="text-align: center">
-                        <a class="text-danger" href="/foody/danh-sach-nha-hang/{{'?categoryID='.$categoryName->id}}">Quay
-                            lại</a>
-                    </h4>
-                @endif
-            @else
-                <h3 style="text-align: center; margin-bottom: 30px"><b>Danh mục {{$categoryName->name}}</b></h3>
+            @if($list_restaurant -> isNotEmpty())
+                <h4 style="text-align: center"><b>Top {{count($list_restaurant)}} nhà hàng nổi bật</b></h4>
                 <div id="center-column" class="col-lg-12 col-md-12">
                     <div class="product-category-page">
                         <!-- Nav Bar -->
                         <div class="products-bar">
                             <div class="row">
-                                <div class="col-md-4 col-xs-4">
+                                <div class="col-md-6 col-xs-6">
                                     <div class="gridlist-toggle" role="tablist">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#products-grid" data-toggle="tab"
                                                                   aria-expanded="true"><i
                                                             class="fa fa-th-large"></i></a>
                                             </li>
-                                            <li><a href="#products-list" data-toggle="tab"
-                                                   aria-expanded="false"><i
+                                            <li><a href="#products-list" data-toggle="tab" aria-expanded="false"><i
                                                             class="fa fa-bars"></i></a></li>
                                         </ul>
                                     </div>
@@ -64,50 +25,9 @@
                                     <div class="total-products">Gồm {{count($list_restaurant)}} nhà hàng</div>
                                 </div>
 
-                                <div class="col-md-8 col-xs-8">
+                                <div class="col-md-6 col-xs-6">
                                     <div class="filter-bar">
-                                        <form action="{{route('category')}}" method="get">
-                                            <div class="pull-right">
-                                                <div class="select">
-                                                    <select class="form-control" name="district"
-                                                            name="district"
-                                                            id="district">
-                                                        @if($idDistrict == 0)
-                                                            <option value="0">Tất cả Quận/Huyện</option>
-                                                            @foreach($district as $d)
-                                                                <option value="{{$d->id}}">{{$d->name}}</option>
-                                                            @endforeach
-                                                        @else
-                                                            <option value="{{$districtName->id}}">{{$districtName->name}}</option>
-                                                            @foreach($district as $d)
-                                                                <option value="{{$d->id}}">{{$d->name}}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="select">
-                                                    <select class="form-control" name="provind"
-                                                            id="provind">
-                                                        @if($idProvind == 0)
-                                                            <option value="0">Tất cả Tỉnh/Thành Phố</option>
-                                                            @foreach($provind as $p)
-                                                                <option value="{{$p->id}}">{{$p->name}}</option>
-                                                            @endforeach
-                                                        @else
-                                                            <option value="{{$provindName->id}}">{{$provindName->name}}</option>
-                                                            @foreach($provind as $p)
-                                                                <option value="{{$p->id}}">{{$p->name}}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" value="{{$categoryID}}" name="categoryID">
-                                            <input type="submit" value="Lọc"
-                                                   style="padding: 4px; margin-right: 0">
-                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +38,7 @@
                             <div class="tab-pane active" id="products-grid">
                                 <div class="products-block">
                                     <div class="row">
-                                        @foreach($list_restaurant as $value)
+                                        @foreach($list_restaurant as  $value)
                                             <div class="col-md-3 col-sm-4 col-xs-12">
                                                 <div class="product-item">
                                                     <div class="product-image">
@@ -201,8 +121,7 @@
                         <div class="pagination-bar">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng trong tổng
-                                        số {{count($countRestaurant)}} nhà hàng
+                                    <div class="text">Chỉ lấy ra {{count($list_restaurant)}} nhà hàng có lượng order nhiều nhất
                                     </div>
                                 </div>
 
@@ -213,6 +132,10 @@
                         </div>
                     </div>
                 </div>
+            @else
+                <h4 style="text-align: center">Không tìm thấy kết quả nào</h4>
+                <h5 style="text-align: center"><a href="{{\Illuminate\Support\Facades\URL::previous()}}"
+                                                  style="color: #d33;">Quay lại</a></h5>
             @endif
         </div>
     </div>

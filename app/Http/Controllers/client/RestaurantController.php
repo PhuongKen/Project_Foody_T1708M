@@ -25,7 +25,7 @@ class RestaurantController
         $food = Food::where('status', 1);
         $selected_restaurantId = $request->get('id');
         $restaurant = Restaurant::find($selected_restaurantId);
-        if($restaurant == null){
+        if ($restaurant == null) {
             return view('error.404');
         }
         $food = $food->where('restaurantID', $selected_restaurantId)->get();
@@ -39,7 +39,7 @@ class RestaurantController
             ->join('wards', 'addresses.wardID', '=', 'wards.id')
             ->select('restaurants.name', 'provinds.name as provindName', 'districts.name as districtName', 'wards.name as wardName')
             ->where('restaurants.id', $selected_restaurantId)
-            ->where('restaurants.status','=',1)
+            ->where('restaurants.status', '=', 1)
             ->get()->toArray();
         if (Auth::check()) {
             $rate = DB::table('orders')
@@ -64,5 +64,40 @@ class RestaurantController
         $rate->rate = $request->get('rating');
         $rate->save();
         return redirect()->back();
+    }
+
+    public function noibat()
+    {
+        $categories = Category::all();
+        $datetime = date('Y-m-d');
+        $date = new \DateTime($datetime);
+        $date = date_format($date->modify("-6 day"),'Y-m-d');
+
+        $start_date = $date;
+        $end_date = $datetime;;
+        $restaurants = DB::table('orders')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
+            ->select(DB::raw('count(restaurantID) as revenue'),'restaurants.*')
+            ->where('orders.status', '=', 3)
+            ->where('restaurants.status','=',1)
+            ->whereBetween('orders.created_at', array($start_date . ' 00:00:00', $end_date . ' 23:59:59'));
+
+        $countRestaurant = $restaurants->get();
+//        dd($countRestaurant);
+        $list_restaurant = DB::table('orders')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
+            ->join('addresses', 'restaurants.addressID', '=', 'addresses.id')
+            ->join('provinds', 'addresses.provindID', '=', 'provinds.id')
+            ->join('districts', 'addresses.districtID', '=', 'districts.id')
+            ->join('wards', 'addresses.wardID', '=', 'wards.id')
+            ->select(DB::raw('count(restaurantID) as revenue'),'restaurants.*', 'provinds.name as provindName',
+                'districts.name as districtName', 'wards.name as wardName')
+            ->where('orders.status', '=', 3)
+            ->whereBetween('orders.created_at', array($start_date . ' 00:00:00', $end_date . ' 23:59:59'))
+            ->groupBy('orders.restaurantID')
+            ->orderBy('revenue', 'desc')->take(10)
+            ->paginate(10);
+//        dd($list_restaurant);
+        return view('client.topHightLight',compact('list_restaurant','categories'));
     }
 }
