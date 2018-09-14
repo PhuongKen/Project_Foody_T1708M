@@ -1,125 +1,90 @@
 @extends('layout.admin-restaurant',['page_title'=>'Chart','active'=>''])
 @section('content')
-    <div class="container">
-        <canvas id="canvas" width="200px" height="100px"></canvas>
+    <div class="row mb-5">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4">
+            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                <i class="fa fa-calendar"></i>&nbsp;
+                <span></span> <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <canvas id="canvas1" width="200px" height="100px"></canvas>
-    </div>
+    <canvas id="canvas" style="width: 200px; height: 100px;"></canvas>
+    <canvas id="canvas1" width="200px" height="100px"></canvas>
 @endsection
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"
-            charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
     <script>
-        //Doanh thu nhà hàng theo ngày
-        var url = "{{url('admin/chart-restaurant')}}";
-        var Years = new Array();
-        var Labels = new Array();
-        var Prices = new Array();
-        var TotalPrice = new Array();
         $(document).ready(function () {
-            $.get(url, function (response) {
-                response.forEach(function (data) {
-                    Years.push(data.updated_at);
-                    Labels.push(data.name);
-                    Prices.push(data.totalPrice);
-                });
-                var ctx = document.getElementById("canvas").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: Years,
-                        datasets: [{
-                            label: 'Doanh thu nhà hàng theo ngày : ' + Labels[0],
-                            data: Prices,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-            });
-        });
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
 
-        //Doanh thu nhà hàng theo tháng
-        var url1 = "{{url('admin/chart-restaurantmonth')}}";
-        var Years1 = new Array();
-        var Labels1 = new Array();
-        var Prices1 = new Array();
-        var TotalPrice = new Array();
-        $(document).ready(function () {
-            $.get(url1, function (response) {
-                response.forEach(function (data) {
-                    Years1.push(data.month);
-                    Labels1.push(data.name);
-                    Prices1.push(data.totalPrice);
-                    // TotalPrice.push(data.totalPrice);
-                });
-                var ctx = document.getElementById("canvas1").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: Years1,
-                        datasets: [{
-                            label: 'Doanh thu nhà hàng theo tháng :' + Labels1[0],
-                            data: Prices1,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+            cb(start, end);
+            $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+                var startDate = picker.startDate.format('YYYY-MM-DD');
+                var endDate = picker.endDate.format('YYYY-MM-DD');
+                var listOfDate = new Array();
+                var revenueByDate = new Array();
+                $.get('/admin/chart-demo?startDate='+ startDate + '&endDate=' + endDate, function (response) {
+                    for (var i = 0; i < response.length; i++) {
+                        listOfDate.push(response[i].day);
+                        revenueByDate.push(response[i].revenue);
                     }
+                    var ctx = document.getElementById("canvas").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: listOfDate,
+                            datasets: [{
+                                label: 'Doanh thu từ ' + startDate + ' d?n ' + endDate,
+                                data: revenueByDate,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
                 });
             });
-        });
+
+        })
     </script>
 @endsection

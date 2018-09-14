@@ -38,7 +38,7 @@ Route::group(['middleware' => 'adminLogin'], function () {
         'as' => 'admin',
         'uses' => 'AdminController@getHome'
     ]);
-    Route::get('/admin/chart', 'AdminController@chart');
+    Route::get('/admin/chart-admin', 'AdminController@getChart');
 
 //    Route::get('/chart-api', 'OrderController@getChartApi');
 });
@@ -54,6 +54,7 @@ Route::group(['middleware' => 'adminrestaurantLogin'], function () {
         'as' => 'admin-restaurant',
         'uses' => 'AdminRestaurantController@getHome'
     ]);
+    Route::get('admin/chart-demo', 'AdminRestaurantController@getChartDataApi');
 //Chart doanh thu nhà hàng theo ngày admin restaurant
     Route::get('admin/chart-restaurant', 'AdminRestaurantController@chart');
 //Chart doanh thu nhà hàng theo tháng admin restaurant

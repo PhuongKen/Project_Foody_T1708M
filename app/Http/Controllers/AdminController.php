@@ -21,37 +21,38 @@ use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller
 {
-    public function getHome(){
+    public function getHome()
+    {
 //        $order = DB::table('Orders')->max('totalPrice');
 //        dd($order);
         return view('admin.home');
     }
 
-    public function chart(){
-        $order = DB::table('orders')
-            ->join('order_details', 'order_details.orderID', '=','orders.id')
-            ->join('foods', 'foods.id', '=', 'order_details.id')
-            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
-            ->where('orders.status','=',3)
-            ->select('restaurants.name', 'orders.updated_at',DB::raw('max(orders.totalPrice) as price'))
-            ->orderBy('orders.updated_at', 'ASC')
-//            ->orderBy(DB::raw('max(orders.totalPrice) as price'), 'DESC')
-            ->groupBy('order_details.orderID')
-            ->take(10)
+    public function getChart()
+    {
+        $start_date = Input::get('startDate');
+        $end_date = Input::get('endDate');
+        $chart_data = DB::table('orders')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
+            ->select(DB::raw('count(restaurantID) as revenue'), DB::raw('date(orders.created_at) as day'),
+                'restaurants.name as nameRestaurant')
+            ->where('orders.status', '=', 3)
+            ->whereBetween('orders.created_at', array($start_date . ' 00:00:00', $end_date . ' 23:59:59'))
+            ->groupBy('orders.restaurantID')
+            ->orderBy('revenue', 'desc')->take(10)
             ->get();
-        return response()->json($order);
+        return $chart_data;
 
     }
-
 
 
     public function getLogin()
     {
         Session::put("backUrl", URL::previous());
         $user = Auth::user();
-        if(Auth::check() && $user->role == 1){
+        if (Auth::check() && $user->role == 1) {
             return redirect('/admin/chart');
-        }else{
+        } else {
             return view('admin.login.login');
         }
     }
@@ -60,12 +61,13 @@ class AdminController extends Controller
     {
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password, 'verifyEmail' => 1])) {
             return redirect('/admin/chart');
-        }else{
-            return redirect()->back()->with('thatbai','Sai thông tin đăng nhập');
+        } else {
+            return redirect()->back()->with('thatbai', 'Sai thông tin đăng nhập');
         }
     }
 
-    public function getLogout(){
+    public function getLogout()
+    {
         $user = Auth::user();
         if (Auth::check() && $user->role == 1) {
             Auth::logout();
