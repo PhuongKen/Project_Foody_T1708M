@@ -94,6 +94,9 @@
                                           font-weight: 700; font-family: 'Playfair Display', serif; color: #444">
                                     </form>
                                 </li>
+                                <li>
+                                    <a href="/foody/noi-bat">Nổi bật</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 @extends('layout.master',['page_title'=>'Liên hệ'])
 @section('content')
-    <div class="container">
+    <div class="container container-edit" style="margin-top: 50px">
         @if ($errors->any())
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <ul>

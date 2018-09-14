@@ -176,4 +176,4 @@ Route::get('/foody/gan-toi/danh-muc/', [
     'as' => 'gantoi',
     'uses' => 'Client\LocationController@selectCategory'
 ]);
-
+Route::get('/foody/noi-bat','Client\RestaurantController@noibat');

@@ -4,6 +4,7 @@
         <div class="row" style="margin-top: 30px">
             <!-- Page Content -->
             @if($list_restaurant -> isNotEmpty())
+                <h3 style="text-align: center; margin-bottom: 30px"><b>Danh mục {{$selected_category->name}}</b></h3>
                 <div id="center-column" class="col-lg-12 col-md-12">
                     <div class="product-category-page">
                         <!-- Nav Bar -->
@@ -88,13 +89,6 @@
                                                         <a class="food-address1"
                                                            href="#"><span>{{$value->provindName}}</span></a>
                                                     </div>
-                                                    <div class="product-rating">
-                                                        <div class="star on"></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star on "></div>
-                                                        <div class="star on"></div>
-                                                        <div class="star"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -139,14 +133,6 @@
                                                         </div>
                                                         <div class="product-description">
                                                             {{$value->shortDescription}}
-                                                        </div>
-                                                        <div class="product-rating">
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star on "></div>
-                                                            <div class="glyphicon glyphicon-star on"></div>
-                                                            <div class="glyphicon glyphicon-star"></div>
-                                                            <span class="review-count">(3 Reviews)</span>
                                                         </div>
                                                     </div>
                                                 </div>
