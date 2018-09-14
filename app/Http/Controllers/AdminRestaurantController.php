@@ -39,19 +39,20 @@ class AdminRestaurantController extends Controller
 
     public function chart()
     {
-        $order = DB::table('orders')
+        $start_date = Input::get('startDate');
+        $end_date = Input::get('endDate');
+        $chart_data = DB::table('orders')
+            ->join('restaurants', 'restaurants.id', '=', 'orders.restaurantID')
             ->join('order_details', 'order_details.orderID', '=', 'orders.id')
             ->join('foods', 'foods.id', '=', 'order_details.foodID')
-            ->join('restaurants', 'restaurants.id', '=', 'foods.restaurantID')
-            ->where('orders.status', '=', 3)
+            ->select(DB::raw('count(foodID) as revenue'), DB::raw('date(orders.created_at) as day'),'foods.name as nameFood')
             ->where('restaurants.userID', '=', Auth::user()->id)
-            ->orderBy('orders.updated_at', 'ASC')
-            ->groupBy('order_details.orderID')
-            ->select('restaurants.name', 'orders.totalPrice', 'orders.updated_at')
+            ->where('orders.status', '=', 3)
+            ->whereBetween('orders.created_at', array($start_date . ' 00:00:00', $end_date . ' 23:59:59'))
+            ->groupBy('day')
+            ->orderBy('day', 'asc')
             ->get();
-//           dd($order);
-//        $order = Order::all();
-        return response()->json($order);
+        return $chart_data;
 
     }
 
