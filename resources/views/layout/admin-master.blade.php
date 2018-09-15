@@ -207,7 +207,7 @@
                 <ul>
                     <!--- Dashboard -->
                     <li>
-                        <a href="/admin/home" class="waves-effect"><i class="fas fa-chart-pie"></i></i>
+                        <a href="/admin" class="waves-effect"><i class="fas fa-chart-pie"></i></i>
                             <span> Chart </span></a>
                     </li>
                     <!--- user -->
