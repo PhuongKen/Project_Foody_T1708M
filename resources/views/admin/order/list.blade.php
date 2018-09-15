@@ -64,7 +64,7 @@
                                                         Đang chờ xử lý</h6>
                                                 @elseif($value->status == 2)
                                                     <h6 style="background-color: #5cb85c; border-radius: 4px; padding: 4px; color: white; width: 70px">
-                                                        Đang chờ xác nhận</h6>
+                                                        Đang chờ hoàn thành</h6>
                                                 @elseif($value->status == 3)
                                                     <h6 style="background-color: #d33; border-radius: 4px; padding: 4px; color: white; width: 70px">
                                                         Hoàn thành</h6>
@@ -81,7 +81,7 @@
                                                 @elseif($value->status==2)
                                                     <a href="/restaurant/change-status?id={{$value->id}}&status=3"
                                                        class="btn btn-simple btn-outline-primary btn-finish"
-                                                       onclick="return confirm('Bạn có chắc muốn  xác nhậnđơn hàng?')">Hoàn
+                                                       onclick="return confirm('Bạn có chắc muốn hoàn thành đơn hàng?')">Hoàn
                                                         thành</a>
                                                 @endif
                                                 @if($value->status==1)

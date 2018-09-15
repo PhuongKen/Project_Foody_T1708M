@@ -12,6 +12,7 @@ use App\Order_detail;
 use App\Order_info;
 use App\Provind;
 use App\Restaurant;
+use App\User;
 use App\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,11 +49,12 @@ class RestaurantController extends Controller
     public function create()
     {
         $category = Category::all();
+        $user = User::where('role', 2)->get();
         $provind = Provind::all();
         $district = District::all();
         $ward = Ward::all();
 
-        return view('admin.restaurant.create', compact('category', 'provind', 'district', 'ward'));
+        return view('admin.restaurant.create', compact('category', 'provind', 'district', 'ward', 'user'));
     }
 
     /**
@@ -92,7 +94,7 @@ class RestaurantController extends Controller
 
         );
         $restaurant = new Restaurant();
-        $restaurant->userID = Auth::user()->id;
+        $restaurant->userID = Input::get('userID');
         $restaurant->categoryID = Input::get('category');
         $restaurant->name = Input::get('name');
         $getAvartar = '';

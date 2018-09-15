@@ -188,7 +188,7 @@ class CartController extends Controller
                 'phone' => 'required|numeric',
                 'time' => 'required',
                 'date' => 'required',
-                'address' => 'required|min:6'
+                'address' => 'required|min:2'
             ],
             [
                 'name.required' => 'Bạn chưa nhập tên',
@@ -197,7 +197,7 @@ class CartController extends Controller
                 'time.required' => 'Bạn chưa nhập giờ đến',
                 'date.required' => 'Bạn chưa nhập ngày đến',
                 'address.required' => 'Bạn chưa nhập địa chỉ chi tiết',
-                'address.min' => 'Địa chỉ chi tiết phải lớn hơn 6 kí tụ'
+                'address.min' => 'Địa chỉ chi tiết phải lớn hơn 2 kí tụ'
             ]
 
         );
