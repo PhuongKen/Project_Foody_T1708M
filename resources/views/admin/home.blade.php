@@ -11,6 +11,7 @@
             </div>
         </div>
     </div>
+    <h3 style="text-align: center ; color: #1b8a4d">Những nhà hàng có order nhiều</h3>
     <canvas id="canvas" style="width: 200px; height: 100px;"></canvas>
 @endsection
 @section('script')

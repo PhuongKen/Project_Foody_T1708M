@@ -10,7 +10,9 @@
             </div>
         </div>
     </div>
+    <h3 style="text-align: center ; color: #1b8a4d">Doanh thu nhà hàng</h3>
     <canvas id="canvas" style="width: 200px; height: 100px;"></canvas>
+    <h3 style="text-align: center ; color: #1b8a4d">Những món ăn bán chạy</h3>
     <canvas id="canvas1" width="200px" height="100px"></canvas>
 @endsection
 @section('script')
