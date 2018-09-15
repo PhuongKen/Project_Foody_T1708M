@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Order_detail;
+use App\Order_info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -125,11 +127,24 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
+        $orderaddress=Order_info::where('orderID',$id);
+        if ($orderaddress == null){
+            return view('404');
+        }
+        $orderaddress->delete();
+
+        $orderdetail = Order_detail::where('orderID', $id);
+        if ($orderdetail == null) {
+            return view('error.404');
+        }
+        $orderdetail->delete();
+
         $order = Order::find($id);
         if ($order == null) {
             return view('error.404');
         }
         $order->delete();
+        return response()->json(['message' => 'Xóa sản phẩm thành công']);
     }
 
     public function changeStatus()
