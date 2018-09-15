@@ -37,7 +37,7 @@
     <link href="{{asset('css/restaurant.css')}}" rel="stylesheet">
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-wysihtml5.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 @section('css')
 @show
 
@@ -185,7 +185,7 @@
                 </div>
                 <div class="user-info">
                     <div class="dropdown">
-                        @if(Auth::check())
+                        @if(Auth::check() && Auth::user()->role==2)
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">{{Auth::user()->name}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">

@@ -40,6 +40,14 @@
                             </div>
                         @endif
                         <div class="form-group">
+                            <label><h5>Email:</h5></label>
+                            <select name="userID">
+                                @foreach($user as $u)
+                                    <option value="{{$u->id}}">{{$u->email}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label><h5>Danh mục:</h5></label>
                             <select name="category">
                                 @foreach($category as $c)
@@ -142,10 +150,6 @@
     <script src="{{asset('js/fileinput.min.js')}}"></script>
     <script src="{{asset('js/dropzone.min.js')}}"></script>
     <script>
-        $(document).ready(function () {
-            $('#datatable').dataTable();
-            $('.wysihtml5').wysihtml5();
-        });
         var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
             'onclick="alert(\'Call your custom code here.\')">' +
             '<i class="fas fa-tag"></i>' +

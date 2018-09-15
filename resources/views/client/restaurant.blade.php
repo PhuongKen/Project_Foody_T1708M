@@ -49,7 +49,7 @@
                                     <h4>Liên hệ</h4>
                                     <p>Số điện thoại: {{$restaurant->phone}}</p>
                                     <div>
-                                        <a href="#" class="food-address1" >{{$restaurant->addressDetail}},</a>
+                                        <a href="#" class="food-address1">{{$restaurant->addressDetail}},</a>
                                         <a class="food-address1"
                                            href="#"><span>{{$address[0]->wardName}}</span></a>,
                                         <a class="food-address1"
