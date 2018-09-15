@@ -107,48 +107,50 @@
     <script>
         $('.btn-delete').click(function () {
             var thisButton = $(this);
-            swal({
-                type: 'warning',
-                title: 'Bạn có chắc muốn xoá nhà hàng này không?',
-                text: "Bạn sẽ không thể khôi phục được dữ liệu",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonClass: 'Đồng ý',
-                cancelButtonClass: 'Huỷ bỏ',
-            }).then((result) => {
-                var restaurantID = thisButton.attr('href');
-                var addressID = thisButton.attr('data-address');
+            var userconfirm = confirm("Bạn có chắc muốn nhà hàng này không?");
+            if (userconfirm) {
+                swal({
+                    type: 'warning',
+                    title: 'Nhà hàng đang được xóa?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonClass: 'Đồng ý',
+                    cancelButtonClass: 'Huỷ bỏ',
+                }).then((result) => {
+                    var restaurantID = thisButton.attr('href');
+                    var addressID = thisButton.attr('data-address');
 
-                $.ajax({
-                    url: '/admin/restaurant/' + restaurantID,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token()}}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Nhà hàng đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 1 * 1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
+                    $.ajax({
+                        url: '/admin/restaurant/' + restaurantID,
+                        method: 'DELETE',
+                        data: {
+                            '_token': "{{ csrf_token()}}"
+                        },
+                        success: function (response) {
+                            swal({
+                                text: 'Nhà hàng đã bị xoá.',
+                                type: 'success',
+                                confirmButtonClass: "btn btn-success",
+                                buttonsStyling: false
+                            })
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1 * 1000);
+                        },
+                        error: function () {
+                            swal({
+                                text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                                type: 'warning',
+                                confirmButtonClass: "btn btn-danger",
+                                buttonsStyling: false
+                            })
+                        }
+                    });
+
                 });
-
-            });
-            return false;
+                return false;
+            }
         });
     </script>
     <!-- /.row -->

@@ -107,96 +107,48 @@
     <script>
         $('.btn-delete').click(function () {
             var thisButton = $(this);
-            swal({
-                type: 'warning',
-                title: 'Bạn có chắc muốn xoá đơn hàng này không?',
-                text: "Bạn sẽ không thể khôi phục được dữ liệu",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonClass: 'Đồng ý',
-                cancelButtonClass: 'Huỷ bỏ',
-            }).then((result) => {
-                var cateId = $(this).attr('href');
-                $.ajax({
-                    url: '/restaurant/orderaddress/' + cateId,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token() }}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Thông tin đơn hàng đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        });
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2 * 1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
-                $.ajax({
-                    url: '/restaurant/detailorder/' + cateId,
-                    method: 'DELETE',
-                    data: {
-                        '_token': "{{ csrf_token() }}"
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Thông tin chi tiết đã bị xoá.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
-                $.ajax({
-                url: '/restaurant/order/' + cateId,
-                method: 'DELETE',
-                data: {
-                '_token': "{{ csrf_token() }}"
-                },
-                success: function (response) {
+            var userconfirm = confirm("Bạn có chắc muốn xóa đơn hàng?");
+            if (userconfirm) {
                 swal({
-                text: 'Đơn hàng đã bị xoá.',
-                type: 'success',
-                confirmButtonClass: "btn btn-success",
-                buttonsStyling: false
-                })
-                setTimeout(function () {
-                window.location.reload();
-                }, 2 * 1000);
-                },
-                error: function () {
-                swal({
-                text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                type: 'warning',
-                confirmButtonClass: "btn btn-danger",
-                buttonsStyling: false
-                })
-                }
+                    type: 'warning',
+                    title: 'Đơn hàng của bạn đang được xóa.',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonClass: 'Đồng ý',
+                    cancelButtonClass: 'Huỷ bỏ',
+                }).then((result) => {
+                    var cateId = $(this).attr('href');
+                    $.ajax({
+                        url: '/restaurant/order/' + cateId,
+                        method: 'DELETE',
+                        data: {
+                            '_token': "{{ csrf_token() }}"
+                        },
+                        success: function (response) {
+                            swal({
+                                text: 'Đơn hàng đã bị xoá.',
+                                type: 'success',
+                                confirmButtonClass: "btn btn-success",
+                                buttonsStyling: false
+                            })
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2 * 1000);
+                        },
+                        error: function () {
+                            swal({
+                                text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                                type: 'warning',
+                                confirmButtonClass: "btn btn-danger",
+                                buttonsStyling: false
+                            })
+                        }
+                    });
                 });
-            });
-            return false;
+                return false;
+            }
+
         });
     </script>
     <!-- /.row -->
